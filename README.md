@@ -267,7 +267,7 @@ Voilà ! Vous avez réussi à lier votre site GitHub Pages au domaine personnali
 
 # Consignes pour le travail de fin de session (2e itération)
 
-Bravo pour la première itération de votre site web ! Dans cette deuxième itération, vous allez enrichir votre site avec un CV en format PDF et ajouter une nouvelle section pour héberger vos projets. Suivez les étapes ci-dessous pour intégrer ces nouveaux éléments. 
+Bravo pour la première itération de votre site web ! Dans cette deuxième itération, vous allez enrichir votre site avec un CV en format PDF, ajouter une nouvelle section pour héberger vos projets et y déposer déjà un premier projet. Suivez les étapes ci-dessous pour intégrer ces nouveaux éléments. 
 
 ## Étape 1 : Créer un CV et l'ajouter à votre site
 
@@ -329,18 +329,13 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
    </section>
    ```
 
-3. **Explications** :
-   - <a href="cv/cv.pdf" class="image" target="_blank">: Ce lien rend l’image d’aperçu cliquable et mène au CV en PDF. Le target="_blank" fait ouvrir le PDF dans un nouvel onglet.
-	- <img src="cv/cv.png" alt="Aperçu du CV" />: Cette ligne affiche l’image cv.png comme un aperçu de votre CV.
-	- <a href="cv/cv.pdf" target="_blank" class="button primary">Voir le CV en PDF</a> : Ce lien supplémentaire sous l’image permet aux visiteurs d’ouvrir le PDF en cliquant sur un bouton stylé.
-
-4.	**Vérifiez l’affichage de votre site** :
+3. **Vérifiez l’affichage de votre site** :
    - Enregistrez les modifications et poussez-les sur GitHub.
-	- Accédez à votre site et allez à la section «Mon CV» pour vérifier que l’image s’affiche correctement et que les liens vers le CV en PDF fonctionnent.
+   - Accédez à votre site et allez à la section «Mon CV» pour vérifier que l’image s’affiche correctement et que les liens vers le CV en PDF fonctionnent.
 
 ---
 
-## Étape 4 : Créer un nouvel onglet «Projet» sur votre site
+## Étape 3 : Créer un nouvel onglet «Projet» sur votre site
 
 1. **Ajoutez l’onglet «Projet»** :
    - Dans le code HTML de votre site, créez un nouvel élément de navigation pour «Projet». Ce lien devra pointer vers une nouvelle section de votre site dédiée à vos projets. 
