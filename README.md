@@ -282,10 +282,65 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
    - Créez un dossier nommé `cv` à la racine de votre répertoire GitHub.
    - Placez-y votre fichier LaTeX (ou markdown/Quarto si vous avez choisi ces formats).
    - Placez également votre CV en PDF dans ce dossier.
+   - Prenez une capture d’écran de la première page de votre CV et enregistrez-la dans le même dossier `cv`, sous le nom `cv.png`.
+  
+## Étape 2 : Intégrer un lien vers le CV en PDF et afficher un aperçu dans la section «Mon CV»
+
+1. **Modifiez la section «Mon CV» dans le code HTML** :
+   - Dans votre fichier `index.html`, localisez la section `three`, qui commence par :
+
+     ```html
+     <!-- Three -->
+     <section id="three">
+     ```
+
+2. **Ajoutez le lien vers le CV et l’image d’aperçu** :
+   - Remplacez le contenu de cette section avec les modifications ci-dessous pour intégrer le lien vers le CV PDF ainsi que l’aperçu de l’image.
+
+   ```html
+   <!-- Three -->
+   <section id="three">
+     <div class="container">
+       <h3>Mon CV</h3>
+       <p>
+         Vous trouverez ci-dessous un aperçu de mon CV. Cliquez sur l’image ou le bouton pour consulter le document complet en format PDF.
+       </p>
+       <div class="features">
+         <article>
+           <!-- Aperçu du CV en image -->
+           <a href="cv/cv.pdf" class="image" target="_blank">
+             <img src="cv/cv.png" alt="Aperçu du CV" />
+           </a>
+           <div class="inner">
+             <h4>Consultez mon CV</h4>
+             <p>
+               Cliquez sur l'image ci-dessus ou sur le lien ci-dessous pour ouvrir mon CV en PDF dans un nouvel onglet.
+             </p>
+             <!-- Lien direct vers le CV en PDF -->
+             <p>
+               <a href="cv/cv.pdf" target="_blank" class="button primary">
+                 Voir le CV en PDF
+               </a>
+             </p>
+           </div>
+         </article>
+       </div>
+     </div>
+   </section>
+   ```
+
+3. **Explications** :
+   - <a href="cv/cv.pdf" class="image" target="_blank">: Ce lien rend l’image d’aperçu cliquable et mène au CV en PDF. Le target="_blank" fait ouvrir le PDF dans un nouvel onglet.
+	- <img src="cv/cv.png" alt="Aperçu du CV" />: Cette ligne affiche l’image cv.png comme un aperçu de votre CV.
+	- <a href="cv/cv.pdf" target="_blank" class="button primary">Voir le CV en PDF</a> : Ce lien supplémentaire sous l’image permet aux visiteurs d’ouvrir le PDF en cliquant sur un bouton stylé.
+
+4.	**Vérifiez l’affichage de votre site** :
+   - Enregistrez les modifications et poussez-les sur GitHub.
+	- Accédez à votre site et allez à la section «Mon CV» pour vérifier que l’image s’affiche correctement et que les liens vers le CV en PDF fonctionnent.
 
 ---
 
-## Étape 2 : Créer un nouvel onglet «Projet» sur votre site
+## Étape 4 : Créer un nouvel onglet «Projet» sur votre site
 
 1. **Ajoutez l’onglet «Projet»** :
    - Dans le code HTML de votre site, créez un nouvel élément de navigation pour «Projet». Ce lien devra pointer vers une nouvelle section de votre site dédiée à vos projets. 
@@ -293,4 +348,16 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
    ```html
    <li><a href="#projet">Projet</a></li>
    ```
+   
+2. **Créez la section «Projet»** :
+   - Dans le fichier `index.html`, ajoutez une section avec l’identifiant `projet` où vous allez entreposer différents projets.
+   
+   ```html
+   <section id="projet">
+       <h2>Projet</h2>
+       <p>Bienvenue dans la section de mes projets.</p>
+       <!-- Les projets seront listés ici -->
+   </section>
+      ```
+
    
