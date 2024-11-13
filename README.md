@@ -401,14 +401,13 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
 1. **Créez un dossier nommé `projet_session`** dans votre répertoire GitHub :
    - Ce dossier contiendra le fichier markdown et les ressources associées à votre projet de session.
 
-2. **Rédigez le contenu du projet** :
-   - Dans le dossier `projet_session`, créez un fichier markdown (`projet.md`) pour décrire votre projet.
-   - Vous pouvez utiliser un gabarit de page de projet trouvé en ligne ou partir d'une page blanche.
+2. **Dans le dossier `projet_session`, enregistrer un fichier markdown nommé `projet.Rmd`**
+   - Vous pouvez utiliser un gabarit markdown trouvé en ligne ou partir d'une page blanche via RStudio.
    - Remplissez le fichier markdown avec le contenu de votre projet (nous vous fournirons le contenu requis dans la prochaine étape).
 
 3. **Exportez le fichier markdown en HTML** :
    - Une fois le fichier `projet.md` complété, exportez-le en HTML et nommez ce fichier `projet.html`.
-   - Placez l’image d’aperçu du projet dans le même dossier `projet_session` et nommez-la `projet.png`.
+   - Prenez une capture d'écran de votre projet (ou une image trouvée sur le Web, au choix) et placez l’image d’aperçu du projet dans le même dossier `projet_session` et nommez-la `projet.png`.
 
 4. **Vérifiez l’affichage de votre site** :
    - Enregistrez et poussez vos modifications sur GitHub.
