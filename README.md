@@ -402,14 +402,20 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
    - Ce dossier contiendra le fichier markdown et les ressources associées à votre projet de session.
 
 2. **Dans le dossier `projet_session`, enregistrer un fichier markdown nommé `projet.Rmd`**
-   - Vous pouvez utiliser un gabarit markdown trouvé en ligne ou partir d'une page blanche via RStudio.
-   - Remplissez le fichier markdown avec le contenu de votre projet (nous vous fournirons le contenu requis dans la prochaine étape).
+   - Vous pouvez utiliser un gabarit markdown trouvé en ligne ou démarrer d'une page blanche via RStudio.
+   - Pour créer une fichier R Markdown sur RStudio, cliquez sur «Files», «New File», puis «R Markdown...»
+     
+![Capture d’écran, le 2024-11-13 à 18 29 22](https://github.com/user-attachments/assets/138d6800-5182-4f73-ba88-f632b01a9e75)
 
 3. **Exportez le fichier markdown en HTML** :
+   - Vous pouvez vider le contenu par défaut de cette page, ou conserver l'en-tête, au choix.
+   - L'important sera d'exporter le résultat (on dit « knit », en langage Markdown) en format html et de l'enregistrer dans votre dossier `projet_session`
    - Une fois le fichier `projet.md` complété, exportez-le en HTML et nommez ce fichier `projet.html`.
    - Prenez une capture d'écran de votre projet (ou une image trouvée sur le Web, au choix) et placez l’image d’aperçu du projet dans le même dossier `projet_session` et nommez-la `projet.png`.
+  
+![Capture d’écran, le 2024-11-13 à 18 32 54](https://github.com/user-attachments/assets/b4f6b682-ab1e-4536-8b31-5ac5e7abcde0)
 
-4. **Vérifiez l’affichage de votre site** :
+5. **Vérifiez l’affichage de votre site** :
    - Enregistrez et poussez vos modifications sur GitHub.
    - Allez à la section «Mes Projets» pour vérifier que l’image d’aperçu est bien affichée et que le lien mène au contenu du projet en HTML.
 
