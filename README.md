@@ -342,7 +342,20 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
 ### 1. Créer la section «Mes Projets» dans le code HTML
 
 1. **Ajoutez un onglet «Mes Projets»** dans le menu de navigation :
-   - Dans le fichier `index.html`, dans la section de navigation, ajoutez un lien vers cette nouvelle section en insérant le code suivant :
+   - Dans votre fichier `index.html`, localisez la section de navigation :
+
+     ```html
+      <nav id="nav">
+        <ul>
+          <li><a href="#one" class="active">À propos</a></li>
+          <li><a href="#two">Mon travail</a></li>
+          <li><a href="#three">Mon CV</a></li>
+          <li><a href="#four">Contact</a></li>
+        </ul>
+      </nav>
+     ```
+     
+   - Ajoutez après `four` le lien vers cette nouvelle section en insérant le code suivant :
 
      ```html
      <li><a href="#projets">Mes Projets</a></li>
@@ -382,3 +395,25 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
      </div>
    </section>
    ```
+
+### 2. Préparer le contenu du projet
+
+1. **Créez un dossier nommé `projet_session`** dans votre répertoire GitHub :
+   - Ce dossier contiendra le fichier markdown et les ressources associées à votre projet de session.
+
+2. **Rédigez le contenu du projet** :
+   - Dans le dossier `projet_session`, créez un fichier markdown (`projet.md`) pour décrire votre projet.
+   - Vous pouvez utiliser un gabarit de page de projet trouvé en ligne ou partir d'une page blanche.
+   - Remplissez le fichier markdown avec le contenu de votre projet (nous vous fournirons le contenu requis dans la prochaine étape).
+
+3. **Exportez le fichier markdown en HTML** :
+   - Une fois le fichier `projet.md` complété, exportez-le en HTML et nommez ce fichier `projet.html`.
+   - Placez l’image d’aperçu du projet dans le même dossier `projet_session` et nommez-la `projet.png`.
+
+4. **Vérifiez l’affichage de votre site** :
+   - Enregistrez et poussez vos modifications sur GitHub.
+   - Allez à la section «Mes Projets» pour vérifier que l’image d’aperçu est bien affichée et que le lien mène au contenu du projet en HTML.
+
+---
+
+Une fois cette étape complétée, vous aurez intégré une section «Mes Projets» à votre site, avec un lien vers votre premier projet de session.
