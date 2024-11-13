@@ -335,24 +335,50 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
 
 ---
 
-## Étape 3 : Créer un nouvel onglet «Projet» sur votre site
+## Étape 3 : Ajouter une section «Mes Projets» et intégrer le premier projet de session
 
-1. **Ajoutez l’onglet «Projet»** :
-   - Dans le code HTML de votre site, créez un nouvel élément de navigation pour «Projet». Ce lien devra pointer vers une nouvelle section de votre site dédiée à vos projets. 
-   
+Après la section «Mon CV», nous allons ajouter une nouvelle section nommée «Mes Projets». Notez que dans le code initial, il y a seulement 4 sections : «À propos», «Mon travail», «Mon CV», et «Me joindre». Vous devrez donc insérer cette cinquième section **entre «Mon CV» et «Me joindre»**.
+
+### 1. Créer la section «Mes Projets» dans le code HTML
+
+1. **Ajoutez un onglet «Mes Projets»** dans le menu de navigation :
+   - Dans le fichier `index.html`, dans la section de navigation, ajoutez un lien vers cette nouvelle section en insérant le code suivant :
+
+     ```html
+     <li><a href="#projets">Mes Projets</a></li>
+     ```
+
+2. **Insérez la section «Mes Projets» dans le code HTML** :
+   - Placez cette section après la section `three` de votre fichier `index.html`, de façon à ce qu’elle apparaisse avant «Me joindre».
+
    ```html
-   <li><a href="#projet">Projet</a></li>
-   ```
-   
-2. **Créez la section «Projet»** :
-   - Dans le fichier `index.html`, ajoutez une section avec l’identifiant `projet` où vous allez entreposer différents projets.
-   
-   ```html
-   <section id="projet">
-       <h2>Projet</h2>
-       <p>Bienvenue dans la section de mes projets.</p>
-       <!-- Les projets seront listés ici -->
+   <!-- Five -->
+   <section id="projets">
+     <div class="container">
+       <h3>Mes Projets</h3>
+       <p>
+         Voici une sélection de mes projets. Cliquez sur l'image pour découvrir le projet complet.
+       </p>
+       <div class="features">
+         <article>
+           <!-- Aperçu du projet en image -->
+           <a href="projet_session/projet.html" class="image" target="_blank">
+             <img src="projet_session/projet.png" alt="Aperçu du projet de session" />
+           </a>
+           <div class="inner">
+             <h4>Cours d'outils numériques (POL-6078)</h4>
+             <p>
+               Cliquez sur l'image ou sur le lien ci-dessous pour explorer le contenu de ce projet.
+             </p>
+             <!-- Lien direct vers le projet -->
+             <p>
+               <a href="projet_session/projet.html" target="_blank" class="button primary">
+                 Voir le projet complet
+               </a>
+             </p>
+           </div>
+         </article>
+       </div>
+     </div>
    </section>
-      ```
-
-   
+   ```
