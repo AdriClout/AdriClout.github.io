@@ -264,3 +264,33 @@ Maintenant, nous devons configurer les paramètres DNS sur Namecheap pour pointe
 - [Configuration DNS sur Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-set-up-dns-records-for-your-domain-in-namecheap)
 
 Voilà ! Vous avez réussi à lier votre site GitHub Pages au domaine personnalisé `votrenom.com`.
+
+# Consignes pour le travail de fin de session (2e itération)
+
+Bravo pour la première itération de votre site web ! Dans cette deuxième itération, vous allez enrichir votre site avec un CV en format PDF et ajouter une nouvelle section pour héberger vos projets. Suivez les étapes ci-dessous pour intégrer ces nouveaux éléments. 
+
+## Étape 1 : Créer un CV et l'ajouter à votre site
+
+1. **Choisissez un gabarit de CV en LaTeX** : Nous recommandons l’utilisation de [Overleaf](https://www.overleaf.com/) pour sa simplicité, mais vous pouvez utiliser tout éditeur LaTeX de votre choix.
+   - **Alternative** : Vous pouvez aussi rédiger le CV en markdown ou en Quarto si vous êtes plus à l’aise avec ces formats.
+
+2. **Complétez votre CV** : Remplissez le gabarit avec vos informations. Assurez-vous que votre CV est complet et bien présenté.
+
+3. **Enregistrez votre CV en PDF** : Une fois terminé, exportez votre CV en format PDF.
+
+4. **Ajoutez le code source et le PDF de votre CV à votre répertoire GitHub** :
+   - Créez un dossier nommé `cv` à la racine de votre répertoire GitHub.
+   - Placez-y votre fichier LaTeX (ou markdown/Quarto si vous avez choisi ces formats).
+   - Placez également votre CV en PDF dans ce dossier.
+
+---
+
+## Étape 2 : Créer un nouvel onglet «Projet» sur votre site
+
+1. **Ajoutez l’onglet «Projet»** :
+   - Dans le code HTML de votre site, créez un nouvel élément de navigation pour «Projet». Ce lien devra pointer vers une nouvelle section de votre site dédiée à vos projets. 
+   
+   ```html
+   <li><a href="#projet">Projet</a></li>
+   ```
+   
