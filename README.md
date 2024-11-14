@@ -271,8 +271,7 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
 
 ## Étape 1 : Créer un CV et l'ajouter à votre site
 
-1. **Choisissez un gabarit de CV en LaTeX** : Nous recommandons l’utilisation de [Overleaf](https://www.overleaf.com/) pour sa simplicité, mais vous pouvez utiliser tout éditeur LaTeX de votre choix.
-   - **Alternative** : Vous pouvez aussi rédiger le CV en markdown ou en Quarto si vous êtes plus à l’aise avec ces formats.
+1. **Choisissez un gabarit de CV en LaTeX** : [Overleaf]([https://www.overleaf.com/](https://fr.overleaf.com/gallery/tagged/cv)) présente de nombreux gabarits et est simple d'utilisation, mais vous pouvez fouiller ailleurs sans problème.
 
 2. **Complétez votre CV** : Remplissez le gabarit avec vos informations. Assurez-vous que votre CV est complet et bien présenté.
 
@@ -280,7 +279,7 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
 
 4. **Ajoutez le code source et le PDF de votre CV à votre répertoire GitHub** :
    - Créez un dossier nommé `cv` à la racine de votre répertoire GitHub.
-   - Placez-y votre fichier LaTeX (ou markdown/Quarto si vous avez choisi ces formats).
+   - Placez-y votre fichier LaTeX.
    - Placez également votre CV en PDF dans ce dossier.
    - Prenez une capture d’écran de la première page de votre CV et enregistrez-la dans le même dossier `cv`, sous le nom `cv.png`.
   
