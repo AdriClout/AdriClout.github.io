@@ -421,8 +421,6 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
 
 ### 3. Remplir le document Rmarkdown
 
-### 3. Remplir le document Rmarkdown
-
 Dans cette étape, vous allez réaliser un court projet de session dans votre page HTML de projet (écrite en markdown) qui démontrera votre capacité à utiliser différents outils de recherche tout au long du cycle de la recherche, tel que représenté dans l'image du cycle de recherche hypothético-déductif issue de la méthode scientifique.
 
 En fonction des étapes indiquées dans l'image et vues en classe, suivez les consignes ci-dessous pour structurer votre projet de session.
@@ -457,3 +455,32 @@ Il n'y a pas de bonne ou mauvaise réponse pour ce travail. L'objectif est de d�
 Une fois le projet complété, assurez-vous de bien respecter la structure décrite ci-dessus pour que chaque étape du cycle de recherche soit clairement identifiable dans votre document.
 
 Bien joué!
+
+---
+
+### Critères d'évaluation de la 2e itération
+
+**1. Site Web sur GitHub (20%)**
+   - Le site web est hébergé correctement sur GitHub, et le répertoire est accessible.
+   - Les commits sont visibles et montrent un suivi régulier du travail effectué.
+   - Les fichiers (PDF, images, fichier markdown, HTML du projet) sont bien organisés dans les dossiers indiqués (`cv`, `projet_session`).
+
+**2. Respect des consignes et des étapes (30%)**
+   - L’étudiant.e a suivi toutes les étapes du ReadMe.
+   - Les nouvelles sections «Mon CV» et «Mes Projets» sont présentes et complétées correctement.
+   - Le lien vers le CV en PDF fonctionne, et l’aperçu du CV s'affiche bien dans la section «Mon CV».
+   - La section «Mes Projets» contient une image cliquable qui mène au fichier HTML du projet de session.
+   - La page HTML du projet de session respecte la structure demandée, avec chaque étape du cycle de recherche clairement identifiable.
+
+**3. Qualité et clarté du contenu de recherche (40%)**
+   - La question de recherche, l’hypothèse, la collecte de données, l'analyse et la discussion sont clairs et pertinents.
+   - L’étudiant.e décrit de manière détaillée les outils utilisés à chaque étape et la manière dont ils ont été appliqués.
+   - La visualisation de données est intéressante, pertinente et bien réalisée.
+   - La discussion sur les choix d'outils montre une réflexion personnelle et justifie les choix par rapport aux valeurs ou à la philosophie de recherche.
+
+**4. Créativité et personnalisation (10%)**
+   - L’étudiant.e a pris des initiatives pour personnaliser son site au-delà des consignes de base, par exemple :
+     - Amélioration du design ou des couleurs du site.
+     - Choix d'un style ou d'une mise en page unique pour le projet de session.
+     - Utilisation avancée de markdown ou d’éléments visuels pour enrichir la présentation du projet.
+
