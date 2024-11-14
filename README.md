@@ -355,17 +355,17 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
       </nav>
      ```
      
-   - Ajoutez après `four` le lien vers cette nouvelle section en insérant le code suivant :
+   - Ajoutez entre `three` et  `four` le lien vers cette nouvelle section en insérant le code suivant :
 
      ```html
      <li><a href="#projets">Mes Projets</a></li>
      ```
 
 2. **Insérez la section «Mes Projets» dans le code HTML** :
-   - Placez cette section après la section `three` de votre fichier `index.html`, de façon à ce qu’elle apparaisse avant «Me joindre».
+   - Placez cette section après les sections entre `three` et  `four` de votre fichier `index.html`, de façon à ce qu’elle apparaisse avant «Me joindre».
 
    ```html
-   <!-- Five -->
+   <!-- Mes projets -->
    <section id="projets">
      <div class="container">
        <h3>Mes Projets</h3>
@@ -396,7 +396,7 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
    </section>
    ```
 
-### 2. Préparer le contenu du projet
+### 2. Préparer le document Rmarkdown
 
 1. **Créez un dossier nommé `projet_session`** dans votre répertoire GitHub :
    - Ce dossier contiendra le fichier markdown et les ressources associées à votre projet de session.
@@ -415,10 +415,45 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
   
 ![Capture d’écran, le 2024-11-13 à 18 32 54](https://github.com/user-attachments/assets/b4f6b682-ab1e-4536-8b31-5ac5e7abcde0)
 
-5. **Vérifiez l’affichage de votre site** :
+4. **Vérifiez l’affichage de votre site** :
    - Enregistrez et poussez vos modifications sur GitHub.
    - Allez à la section «Mes Projets» pour vérifier que l’image d’aperçu est bien affichée et que le lien mène au contenu du projet en HTML.
 
+### 3. Remplir le document Rmarkdown
+
+### 3. Remplir le document Rmarkdown
+
+Dans cette étape, vous allez réaliser un court projet de session dans votre page HTML de projet (écrite en markdown) qui démontrera votre capacité à utiliser différents outils de recherche tout au long du cycle de la recherche, tel que représenté dans l'image du cycle de recherche hypothético-déductif issue de la méthode scientifique.
+
+En fonction des étapes indiquées dans l'image et vues en classe, suivez les consignes ci-dessous pour structurer votre projet de session.
+
+![science_outils](https://github.com/user-attachments/assets/6f69f8f3-2450-4687-b23c-a574ed265f65)
+
+#### Étapes du projet
+
+1. **Question de recherche et hypothèse** :
+   - Posez une question de recherche.
+   - Effectuez une brève revue de la littérature scientifique pour dériver une hypothèse de recherche en lien avec votre question.
+   - **Indiquez les outils utilisés** pour cette étape (ex. Google Scholar, Zotero, Elicit, etc.) et détaillez comment vous les avez utilisés (par exemple, pour trouver des articles, organiser des sources, etc.).
+
+2. **Collecte de données** :
+   - Choisissez un outil pour collecter des données en lien avec votre hypothèse (ex. Factiva, Eureka, un questionnaire en ligne, une base de données en libre accès, etc., des données extraites du Web, etc.).
+   - **Présentez l'outil choisi** et expliquez en détail comment vous l'avez utilisé pour collecter vos données.
+
+3. **Analyse et visualisation des données** :
+   - Utilisez un outil pour analyser et/ou visualiser les données que vous avez collectées (ex. Excel, R, Python, Tableau, etc.).
+   - **Détaillez l'outil utilisé** et expliquez comment vous vous en êtes servi pour produire des résultats ou des visualisations.
+
+4. **Discussion** :
+   - Ajoutez une section de discussion à la fin de votre projet.
+   - Dans cette discussion, **expliquez vos choix d'outils** et les valeurs ou la philosophie qui ont guidé vos décisions. Basez-vous, entre autres, sur les critères de sélection des outils vus en classe: l'accessibilité, l'existence d'une communauté d'utilisateurs, la popularité dans votre domaine, leur compatibilité avec d'autres outils, la transparence et la réplicabilité, et leur adaptabilité et flexibilité).
+
+#### Important
+
+Il n'y a pas de bonne ou mauvaise réponse pour ce travail. L'objectif est de démontrer votre capacité à utiliser des outils numériques de recherche tout au long d'un processus de recherche, de la réflexion sur une question jusqu'à la présentation des résultats. Ce travail doit refléter votre compréhension et votre maîtrise des outils ainsi que la manière dont vous les avez intégrés dans le cycle de la recherche.
+
 ---
 
-Une fois cette étape complétée, vous aurez intégré une section «Mes Projets» à votre site, avec un lien vers votre premier projet de session.
+Une fois le projet complété, assurez-vous de bien respecter la structure décrite ci-dessus pour que chaque étape du cycle de recherche soit clairement identifiable dans votre document.
+
+Bien joué!
