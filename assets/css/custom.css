@@ -1,0 +1,125 @@
+/* Custom CSS pour Adrien Cloutier - Palette professionnelle moderne */
+
+/*
+Palette de couleurs:
+- Bleu principal: #2563eb (bleu professionnel)
+- Bleu foncé: #1e40af (pour le header)
+- Bleu clair: #3b82f6 (pour les hovers)
+- Gris foncé: #1f2937 (textes)
+- Gris moyen: #6b7280 (textes secondaires)
+*/
+
+/* Header - Fond bleu foncé élégant */
+#header {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+}
+
+#header h1 a {
+  color: #ffffff !important;
+}
+
+#header p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Navigation */
+#header nav ul li a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+#header nav ul li a.active,
+#header nav ul li a:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Icônes sociales */
+#header footer .icons li a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#header footer .icons li a:hover {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Liens et couleurs d'accent */
+a {
+  color: #2563eb !important;
+}
+
+a:hover {
+  color: #1e40af !important;
+}
+
+/* Boutons primaires */
+.button.primary,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.button.primary:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+  background-color: #1e40af !important;
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+  color: #1f2937 !important;
+}
+
+/* Avatar - Bordure bleue */
+.image.avatar img {
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 0 0 0.5rem rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Sections */
+section.special, .special {
+  border-top-color: #2563eb !important;
+}
+
+/* Footer */
+#footer {
+  background: #f9fafb !important;
+}
+
+#footer .copyright {
+  color: #6b7280 !important;
+}
+
+/* Icônes des réalisations */
+.feature-icons li:before {
+  color: #2563eb !important;
+}
+
+/* Amélioration de la lisibilité */
+body {
+  color: #1f2937 !important;
+}
+
+p {
+  color: #374151 !important;
+}
+
+/* Effet hover sur les images */
+.image:hover {
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+/* Style pour les strong */
+strong {
+  color: #1e40af !important;
+}
