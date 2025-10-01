@@ -271,8 +271,7 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
 
 ## Étape 1 : Créer un CV et l'ajouter à votre site
 
-1. **Choisissez un gabarit de CV en LaTeX** : Nous recommandons l’utilisation de [Overleaf](https://www.overleaf.com/) pour sa simplicité, mais vous pouvez utiliser tout éditeur LaTeX de votre choix.
-   - **Alternative** : Vous pouvez aussi rédiger le CV en markdown ou en Quarto si vous êtes plus à l’aise avec ces formats.
+1. **Choisissez un gabarit de CV en LaTeX** : [Overleaf]([https://www.overleaf.com/](https://fr.overleaf.com/gallery/tagged/cv)) présente de nombreux gabarits et est simple d'utilisation, mais vous pouvez fouiller ailleurs sans problème.
 
 2. **Complétez votre CV** : Remplissez le gabarit avec vos informations. Assurez-vous que votre CV est complet et bien présenté.
 
@@ -280,7 +279,7 @@ Bravo pour la première itération de votre site web ! Dans cette deuxième it
 
 4. **Ajoutez le code source et le PDF de votre CV à votre répertoire GitHub** :
    - Créez un dossier nommé `cv` à la racine de votre répertoire GitHub.
-   - Placez-y votre fichier LaTeX (ou markdown/Quarto si vous avez choisi ces formats).
+   - Placez-y votre fichier LaTeX.
    - Placez également votre CV en PDF dans ce dossier.
    - Prenez une capture d’écran de la première page de votre CV et enregistrez-la dans le même dossier `cv`, sous le nom `cv.png`.
   
@@ -355,17 +354,17 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
       </nav>
      ```
      
-   - Ajoutez après `four` le lien vers cette nouvelle section en insérant le code suivant :
+   - Ajoutez entre `three` et  `four` le lien vers cette nouvelle section en insérant le code suivant :
 
      ```html
      <li><a href="#projets">Mes Projets</a></li>
      ```
 
 2. **Insérez la section «Mes Projets» dans le code HTML** :
-   - Placez cette section après la section `three` de votre fichier `index.html`, de façon à ce qu’elle apparaisse avant «Me joindre».
+   - Placez cette section après les sections entre `three` et  `four` de votre fichier `index.html`, de façon à ce qu’elle apparaisse avant «Me joindre».
 
    ```html
-   <!-- Five -->
+   <!-- Mes projets -->
    <section id="projets">
      <div class="container">
        <h3>Mes Projets</h3>
@@ -396,7 +395,7 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
    </section>
    ```
 
-### 2. Préparer le contenu du projet
+### 2. Préparer le document Rmarkdown
 
 1. **Créez un dossier nommé `projet_session`** dans votre répertoire GitHub :
    - Ce dossier contiendra le fichier markdown et les ressources associées à votre projet de session.
@@ -415,10 +414,72 @@ Après la section «Mon CV», nous allons ajouter une nouvelle section nommée �
   
 ![Capture d’écran, le 2024-11-13 à 18 32 54](https://github.com/user-attachments/assets/b4f6b682-ab1e-4536-8b31-5ac5e7abcde0)
 
-5. **Vérifiez l’affichage de votre site** :
+4. **Vérifiez l’affichage de votre site** :
    - Enregistrez et poussez vos modifications sur GitHub.
    - Allez à la section «Mes Projets» pour vérifier que l’image d’aperçu est bien affichée et que le lien mène au contenu du projet en HTML.
 
+### 3. Remplir le document Rmarkdown
+
+Dans cette étape, vous allez réaliser un court projet de session dans votre page HTML de projet (écrite en markdown) qui démontrera votre capacité à utiliser différents outils de recherche tout au long du cycle de la recherche, tel que représenté dans l'image du cycle de recherche hypothético-déductif issue de la méthode scientifique.
+
+En fonction des étapes indiquées dans l'image et vues en classe, suivez les consignes ci-dessous pour structurer votre projet de session.
+
+![science_outils](https://github.com/user-attachments/assets/6f69f8f3-2450-4687-b23c-a574ed265f65)
+
+#### Étapes du projet
+
+1. **Question de recherche et hypothèse** :
+   - Posez une question de recherche.
+   - Effectuez une brève revue de la littérature scientifique pour dériver une hypothèse de recherche en lien avec votre question.
+   - **Indiquez les outils utilisés** pour cette étape (ex. Google Scholar, Zotero, Elicit, etc.) et détaillez comment vous les avez utilisés (par exemple, pour trouver des articles, organiser des sources, etc.).
+
+2. **Collecte de données** :
+   - Choisissez un outil pour collecter des données en lien avec votre hypothèse (ex. Factiva, Eureka, un questionnaire en ligne, une base de données en libre accès, etc., des données extraites du Web, etc.).
+   - **Présentez l'outil choisi** et expliquez en détail comment vous l'avez utilisé pour collecter vos données.
+
+3. **Analyse et visualisation des données** :
+   - Utilisez un outil pour analyser et/ou visualiser les données que vous avez collectées (ex. Excel, R, Python, Tableau, etc.).
+   - **Détaillez l'outil utilisé** et expliquez comment vous vous en êtes servi pour produire des résultats ou des visualisations.
+
+4. **Discussion** :
+   - Ajoutez une section de discussion à la fin de votre projet.
+   - Dans cette discussion, **expliquez vos choix d'outils** et les valeurs ou la philosophie qui ont guidé vos décisions. Basez-vous, entre autres, sur les critères de sélection des outils vus en classe: l'accessibilité, l'existence d'une communauté d'utilisateurs, la popularité dans votre domaine, leur compatibilité avec d'autres outils, la transparence et la réplicabilité, et leur adaptabilité et flexibilité).
+
+#### Important
+
+Il n'y a pas de bonne ou mauvaise réponse pour ce travail. L'objectif est de démontrer votre capacité à utiliser des outils numériques de recherche tout au long d'un processus de recherche, de la réflexion sur une question jusqu'à la présentation des résultats. Ce travail doit refléter votre compréhension et votre maîtrise des outils ainsi que la manière dont vous les avez intégrés dans le cycle de la recherche.
+
 ---
 
-Une fois cette étape complétée, vous aurez intégré une section «Mes Projets» à votre site, avec un lien vers votre premier projet de session.
+Une fois le projet complété, assurez-vous de bien respecter la structure décrite ci-dessus pour que chaque étape du cycle de recherche soit clairement identifiable dans votre document.
+
+Bien joué!
+
+---
+
+### Critères d'évaluation de la 2e itération
+
+**1. Site Web sur GitHub (20%)**
+   - Le site web est hébergé correctement sur GitHub, et le répertoire est accessible.
+   - Les commits sont visibles et montrent un suivi régulier du travail effectué.
+   - Les fichiers (PDF, images, fichier markdown, HTML du projet) sont bien organisés dans les dossiers indiqués (`cv`, `projet_session`).
+
+**2. Respect des consignes et des étapes (30%)**
+   - L’étudiant.e a suivi toutes les étapes du ReadMe.
+   - Les nouvelles sections «Mon CV» et «Mes Projets» sont présentes et complétées correctement.
+   - Le lien vers le CV en PDF fonctionne, et l’aperçu du CV s'affiche bien dans la section «Mon CV».
+   - La section «Mes Projets» contient une image cliquable qui mène au fichier HTML du projet de session.
+   - La page HTML du projet de session respecte la structure demandée, avec chaque étape du cycle de recherche clairement identifiable.
+
+**3. Qualité et clarté du contenu de recherche (40%)**
+   - La question de recherche, l’hypothèse, la collecte de données, l'analyse et la discussion sont clairs et pertinents.
+   - L’étudiant.e décrit de manière détaillée les outils utilisés à chaque étape et la manière dont ils ont été appliqués.
+   - La visualisation de données est intéressante, pertinente et bien réalisée.
+   - La discussion sur les choix d'outils montre une réflexion personnelle et justifie les choix par rapport aux valeurs ou à la philosophie de recherche.
+
+**4. Créativité et personnalisation (10%)**
+   - L’étudiant.e a pris des initiatives pour personnaliser son site au-delà des consignes de base, par exemple :
+     - Amélioration du design ou des couleurs du site.
+     - Choix d'un style ou d'une mise en page unique pour le projet de session.
+     - Utilisation avancée de markdown ou d’éléments visuels pour enrichir la présentation du projet.
+
