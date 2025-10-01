@@ -144,3 +144,31 @@ p {
 strong {
   color: #1e40af !important;
 }
+
+/* Éliminer le brun des icônes de la section réalisations */
+.feature-icons li {
+  border-top-color: #e5e7eb !important;
+}
+
+.feature-icons li:before {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Navigation - bordures entre les sections */
+#header nav ul li {
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+#header nav ul li:first-child {
+  border-top: 0 !important;
+}
+
+/* Bordures dans le header */
+#header > header {
+  border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+#header > footer {
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
+}
