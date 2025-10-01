@@ -9,6 +9,27 @@ Palette de couleurs:
 - Gris moyen: #6b7280 (textes secondaires)
 */
 
+/* Éliminer toutes les traces de brun (#b8947c) */
+.button.primary.large,
+input[type="submit"].large,
+input[type="reset"].large,
+input[type="button"].large,
+button.large,
+.button.large {
+  background-color: #2563eb !important;
+}
+
+/* Forcer le bleu sur tous les liens */
+a[href]:not(.button) {
+  color: #2563eb !important;
+  border-bottom-color: rgba(37, 99, 235, 0.2) !important;
+}
+
+a[href]:not(.button):hover {
+  color: #1e40af !important;
+  border-bottom-color: #2563eb !important;
+}
+
 /* Header - Fond bleu foncé élégant */
 #header {
   background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
