@@ -50,7 +50,7 @@ a[href]:not(.button):hover {
 .lang-button {
   display: inline-block;
   background: rgba(255, 255, 255, 0.1) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
   padding: 0.5rem 1.2rem;
   border-radius: 0.35rem;
   font-size: 0.9rem;
@@ -59,6 +59,11 @@ a[href]:not(.button):hover {
   border-bottom: none !important;
   transition: all 0.2s ease;
   letter-spacing: 0.025rem;
+}
+
+.lang-button span,
+.lang-button i {
+  color: #ffffff !important;
 }
 
 .lang-button:hover {
