@@ -684,9 +684,9 @@ body.dark-mode blockquote {
    SECTION RADAR+ - FOND GRIS UNIFORME
    ============================================ */
 
-/* Fond gris clair pour toute la section (même gris que dans le SVG) */
+/* Fond gris pour toute la section */
 #radar {
-  background: #3d4451 !important;
+  background: #2d3748 !important;
 }
 
 /* En mode clair, utiliser un gris plus doux */
@@ -694,7 +694,7 @@ body:not(.dark-mode) #radar {
   background: #f5f5f5 !important;
 }
 
-/* En dark mode, utiliser le même gris foncé que le SVG */
+/* En dark mode, utiliser un gris foncé qui match le SVG */
 body.dark-mode #radar {
-  background: #3d4451 !important;
+  background: #2d3748 !important;
 }
