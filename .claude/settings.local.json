@@ -17,7 +17,9 @@
       "Bash(sips:*)",
       "WebSearch",
       "WebFetch(domain:datagotchi.org)",
-      "WebFetch(domain:www.datagotchi.com)"
+      "WebFetch(domain:www.datagotchi.com)",
+      "WebFetch(domain:adriencloutier.com)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
