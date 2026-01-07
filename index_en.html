@@ -41,11 +41,17 @@
       <nav id="nav">
         <ul>
           <li><a href="#one" class="active">About</a></li>
-          <li><a href="#two">My Work</a></li>
-          <li><a href="#three">CLESSN / CAPP</a></li>
-          <li><a href="#four">Talks</a></li>
-          <li><a href="#five">My CV</a></li>
-          <li><a href="#six">Contact</a></li>
+          <li><a href="#two">Research</a></li>
+          <li><a href="#three">Publications</a></li>
+          <li><a href="#four">Teaching</a></li>
+          <li><a href="#five">EIOM</a></li>
+          <li><a href="#six">RFICS</a></li>
+          <li><a href="#seven">CLESSN / CAPP</a></li>
+          <li><a href="#eight">Contracts</a></li>
+          <li><a href="#nine">Tools & Methods</a></li>
+          <li><a href="#ten">Gallery</a></li>
+          <li><a href="#eleven">Downloads</a></li>
+          <li><a href="#twelve">Contact</a></li>
         </ul>
       </nav>
       <footer>
@@ -112,38 +118,239 @@
           </div>
         </section>
 
-        <!-- Two -->
+        <!-- Two: Research -->
         <section id="two">
           <div class="container">
-            <h3>Projects and Achievements</h3>
+            <h3>Research</h3>
             <p class="section-intro">
-              My main projects are at the intersection of research, teaching, and the development of interdisciplinary digital tools.
+              My research projects explore media salience, polarization, and agenda-setting using computational methods and open science.
             </p>
-            <ul class="feature-icons">
-              <li class="icon solid fa-graduation-cap">
-                <strong><a href="https://eiom.ca" target="_blank">EIOM</a></strong> - Co-creator of the École interdisciplinaire outils & méthodes, a summer school that brings together students, researchers, and professionals each year around research best practices
-              </li>
-              <li class="icon solid fa-broadcast-tower">
-                <strong><a href="https://www.clessn.com/radar/index.html" target="_blank">Radar+</a></strong> - Computational infrastructure in R automatically collecting homepages of ~20 media outlets every 10 minutes since 2019. Uses an LLM to develop media salience indices. At the core of the dissertation and postdoctoral project
-              </li>
-              <li class="icon solid fa-globe">
-                <strong><a href="https://rfics.org" target="_blank">RFICS</a></strong> - Scientific coordinator (2022-2024) of the Réseau francophone international en conseil scientifique. International governance, workshop in Dakar (July 2024), partnerships connecting academia and public decision-makers in the Americas, Africa, and Europe
-              </li>
-              <li class="icon solid fa-chalkboard-teacher">
-                <strong>Teaching</strong> - Lecturer at Université Laval since 2024. Creation and teaching of the course "Digital Tools in Social Sciences" (POL-6078), plus quantitative methodology
-              </li>
-              <li class="icon solid fa-chart-line">
-                <strong>Research</strong> - Doctoral dissertation on media salience in the digital age. Postdoctoral project at UCLA (2027) with Stuart Soroka: "Fox vs CNN" analyzing American media polarization 2019-2027
-              </li>
-              <li class="icon solid fa-code">
-                <strong>Digital Tools</strong> - Development of computational infrastructures for social science research. Scrum Master certification. Notion templates for academic project management
-              </li>
-            </ul>
+
+            <!-- Radar+ -->
+            <h4>Radar+: Media Salience Measurement Infrastructure</h4>
+            <div class="research-center-card" style="margin-bottom: 2rem;">
+              <h5><a href="https://www.clessn.com/radar/index.html" target="_blank">Radar+</a></h5>
+              <span class="center-subtitle">Computational infrastructure developed in R</span>
+              <p>
+                <strong>Radar+</strong> is a computational infrastructure I developed entirely in <strong>R</strong> to automatically archive the homepages of ~20 Quebec, Canadian, and American media outlets <strong>every 10 minutes since 2019</strong>. The system uses a <strong>local language model (LLM)</strong> to automatically identify media objects (issues, actors, institutions, locations) and develops <strong>absolute and relative salience indices (scale 0-100)</strong>.
+              </p>
+              <p><strong>Technical features:</strong></p>
+              <ul>
+                <li><strong>Automatic collection:</strong> Every 10 minutes, 24/7, since 2019</li>
+                <li><strong>Sources:</strong> ~20 media outlets (Le Devoir, La Presse, Globe and Mail, New York Times, Fox News, CNN, etc.)</li>
+                <li><strong>Technology:</strong> Complete infrastructure in R, relational database</li>
+                <li><strong>Artificial intelligence:</strong> Local LLM for entity extraction and classification</li>
+                <li><strong>Developed indices:</strong> Absolute and relative salience (0-100)</li>
+                <li><strong>Usage:</strong> Doctoral dissertation + postdoctoral project + scientific publications</li>
+              </ul>
+              <ul class="actions">
+                <li><a href="https://www.clessn.com/radar/index.html" target="_blank" class="button">Discover Radar+</a></li>
+                <li><a href="#three" class="button">Related publications</a></li>
+              </ul>
+            </div>
+
+            <!-- Postdoc Fox vs CNN -->
+            <h4>Postdoctoral Project: Fox vs CNN</h4>
+            <div class="academic-card">
+              <h5>Fox vs CNN: A Longitudinal Analysis of Media Salience and Polarization in the United States</h5>
+              <span class="card-meta">UCLA (2027) | Supervisor: Prof. Stuart Soroka</span>
+              <p>
+                In 2027, I will begin a <strong>postdoctoral research project</strong> at UCLA under the supervision of Professor <strong>Stuart Soroka</strong>, focusing on the longitudinal analysis of media salience and polarization in the United States between 2019 and 2027.
+              </p>
+              <p><strong>Main objectives:</strong></p>
+              <ul>
+                <li><strong>Comparative analysis of Fox News and CNN:</strong> Measure differences in issue coverage and media framing</li>
+                <li><strong>Development of a divergence/convergence index:</strong> Quantify media polarization using Radar+ data</li>
+                <li><strong>Longitudinal evolution (2019-2027):</strong> Identify temporal trends in polarization</li>
+                <li><strong>Impact on public opinion:</strong> Analyze the relationship between media salience and public opinion polarization</li>
+                <li><strong>Predictive models:</strong> Develop tools to anticipate polarization dynamics</li>
+              </ul>
+              <p><strong>Expected deliverables:</strong></p>
+              <ul>
+                <li>Scientific publications in leading journals</li>
+                <li>Interactive dashboard for visualizing polarization</li>
+                <li>Open data and reproducible code</li>
+                <li>Policy recommendations for media and policymakers</li>
+              </ul>
+            </div>
           </div>
         </section>
 
-        <!-- Three -->
+        <!-- Three: Publications -->
         <section id="three">
+          <div class="container">
+            <h3>Publications</h3>
+            <p class="section-intro">
+              My research focuses on political communication, media agenda, polarization, and computational methods.
+            </p>
+
+            <div class="academic-card" style="text-align: center; padding: 3rem;">
+              <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #2563eb; margin-bottom: 1.5rem;"></i>
+              <h4>Google Scholar Profile</h4>
+              <p>
+                Find all my publications, citations, and bibliometric indicators on my Google Scholar profile.
+              </p>
+              <ul class="actions special">
+                <li><a href="https://scholar.google.com/citations?user=RXAdvoMAAAAJ&hl=en" target="_blank" class="button primary large">
+                  <i class="fas fa-graduation-cap"></i> View Google Scholar
+                </a></li>
+              </ul>
+              <p class="text-muted" style="margin-top: 2rem; font-size: 0.9rem;">
+                <strong>Note:</strong> Detailed list of publications available upon request.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Four: Teaching -->
+        <section id="four">
+          <div class="container">
+            <h3>Teaching</h3>
+            <p class="section-intro">
+              Lecturer at Université Laval since 2024, I teach digital tools and quantitative methodology in social sciences.
+            </p>
+
+            <div class="row academic-cards">
+              <div class="academic-card">
+                <h4><i class="fas fa-laptop-code"></i> Digital Tools in Social Sciences</h4>
+                <span class="card-meta">POL-6078 | Since 2024 | Université Laval</span>
+                <p>
+                  Graduate course introducing modern digital tools and computational methods for social science research. Designed for master's and doctoral students with no prior programming experience.
+                </p>
+                <p><strong>Main themes:</strong></p>
+                <ul>
+                  <li>Introduction to R and RStudio</li>
+                  <li>Data collection and cleaning</li>
+                  <li>Data visualization and dashboards</li>
+                  <li>Version control with Git and GitHub</li>
+                  <li>Research reproducibility and open science</li>
+                  <li>Introduction to text analysis and LLMs</li>
+                </ul>
+                <p><strong>Competencies developed:</strong></p>
+                <ul>
+                  <li>Autonomy in using digital tools for research</li>
+                  <li>Ability to produce reproducible analyses</li>
+                  <li>Critical understanding of computational methods</li>
+                  <li>Collaboration via collaborative platforms (Git, Notion)</li>
+                </ul>
+                <ul class="actions">
+                  <li><a href="documents/cours/POL-6078_Plan_de_cours.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> Course syllabus
+                  </a></li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Course syllabus available upon request</em>
+                </p>
+              </div>
+
+              <div class="academic-card">
+                <h4><i class="fas fa-chart-bar"></i> Quantitative Methodology</h4>
+                <span class="card-meta">Since 2024 | Université Laval</span>
+                <p>
+                  Course on quantitative methods applied to political and social science research. Focus on rigorous application of statistical methods and interpretation of results.
+                </p>
+                <p><strong>Main themes:</strong></p>
+                <ul>
+                  <li>Research design and operationalization</li>
+                  <li>Descriptive and inferential statistics</li>
+                  <li>Bivariate and multivariate analysis</li>
+                  <li>Linear and logistic regression</li>
+                  <li>Statistical interpretation and communication</li>
+                </ul>
+                <ul class="actions">
+                  <li><a href="documents/cours/Methodologie_quantitative_Plan_de_cours.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> Course syllabus
+                  </a></li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Course syllabus available upon request</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Five: EIOM -->
+        <section id="five">
+          <div class="container">
+            <h3>EIOM</h3>
+            <p class="section-intro">
+              Co-creator and co-organizer of the École interdisciplinaire outils & méthodes, a summer school dedicated to research best practices.
+            </p>
+
+            <div class="research-center-card" style="border-left-color: #10b981;">
+              <h4><a href="https://eiom.ca" target="_blank">École interdisciplinaire outils & méthodes</a></h4>
+              <span class="center-subtitle">Annual summer school | Université Laval</span>
+              <p>
+                <strong>EIOM</strong> is a summer school I co-created to bring together students, researchers, and professionals each year around research best practices.
+              </p>
+              <p><strong>Pedagogical objectives:</strong></p>
+              <ul>
+                <li>Train in contemporary digital tools (R, Python, Git, etc.)</li>
+                <li>Disseminate methodological best practices</li>
+                <li>Foster interdisciplinarity and exchanges between disciplines</li>
+                <li>Promote open science and reproducibility</li>
+                <li>Create a lasting community of practice</li>
+              </ul>
+              <p><strong>Target audience:</strong></p>
+              <ul>
+                <li>Master's and doctoral students from all disciplines</li>
+                <li>Researchers and professionals</li>
+                <li>Anyone interested in improving their methodological skills</li>
+              </ul>
+              <p><strong>Format:</strong></p>
+              <ul>
+                <li>Intensive one-week school</li>
+                <li>Practical hands-on workshops</li>
+                <li>Interactive sessions</li>
+                <li>Open materials and reproducible code</li>
+              </ul>
+              <ul class="actions">
+                <li><a href="https://eiom.ca" target="_blank" class="button primary">Visit EIOM website</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Six: RFICS -->
+        <section id="six">
+          <div class="container">
+            <h3>RFICS</h3>
+            <p class="section-intro">
+              Scientific coordinator (2022-2024) of the Réseau francophone international en conseil scientifique, structuring initiatives connecting academia and public decision-makers across three continents.
+            </p>
+
+            <div class="research-center-card" style="border-left-color: #8b5cf6;">
+              <h4><a href="https://rfics.org" target="_blank">Réseau francophone international en conseil scientifique</a></h4>
+              <span class="center-subtitle">Scientific Coordinator (2022-2024)</span>
+              <p>
+                The <strong>RFICS</strong> is an international network dedicated to strengthening science-policy interfaces in French-speaking countries. As scientific coordinator (2022-2024), I piloted research activities and contributed to international governance mechanisms.
+              </p>
+              <p><strong>Responsibilities and achievements:</strong></p>
+              <ul>
+                <li><strong>Scientific coordination:</strong> Led research and development activities of the network (2022-2024)</li>
+                <li><strong>International governance:</strong> Structured collaborative governance mechanisms across multiple continents</li>
+                <li><strong>Dakar workshop (July 11-12, 2024):</strong> Organized and facilitated an international training workshop on parliamentary science advice</li>
+                <li><strong>Strategic partnerships:</strong> Developed partnerships with academic and parliamentary institutions in the Americas, Africa, and Europe</li>
+                <li><strong>Strategic deliverables:</strong> Drafted terms of reference for parliamentary training on science advice</li>
+                <li><strong>RFICS Excellence Scholarship:</strong> Recipient of the excellence scholarship ($2,000) for contribution to the network</li>
+              </ul>
+              <p><strong>Impact and reach:</strong></p>
+              <ul>
+                <li>Multi-continental network (Americas, Africa, Europe)</li>
+                <li>Partnerships with parliaments, universities, and research institutions</li>
+                <li>Training and capacity building for science advisors</li>
+                <li>Knowledge transfer between academic and policy spheres</li>
+              </ul>
+              <ul class="actions">
+                <li><a href="https://rfics.org" target="_blank" class="button primary">Visit RFICS website</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seven: CLESSN / CAPP -->
+        <section id="seven">
           <div class="container">
             <h3>CLESSN / CAPP</h3>
             <p class="section-intro">
@@ -207,80 +414,408 @@
           </div>
         </section>
 
-        <!-- Four -->
-        <section id="four">
+        <!-- Eight: Contracts -->
+        <section id="eight">
           <div class="container">
-            <h3>Talks</h3>
+            <h3>Contracts & Mandates</h3>
             <p class="section-intro">
-              Adrien Cloutier regularly gives talks on academic project management, agile methods, and pedagogical innovation in social sciences.
+              Adrien Cloutier conducts applied research mandates for public and institutional partners, combining rigorous methodology with concrete deliverables.
             </p>
 
-            <div class="conference-card">
-              <a href="https://www.fss.ulaval.ca/evenements/utilisation-de-la-methode-agile-en-milieu-academique" target="_blank">
-                <div class="conference-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                  Agile Method<br>in Academia
-                </div>
-              </a>
-              <div class="conference-content">
-                <h4><a href="https://www.fss.ulaval.ca/evenements/utilisation-de-la-methode-agile-en-milieu-academique" target="_blank">Using Agile Methodology in Academic Settings</a></h4>
-                <span class="conference-meta">Faculty of Social Sciences, Université Laval</span>
+            <div class="row academic-cards">
+              <div class="academic-card">
+                <h4><i class="fas fa-landmark"></i> Musée de la civilisation (Mitacs 2022)</h4>
+                <span class="card-meta">Mitacs Accelerate | $15,000 | 2022</span>
                 <p>
-                  Talk on applying agile management principles (Scrum) to research and teaching project management. How to effectively structure complex academic projects by drawing inspiration from software development methods. Sharing concrete experience and practical tools.
+                  First applied research mandate at the <strong>Musée de la civilisation</strong> in Quebec City through the Mitacs Accelerate program. Project focused on analyzing visitor attendance data, behavior patterns, and exhibition evaluation.
+                </p>
+                <p><strong>Responsibilities and deliverables:</strong></p>
+                <ul>
+                  <li><strong>Data cleaning and integration:</strong> Harmonization of heterogeneous databases (ticketing, surveys, sensors)</li>
+                  <li><strong>Cross-analysis:</strong> Identification of attendance patterns and visitor behaviors</li>
+                  <li><strong>Automated R scripts:</strong> Development of reproducible pipelines for recurring analyses</li>
+                  <li><strong>Interactive dashboards:</strong> Dynamic visualizations for museum staff</li>
+                  <li><strong>Decision-support reports:</strong> Strategic syntheses for management</li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Full report available upon request (subject to institutional authorization)</em>
+                </p>
+              </div>
+
+              <div class="academic-card">
+                <h4><i class="fas fa-landmark"></i> Musée de la civilisation (Mitacs 2024)</h4>
+                <span class="card-meta">Mitacs Accelerate | $15,000 | 2024</span>
+                <p>
+                  Second applied research mandate at the <strong>Musée de la civilisation</strong>, continuing the partnership initiated in 2022. Deepening analyses and developing more sophisticated decision-support tools.
+                </p>
+                <p><strong>Responsibilities and deliverables:</strong></p>
+                <ul>
+                  <li><strong>Longitudinal analyses:</strong> Inter-annual comparisons and trend identification</li>
+                  <li><strong>Predictive modeling:</strong> Anticipation of attendance and programming optimization</li>
+                  <li><strong>Advanced dashboards:</strong> Interactive real-time monitoring tools</li>
+                  <li><strong>Staff training:</strong> Skills transfer for team autonomy</li>
+                  <li><strong>Strategic recommendations:</strong> Data-driven action plans</li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Full report available upon request (subject to institutional authorization)</em>
+                </p>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #f9fafb; border-radius: 0.5rem;">
+              <p style="margin: 0; color: #6b7280;">
+                <strong>Interested in an applied research mandate?</strong><br>
+                Feel free to <a href="#twelve" style="color: #2563eb;">contact me</a> to discuss your needs.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Nine: Tools & Methods -->
+        <section id="nine">
+          <div class="container">
+            <h3>Tools & Methods</h3>
+            <p class="section-intro">
+              Adrien Cloutier develops and shares methodological and organizational tools to improve efficiency in research and teaching.
+            </p>
+
+            <!-- Scrum Master Certification -->
+            <div class="academic-card" style="margin-bottom: 2rem;">
+              <h4><i class="fas fa-certificate"></i> Scrum Master Certification</h4>
+              <span class="card-meta">Agile methodology applied to academic research</span>
+              <p>
+                Certified <strong>Scrum Master</strong>, Adrien applies agile management principles to conducting research and teaching projects. This approach enables effective structuring of complex projects, fostering collaboration, and ensuring iterative delivery of results.
+              </p>
+              <p><strong>Concrete applications:</strong></p>
+              <ul>
+                <li><strong>Dissertation management:</strong> Writing sprints, regular retrospectives, adaptive planning</li>
+                <li><strong>Coordination of collaborative projects:</strong> Stand-ups, backlogs, definition of "done"</li>
+                <li><strong>Teaching:</strong> Agile pedagogy, continuous feedback, iterative course improvement</li>
+              </ul>
+              <p style="margin-top: 1rem;">
+                <a href="https://www.fss.ulaval.ca/evenements/utilisation-de-la-methode-agile-en-milieu-academique" target="_blank" class="button small">
+                  <i class="fas fa-presentation"></i> View FSS Laval talk
+                </a>
+              </p>
+            </div>
+
+            <!-- Notion Templates -->
+            <h4>Notion Templates</h4>
+            <p>
+              Adrien shares a library of <strong>Notion templates</strong> to organize research, teaching, and academic projects. These templates are designed to be flexible, modular, and adapted to the needs of social science researchers.
+            </p>
+
+            <div class="projects-grid" style="margin-top: 1.5rem;">
+              <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                  <i class="fas fa-book" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <div class="project-content">
+                  <h4>Dissertation Management</h4>
+                  <p>
+                    Complete template for structuring a doctoral project: planning, literature review, chapters, timeline, objectives.
+                  </p>
+                  <p class="text-muted" style="font-size: 0.85rem;">
+                    <em>Available upon request</em>
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                  <i class="fas fa-file-alt" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <div class="project-content">
+                  <h4>Literature Review</h4>
+                  <p>
+                    Reference management system, reading notes, synthesis sheets, and conceptual mapping.
+                  </p>
+                  <p class="text-muted" style="font-size: 0.85rem;">
+                    <em>Available upon request</em>
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                  <i class="fas fa-chalkboard-teacher" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <div class="project-content">
+                  <h4>Course Planning</h4>
+                  <p>
+                    Template for organizing a university course: objectives, sessions, readings, evaluations, student tracking.
+                  </p>
+                  <p class="text-muted" style="font-size: 0.85rem;">
+                    <em>Available upon request</em>
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                  <i class="fas fa-tasks" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <div class="project-content">
+                  <h4>Project Management (Scrum)</h4>
+                  <p>
+                    Adaptation of the Scrum framework for academic projects: sprints, backlog, retrospectives, kanban.
+                  </p>
+                  <p class="text-muted" style="font-size: 0.85rem;">
+                    <em>Available upon request</em>
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                  <i class="fas fa-newspaper" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <div class="project-content">
+                  <h4>Publication Tracking</h4>
+                  <p>
+                    Tracker to manage the publication process: submissions, revisions, statuses, deadlines, targeted journals.
+                  </p>
+                  <p class="text-muted" style="font-size: 0.85rem;">
+                    <em>Available upon request</em>
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                  <i class="fas fa-comments" style="font-size: 2rem; color: white;"></i>
+                </div>
+                <div class="project-content">
+                  <h4>Meetings & Notes</h4>
+                  <p>
+                    Template for documenting meetings, supervisions, research interviews with action tracking.
+                  </p>
+                  <p class="text-muted" style="font-size: 0.85rem;">
+                    <em>Available upon request</em>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+              <p>
+                <a href="https://www.notion.com/@adri01" target="_blank" class="button primary">
+                  <i class="fas fa-book"></i> View Notion templates
+                </a>
+              </p>
+              <p class="text-muted" style="font-size: 0.9rem; margin-top: 1rem;">
+                <strong>Note:</strong> Some templates are publicly accessible, others are available upon request.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ten: Gallery -->
+        <section id="ten">
+          <div class="container">
+            <h3>Gallery</h3>
+            <p class="section-intro">
+              Some moments captured during research projects, teaching, international events, and... dissertation supervision.
+            </p>
+
+            <!-- Categories grid -->
+            <div class="row academic-cards">
+              <!-- Señor Puel -->
+              <div class="academic-card">
+                <h4><i class="fas fa-cat"></i> Señor Puel</h4>
+                <span class="card-meta">Official co-researcher & dissertation supervisor</span>
+                <div style="background: #f9fafb; padding: 2rem; border-radius: 0.35rem; text-align: center; margin: 1rem 0;">
+                  <i class="fas fa-image" style="font-size: 3rem; color: #d1d5db;"></i>
+                  <p style="margin-top: 1rem; color: #6b7280;">
+                    <strong>Photos coming soon</strong><br>
+                    <span style="font-size: 0.9rem;">Add your photos to <code>images/galerie/senor-puel/</code></span>
+                  </p>
+                </div>
+                <p>
+                  Señor Puel, the official co-researcher and expert in academic procrastination. Responsible for close supervision of dissertation writing and self-proclaimed guardian of sensitive data.
+                </p>
+              </div>
+
+              <!-- RFICS -->
+              <div class="academic-card">
+                <h4><i class="fas fa-globe"></i> RFICS</h4>
+                <span class="card-meta">International events & Dakar Workshop (July 2024)</span>
+                <div style="background: #f9fafb; padding: 2rem; border-radius: 0.35rem; text-align: center; margin: 1rem 0;">
+                  <i class="fas fa-image" style="font-size: 3rem; color: #d1d5db;"></i>
+                  <p style="margin-top: 1rem; color: #6b7280;">
+                    <strong>Photos coming soon</strong><br>
+                    <span style="font-size: 0.9rem;">Add your photos to <code>images/galerie/rfics/</code></span>
+                  </p>
+                </div>
+                <p>
+                  RFICS events, Dakar international workshop (July 11-12, 2024), Americas-Africa-Europe partnerships, collaborative governance.
+                </p>
+              </div>
+
+              <!-- EIOM -->
+              <div class="academic-card">
+                <h4><i class="fas fa-chalkboard-teacher"></i> EIOM</h4>
+                <span class="card-meta">Interdisciplinary summer school</span>
+                <div style="background: #f9fafb; padding: 2rem; border-radius: 0.35rem; text-align: center; margin: 1rem 0;">
+                  <i class="fas fa-image" style="font-size: 3rem; color: #d1d5db;"></i>
+                  <p style="margin-top: 1rem; color: #6b7280;">
+                    <strong>Photos coming soon</strong><br>
+                    <span style="font-size: 0.9rem;">Add your photos to <code>images/galerie/eiom/</code></span>
+                  </p>
+                </div>
+                <p>
+                  EIOM training sessions, participants, pedagogical activities, and methodological workshops.
+                </p>
+              </div>
+
+              <!-- Conferences -->
+              <div class="academic-card">
+                <h4><i class="fas fa-presentation"></i> Talks & Workshops</h4>
+                <span class="card-meta">Public presentations & training</span>
+                <div style="background: #f9fafb; padding: 2rem; border-radius: 0.35rem; text-align: center; margin: 1rem 0;">
+                  <i class="fas fa-image" style="font-size: 3rem; color: #d1d5db;"></i>
+                  <p style="margin-top: 1rem; color: #6b7280;">
+                    <strong>Photos coming soon</strong><br>
+                    <span style="font-size: 0.9rem;">Add your photos to <code>images/galerie/conferences/</code></span>
+                  </p>
+                </div>
+                <p>
+                  Talk "Agile Method in Academic Settings" (FSS Laval), presentations, facilitated workshops.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Five -->
-        <section id="five">
+        <!-- Eleven: Downloads -->
+        <section id="eleven">
           <div class="container">
-            <h3>My CV</h3>
-            <p>
-              Below you will find my curriculum vitae detailing my academic and professional background.
+            <h3>Downloads</h3>
+            <p class="section-intro">
+              Access my academic documents: CV, course syllabi, research work, and reports.
             </p>
-            <div class="features">
-              <article>
-                <a href="cv/Anglais/CloutierAdrien_CV_english.pdf" class="image" target="_blank"
-                  ><img src="cv/Anglais/cv_en.png" alt="CV Preview"
-                /></a>
-                <div class="inner">
-                  <h4>Curriculum Vitae</h4>
-                  <p>
-                    Click on the image or the button below to view my CV in PDF format.
-                  </p>
-                  <p>
-                    <a href="cv/Anglais/CloutierAdrien_CV_english.pdf" target="_blank" class="button primary">
-                      View CV (PDF)
-                    </a>
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
 
-        <!-- Six -->
-        <section id="six">
-          <div class="container">
-            <h3>Contact Me</h3>
-            <p>
-              Feel free to contact me with any questions about my research, my projects, or for collaboration opportunities.
-            </p>
-            <div class="row gtr-uniform">
-              <div class="col-12">
-                <a
-                  href="mailto:adrien.cloutier.1@gmail.com?subject=Contact from website"
-                  class="button primary"
-                >
-                  Send an Email
-                </a>
+            <div class="row academic-cards">
+              <!-- CV -->
+              <div class="academic-card">
+                <h4><i class="fas fa-file-pdf"></i> Curriculum Vitae</h4>
+                <p>
+                  My complete academic and professional background: education, publications, research and teaching experience, scholarships and awards.
+                </p>
+                <ul class="actions">
+                  <li><a href="cv/Français/CloutierAdrien_CV_3pages.pdf" target="_blank" class="button">
+                    <i class="fas fa-download"></i> CV (Français)
+                  </a></li>
+                  <li><a href="cv/Anglais/CloutierAdrien_CV_english.pdf" target="_blank" class="button primary">
+                    <i class="fas fa-download"></i> CV (English)
+                  </a></li>
+                </ul>
+              </div>
+
+              <!-- Course syllabi -->
+              <div class="academic-card">
+                <h4><i class="fas fa-chalkboard-teacher"></i> Course Syllabi</h4>
+                <p>
+                  Detailed syllabi for courses I teach at Université Laval: pedagogical objectives, schedule, evaluations, resources.
+                </p>
+                <ul class="actions">
+                  <li><a href="documents/cours/POL-6078_Plan_de_cours.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> POL-6078 (Digital Tools)
+                  </a></li>
+                  <li><a href="documents/cours/Methodologie_quantitative_Plan_de_cours.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> Quantitative Methodology
+                  </a></li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Course syllabi available upon request</em>
+                </p>
+              </div>
+
+              <!-- Research -->
+              <div class="academic-card">
+                <h4><i class="fas fa-graduation-cap"></i> Research Work</h4>
+                <p>
+                  Master's thesis, doctoral dissertation (after defense), and applied research reports.
+                </p>
+                <ul class="actions">
+                  <li><a href="documents/recherche/Cloutier_Adrien_Memoire_Maitrise_2020.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> Master's Thesis (2020)
+                  </a></li>
+                  <li><span class="button small disabled" style="opacity: 0.5;">
+                    <i class="fas fa-clock"></i> Dissertation (available after defense - Fall 2026)
+                  </span></li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Dissertation: "Breaking News: Radar+ for Measuring Media Salience in the Digital Age" (defense scheduled Fall 2026)</em>
+                </p>
+              </div>
+
+              <!-- Mitacs Reports -->
+              <div class="academic-card">
+                <h4><i class="fas fa-landmark"></i> Mitacs Reports</h4>
+                <p>
+                  Applied research reports completed as part of Mitacs mandates at the Musée de la civilisation.
+                </p>
+                <ul class="actions">
+                  <li><a href="documents/recherche/Rapport_Mitacs_Musee_2022.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> Mitacs Report 2022
+                  </a></li>
+                  <li><a href="documents/recherche/Rapport_Mitacs_Musee_2024.pdf" class="button small">
+                    <i class="fas fa-file-pdf"></i> Mitacs Report 2024
+                  </a></li>
+                </ul>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 1rem;">
+                  <em>Reports available upon request (subject to institutional authorization)</em>
+                </p>
               </div>
             </div>
           </div>
         </section>
-        <!-- Five -->
-        <!-- -->
+
+        <!-- Twelve: Contact -->
+        <section id="twelve">
+          <div class="container">
+            <h3>Contact</h3>
+            <p class="section-intro">
+              Feel free to contact me with any questions about my research, teaching, or for collaboration opportunities.
+            </p>
+
+            <div class="academic-card" style="text-align: center; padding: 3rem;">
+              <i class="fas fa-envelope" style="font-size: 3rem; color: #2563eb; margin-bottom: 1.5rem;"></i>
+              <h4>Adrien Cloutier</h4>
+              <p style="font-size: 1.1rem; color: #4b5563; margin: 1rem 0;">
+                <strong>ADCLO2@ulaval.ca</strong>
+              </p>
+              <p style="margin: 1.5rem 0; color: #6b7280;">
+                PhD Candidate in Political Science<br>
+                Université Laval, Quebec (Canada)
+              </p>
+              <ul class="actions special">
+                <li><a href="mailto:ADCLO2@ulaval.ca?subject=Contact from website" class="button primary large">
+                  <i class="fas fa-paper-plane"></i> Send an email
+                </a></li>
+              </ul>
+
+              <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+                <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">
+                  <strong>Other ways to follow me:</strong>
+                </p>
+                <ul class="icons" style="justify-content: center;">
+                  <li><a href="https://twitter.com/CloutierAdrien" class="icon brands fa-twitter" target="_blank">
+                    <span class="label">Twitter</span>
+                  </a></li>
+                  <li><a href="https://scholar.google.com/citations?user=RXAdvoMAAAAJ&hl=en" class="icon fas fa-graduation-cap" target="_blank">
+                    <span class="label">Google Scholar</span>
+                  </a></li>
+                  <li><a href="https://github.com/AdriClout" class="icon brands fa-github" target="_blank">
+                    <span class="label">GitHub</span>
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </div>
 
       <!-- Footer -->
