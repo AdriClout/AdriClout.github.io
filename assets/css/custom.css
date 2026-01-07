@@ -677,15 +677,16 @@ body.dark-mode blockquote {
 }
 
 /* ============================================
-   SECTION RADAR+ - FOND UNIFORME
+   SECTION RADAR+ - FOND TRANSPARENT
    ============================================ */
 
-/* Fond gris pour toute la section Radar+ en mode clair */
+/* Pas de fond spécial pour Radar+ - reste comme les autres sections */
 #radar {
-  background: #f5f5f5 !important;
+  background: inherit !important;
 }
 
-/* Fond encore plus sombre en mode dark */
-body.dark-mode #radar {
-  background: #0a0f1a !important;
+/* L'image SVG doit avoir un fond transparent */
+#radar img[src*="radar"] {
+  background: transparent !important;
+  mix-blend-mode: normal !important;
 }
