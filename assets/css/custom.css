@@ -36,21 +36,6 @@ Palette de couleurs:
   gap: 2rem;
 }
 
-/* Logo */
-.header-logo a {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  border: none !important;
-  letter-spacing: -0.025rem;
-  transition: opacity 0.2s ease;
-}
-
-.header-logo a:hover {
-  opacity: 0.9;
-}
-
 /* Navigation horizontale */
 .header-nav {
   flex: 1;
@@ -75,7 +60,7 @@ Palette de couleurs:
 .header-nav ul li a {
   display: block;
   padding: 0.5rem 1rem;
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
   text-decoration: none !important;
   border: none !important;
   font-size: 0.9rem;
@@ -87,7 +72,7 @@ Palette de couleurs:
 
 .header-nav ul li a:hover,
 .header-nav ul li a.active {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   color: #ffffff !important;
 }
 
@@ -374,4 +359,52 @@ strong {
 
 #header > footer {
   border-top-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ============================================
+   CENTRAGE DES CARTES ET RECTANGLES
+   ============================================ */
+
+/* Centrer le contenu dans toutes les cartes académiques */
+.academic-card,
+.research-center-card,
+.project-card,
+.conference-card {
+  text-align: center !important;
+}
+
+.academic-card h4,
+.academic-card h5,
+.academic-card p,
+.academic-card ul,
+.research-center-card h4,
+.research-center-card h5,
+.research-center-card p,
+.research-center-card ul,
+.project-card h4,
+.project-card h5,
+.project-card p,
+.conference-card h5,
+.conference-card p {
+  text-align: center !important;
+}
+
+/* Centrer les listes dans les cartes */
+.academic-card ul,
+.research-center-card ul {
+  list-style-position: inside !important;
+  text-align: center !important;
+}
+
+/* Centrer les actions/boutons */
+.academic-card .actions,
+.research-center-card .actions,
+.project-card .actions {
+  justify-content: center !important;
+}
+
+/* Card-meta centré */
+.card-meta {
+  text-align: center !important;
+  display: block !important;
 }
