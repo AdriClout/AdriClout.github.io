@@ -560,7 +560,11 @@ body.dark-mode h6 {
 }
 
 body.dark-mode strong {
-  color: #60a5fa !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode em {
+  color: #ffffff !important;
 }
 
 /* Sections en mode sombre */
