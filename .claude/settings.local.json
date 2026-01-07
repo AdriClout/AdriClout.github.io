@@ -8,7 +8,9 @@
       "Bash(ls:*)",
       "Bash(pdflatex:*)",
       "Bash(python3:*)",
-      "Bash(open:*)"
+      "Bash(open:*)",
+      "Bash(find:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []
