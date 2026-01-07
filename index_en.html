@@ -45,6 +45,12 @@
             <span>FR</span>
           </a>
         </div>
+        <div class="header-darkmode">
+          <button id="darkmode-toggle" class="darkmode-btn" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <span class="darkmode-text">Dark mode</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -768,5 +774,47 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <!-- Dark Mode Script -->
+    <script>
+      (function() {
+        const darkModeToggle = document.getElementById('darkmode-toggle');
+        const body = document.body;
+        const darkModeText = document.querySelector('.darkmode-text');
+        const darkModeIcon = document.querySelector('#darkmode-toggle i');
+
+        // Check saved preference
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'enabled') {
+          body.classList.add('dark-mode');
+          updateButton(true);
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', function() {
+          body.classList.toggle('dark-mode');
+          const isDark = body.classList.contains('dark-mode');
+
+          // Save preference
+          if (isDark) {
+            localStorage.setItem('darkMode', 'enabled');
+          } else {
+            localStorage.setItem('darkMode', 'disabled');
+          }
+
+          updateButton(isDark);
+        });
+
+        function updateButton(isDark) {
+          if (isDark) {
+            darkModeText.textContent = 'Light mode';
+            darkModeIcon.className = 'fas fa-sun';
+          } else {
+            darkModeText.textContent = 'Dark mode';
+            darkModeIcon.className = 'fas fa-moon';
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
