@@ -23,6 +23,10 @@
     <!-- Header Horizontal -->
     <header id="header-horizontal">
       <div class="header-container">
+        <!-- Menu hamburger pour mobile -->
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
         <nav class="header-nav">
           <ul>
             <li><a href="#home" class="active">Accueil</a></li>
@@ -59,17 +63,17 @@
 
         <!-- ACCUEIL / HOME (ULTRA-ÉPURÉ) -->
         <section id="home">
-          <div class="container" style="text-align: center; padding: 4rem 2rem;">
+          <div class="container" style="text-align: center; padding: 2rem 2rem 4rem 2rem;">
             <div class="image avatar" style="margin: 0 auto 2rem;">
-              <img src="images/moi.jpeg" alt="Adrien Cloutier" style="border-radius: 50%; width: 220px; height: 220px; object-fit: cover;" />
+              <img src="images/moi.jpeg" alt="Adrien Cloutier" style="border-radius: 50%; width: 280px; height: 280px; object-fit: cover; object-position: center 30%;" />
             </div>
 
             <h2 style="color: #2563eb; font-size: 2.5rem; margin-bottom: 0.5rem;">Adrien Cloutier</h2>
             <p style="font-size: 1.2rem; color: #4b5563; margin-bottom: 0.5rem;">
               <strong>Doctorant en science politique, Université Laval</strong> | Défense 2026
             </p>
-            <p style="font-size: 1rem; color: #6b7280; margin-bottom: 2rem;">
-              Saillance médiatique • Communication politique • Méthodes computationnelles
+            <p style="font-size: 1rem; color: #6b7280; margin: 0 auto 2rem; text-align: center; white-space: nowrap; position: relative; left: -40px;">
+              Saillance médiatique • Communication politique • Méthodes computationnelles • Outils numériques
             </p>
 
             <p style="max-width: 700px; margin: 0 auto 3rem; font-size: 1.05rem; line-height: 1.7; color: #111827;">
@@ -190,6 +194,33 @@
             <p class="section-intro">
               Mes travaux de recherche portent sur la communication politique, l'agenda médiatique, la polarisation et les méthodes computationnelles.
             </p>
+
+            <!-- Mémoire de maîtrise -->
+            <div class="academic-card" style="margin: 3rem 0;">
+              <h4 style="color: #2563eb; margin-bottom: 1rem;">
+                <i class="fas fa-file-pdf"></i> Mémoire de maîtrise
+              </h4>
+              <p style="margin-bottom: 2rem; font-size: 1rem;">
+                <strong>Titre:</strong> Highs et Downs de l'opinion publique : Une analyse par les médias de la légalisation du cannabis au Canada<br>
+                <strong>Année:</strong> 2020 | <strong>Institution:</strong> Université Laval
+              </p>
+
+              <div style="position: relative; width: 100%; height: 600px; border: 2px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; background: #f9fafb;">
+                <iframe
+                  src="documents/publications/Memoire_AdrienCloutier.pdf"
+                  width="100%"
+                  height="100%"
+                  style="border: none;"
+                  title="Mémoire de maîtrise - Adrien Cloutier">
+                </iframe>
+              </div>
+
+              <div style="text-align: center; margin-top: 1rem;">
+                <a href="documents/publications/Memoire_AdrienCloutier.pdf" target="_blank" class="button primary">
+                  <i class="fas fa-external-link-alt"></i> Ouvrir en plein écran
+                </a>
+              </div>
+            </div>
 
             <div style="text-align: center; padding: 3rem; margin: 2rem 0;">
               <i class="fas fa-graduation-cap" style="font-size: 4rem; color: #2563eb; margin-bottom: 1.5rem;"></i>
@@ -405,66 +436,13 @@
               Bibliothèque de templates Notion pour organiser la recherche, l'enseignement et les projets académiques. Templates flexibles, modulaires et adaptés aux besoins des chercheurs en sciences sociales.
             </p>
 
-            <div class="projects-grid" style="margin: 2rem 0;">
-              <div class="project-card">
-                <div class="project-content">
-                  <h5><i class="fas fa-book"></i> Gestion de thèse</h5>
-                  <p>
-                    Template complet pour structurer un projet doctoral : planification, revue de littérature, chapitres, timeline, objectifs.
-                  </p>
-                  <p class="text-muted" style="font-size: 0.85rem;"><em>Disponible sur demande</em></p>
-                </div>
-              </div>
-
-              <div class="project-card">
-                <div class="project-content">
-                  <h5><i class="fas fa-file-alt"></i> Revue de littérature</h5>
-                  <p>
-                    Système de gestion de références bibliographiques, notes de lecture, fiches de synthèse et cartographie conceptuelle.
-                  </p>
-                  <p class="text-muted" style="font-size: 0.85rem;"><em>Disponible sur demande</em></p>
-                </div>
-              </div>
-
-              <div class="project-card">
-                <div class="project-content">
-                  <h5><i class="fas fa-chalkboard-teacher"></i> Planification de cours</h5>
-                  <p>
-                    Template pour organiser un cours universitaire : objectifs, séances, lectures, évaluations, suivi étudiant.
-                  </p>
-                  <p class="text-muted" style="font-size: 0.85rem;"><em>Disponible sur demande</em></p>
-                </div>
-              </div>
-
-              <div class="project-card">
-                <div class="project-content">
-                  <h5><i class="fas fa-tasks"></i> Gestion de projets (Scrum)</h5>
-                  <p>
-                    Adaptation du framework Scrum pour projets académiques : sprints, backlog, rétrospectives, kanban.
-                  </p>
-                  <p class="text-muted" style="font-size: 0.85rem;"><em>Disponible sur demande</em></p>
-                </div>
-              </div>
-
-              <div class="project-card">
-                <div class="project-content">
-                  <h5><i class="fas fa-newspaper"></i> Suivi de publications</h5>
-                  <p>
-                    Tracker pour gérer le processus de publication : soumissions, révisions, statuts, deadlines, revues ciblées.
-                  </p>
-                  <p class="text-muted" style="font-size: 0.85rem;"><em>Disponible sur demande</em></p>
-                </div>
-              </div>
-
-              <div class="project-card">
-                <div class="project-content">
-                  <h5><i class="fas fa-comments"></i> Réunions & Notes</h5>
-                  <p>
-                    Template pour documenter réunions, supervisions, entretiens de recherche avec suivi des actions.
-                  </p>
-                  <p class="text-muted" style="font-size: 0.85rem;"><em>Disponible sur demande</em></p>
-                </div>
-              </div>
+            <div style="text-align: center; margin: 2rem 0;">
+              <a href="https://www.credly.com/badges/7b05aeb6-61b4-455b-9575-34e773165704/public_url" target="_blank">
+                <img src="images/sections/agile/image.png" alt="Notion Essentials Badge" style="max-width: 200px; height: auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;">
+              </a>
+              <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">
+                <strong>Certifié Notion Essentials</strong>
+              </p>
             </div>
 
             <div style="background: rgba(37, 99, 235, 0.1); border-left: 4px solid #2563eb; padding: 2rem; margin: 3rem 0; border-radius: 0.5rem;">
@@ -540,79 +518,74 @@
               N'hésitez pas à me contacter pour toute question concernant mes recherches, mon enseignement, ou pour des opportunités de collaboration.
             </p>
 
-            <div class="row">
-              <div class="col-6 col-12-medium">
-                <div class="academic-card" style="padding: 2rem;">
-                  <h4>Formulaire de contact</h4>
-                  <form method="post" action="https://formspree.io/f/xwpbadbk">
-                    <div class="row gtr-uniform">
-                      <div class="col-12">
-                        <input type="text" name="name" id="name" placeholder="Nom" required />
-                      </div>
-                      <div class="col-12">
-                        <input type="email" name="email" id="email" placeholder="Email" required />
-                      </div>
-                      <div class="col-12">
-                        <input type="text" name="subject" id="subject" placeholder="Sujet" required />
-                      </div>
-                      <div class="col-12">
-                        <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
-                      </div>
-                      <div class="col-12">
-                        <ul class="actions">
-                          <li><input type="submit" value="Envoyer le message" class="primary" /></li>
-                          <li><input type="reset" value="Réinitialiser" /></li>
-                        </ul>
-                      </div>
+            <div style="max-width: 600px; margin: 0 auto;">
+              <div class="academic-card" style="padding: 2rem;">
+                <form method="post" action="https://formspree.io/f/xwpbadbk">
+                  <div class="row gtr-uniform">
+                    <div class="col-12">
+                      <input type="text" name="name" id="name" placeholder="Nom" required />
                     </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-6 col-12-medium">
-                <div class="academic-card" style="padding: 2rem;">
-                  <h4>Coordonnées</h4>
-                  <p>
-                    <i class="fas fa-envelope" style="color: #2563eb; margin-right: 0.5rem;"></i>
-                    <strong>Email:</strong><br>
-                    <a href="mailto:ADCLO2@ulaval.ca">ADCLO2@ulaval.ca</a>
-                  </p>
-                  <p>
-                    <i class="fas fa-university" style="color: #2563eb; margin-right: 0.5rem;"></i>
-                    <strong>Affiliation:</strong><br>
-                    Doctorant en science politique<br>
-                    Université Laval, Québec (Canada)
-                  </p>
-
-                  <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
-                    <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">
-                      <strong>Autres moyens de me suivre:</strong>
-                    </p>
-                    <ul class="icons">
-                      <li>
-                        <a href="https://twitter.com/CloutierAdrien" class="icon brands fa-x-twitter" target="_blank">
-                          <span class="label">X (Twitter)</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://scholar.google.com/citations?user=RXAdvoMAAAAJ&hl=fr" class="icon solid fa-graduation-cap" target="_blank">
-                          <span class="label">Google Scholar</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/AdriClout" class="icon brands fa-github" target="_blank">
-                          <span class="label">GitHub</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://ca.linkedin.com/in/adrien-cloutier-868b8b180" class="icon brands fa-linkedin" target="_blank">
-                          <span class="label">LinkedIn</span>
-                        </a>
-                      </li>
-                    </ul>
+                    <div class="col-12">
+                      <input type="email" name="email" id="email" placeholder="Email" required />
+                    </div>
+                    <div class="col-12">
+                      <input type="text" name="subject" id="subject" placeholder="Sujet" required />
+                    </div>
+                    <div class="col-12">
+                      <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
+                    </div>
+                    <div class="col-12" style="padding-left: 0; padding-right: 0;">
+                      <ul class="actions special" style="justify-content: center; margin-top: 1rem; margin-left: 0; width: 100%;">
+                        <li style="padding-left: 0;"><input type="submit" value="Envoyer le message" class="primary" /></li>
+                      </ul>
+                    </div>
                   </div>
+                </form>
+
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; text-align: center;">
+                  <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">
+                    <strong>Autres moyens de me suivre:</strong>
+                  </p>
+                  <ul class="icons" style="justify-content: center;">
+                    <li>
+                      <a href="https://twitter.com/CloutierAdrien" class="icon brands fa-x-twitter" target="_blank">
+                        <span class="label">X (Twitter)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://scholar.google.com/citations?user=RXAdvoMAAAAJ&hl=fr" class="icon solid fa-graduation-cap" target="_blank">
+                        <span class="label">Google Scholar</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/AdriClout" class="icon brands fa-github" target="_blank">
+                        <span class="label">GitHub</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://ca.linkedin.com/in/adrien-cloutier-868b8b180" class="icon brands fa-linkedin" target="_blank">
+                        <span class="label">LinkedIn</span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PARTENAIRES -->
+        <section id="partners" style="background: #f9fafb; padding: 3rem 0;">
+          <div class="container">
+            <h3 style="text-align: center; margin-bottom: 2rem;">Merci à mes partenaires!</h3>
+
+            <div style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap;">
+              <a href="https://opubliq.com/" target="_blank" style="border: none;">
+                <img src="images/sections/partenaires/Opubliq_V2_couleur-transparent.png" alt="Opubliq" style="max-width: 200px; height: auto; transition: transform 0.3s ease;">
+              </a>
+              <a href="https://www.infoscope.ca/" target="_blank" style="border: none;">
+                <img src="images/sections/partenaires/logo_2022_slogan3_en.avif" alt="Infoscope" style="max-width: 200px; height: auto; transition: transform 0.3s ease;">
+              </a>
             </div>
           </div>
         </section>
@@ -679,7 +652,6 @@
         <div class="container">
           <ul class="copyright">
             <li>&copy; 2024-2026 Adrien Cloutier. Tous droits réservés.</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
           </ul>
         </div>
       </section>
@@ -733,6 +705,36 @@
             darkModeText.textContent = 'Mode sombre';
             darkModeIcon.className = 'fas fa-moon';
           }
+        }
+      })();
+    </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      (function() {
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const headerNav = document.querySelector('.header-nav');
+        const navLinks = document.querySelectorAll('.header-nav a');
+
+        // Toggle menu
+        if (menuToggle) {
+          menuToggle.addEventListener('click', function() {
+            headerNav.classList.toggle('open');
+          });
+
+          // Fermer le menu en cliquant sur un lien
+          navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              headerNav.classList.remove('open');
+            });
+          });
+
+          // Fermer le menu en cliquant ailleurs
+          document.addEventListener('click', function(event) {
+            if (!headerNav.contains(event.target) && !menuToggle.contains(event.target)) {
+              headerNav.classList.remove('open');
+            }
+          });
         }
       })();
     </script>

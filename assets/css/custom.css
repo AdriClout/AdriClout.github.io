@@ -790,3 +790,235 @@ body.dark-mode .course-card:hover {
 .feature-icons ul li {
   list-style: none;
 }
+
+/* ============================================
+   FORMULAIRE DE CONTACT - TEXTE VISIBLE
+   ============================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+  color: #000000 !important;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Centrer les boutons du formulaire de contact */
+form ul.actions,
+form ul.actions.special {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  margin-left: 0 !important;
+  width: 100% !important;
+}
+
+form ul.actions li:first-child {
+  padding-left: 0 !important;
+}
+
+/* ============================================
+   SECTION PARTENAIRES - EFFET HOVER
+   ============================================ */
+
+#partners img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#partners img:hover {
+  transform: translateY(-5px);
+  opacity: 0.8;
+}
+
+/* Améliorer centrage des logos partenaires */
+#partners > .container > div {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 3rem !important;
+}
+
+#partners a {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* ============================================
+   BOUTON FORMULAIRE CONTACT - CENTRAGE FORCÉ
+   ============================================ */
+
+#contact form input[type="submit"] {
+  margin: 0 auto !important;
+  display: block !important;
+  line-height: 1 !important;
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+
+/* Cacher les éléments vides (undefined) */
+#header-horizontal h1:empty,
+#header-horizontal .title:empty,
+#header-horizontal > *:empty {
+  display: none !important;
+}
+
+/* Titre dans le header */
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.header-title a {
+  color: white !important;
+  text-decoration: none !important;
+  border: none !important;
+}
+
+.header-title a:hover {
+  opacity: 0.8;
+}
+
+/* Menu hamburger mobile */
+.mobile-menu-btn {
+  display: none !important;
+}
+
+/* Responsive sur mobile */
+@media screen and (max-width: 980px) {
+  /* Header plus compact sur mobile */
+  #header-horizontal {
+    height: auto !important;
+    min-height: 50px !important;
+  }
+
+  .header-container {
+    flex-wrap: wrap !important;
+    padding: 0.5rem 1rem !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Cacher le bouton hamburger sur mobile */
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  /* Menu caché par défaut sur mobile */
+  .header-nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 280px !important;
+    height: 100vh !important;
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+    z-index: 10000 !important;
+    transition: right 0.3s ease !important;
+    overflow-y: auto !important;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3) !important;
+  }
+
+  /* Menu ouvert */
+  .header-nav.open {
+    right: 0 !important;
+  }
+
+  /* Liste du menu mobile */
+  .header-nav ul {
+    flex-direction: column !important;
+    padding: 4rem 1rem 2rem 1rem !important;
+    gap: 0 !important;
+  }
+
+  .header-nav ul li {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .header-nav ul li a {
+    display: block !important;
+    padding: 1rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    font-size: 1rem !important;
+    transition: background 0.2s ease !important;
+  }
+
+  .header-nav ul li a:hover {
+    background: rgba(255,255,255,0.1) !important;
+  }
+
+  /* Boutons langue et dark mode plus compacts et centrés */
+  .header-lang,
+  .header-darkmode {
+    padding: 0.3rem 0.6rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .header-lang span,
+  .header-darkmode .darkmode-text {
+    display: none !important;
+  }
+
+  .header-lang a,
+  .header-darkmode button {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .header-lang i,
+  .header-darkmode i {
+    margin: 0 !important;
+  }
+
+  /* Réduire l'espace en haut */
+  #home .container {
+    padding-top: 4rem !important;
+  }
+
+  /* Permettre retour à la ligne pour les compétences */
+  #home p[style*="white-space: nowrap"] {
+    white-space: normal !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: static !important;
+  }
+
+  /* Réduire taille de la photo sur mobile */
+  #home .image.avatar img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* Réduire taille du texte principal sur mobile */
+  #home h2 {
+    font-size: 1.8rem !important;
+  }
+
+  #home p {
+    font-size: 0.9rem !important;
+  }
+
+  /* Adapter le PDF viewer sur mobile */
+  #publications iframe {
+    height: 400px !important;
+  }
+}
