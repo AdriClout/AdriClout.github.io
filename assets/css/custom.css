@@ -1031,3 +1031,17 @@ input[type="button"] i {
     height: 400px !important;
   }
 }
+
+/* ============================================
+   RÉDUCTION DE L'ESPACEMENT ENTRE SECTIONS
+   ============================================ */
+
+#main > section {
+  padding: 3rem 0 !important;
+}
+
+@media screen and (max-width: 980px) {
+  #main > section {
+    padding: 2rem 0 !important;
+  }
+}
