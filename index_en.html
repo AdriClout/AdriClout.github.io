@@ -40,7 +40,7 @@
           </ul>
         </nav>
         <div class="header-lang">
-          <a href="index.html" class="lang-btn">
+          <a href="index.html" class="lang-btn" id="lang-switch">
             <i class="fas fa-globe"></i>
             <span>FR</span>
           </a>
@@ -822,9 +822,10 @@
       (function() {
         const navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
         const sections = document.querySelectorAll('#main > section');
+        let currentSection = '';
 
         function updateActiveMenu() {
-          let currentSection = '';
+          currentSection = '';
           const scrollPosition = window.scrollY + 100; // Offset for fixed header
 
           sections.forEach(section => {
@@ -843,6 +844,21 @@
               link.classList.add('active');
             }
           });
+
+          // Update language switch link with current section
+          updateLanguageLink();
+        }
+
+        function updateLanguageLink() {
+          const langSwitch = document.getElementById('lang-switch');
+          if (langSwitch) {
+            const baseUrl = langSwitch.getAttribute('href').split('#')[0];
+            if (currentSection) {
+              langSwitch.setAttribute('href', baseUrl + '#' + currentSection);
+            } else {
+              langSwitch.setAttribute('href', baseUrl + '#home');
+            }
+          }
         }
 
         // Listen to scroll
