@@ -675,3 +675,17 @@ body.dark-mode blockquote {
   background: #1e293b !important;
   color: #cbd5e1 !important;
 }
+
+/* ============================================
+   SECTION RADAR+ - FOND UNIFORME
+   ============================================ */
+
+/* Fond gris pour toute la section Radar+ en mode clair */
+#radar {
+  background: #f5f5f5 !important;
+}
+
+/* Fond encore plus sombre en mode dark */
+body.dark-mode #radar {
+  background: #0a0f1a !important;
+}
