@@ -936,6 +936,17 @@ input[type="button"] i {
   padding: 0.5rem;
 }
 
+/* S'assurer qu'il est VRAIMENT caché sur desktop */
+@media screen and (min-width: 981px) {
+  .mobile-menu-btn,
+  #mobile-menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
 /* Responsive sur mobile */
 @media screen and (max-width: 980px) {
   /* Header plus compact sur mobile */
@@ -952,7 +963,8 @@ input[type="button"] i {
   }
 
   /* Afficher le bouton hamburger sur mobile */
-  .mobile-menu-btn {
+  .mobile-menu-btn,
+  #mobile-menu-toggle {
     display: block !important;
     order: -1;
   }
