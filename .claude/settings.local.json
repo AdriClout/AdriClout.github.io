@@ -11,7 +11,13 @@
       "Bash(open:*)",
       "Bash(find:*)",
       "Bash(tree:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(magick:*)",
+      "Bash(convert:*)",
+      "Bash(sips:*)",
+      "WebSearch",
+      "WebFetch(domain:datagotchi.org)",
+      "WebFetch(domain:www.datagotchi.com)"
     ],
     "deny": [],
     "ask": []
