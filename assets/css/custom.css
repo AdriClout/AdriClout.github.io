@@ -924,9 +924,10 @@ input[type="button"] i {
   opacity: 0.8;
 }
 
-/* Menu hamburger mobile */
-.mobile-menu-btn {
-  display: none;
+/* Menu hamburger mobile - CACHÉ SUR DESKTOP */
+.mobile-menu-btn,
+#mobile-menu-toggle {
+  display: none !important;
   background: transparent;
   border: none;
   color: #ffffff;
