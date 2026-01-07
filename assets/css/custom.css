@@ -777,3 +777,16 @@ body.dark-mode .course-card:hover {
     gap: 1.5rem;
   }
 }
+
+/* ============================================
+   THÈMES DE CONFÉRENCE - RETRAIT DES BULLETS
+   ============================================ */
+
+.feature-icons ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.feature-icons ul li {
+  list-style: none;
+}
