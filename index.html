@@ -783,9 +783,9 @@
         const darkModeText = document.querySelector('.darkmode-text');
         const darkModeIcon = document.querySelector('#darkmode-toggle i');
 
-        // Vérifier la préférence sauvegardée
+        // Vérifier la préférence sauvegardée - Dark mode par défaut
         const savedMode = localStorage.getItem('darkMode');
-        if (savedMode === 'enabled') {
+        if (savedMode !== 'disabled') {
           body.classList.add('dark-mode');
           updateButton(true);
         }
