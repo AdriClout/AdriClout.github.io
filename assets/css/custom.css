@@ -63,17 +63,22 @@ Palette de couleurs:
   color: #ffffff !important;
   text-decoration: none !important;
   border: none !important;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
   border-radius: 0.35rem;
   transition: all 0.2s ease;
   white-space: nowrap;
+  opacity: 1 !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
 .header-nav ul li a:hover,
 .header-nav ul li a.active {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.35) !important;
   color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
 /* Bouton langue dans header */
@@ -84,24 +89,28 @@ Palette de couleurs:
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
   color: #ffffff !important;
   text-decoration: none !important;
   border: none !important;
   border-radius: 0.35rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   transition: all 0.2s ease;
+  opacity: 1 !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .lang-btn:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
   transform: translateY(-1px);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
 .lang-btn i,
 .lang-btn span {
   color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 /* Ajuster le contenu principal pour compenser le header fixe */
@@ -155,6 +164,10 @@ input[type="button"].large,
 button.large,
 .button.large {
   background-color: #2563eb !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
 
 /* Forcer le bleu sur tous les liens */
@@ -272,6 +285,10 @@ button,
   background-color: #2563eb !important;
   color: #ffffff !important;
   border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
 
 .button.primary:hover,
@@ -370,7 +387,23 @@ strong {
 .research-center-card,
 .project-card,
 .conference-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
   text-align: center !important;
+}
+
+/* Centrer tous les éléments enfants des cartes */
+.academic-card > *,
+.research-center-card > *,
+.project-card > *,
+.conference-card > * {
+  text-align: center !important;
+  width: 100%;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .academic-card h4,
@@ -387,6 +420,8 @@ strong {
 .conference-card h5,
 .conference-card p {
   text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Centrer les listes dans les cartes */
@@ -394,17 +429,52 @@ strong {
 .research-center-card ul {
   list-style-position: inside !important;
   text-align: center !important;
+  padding-left: 0 !important;
 }
 
 /* Centrer les actions/boutons */
 .academic-card .actions,
 .research-center-card .actions,
 .project-card .actions {
+  display: flex !important;
   justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* Centrer tous les boutons dans les cartes */
+.academic-card .button,
+.research-center-card .button,
+.project-card .button,
+.conference-card .button {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Card-meta centré */
 .card-meta {
   text-align: center !important;
   display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Centrer les icônes dans les cartes */
+.academic-card i,
+.research-center-card i,
+.project-card i,
+.conference-card i {
+  text-align: center !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Centrer les images dans les cartes */
+.academic-card img,
+.research-center-card img,
+.project-card img,
+.conference-card img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
