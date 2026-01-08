@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐱 Señor Puel 🐱</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 1 / 1;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.8);
+      transform: translateX(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      body {
+        padding: 1rem;
+      }
+
+      .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="javascript:history.back()" class="back-button">← Retour</a>
+
+  <div class="header">
+    <h1>🐱 Señor Puel 🐱</h1>
+    <p>Le chat le plus photogénique du monde</p>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="images/puel/328968776_875934246998181_7295530914474217986_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/469232378_536602822691299_1959135572516369001_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481789026_603513162666931_5221090932838845177_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481824156_603513202666927_233305391492077305_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481894405_603512852666962_8424548493005117230_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481894583_603512842666963_1603376269950699715_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481894935_603513192666928_870260853628178050_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481956460_603513172666930_320155101158273714_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481971123_603513176000263_5935055811527881534_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481978099_603513182666929_5050398911878078320_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481978620_603513169333597_1789291947967492089_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481998256_603513179333596_7881203922232688881_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481998278_603513189333595_4439002124543915284_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/481998467_603513199333594_4274291815910374127_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/482000979_603512846000296_8374326434905686002_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/482007592_603513146000266_3093041274613564478_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/482017915_603512869333627_2872605206876404719_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502536866_669444596073787_5150677502591438882_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502556808_669445712740342_3374524990364784947_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502561180_669443846073862_7869716648556377272_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502565212_669444536073793_8626550914120198739_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502672770_669444599407120_2698168056587013513_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502684384_669445386073708_3050678429455189496_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502700356_669445669407013_5595389003360079103_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502705998_669444849407095_7026431187601755511_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502948614_669445209407059_2614117996395783813_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/502957341_669445119407068_8342314750458611136_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/503352764_669445549407025_6478982372937479851_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/503371181_669444876073759_4016640196334850909_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/503408819_669445409407039_2457983385923381065_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/503475278_669445106073736_6873901949915933649_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/503497857_669443922740521_2084070386241615824_n.jpg" alt="Señor Puel">
+    </div>
+    <div class="gallery-item">
+      <img src="images/puel/503505641_669443876073859_4162512729869879615_n.jpg" alt="Señor Puel">
+    </div>
+  </div>
+</body>
+</html>
