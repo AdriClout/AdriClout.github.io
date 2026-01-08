@@ -1291,7 +1291,7 @@ ul.actions.special {
 
 /* Couper l'animation Radar+ pour ne garder que les logos des médias */
 #radar img[src*="animation-radar"] {
-  max-height: 250px !important;
+  max-height: 450px !important;
   object-fit: cover !important;
   object-position: top !important;
 }
