@@ -1250,3 +1250,12 @@ body::after {
     padding: 2rem 0 !important;
   }
 }
+
+/* ============================================
+   ALIGNEMENT DES LIENS DE CONFÉRENCES
+   ============================================ */
+
+/* Aligner les liens de conférence à gauche au lieu de centré */
+.feature-icons p {
+  text-align: left !important;
+}
