@@ -900,10 +900,26 @@ input[type="button"] i {
    RESPONSIVE - MOBILE
    ============================================ */
 
-/* Cacher les éléments vides (undefined) et éléments inutiles */
+/* ÉLIMINER COMPLÈTEMENT LA BARRE NOIRE AVEC "undefined" */
+/* Cacher tous les éléments de texte dans le header qui ne sont pas des boutons/liens */
+#header-horizontal *:not(.header-container):not(.header-nav):not(.header-nav *):not(.header-lang):not(.header-lang *):not(.header-darkmode):not(.header-darkmode *):not(.mobile-menu-btn):not(.mobile-menu-btn *):not(button):not(a):not(i):not(span):not(ul):not(li):not(nav) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Cacher spécifiquement les éléments problématiques */
 #header-horizontal h1,
+#header-horizontal h2,
+#header-horizontal h3,
+#header-horizontal p,
 #header-horizontal .header-title,
 #header-horizontal .title,
+#header-horizontal div:empty,
 #header-horizontal h1:empty,
 #header-horizontal .title:empty,
 #header-horizontal > *:empty {
@@ -912,13 +928,52 @@ input[type="button"] i {
   opacity: 0 !important;
 }
 
-/* Empêcher le texte "undefined" d'apparaître */
+/* Empêcher le texte "undefined" d'apparaître via pseudo-éléments */
 #header-horizontal::before,
 #header-horizontal::after,
 .header-container::before,
 .header-container::after {
   content: none !important;
   display: none !important;
+}
+
+/* S'assurer que le header n'a PAS de hauteur supplémentaire au-dessus */
+#header-horizontal {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.header-container {
+  padding-top: 0.75rem !important;
+}
+
+/* CACHER TOUT TEXTE DIRECT DANS LE BODY AVANT LE HEADER */
+body > *:not(#header-horizontal):not(#main):not(#footer):not(script):not(noscript) {
+  display: none !important;
+}
+
+/* Empêcher tout texte orphelin dans le body */
+body::before,
+body::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Sur mobile, s'assurer qu'il n'y a RIEN au-dessus du header */
+@media screen and (max-width: 980px) {
+  #header-horizontal {
+    position: relative !important;
+    top: 0 !important;
+  }
+
+  /* Cacher tout élément qui pourrait générer "undefined" sur mobile */
+  body > div:first-child:not(#header-horizontal):empty,
+  body > div:empty {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 /* Titre dans le header - DÉSACTIVÉ car caché */
