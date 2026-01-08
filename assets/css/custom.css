@@ -1164,6 +1164,37 @@ body::after {
   #publications iframe {
     height: 400px !important;
   }
+
+  /* Ajouter de l'espace sur les côtés pour respirer */
+  #main > section > .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Espace pour les images */
+  #main img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100% - 2rem) !important;
+  }
+
+  /* Espace pour les boutons */
+  #main .button,
+  #main .actions {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Espace pour le texte */
+  #main p,
+  #main h2,
+  #main h3,
+  #main h4,
+  #main ul,
+  #main ol {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
 }
 
 /* ============================================
