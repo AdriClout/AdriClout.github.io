@@ -900,29 +900,29 @@ input[type="button"] i {
    RESPONSIVE - MOBILE
    ============================================ */
 
-/* Cacher les éléments vides (undefined) */
+/* Cacher les éléments vides (undefined) et éléments inutiles */
+#header-horizontal h1,
+#header-horizontal .header-title,
+#header-horizontal .title,
 #header-horizontal h1:empty,
 #header-horizontal .title:empty,
 #header-horizontal > *:empty {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
-/* Titre dans le header */
-.header-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  white-space: nowrap;
+/* Empêcher le texte "undefined" d'apparaître */
+#header-horizontal::before,
+#header-horizontal::after,
+.header-container::before,
+.header-container::after {
+  content: none !important;
+  display: none !important;
 }
 
-.header-title a {
-  color: white !important;
-  text-decoration: none !important;
-  border: none !important;
-}
-
-.header-title a:hover {
-  opacity: 0.8;
-}
+/* Titre dans le header - DÉSACTIVÉ car caché */
+/* .header-title est masqué globalement ci-dessus */
 
 /* Menu hamburger mobile - CACHÉ SUR DESKTOP */
 .mobile-menu-btn,
@@ -956,20 +956,34 @@ input[type="button"] i {
   }
 
   .header-container {
+    flex-direction: row !important;
     flex-wrap: nowrap !important;
     padding: 0.75rem 1rem !important;
-    gap: 0.75rem !important;
-    justify-content: space-between !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   /* Afficher le bouton hamburger sur mobile */
   .mobile-menu-btn,
   #mobile-menu-toggle {
-    display: block !important;
-    order: -1;
+    display: flex !important;
+    order: 0;
+    flex-shrink: 0;
+    padding: 0.5rem !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
-  /* Menu caché par défaut sur mobile */
+  .mobile-menu-btn i,
+  #mobile-menu-toggle i {
+    font-size: 1.2rem !important;
+    margin: 0 !important;
+  }
+
+  /* Cacher la navigation horizontale sur mobile */
   .header-nav {
     position: fixed !important;
     top: 0 !important;
@@ -1012,13 +1026,16 @@ input[type="button"] i {
     background: rgba(255,255,255,0.1) !important;
   }
 
-  /* Boutons langue et dark mode plus compacts et centrés */
+  /* Boutons langue et dark mode côte à côte avec hamburger */
   .header-lang,
   .header-darkmode {
-    padding: 0.3rem 0.6rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    flex-shrink: 0;
+    order: 1;
   }
 
   .header-lang span,
@@ -1031,12 +1048,15 @@ input[type="button"] i {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
+    padding: 0.5rem !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
   }
 
   .header-lang i,
   .header-darkmode i {
     margin: 0 !important;
+    font-size: 1.2rem !important;
   }
 
   /* Réduire l'espace en haut */
