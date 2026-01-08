@@ -1259,3 +1259,14 @@ body::after {
 .feature-icons p {
   text-align: left !important;
 }
+
+/* ============================================
+   ANIMATION RADAR+ - CACHER BETA ET DIAGRAMME
+   ============================================ */
+
+/* Couper l'animation Radar+ pour ne garder que les logos des médias */
+#radar img[src*="animation-radar"] {
+  max-height: 250px !important;
+  object-fit: cover !important;
+  object-position: top !important;
+}
