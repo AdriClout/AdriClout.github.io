@@ -761,6 +761,65 @@
       })();
     </script>
 
+    <!-- Script pour éliminer tout "undefined" dans le header -->
+    <script>
+      (function() {
+        // Fonction pour nettoyer les "undefined"
+        function removeUndefinedText() {
+          const header = document.getElementById('header-horizontal');
+          if (!header) return;
+
+          // Parcourir tous les nœuds de texte
+          const walker = document.createTreeWalker(
+            header,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+          );
+
+          const nodesToRemove = [];
+          while (walker.nextNode()) {
+            const node = walker.currentNode;
+            if (node.nodeValue && node.nodeValue.trim() === 'undefined') {
+              nodesToRemove.push(node);
+            }
+          }
+
+          // Supprimer les nœuds contenant "undefined"
+          nodesToRemove.forEach(node => {
+            if (node.parentNode) {
+              node.parentNode.removeChild(node);
+            }
+          });
+
+          // Supprimer aussi tout élément vide qui pourrait contenir undefined
+          const emptyDivs = header.querySelectorAll('div:empty, span:empty, p:empty, h1:empty, h2:empty, h3:empty');
+          emptyDivs.forEach(el => {
+            if (el.textContent.trim() === '' || el.textContent.trim() === 'undefined') {
+              el.remove();
+            }
+          });
+        }
+
+        // Exécuter immédiatement
+        removeUndefinedText();
+
+        // Réexécuter après le chargement complet
+        window.addEventListener('load', removeUndefinedText);
+
+        // Utiliser un MutationObserver pour surveiller les changements
+        const observer = new MutationObserver(removeUndefinedText);
+        const header = document.getElementById('header-horizontal');
+        if (header) {
+          observer.observe(header, {
+            childList: true,
+            subtree: true,
+            characterData: true
+          });
+        }
+      })();
+    </script>
+
     <!-- Active Menu on Scroll Script -->
     <script>
       (function() {
