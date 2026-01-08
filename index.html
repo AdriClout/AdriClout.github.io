@@ -996,7 +996,9 @@
 
     <script>
       // 🐱 Easter Egg: Galerie de Señor Puel
-      (function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('🐱 Script chargé, initialisation de la galerie Puel...');
+
         const puelPhotos = [
           'images/puel/328968776_875934246998181_7295530914474217986_n.jpg',
           'images/puel/469232378_536602822691299_1959135572516369001_n.jpg',
@@ -1041,6 +1043,17 @@
         const closeBtn = document.getElementById('puel-close');
         const prevBtn = document.getElementById('puel-prev');
         const nextBtn = document.getElementById('puel-next');
+
+        console.log('🐱 Éléments trouvés:', {
+          gallery: !!gallery,
+          trigger: !!trigger,
+          closeBtn: !!closeBtn
+        });
+
+        if (!trigger) {
+          console.error('❌ ERREUR: Élément trigger non trouvé!');
+          return;
+        }
 
         function showImage(index) {
           currentImage.src = puelPhotos[index];
@@ -1097,7 +1110,9 @@
             closeGallery();
           }
         });
-      })();
+
+        console.log('🐱 Galerie Puel initialisée avec succès!');
+      });
     </script>
   </body>
 </html>
