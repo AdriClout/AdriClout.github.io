@@ -890,18 +890,26 @@ input[type="button"] i {
    BOUTON FORMULAIRE CONTACT - CENTRAGE FORCÉ
    ============================================ */
 
-#contact form ul.actions {
+#contact form ul.actions,
+#contact form ul.actions.special {
   display: flex !important;
   justify-content: center !important;
   width: 100% !important;
   margin-left: 0 !important;
+  margin-right: 0 !important;
   padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-top: 1rem !important;
 }
 
-#contact form ul.actions li {
+#contact form ul.actions li,
+#contact form ul.actions.special li {
   padding-left: 0 !important;
+  padding-right: 0 !important;
   margin: 0 !important;
   list-style: none !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 #contact form input[type="submit"] {
