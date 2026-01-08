@@ -976,11 +976,14 @@ body::after {
   display: none !important;
 }
 
-/* Sur mobile, s'assurer qu'il n'y a RIEN au-dessus du header */
+/* Sur mobile, garder le header fixe en haut */
 @media screen and (max-width: 980px) {
   #header-horizontal {
-    position: relative !important;
+    position: fixed !important;
     top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
   }
 
   /* Cacher tout élément qui pourrait générer "undefined" sur mobile */
@@ -1131,9 +1134,14 @@ body::after {
     font-size: 1.2rem !important;
   }
 
-  /* Réduire l'espace en haut */
+  /* Compenser le header fixe sur mobile */
+  #main {
+    padding-top: 60px !important;
+  }
+
+  /* Réduire l'espace en haut de la section home */
   #home .container {
-    padding-top: 4rem !important;
+    padding-top: 3rem !important;
   }
 
   /* Permettre retour à la ligne pour les compétences */
