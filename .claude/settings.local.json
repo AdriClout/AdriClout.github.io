@@ -20,7 +20,8 @@
       "WebFetch(domain:www.datagotchi.com)",
       "WebFetch(domain:adriencloutier.com)",
       "Bash(curl:*)",
-      "WebFetch(domain:web3forms.com)"
+      "WebFetch(domain:web3forms.com)",
+      "Bash(sort:*)"
     ],
     "deny": [],
     "ask": []
