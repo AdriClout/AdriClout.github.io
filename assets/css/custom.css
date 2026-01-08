@@ -10,6 +10,23 @@ Palette de couleurs:
 */
 
 /* ============================================
+   CACHER LE VIEUX HEADER DU TEMPLATE (SIDEBAR)
+   ============================================ */
+
+/* Le vieux #header du template "Read Only" doit être complètement caché */
+#header:not(#header-horizontal) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  pointer-events: none !important;
+}
+
+/* ============================================
    HEADER HORIZONTAL FIXE
    ============================================ */
 
