@@ -1203,6 +1203,26 @@ body::after {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
   }
+
+  /* Centrage parfait du bouton de contact sur mobile */
+  #contact form ul.actions {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #contact form ul.actions li {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  #contact form input[type="submit"] {
+    width: auto !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
 }
 
 /* ============================================
