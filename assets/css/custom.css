@@ -1256,8 +1256,20 @@ body::after {
    ============================================ */
 
 /* Aligner les liens de conférence à gauche au lieu de centré */
-.feature-icons p {
+.feature-icons,
+.feature-icons ul,
+.feature-icons li,
+.feature-icons p,
+.feature-icons h5,
+.feature-icons a {
   text-align: left !important;
+}
+
+/* Garder l'icône centrée */
+.feature-icons .icon {
+  display: block;
+  text-align: center !important;
+  margin: 0 auto 1rem auto;
 }
 
 /* ============================================
