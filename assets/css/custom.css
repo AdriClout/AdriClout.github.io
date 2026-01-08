@@ -1267,14 +1267,24 @@ body::after {
 .feature-icons,
 .feature-icons ul,
 .feature-icons li,
+.feature-icons li.col-4,
+.feature-icons li.col-12-small,
 .feature-icons p,
 .feature-icons h5,
 .feature-icons a {
   text-align: left !important;
 }
 
+/* Super spécifique pour les paragraphes de liens */
+#conferences .feature-icons li p,
+#conferences .feature-icons li p a {
+  text-align: left !important;
+  display: block !important;
+}
+
 /* Garder l'icône centrée */
-.feature-icons .icon {
+.feature-icons .icon,
+.feature-icons span.icon {
   display: block;
   text-align: center !important;
   margin: 0 auto 1rem auto;
