@@ -907,19 +907,92 @@
     </script>
 
     <!-- 🐱 GALERIE SECRÈTE DE SEÑOR PUEL 🐱 -->
-    <div id="puel-gallery" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center;">
-      <button id="puel-close" style="position: absolute; top: 20px; right: 30px; background: none; border: none; color: white; font-size: 40px; cursor: pointer; z-index: 100000;">&times;</button>
-
-      <button id="puel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-size: 40px; padding: 10px 20px; cursor: pointer; border-radius: 5px;">&#10094;</button>
-
-      <button id="puel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-size: 40px; padding: 10px 20px; cursor: pointer; border-radius: 5px;">&#10095;</button>
-
-      <div style="text-align: center; max-width: 90%; max-height: 90%;">
-        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">🐱 Señor Puel 🐱</h2>
-        <img id="puel-current-image" src="" style="max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 10px;" alt="Señor Puel" />
-        <p id="puel-counter" style="color: white; margin-top: 1rem; font-size: 1.2rem;"></p>
+    <div id="puel-gallery" style="display: none;">
+      <button id="puel-close">&times;</button>
+      <button id="puel-prev">&#10094;</button>
+      <button id="puel-next">&#10095;</button>
+      <div id="puel-content">
+        <h2>🐱 Señor Puel 🐱</h2>
+        <img id="puel-current-image" src="" alt="Señor Puel" />
+        <p id="puel-counter"></p>
       </div>
     </div>
+
+    <style>
+      #puel-gallery {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.95);
+        z-index: 99999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+      #puel-gallery.active {
+        display: flex !important;
+      }
+      #puel-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        z-index: 100001;
+        line-height: 1;
+      }
+      #puel-close:hover {
+        opacity: 0.7;
+      }
+      #puel-prev, #puel-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: white;
+        font-size: 40px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 100001;
+      }
+      #puel-prev:hover, #puel-next:hover {
+        background: rgba(255,255,255,0.3);
+      }
+      #puel-prev {
+        left: 20px;
+      }
+      #puel-next {
+        right: 20px;
+      }
+      #puel-content {
+        text-align: center;
+        max-width: 90%;
+        max-height: 90%;
+      }
+      #puel-content h2 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+      #puel-current-image {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      #puel-counter {
+        color: white;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+      }
+    </style>
 
     <script>
       // 🐱 Easter Egg: Galerie de Señor Puel
@@ -975,14 +1048,14 @@
         }
 
         function openGallery() {
-          gallery.style.display = 'flex';
+          gallery.classList.add('active');
           currentIndex = 0;
           showImage(currentIndex);
           document.body.style.overflow = 'hidden';
         }
 
         function closeGallery() {
-          gallery.style.display = 'none';
+          gallery.classList.remove('active');
           document.body.style.overflow = 'auto';
         }
 
@@ -1004,10 +1077,10 @@
 
         // Fermer avec Escape
         document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && gallery.style.display === 'flex') {
+          if (e.key === 'Escape' && gallery.classList.contains('active')) {
             closeGallery();
           }
-          if (gallery.style.display === 'flex') {
+          if (gallery.classList.contains('active')) {
             if (e.key === 'ArrowRight') nextImage();
             if (e.key === 'ArrowLeft') prevImage();
           }
