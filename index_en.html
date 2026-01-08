@@ -85,7 +85,7 @@
         <section id="home">
           <div class="container" style="text-align: center; padding: 2rem 2rem 4rem 2rem;">
             <div class="image avatar" style="margin: 0 auto 2rem;">
-              <img src="images/accueil/moi.jpeg" alt="Adrien Cloutier" style="border-radius: 50%; width: 280px; height: 280px; object-fit: cover; object-position: center 37%;" />
+              <img id="secret-puel-trigger" src="images/accueil/moi.jpeg" alt="Adrien Cloutier" style="border-radius: 50%; width: 280px; height: 280px; object-fit: cover; object-position: center 37%; cursor: pointer;" title="🐱" />
             </div>
 
             <h2 style="color: #2563eb; font-size: 2.5rem; margin-bottom: 0.5rem;">Adrien Cloutier</h2>
@@ -903,6 +903,107 @@
 
         // Initial update
         updateActiveMenu();
+      })();
+    </script>
+
+    <!-- 🐱 SECRET SEÑOR PUEL GALLERY 🐱 -->
+    <div id="puel-gallery" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center;">
+      <button id="puel-close" style="position: absolute; top: 20px; right: 30px; background: none; border: none; color: white; font-size: 40px; cursor: pointer; z-index: 100000;">&times;</button>
+
+      <button id="puel-prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-size: 40px; padding: 10px 20px; cursor: pointer; border-radius: 5px;">&#10094;</button>
+
+      <button id="puel-next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-size: 40px; padding: 10px 20px; cursor: pointer; border-radius: 5px;">&#10095;</button>
+
+      <div style="text-align: center; max-width: 90%; max-height: 90%;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">🐱 Señor Puel 🐱</h2>
+        <img id="puel-current-image" src="" style="max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 10px;" alt="Señor Puel" />
+        <p id="puel-counter" style="color: white; margin-top: 1rem; font-size: 1.2rem;"></p>
+      </div>
+    </div>
+
+    <script>
+      // 🐱 Easter Egg: Señor Puel Gallery
+      (function() {
+        const puelPhotos = [
+          'images/puel/328968776_875934246998181_7295530914474217986_n.jpg',
+          'images/puel/469232378_536602822691299_1959135572516369001_n.jpg',
+          'images/puel/502536866_669444596073787_5150677502591438882_n.jpg',
+          'images/puel/502556808_669445712740342_3374524990364784947_n.jpg',
+          'images/puel/502561180_669443846073862_7869716648556377272_n.jpg',
+          'images/puel/502565212_669444536073793_8626550914120198739_n.jpg',
+          'images/puel/502672770_669444599407120_2698168056587013513_n.jpg',
+          'images/puel/502684384_669445386073708_3050678429455189496_n.jpg',
+          'images/puel/502700356_669445669407013_5595389003360079103_n.jpg',
+          'images/puel/502705998_669444849407095_7026431187601755511_n.jpg',
+          'images/puel/502948614_669445209407059_2614117996395783813_n.jpg',
+          'images/puel/502957341_669445119407068_8342314750458611136_n.jpg',
+          'images/puel/503352764_669445549407025_6478982372937479851_n.jpg',
+          'images/puel/503371181_669444876073759_4016640196334850909_n.jpg',
+          'images/puel/503408819_669445409407039_2457983385923381065_n.jpg',
+          'images/puel/503475278_669445106073736_6873901949915933649_n.jpg',
+          'images/puel/503497857_669443922740521_2084070386241615824_n.jpg',
+          'images/puel/503505641_669443876073859_4162512729869879615_n.jpg'
+        ];
+
+        let currentIndex = 0;
+        const gallery = document.getElementById('puel-gallery');
+        const currentImage = document.getElementById('puel-current-image');
+        const counter = document.getElementById('puel-counter');
+        const trigger = document.getElementById('secret-puel-trigger');
+        const closeBtn = document.getElementById('puel-close');
+        const prevBtn = document.getElementById('puel-prev');
+        const nextBtn = document.getElementById('puel-next');
+
+        function showImage(index) {
+          currentImage.src = puelPhotos[index];
+          counter.textContent = `${index + 1} / ${puelPhotos.length}`;
+        }
+
+        function openGallery() {
+          gallery.style.display = 'flex';
+          currentIndex = 0;
+          showImage(currentIndex);
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+          gallery.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % puelPhotos.length;
+          showImage(currentIndex);
+        }
+
+        function prevImage() {
+          currentIndex = (currentIndex - 1 + puelPhotos.length) % puelPhotos.length;
+          showImage(currentIndex);
+        }
+
+        // Event listeners
+        trigger.addEventListener('click', openGallery);
+        closeBtn.addEventListener('click', closeGallery);
+        nextBtn.addEventListener('click', nextImage);
+        prevBtn.addEventListener('click', prevImage);
+
+        // Close with Escape
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && gallery.style.display === 'flex') {
+            closeGallery();
+          }
+          if (gallery.style.display === 'flex') {
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+          }
+        });
+
+        // Close by clicking on background
+        gallery.addEventListener('click', function(e) {
+          if (e.target === gallery) {
+            closeGallery();
+          }
+        });
       })();
     </script>
   </body>
