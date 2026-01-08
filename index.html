@@ -569,9 +569,10 @@
                 <form method="POST" action="https://formsubmit.co/adrien.cloutier.1@gmail.com">
                   <!-- Champs cachés FormSubmit -->
                   <input type="hidden" name="_subject" value="Nouveau message depuis adriencloutier.com">
-                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_captcha" value="true">
                   <input type="hidden" name="_template" value="table">
-                  <input type="text" name="_honey" style="display:none">
+                  <!-- Honeypot anti-bot (ne pas toucher) -->
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                   <div class="row gtr-uniform">
                     <div class="col-12">
