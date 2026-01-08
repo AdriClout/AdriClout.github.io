@@ -1263,23 +1263,11 @@ body::after {
    ALIGNEMENT DES LIENS DE CONFÉRENCES
    ============================================ */
 
-/* Aligner les liens de conférence à gauche au lieu de centré */
-.feature-icons,
-.feature-icons ul,
-.feature-icons li,
-.feature-icons li.col-4,
-.feature-icons li.col-12-small,
-.feature-icons p,
-.feature-icons h5,
-.feature-icons a {
+/* Aligner SEULEMENT les petits liens "Lien vers la conférence" à gauche */
+/* NE PAS toucher aux boutons d'action qui doivent rester centrés */
+#conferences .feature-icons li p:has(a[href*="fss.ulaval.ca"]),
+#conferences .feature-icons li p:has(a[href*="ftsr.ulaval.ca"]) {
   text-align: left !important;
-}
-
-/* Super spécifique pour les paragraphes de liens */
-#conferences .feature-icons li p,
-#conferences .feature-icons li p a {
-  text-align: left !important;
-  display: block !important;
 }
 
 /* Garder l'icône centrée */
@@ -1288,6 +1276,13 @@ body::after {
   display: block;
   text-align: center !important;
   margin: 0 auto 1rem auto;
+}
+
+/* S'assurer que TOUS les boutons restent centrés */
+ul.actions,
+ul.actions.special {
+  text-align: center !important;
+  justify-content: center !important;
 }
 
 /* ============================================
