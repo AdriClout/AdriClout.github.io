@@ -21,7 +21,9 @@
       "WebFetch(domain:adriencloutier.com)",
       "Bash(curl:*)",
       "WebFetch(domain:web3forms.com)",
-      "Bash(sort:*)"
+      "Bash(sort:*)",
+      "Bash(git mv:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
