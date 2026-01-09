@@ -710,40 +710,41 @@ strong {
 
 /* Mode sombre pour le dropdown */
 body.dark-mode .theme-dropdown {
-  background: #1e293b;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  background: #161b22;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid #30363d;
 }
 
 body.dark-mode .theme-option {
-  color: #e2e8f0;
+  color: #e6edf3;
 }
 
 body.dark-mode .theme-option:hover {
-  background: #334155;
+  background: #21262d;
 }
 
 body.dark-mode .theme-option.active {
-  background: #1e3a8a;
+  background: #1f2937;
 }
 
 body.dark-mode .theme-option .theme-name {
-  color: #e2e8f0;
+  color: #e6edf3;
 }
 
 body.dark-mode .theme-check {
-  color: #60a5fa;
+  color: #58a6ff;
 }
 
-/* Dark mode styles */
+/* Dark mode styles - Style GitHub/Discord neutre et apprécié */
 body.dark-mode {
-  background-color: #0f172a !important;
-  color: #e2e8f0 !important;
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
 }
 
 /* Textes en mode sombre */
 body.dark-mode p,
 body.dark-mode li {
-  color: #cbd5e1 !important;
+  color: #c9d1d9 !important;
 }
 
 body.dark-mode h1,
@@ -752,21 +753,21 @@ body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode h5,
 body.dark-mode h6 {
-  color: #ffffff !important;
+  color: #f0f6fc !important;
 }
 
 body.dark-mode strong {
-  color: #ffffff !important;
+  color: #f0f6fc !important;
 }
 
 body.dark-mode em {
-  color: #ffffff !important;
+  color: #e6edf3 !important;
 }
 
 /* Sections en mode sombre */
 body.dark-mode #main > section {
-  background: #1e293b !important;
-  border-top: 2px solid #334155 !important;
+  background: #161b22 !important;
+  border-top: 2px solid #30363d !important;
 }
 
 body.dark-mode .container {
@@ -778,13 +779,13 @@ body.dark-mode .academic-card,
 body.dark-mode .research-center-card,
 body.dark-mode .project-card,
 body.dark-mode .conference-card {
-  background: #334155 !important;
-  border-color: #475569 !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+  background: #21262d !important;
+  border-color: #30363d !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4) !important;
 }
 
 body.dark-mode .card-meta {
-  color: #94a3b8 !important;
+  color: #8b949e !important;
 }
 
 /* Liens en mode sombre */
@@ -820,24 +821,24 @@ body.dark-mode .button:hover {
 
 /* Footer en mode sombre */
 body.dark-mode #footer {
-  background: #0f172a !important;
-  border-top: 2px solid #334155 !important;
+  background: #0d1117 !important;
+  border-top: 2px solid #30363d !important;
 }
 
 body.dark-mode #footer h4 {
-  color: #f1f5f9 !important;
+  color: #f0f6fc !important;
 }
 
 body.dark-mode #footer .copyright {
-  color: #94a3b8 !important;
+  color: #8b949e !important;
 }
 
 body.dark-mode #footer a {
-  color: #60a5fa !important;
+  color: #58a6ff !important;
 }
 
 body.dark-mode #footer a:hover {
-  color: #93c5fd !important;
+  color: #79c0ff !important;
 }
 
 /* Images en mode sombre */
@@ -848,32 +849,32 @@ body.dark-mode .image.avatar img {
 
 /* Feature icons en mode sombre */
 body.dark-mode .feature-icons li {
-  border-top-color: #334155 !important;
+  border-top-color: #30363d !important;
 }
 
 body.dark-mode .feature-icons li:before {
-  background: #3b82f6 !important;
+  background: var(--color-primary-light) !important;
   color: #ffffff !important;
 }
 
 /* Section intro en mode sombre */
 body.dark-mode .section-intro {
-  color: #94a3b8 !important;
+  color: #8b949e !important;
 }
 
 /* Code et pre en mode sombre */
 body.dark-mode code,
 body.dark-mode pre {
-  background: #1e293b !important;
-  color: #e2e8f0 !important;
-  border-color: #334155 !important;
+  background: #161b22 !important;
+  color: #e6edf3 !important;
+  border-color: #30363d !important;
 }
 
 /* Blockquote en mode sombre */
 body.dark-mode blockquote {
-  border-left-color: #3b82f6 !important;
-  background: #1e293b !important;
-  color: #cbd5e1 !important;
+  border-left-color: var(--color-primary) !important;
+  background: #161b22 !important;
+  color: #c9d1d9 !important;
 }
 
 /* ============================================
@@ -957,13 +958,13 @@ body.dark-mode blockquote {
 
 /* Mode sombre pour les cartes de cours */
 body.dark-mode .course-card {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: #334155;
+  background: #161b22;
+  border-color: #30363d;
 }
 
 body.dark-mode .course-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #3b82f6;
+  background: #21262d;
+  border-color: var(--color-primary);
 }
 
 /* Responsive - empiler sur mobile */
