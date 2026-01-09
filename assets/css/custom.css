@@ -164,13 +164,15 @@ Palette de couleurs:
   }
 
   .lang-btn,
-  .darkmode-btn {
+  .darkmode-btn,
+  .theme-btn {
     padding: 0.5rem 0.7rem;
     font-size: 0.85rem;
     gap: 0.3rem;
   }
 
-  .header-darkmode .darkmode-text {
+  .header-darkmode .darkmode-text,
+  .header-theme .theme-text {
     display: none !important;
   }
 }
@@ -553,6 +555,17 @@ strong {
   margin-left: 0;
 }
 
+/* ============================================
+   SÉLECTEUR DE THÈME
+   ============================================ */
+
+/* Conteneur du bouton thème */
+.header-theme {
+  flex-shrink: 0;
+  margin-left: 0;
+  position: relative;
+}
+
 .darkmode-btn {
   display: inline-flex;
   align-items: center;
@@ -582,6 +595,140 @@ strong {
 .darkmode-btn span {
   color: #ffffff !important;
   opacity: 1 !important;
+}
+
+/* Bouton thème dans header */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  background: transparent !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: none !important;
+  border-radius: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  opacity: 1 !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+.theme-btn i,
+.theme-btn span {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Dropdown de sélection de thème */
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  min-width: 200px;
+  z-index: 10001;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.theme-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Options de thème */
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+}
+
+.theme-option:hover {
+  background: #f3f4f6;
+}
+
+.theme-option.active {
+  background: #eff6ff;
+}
+
+/* Pastille de couleur */
+.theme-color {
+  width: 32px;
+  height: 32px;
+  border-radius: 0.35rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Nom du thème */
+.theme-option .theme-name {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Icône de check */
+.theme-check {
+  color: #2563eb;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.theme-option.active .theme-check {
+  opacity: 1;
+}
+
+/* Mode sombre pour le dropdown */
+body.dark-mode .theme-dropdown {
+  background: #1e293b;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .theme-option {
+  color: #e2e8f0;
+}
+
+body.dark-mode .theme-option:hover {
+  background: #334155;
+}
+
+body.dark-mode .theme-option.active {
+  background: #1e3a8a;
+}
+
+body.dark-mode .theme-option .theme-name {
+  color: #e2e8f0;
+}
+
+body.dark-mode .theme-check {
+  color: #60a5fa;
 }
 
 /* Dark mode styles */
@@ -1132,9 +1279,10 @@ body::after {
     background: rgba(255,255,255,0.1) !important;
   }
 
-  /* Boutons langue et dark mode côte à côte avec hamburger */
+  /* Boutons langue, dark mode et thème côte à côte avec hamburger */
   .header-lang,
-  .header-darkmode {
+  .header-darkmode,
+  .header-theme {
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
@@ -1145,12 +1293,14 @@ body::after {
   }
 
   .header-lang span,
-  .header-darkmode .darkmode-text {
+  .header-darkmode .darkmode-text,
+  .header-theme .theme-text {
     display: none !important;
   }
 
   .header-lang a,
-  .header-darkmode button {
+  .header-darkmode button,
+  .header-theme button {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -1160,9 +1310,19 @@ body::after {
   }
 
   .header-lang i,
-  .header-darkmode i {
+  .header-darkmode i,
+  .header-theme i {
     margin: 0 !important;
     font-size: 1.2rem !important;
+  }
+
+  /* Dropdown de thème sur mobile */
+  .theme-dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 70px;
+    right: 10px;
+    left: auto;
   }
 
   /* Compenser le header fixe sur mobile */

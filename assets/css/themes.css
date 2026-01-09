@@ -1,0 +1,196 @@
+/* ============================================
+   THÈMES DE COULEURS - Adrien Cloutier
+   5 palettes au choix pour les visiteurs
+   ============================================ */
+
+/* THÈME 1: BLEU TECH (actuel/défaut) */
+:root,
+[data-theme="tech-blue"] {
+  --color-primary: #2563eb;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #3b82f6;
+  --color-accent: #60a5fa;
+  --color-header-start: #1e40af;
+  --color-header-end: #2563eb;
+  --color-button-gradient-start: #2563eb;
+  --color-button-gradient-end: #1e40af;
+  --theme-name: "Bleu Tech";
+}
+
+/* THÈME 2: ACADÉMIQUE CLASSIQUE (Bordeaux/Rouge) */
+[data-theme="classic-burgundy"] {
+  --color-primary: #8B1538;
+  --color-primary-dark: #6d1129;
+  --color-primary-light: #C8102E;
+  --color-accent: #DAA520;
+  --color-header-start: #6d1129;
+  --color-header-end: #8B1538;
+  --color-button-gradient-start: #8B1538;
+  --color-button-gradient-end: #6d1129;
+  --theme-name: "Académique";
+}
+
+/* THÈME 3: VERT DONNÉES */
+[data-theme="green-data"] {
+  --color-primary: #047857;
+  --color-primary-dark: #065f46;
+  --color-primary-light: #059669;
+  --color-accent: #10b981;
+  --color-header-start: #065f46;
+  --color-header-end: #047857;
+  --color-button-gradient-start: #047857;
+  --color-button-gradient-end: #065f46;
+  --theme-name: "Vert Données";
+}
+
+/* THÈME 4: MARINE + OR */
+[data-theme="navy-gold"] {
+  --color-primary: #1e3a8a;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #3b82f6;
+  --color-accent: #f59e0b;
+  --color-header-start: #1e3a8a;
+  --color-header-end: #1e40af;
+  --color-button-gradient-start: #1e40af;
+  --color-button-gradient-end: #1e3a8a;
+  --theme-name: "Marine & Or";
+}
+
+/* THÈME 5: ARDOISE MODERNE (Teal) */
+[data-theme="modern-slate"] {
+  --color-primary: #0f766e;
+  --color-primary-dark: #115e59;
+  --color-primary-light: #0d9488;
+  --color-accent: #14b8a6;
+  --color-header-start: #115e59;
+  --color-header-end: #0f766e;
+  --color-button-gradient-start: #0f766e;
+  --color-button-gradient-end: #115e59;
+  --theme-name: "Ardoise";
+}
+
+/* ============================================
+   APPLICATION DES VARIABLES AUX ÉLÉMENTS
+   ============================================ */
+
+/* Header */
+#header-horizontal {
+  background: linear-gradient(135deg, var(--color-header-start) 0%, var(--color-header-end) 100%) !important;
+}
+
+#header {
+  background: linear-gradient(135deg, var(--color-header-start) 0%, var(--color-header-end) 100%) !important;
+}
+
+/* Liens */
+a[href]:not(.button):not(.header-nav a):not(.lang-btn):not(.darkmode-btn):not(.theme-btn) {
+  color: var(--color-primary) !important;
+  border-bottom-color: rgba(37, 99, 235, 0.2) !important;
+}
+
+a[href]:not(.button):not(.header-nav a):not(.lang-btn):not(.darkmode-btn):not(.theme-btn):hover {
+  color: var(--color-primary-dark) !important;
+  border-bottom-color: var(--color-primary) !important;
+}
+
+/* Boutons */
+.button.primary,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button:not(.darkmode-btn):not(.theme-btn):not(.mobile-menu-btn),
+.button {
+  background-color: var(--color-primary) !important;
+  background: linear-gradient(135deg, var(--color-button-gradient-start) 0%, var(--color-button-gradient-end) 100%) !important;
+}
+
+.button.primary:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:not(.darkmode-btn):not(.theme-btn):not(.mobile-menu-btn):hover,
+.button:hover {
+  background-color: var(--color-primary-dark) !important;
+  background: linear-gradient(135deg, var(--color-button-gradient-end) 0%, var(--color-header-start) 100%) !important;
+}
+
+/* Titres */
+h3 {
+  border-bottom-color: var(--color-primary) !important;
+}
+
+h4 {
+  color: var(--color-primary-dark) !important;
+}
+
+strong {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Bordures et accents */
+section.special, .special {
+  border-top-color: var(--color-primary) !important;
+}
+
+.feature-icons li:before {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+  color: #ffffff !important;
+}
+
+.academic-card:hover {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12) !important;
+}
+
+.research-center-card::before {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+}
+
+.conference-card .conference-meta {
+  color: var(--color-primary) !important;
+}
+
+/* Avatar */
+.image.avatar img {
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 0 0 0.5rem rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Accents spéciaux */
+.accent-line {
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+}
+
+.academic-badge {
+  background: rgba(37, 99, 235, 0.1) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* Mode sombre - adaptation des couleurs */
+body.dark-mode a[href]:not(.button):not(.header-nav a):not(.lang-btn):not(.darkmode-btn):not(.theme-btn) {
+  color: var(--color-accent) !important;
+  border-bottom-color: rgba(96, 165, 250, 0.3) !important;
+}
+
+body.dark-mode a[href]:not(.button):not(.header-nav a):not(.lang-btn):not(.darkmode-btn):not(.theme-btn):hover {
+  color: var(--color-primary-light) !important;
+  border-bottom-color: var(--color-accent) !important;
+}
+
+body.dark-mode .button.primary,
+body.dark-mode input[type="submit"],
+body.dark-mode input[type="reset"],
+body.dark-mode input[type="button"],
+body.dark-mode button:not(.darkmode-btn):not(.theme-btn):not(.mobile-menu-btn),
+body.dark-mode .button {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
+}
+
+body.dark-mode .feature-icons li:before {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%) !important;
+}
+
+body.dark-mode .image.avatar img {
+  border-color: rgba(96, 165, 250, 0.5) !important;
+  box-shadow: 0 0 0 0.5rem rgba(96, 165, 250, 0.1) !important;
+}
