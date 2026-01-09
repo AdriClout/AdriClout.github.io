@@ -69,6 +69,71 @@
   --theme-name: "Ardoise";
 }
 
+/* THÈME 6: NOIR & BLANC (Apple/Stripe minimal) */
+[data-theme="monochrome"] {
+  --color-primary: #18181b;
+  --color-primary-dark: #09090b;
+  --color-primary-light: #27272a;
+  --color-accent: #71717a;
+  --color-header-start: #09090b;
+  --color-header-end: #18181b;
+  --color-button-gradient-start: #18181b;
+  --color-button-gradient-end: #09090b;
+  --theme-name: "Monochrome";
+}
+
+/* THÈME 7: VIOLET GRADIENT (Stripe/Twitch tech) */
+[data-theme="purple-gradient"] {
+  --color-primary: #7c3aed;
+  --color-primary-dark: #6d28d9;
+  --color-primary-light: #8b5cf6;
+  --color-accent: #a78bfa;
+  --color-header-start: #6d28d9;
+  --color-header-end: #7c3aed;
+  --color-button-gradient-start: #7c3aed;
+  --color-button-gradient-end: #6d28d9;
+  --theme-name: "Violet";
+}
+
+/* THÈME 8: CORAIL SUNSET (Product Hunt créatif) */
+[data-theme="coral-sunset"] {
+  --color-primary: #f97316;
+  --color-primary-dark: #ea580c;
+  --color-primary-light: #fb923c;
+  --color-accent: #fdba74;
+  --color-header-start: #ea580c;
+  --color-header-end: #f97316;
+  --color-button-gradient-start: #f97316;
+  --color-button-gradient-end: #ea580c;
+  --theme-name: "Corail";
+}
+
+/* THÈME 9: INDIGO PROFOND (Notion/Medium lecture) */
+[data-theme="deep-indigo"] {
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-primary-light: #6366f1;
+  --color-accent: #818cf8;
+  --color-header-start: #4338ca;
+  --color-header-end: #4f46e5;
+  --color-button-gradient-start: #4f46e5;
+  --color-button-gradient-end: #4338ca;
+  --theme-name: "Indigo";
+}
+
+/* THÈME 10: ROSE MAGENTA (Dribbble créatif) */
+[data-theme="magenta-creative"] {
+  --color-primary: #db2777;
+  --color-primary-dark: #be185d;
+  --color-primary-light: #ec4899;
+  --color-accent: #f472b6;
+  --color-header-start: #be185d;
+  --color-header-end: #db2777;
+  --color-button-gradient-start: #db2777;
+  --color-button-gradient-end: #be185d;
+  --theme-name: "Rose";
+}
+
 /* ============================================
    APPLICATION DES VARIABLES AUX ÉLÉMENTS
    ============================================ */
