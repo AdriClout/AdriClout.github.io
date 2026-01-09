@@ -1097,7 +1097,7 @@ input[type="button"] i {
 
 /* ÉLIMINER COMPLÈTEMENT LA BARRE NOIRE AVEC "undefined" */
 /* Cacher tous les éléments de texte dans le header qui ne sont pas des boutons/liens */
-#header-horizontal *:not(.header-container):not(.header-nav):not(.header-nav *):not(.header-lang):not(.header-lang *):not(.header-darkmode):not(.header-darkmode *):not(.mobile-menu-btn):not(.mobile-menu-btn *):not(button):not(a):not(i):not(span):not(ul):not(li):not(nav) {
+#header-horizontal *:not(.header-container):not(.header-nav):not(.header-nav *):not(.header-lang):not(.header-lang *):not(.header-darkmode):not(.header-darkmode *):not(.header-theme):not(.header-theme *):not(.mobile-menu-btn):not(.mobile-menu-btn *):not(button):not(a):not(i):not(span):not(ul):not(li):not(nav):not(div) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
