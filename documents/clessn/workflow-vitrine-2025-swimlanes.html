@@ -246,8 +246,99 @@
             transition: transform 0.3s;
         }
 
+        /* Badges DEV/PROD */
+        .badge-prod {
+            display: inline-block;
+            background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 11px;
+            margin: 0 4px;
+            border: 1px solid #ac2925;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .badge-dev {
+            display: inline-block;
+            background: linear-gradient(135deg, #5cb85c 0%, #449d44 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 11px;
+            margin: 0 4px;
+            border: 1px solid #398439;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .env-source {
+            font-weight: 600;
+            margin-right: 2px;
+        }
+
+        .env-output {
+            font-weight: 600;
+            margin-right: 2px;
+        }
+
+        /* Node environment badges - PROD source (rouge) */
+        .node[data-env-source="PROD"]::before {
+            content: "PROD";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 9px;
+            border: 1px solid #ac2925;
+            pointer-events: none;
+            z-index: 5;
+            user-select: none;
+        }
+
+        /* Node environment badges - DEV source (vert) */
+        .node[data-env-source="DEV"]::before {
+            content: "DEV";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: linear-gradient(135deg, #5cb85c 0%, #449d44 100%);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 9px;
+            border: 1px solid #398439;
+            pointer-events: none;
+            z-index: 5;
+            user-select: none;
+        }
+
+        /* Node environment badges - DEV output (vert) */
+        .node[data-env-output="DEV"]::after {
+            content: "DEV";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #5cb85c 0%, #449d44 100%);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 9px;
+            border: 1px solid #398439;
+            pointer-events: none;
+            z-index: 5;
+            user-select: none;
+        }
+
         .pipeline.collapsed .pipeline-content {
-            display: none;
+            display: none !important;
         }
 
         .pipeline.collapsed .toggle-icon {
@@ -408,10 +499,10 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>🔵 Salient Objects (Pipeline de Base)</span>
-                <span class="frequency">6x/jour: 00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC (19:03, 23:03, 03:03, 07:03, 11:03, 15:03 EST)</span>
+                <span class="frequency">6x/jour: 00:16, 04:16, 08:16, 12:16, 16:16, 20:16 UTC (19:16, 23:16, 03:16, 07:16, 11:16, 15:16 EST)</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-source" data-type="source" data-source="r-media-headlines">
+                <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
                     r-media-headlines
                     <div class="node-detail">Glue Job Python</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
@@ -423,7 +514,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="salient_headlines_objects">
+                <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-output="DEV">
                     salient_headlines_objects
                     <div class="node-detail">Table des objets saillants</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -435,7 +526,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="salient_index">
+                <div class="node node-table" data-type="table" data-table="salient_index" data-env-output="DEV">
                     salient_index
                     <div class="node-detail">Indices de saillance</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -451,7 +542,7 @@
                 <span class="frequency">Quotidien: 00:15 UTC (19:15 EST veille)</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-source" data-type="source" data-source="r-media-headlines">
+                <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
                     r-media-headlines
                     <div class="node-detail">Glue Job Python ETL</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
@@ -469,7 +560,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="headlines_issues">
+                <div class="node node-table" data-type="table" data-table="headlines_issues" data-env-output="DEV">
                     headlines_issues_*
                     <div class="node-detail">day/week/month</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -481,7 +572,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="issues_score">
+                <div class="node node-table" data-type="table" data-table="issues_score" data-env-output="DEV">
                     issues_score_day<br>issues_score_week<br>issues_score_month
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
@@ -496,7 +587,7 @@
                 <span class="frequency">Quotidien: 00:30 UTC (19:30 EST veille)</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-source" data-type="source" data-source="r-media-headlines">
+                <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
                     r-media-headlines
                     <div class="node-detail">Glue Job Python ETL</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
@@ -526,7 +617,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="parties_score">
+                <div class="node node-table" data-type="table" data-table="parties_score" data-env-output="DEV">
                     federal_parties_score_*<br>provincial_parties_score_*
                     <div class="node-detail">day/week/month</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -543,12 +634,12 @@
             </div>
             <div class="pipeline-content" style="display: grid; grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto; gap: 15px; align-items: center;">
                 <!-- Ligne 1: Daily/Weekly -->
-                <div class="node node-table" data-type="table" data-table="headlines_issues_day">
+                <div class="node node-table" data-type="table" data-table="headlines_issues_day" data-env-source="DEV">
                     headlines_issues_day
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">+</div>
-                <div class="node node-table" data-type="table" data-table="headlines_issues_week">
+                <div class="node node-table" data-type="table" data-table="headlines_issues_week" data-env-source="DEV">
                     headlines_issues_week
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
@@ -560,7 +651,7 @@
                 </div>
                 <div class="arrow">→</div>
                 <div style="position: relative;">
-                    <div class="node node-table" data-type="table" data-table="reflet_day">
+                    <div class="node node-table" data-type="table" data-table="reflet_day" data-env-output="DEV">
                         reflet_day
                         <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                     </div>
@@ -570,7 +661,7 @@
                     </div>
                 </div>
                 <div class="arrow">+</div>
-                <div class="node node-table" data-type="table" data-table="reflet_week">
+                <div class="node node-table" data-type="table" data-table="reflet_week" data-env-output="DEV">
                     reflet_week
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
@@ -582,7 +673,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow" style="grid-column: 8; margin-top: 40px;">→</div>
-                <div class="node node-table" data-type="table" data-table="reflet_month" style="grid-column: 9; margin-top: 40px;">
+                <div class="node node-table" data-type="table" data-table="reflet_month" data-env-output="DEV" style="grid-column: 9; margin-top: 40px;">
                     reflet_month
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
@@ -597,12 +688,12 @@
                 <span class="frequency">6x/jour: +55min après Glue</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-table" data-type="table" data-table="salient_headlines_objects">
+                <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
                     salient_headlines_objects
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">+</div>
-                <div class="node node-table" data-type="table" data-table="salient_index">
+                <div class="node node-table" data-type="table" data-table="salient_index" data-env-source="DEV">
                     salient_index
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
@@ -613,7 +704,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="headline_of_headlines">
+                <div class="node node-table" data-type="table" data-table="headline_of_headlines" data-env-output="DEV">
                     headline_of_headlines
                     <div class="node-detail">Une par période 4h</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -629,7 +720,7 @@
                 <span class="frequency">Vendredis: 17:00 UTC (12:00 EST)</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-table" data-type="table" data-table="salient_headlines_objects">
+                <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
                     salient_headlines_objects
                     <div class="node-detail">Semaine complète</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -641,7 +732,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="hot_20_headlines">
+                <div class="node node-table" data-type="table" data-table="hot_20_headlines" data-env-output="DEV">
                     hot_20_headlines
                     <div class="node-detail">3 pays</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -665,10 +756,10 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📡 SONAR Heatmaps (Monitoring Qualité)</span>
-                <span class="frequency">Mercredis: 09:00 UTC (04:00 EST)</span>
+                <span class="frequency">Mercredis: 12:30 UTC (07:30 EST)</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-source" data-type="source" data-source="r-media-frontpages">
+                <div class="node node-source" data-type="source" data-source="r-media-frontpages" data-env-source="PROD">
                     r-media-frontpages
                     <div class="node-detail">Glue Job Python</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
@@ -680,7 +771,7 @@
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="data_quality_14_days">
+                <div class="node node-table" data-type="table" data-table="data_quality_14_days" data-env-output="DEV">
                     data_quality_14_days
                     <div class="node-detail">Datamart: sonar</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -712,7 +803,7 @@
                 <span class="frequency">5x/jour: 00:39, 04:39, 08:39, 12:39, 16:39, 20:39 UTC</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-table" data-type="table" data-table="all-final-tables">
+                <div class="node node-table" data-type="table" data-table="all-final-tables" data-env-source="DEV">
                     Toutes les tables finales
                     <div class="node-detail">issues_score_*, parties_score_*, reflet_*, headline_of_headlines</div>
                     <div class="info-badge">📋 Cliquer pour liste complète</div>
@@ -749,55 +840,96 @@
     </div>
 
     <script>
+        console.log('🔧 Script chargé');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        console.log('✅ DOM prêt - Initialisation...');
+        
         // Modal data
         const modalData = {
             tables: {
                 'salient_headlines_objects': {
                     title: 'Table: salient_headlines_objects',
-                    description: 'Table principale contenant les headlines et leurs objets saillants extraits',
+                    description: 'Table principale contenant les headlines et leurs objets saillants extraits par GPT-4o',
                     columns: [
-                        'media_id - Identifiant du média',
-                        'country_id - Pays (CAN, USA)',
-                        'language - Langue du headline',
-                        'headline_start_montreal_tz - Début du headline (heure Montréal)',
-                        'headline_stop_montreal_tz - Fin du headline (heure Montréal)',
-                        'headline_start_utc - Début du headline (UTC)',
+                        '📍 IDENTIFIANTS:',
+                        'media_id - Identifiant du média (JDM, LAP, LED, CBC, CTV, etc. - EXCLUT TVA)',
+                        'country_id - Pays (QC/CAN/USA)',
+                        'language - Langue du headline (fr/en/autre)',
+                        '',
+                        '⏰ TEMPORALITÉ:',
+                        'headline_start_montreal_tz - Début du headline en Une (heure Montréal, format: YYYY-MM-DD HH:MM:SS.mmm)',
+                        'headline_stop_montreal_tz - Fin du headline en Une (heure Montréal)',
+                        'headline_start_utc - Début du headline (UTC, format: YYYY-MM-DD HH:MM:SS.mmm)',
                         'headline_stop_utc - Fin du headline (UTC)',
-                        'headline_minutes - Durée du headline en minutes',
-                        'headline_prop - Proportion de la période',
-                        'title - Titre du headline',
-                        'body - Corps du texte',
-                        'author - Auteur',
+                        'headline_minutes - Durée du headline en Une (minutes, INTEGER, min=10)',
+                        'headline_prop - Proportion de la période couverte (DOUBLE, 0.00-1.00)',
+                        'time_interval_montreal_tz - Intervalle 4h Montréal (00-04, 04-08, 08-12, 12-16, 16-20, 20-24)',
+                        'time_interval_utc - Intervalle 4h UTC (00-04, 04-08, 08-12, 12-16, 16-20, 20-24)',
+                        '',
+                        '📰 CONTENU (nettoyé):',
+                        'title - Titre du headline (noms médias supprimés, espaces nettoyés)',
+                        'body - Corps du texte (noms médias supprimés)',
+                        'author - Auteur de l\'article',
                         'url - URL de l\'article',
-                        'extracted_objects - Objets saillants extraits (CSV)',
-                        'time_interval_montreal_tz - Intervalle 4h (Montréal)',
-                        'time_interval_utc - Intervalle 4h (UTC)',
-                        'prompt - Prompt utilisé pour extraction LLM',
-                        'conversation - Conversation complète (JSON)',
-                        'response - Réponse LLM (JSON)',
-                        'tag - Version/timestamp des données'
+                        '',
+                        '🎯 EXTRACTION LLM:',
+                        'extracted_objects - Objets saillants extraits (CSV, en ANGLAIS, lowercase, sans ponctuation)',
+                        'prompt - Prompt utilisé pour extraction GPT-4o (TEXT)',
+                        'conversation - Conversation complète user+system (JSON)',
+                        'response - Réponse GPT-4o brute (JSON avec content, model, usage, etc.)',
+                        '',
+                        '🏷️ METADATA:',
+                        'tag - Timestamp de publication (format: YYYY-MM-DD HH:MM)'
+                    ],
+                    details: [
+                        '🔄 Processus incrémental: Charge uniquement les nouveaux headlines depuis le dernier traité',
+                        '📊 Granularité: Blocs de 4 heures',
+                        '🌍 Pays couverts: QC (Québec), CAN (Canada), USA (États-Unis)',
+                        '🚫 Exclusions: TVA (duplique JDM)',
+                        '🔤 Langues: fr (français), en (anglais)'
                     ]
                 },
                 'salient_index': {
                     title: 'Table: salient_index',
-                    description: 'Indices de saillance absolus par objet et période 4h (validé depuis radar-salient-index.R)',
+                    description: 'Indices de saillance absolus calculés par radar-salient-index.R (SANS LLM - calculs purs)',
                     columns: [
-                        'country_id - Pays (CAN, USA)',
+                        '🌍 DIMENSIONS:',
+                        'country_id - Pays (QC/CAN/USA)',
                         'date_utc - Date (UTC)',
                         'time_interval_utc - Intervalle 4h UTC (00-04, 04-08, 08-12, 12-16, 16-20, 20-24)',
                         'date_montreal_tz - Date (heure Montréal)',
                         'time_interval_montreal_tz - Intervalle 4h Montréal',
-                        'extracted_objects - Nom objet saillant (normalisé lowercase, sans ponctuation)',
-                        'n - Nombre d\'occurrences de l\'objet',
-                        'total_minutes_objet - Somme du temps en Une (minutes)',
-                        'total_pond_time - Somme pondérée intra-média',
-                        'total_pond_time_norm - Somme pondérée inter-médias',
-                        'absolute_normalized_index - Indice saillance absolu (n × total_pond_time_norm)',
-                        'n_titles - Nombre de titres uniques',
-                        'n_bodies - Nombre de textes uniques',
-                        'urls - Liste URLs (JSON)',
-                        'titles - Liste titres (JSON)',
-                        'bodies - Liste textes complets (JSON)'
+                        'extracted_objects - Nom objet saillant (normalisé lowercase, sans ponctuation, ANGLAIS)',
+                        '',
+                        '📊 MÉTRIQUES DE BASE:',
+                        'n - Nombre d\'occurrences de l\'objet (INTEGER)',
+                        'total_minutes_objet - Somme du temps en Une (minutes, DOUBLE)',
+                        '',
+                        '⚖️ PONDÉRATIONS:',
+                        'total_pond_time - Somme pondérée intra-média (headline_minutes / mean_time_média)',
+                        'total_pond_time_norm - Somme pondérée inter-médias (headline_minutes / mean_time_global)',
+                        '',
+                        '🎯 INDICE FINAL:',
+                        'absolute_normalized_index - Indice saillance absolu (FORMULE: n × total_pond_time_norm)',
+                        '',
+                        '📰 SOURCES (JSON Arrays):',
+                        'n_titles - Nombre de titres uniques (INTEGER)',
+                        'n_bodies - Nombre de textes uniques (INTEGER)',
+                        'urls - Liste URLs (JSON array de strings)',
+                        'titles - Liste titres (JSON array de strings)',
+                        'bodies - Liste textes complets (JSON array de strings)'
+                    ],
+                    details: [
+                        '📈 FORMULE CLÉS:',
+                        '• pond_time = headline_minutes / mean_time_média',
+                        '• pond_time_norm = headline_minutes / mean_time_global (moyenne de tous les médias)',
+                        '• absolute_normalized_index = n × Σ(pond_time_norm)',
+                        '',
+                        '🔄 Processus incrémental: Traite un bloc 4h à la fois',
+                        '🌍 Granularité: Par pays × date × intervalle 4h × objet',
+                        '📊 Tri: Par absolute_normalized_index DESC (les plus saillants en premier)',
+                        '🚫 Pas de tag column (contrairement à salient_headlines_objects)'
                     ]
                 },
                 'headlines_issues_day': {
@@ -943,155 +1075,341 @@
             refiners: {
                 'salient-objects': {
                     title: 'Refiner: radar-salient-objects.R',
-                    description: 'Extrait les objets saillants (personnes, organisations, lieux) des headlines en utilisant un LLM.',
+                    description: 'Extrait les objets saillants (personnes, organisations, lieux, événements) des headlines en utilisant GPT-4o.',
                     details: [
-                        'Lit les headlines bruts de r-media-headlines',
-                        'Calcule les durées de Une pour chaque headline',
-                        'Utilise ellipsellm pour extraire les objets saillants',
-                        'Crée des intervalles de 4h (Montréal et UTC)',
-                        'Publie dans vitrine_datamart.salient_headlines_objects',
-                        'Exécution: 6x/jour (+17min après Glue Job)'
+                        '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-headlines',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects',
+                        '',
+                        '🤖 MODÈLE IA: GPT-4o (OpenAI) via ellipsellm',
+                        '📝 SYSTEM MESSAGE: "Tu es un journaliste expert en extraction d\'objets saillants..."',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Calcule les durées de Une pour chaque headline (headline_minutes)',
+                        '• Nettoie les titres/textes (supprime noms médias, espaces superflus)',
+                        '• Exclut TVA (duplique Journal de Montréal)',
+                        '• Détecte langue (fr/en) et pays (QC/CAN/USA)',
+                        '• Crée intervalles 4h (Montréal: 00-04, 04-08... et UTC)',
+                        '',
+                        '🎯 EXTRACTION LLM (objets en ANGLAIS uniquement):',
+                        '• Uniformise formulations ("donald trump" toujours identique)',
+                        '• Priorité aux objets du titre s\'ils sont dans le texte',
+                        '• Formulations simples ("united states" pas "usa")',
+                        '• Une seule formulation par objet (pas trump + donald trump)',
+                        '• Concentration sur les plus saillants uniquement',
+                        '',
+                        '⏰ HORAIRES (6x/jour):',
+                        '• 00:16 UTC (19:16 EST veille) • 04:16 UTC (23:16 EST veille)',
+                        '• 08:16 UTC (03:16 EST) • 12:16 UTC (07:16 EST)',
+                        '• 16:16 UTC (11:16 EST) • 20:16 UTC (15:16 EST)',
+                        '',
+                        '⏱️ TIMING: +13min après Glue Job (qui tourne à xx:03 UTC)',
+                        '💾 MÉMOIRE: 10 GB (10240 MB)',
+                        '⏳ TIMEOUT: 15 minutes'
                     ]
                 },
                 'salient-index': {
                     title: 'Refiner: radar-salient-index.R',
-                    description: 'Calcule les indices de saillance pour chaque objet extrait.',
+                    description: 'Calcule les indices de saillance absolus pour chaque objet extrait (SANS LLM - calculs purs).',
                     details: [
-                        'Lit salient_headlines_objects',
-                        'Compte les mentions par objet et par média',
-                        'Calcule un score de saillance pondéré',
-                        'Agrège par intervalle temporel',
-                        'Publie dans vitrine_datamart.salient_index',
-                        'Utilisé par radar-headline-of-headlines'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table salient_index',
+                        '',
+                        '⚙️ TRAITEMENT (calculs mathématiques):',
+                        '• Sépare les objets CSV en lignes (separate_rows)',
+                        '• Normalise: lowercase + suppression ponctuation',
+                        '• Applique pondération intra-média (headline_minutes / mean_time)',
+                        '• Applique pondération inter-médias (normalisation globale)',
+                        '• Calcule: absolute_normalized_index = n × total_pond_time_norm',
+                        '• Agrège URLs, titres, bodies (JSON arrays)',
+                        '',
+                        '📊 DICTIONNAIRE PONDÉRATION MÉDIA (mean_time en minutes):',
+                        '• CBC: 159.5 • CNN: 296.2 • CTV: 228.0 • FXN: 146.1',
+                        '• GAM: 325.9 • GN: 375.4 • JDM: 143.0 • LAP: 120.9',
+                        '• LED: 241.8 • MG: 241.4 • NP: 249.0 • RCI: 160.0',
+                        '• TTS: 221.3 • TVA: 125.0 • VS: 505.3',
+                        '',
+                        '⏰ HORAIRES (6x/jour):',
+                        '• 00:20 UTC (19:20 EST veille) • 04:20 UTC (23:20 EST veille)',
+                        '• 08:20 UTC (03:20 EST) • 12:20 UTC (07:20 EST)',
+                        '• 16:20 UTC (11:20 EST) • 20:20 UTC (15:20 EST)',
+                        '',
+                        '⏱️ TIMING: +4min après radar-salient-objects (qui tourne à xx:16 UTC)',
+                        '💾 MÉMOIRE: 10 GB (10240 MB)',
+                        '⏳ TIMEOUT: 15 minutes',
+                        '',
+                        '🚫 PAS de LLM: Uniquement calculs statistiques'
                     ]
                 },
                 'headlines-issues': {
                     title: 'Refiner: radar-headlines-issues.R',
-                    description: 'Classifie chaque headline selon 12 catégories d\'enjeux avec scores de confiance.',
+                    description: 'Classifie les headlines selon 12 catégories d\'enjeux via deep learning, génère 3 versions (quotidien, hebdomadaire, mensuel).',
                     details: [
-                        'Lit salient_headlines_objects',
-                        'Utilise dict-issues-two-categories (12 catégories)',
-                        'Applique modèle de classification par enjeu',
-                        'Génère scores de confiance par catégorie',
-                        'Publie headlines_issues_day/week/month',
-                        'Base pour issues-score et reflet'
+                        '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-headlines',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables headlines_issues_day/week/month',
+                        '',
+                        '🤖 MODÈLE IA: Deep learning (CNN + LSTM)',
+                        '📚 DICTIONNAIRE: dict-issues-two-categories (12 enjeux)',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Classifie chaque headline contre 12 catégories',
+                        '• Génère scores de confiance par enjeu',
+                        '• Agrège par jour/semaine/mois',
+                        '• Base pour issues-score et reflet',
+                        '',
+                        '📋 OUTPUTS:',
+                        '• headlines_issues_day - Quotidien (am/noon/pm)',
+                        '• headlines_issues_week - Hebdomadaire',
+                        '• headlines_issues_month - Mensuel',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• DAILY: 08:14 UTC (03:14 EST) | 12:14 UTC (07:14 EST) | 16:14 UTC (11:14 EST)',
+                        '• WEEKLY: 20:17 UTC (15:17 EST)',
+                        '• MONTHLY: 20:18 UTC (15:18 EST)',
+                        '',
+                        '💾 MÉMOIRE: 4 GB (DAILY/WEEKLY), 10 GB (MONTHLY)',
+                        '⏳ TIMEOUT: 10 minutes (DAILY/WEEKLY), 15 minutes (MONTHLY)',
+                        '',
+                        '🔗 DÉPENDANCES: Utilise sorties radar-salient-objects'
                     ]
                 },
                 'issues-score': {
                     title: 'Refiner: radar-issues-score.R',
-                    description: 'Agrège les scores d\'enjeux par période (quotidien, hebdomadaire, mensuel).',
+                    description: 'Agrège les classifications d\'enjeux par période en proportions normalisées (somme=1.0).',
                     details: [
-                        'Lit headlines_issues_*',
-                        'Calcule moyennes pondérées par période',
-                        'Génère 3 tables: _day, _week, _month',
-                        'Publie dans vitrine_datamart',
-                        'Exécution: Quotidien 00:15 UTC (19:15 EST)',
-                        'Utilisé par vitrine-graph-data pour frontend'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Tables headlines_issues_day/week/month',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables issues_score_day/week/month',
+                        '',
+                        '⚙️ TRAITEMENT (calculs statistiques):',
+                        '• Compte mentions par enjeu',
+                        '• Normalise en proportions (0-1, somme=1.0)',
+                        '• Ajoute colonnes pour chaque enjeu',
+                        '• Agrège par pass (am/noon/pm) pour daily',
+                        '',
+                        '📊 OUTPUTS:',
+                        '• issues_score_day - Quotidien (3 passes)',
+                        '• issues_score_week - Hebdomadaire',
+                        '• issues_score_month - Mensuel',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• DAILY: 08:09 UTC (03:09 EST) | 12:09 UTC (07:09 EST) | 16:09 UTC (11:09 EST)',
+                        '• WEEKLY: 20:11 UTC (15:11 EST)',
+                        '• MONTHLY: 20:14 UTC (15:14 EST)',
+                        '',
+                        '💾 MÉMOIRE: 4 GB (DAILY/WEEKLY), 10 GB (MONTHLY)',
+                        '⏳ TIMEOUT: 10 minutes (DAILY/WEEKLY), 15 minutes (MONTHLY)',
+                        '',
+                        '🚫 PAS de LLM: Uniquement calculs statistiques',
+                        '🔗 Utilisé par: vitrine-graph-data pour frontend'
                     ]
                 },
                 'party-score': {
                     title: 'Refiner: radar-party-score.R',
-                    description: 'Analyse les mentions de partis politiques et calcule le ton des headlines.',
+                    description: 'Analyse les mentions de partis politiques (fédéral/provincial) et calcule le ton pondéré des headlines.',
                     details: [
-                        'Lit salient_headlines_objects',
-                        'Utilise dict-political-parties-ca (fédéral)',
-                        'Utilise dict-political-parties-qc (provincial)',
-                        'Utilise dict-sentiments pour analyse de ton',
-                        'Calcule mentions pondérées et ton moyen',
-                        'Génère federal/provincial × day/week/month (6 tables)',
-                        'Exécution: Quotidien 00:30 UTC (19:30 EST)'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables federal_parties_score_* et provincial_parties_score_*',
+                        '',
+                        '🤖 DICTIONNAIRES:',
+                        '• dict-political-parties-ca (6 partis fédéraux)',
+                        '• dict-political-parties-qc (5 partis provinciaux)',
+                        '• dict-sentiments (analyse de ton)',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Identifie mentions de partis dans headlines',
+                        '• Pondère par media weight (comme salient-index)',
+                        '• Analyse ton (positif/négatif) via sentiment dict',
+                        '• Génère 6 tables: federal_day/week/month × provincial_day/week/month',
+                        '• Génère pour 3 pays: QC, CAN, USA',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• DAILY: 08:18 UTC (03:18 EST) | 12:18 UTC (07:18 EST) | 16:18 UTC (11:18 EST)',
+                        '• WEEKLY: 20:20 UTC (15:20 EST)',
+                        '• MONTHLY: 20:22 UTC (15:22 EST)',
+                        '',
+                        '💾 MÉMOIRE: 10 GB (tous)',
+                        '⏳ TIMEOUT: 15 minutes (tous)',
+                        '',
+                        '🔗 Utilisé par: vitrine-graph-data, dashboard politique'
                     ]
                 },
                 'reflet-daily-weekly': {
                     title: 'Refiner: radar-reflet-daily-weekly.R',
-                    description: 'Génère des synthèses textuelles (LLM) quotidiennes et hebdomadaires par enjeu.',
+                    description: 'Génère des synthèses textuelles (LLM) quotidiennes et hebdomadaires par enjeu via GPT-4o.',
                     details: [
-                        'Lit salient_headlines_objects et headlines_issues_*',
-                        'Pour chaque enjeu principal:',
-                        '  • Sélectionne headlines pertinents',
-                        '  • Utilise ellipsellm pour générer résumé',
-                        '  • Format: liste de points clés',
-                        'Publie reflet_day et reflet_week',
-                        'Envoie notifications Slack',
-                        'Exécution: Quotidien 01:00 UTC (20:00 EST)'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Tables salient_headlines_objects, headlines_issues_day/week',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables reflet_day, reflet_week',
+                        '',
+                        '🤖 MODÈLE IA: GPT-4o (OpenAI) via ellipsellm',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Lit headlines classés par enjeu',
+                        '• Pour chaque enjeu principal (non-nul):',
+                        '•   • Sélectionne headlines pertinents avec scores',
+                        '•   • Génère synthèse LLM: liste de points clés',
+                        '•   • Format: bullet list de 3-5 points',
+                        '• Génère 3 versions: am, noon, pm (daily) et 1 (weekly)',
+                        '• Envoie notifications Slack',
+                        '',
+                        '📋 OUTPUTS:',
+                        '• reflet_day - Quotidien (3 passes: am/noon/pm)',
+                        '• reflet_week - Hebdomadaire (1 fois)',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• DAILY: 08:25 UTC (03:25 EST) | 12:25 UTC (07:25 EST) | 16:25 UTC (11:25 EST)',
+                        '• WEEKLY: 20:28 UTC (15:28 EST)',
+                        '',
+                        '💾 MÉMOIRE: 10 GB (tous)',
+                        '⏳ TIMEOUT: 15 minutes (tous)',
+                        '',
+                        '🔗 DÉPENDANCES: Utilise headlines_issues classés par radar-headlines-issues'
                     ]
                 },
                 'reflet-monthly': {
                     title: 'Refiner: radar-reflet-monthly.R',
-                    description: 'Génère des synthèses textuelles mensuelles par enjeu.',
+                    description: 'Génère des synthèses textuelles (LLM) mensuelles par enjeu via GPT-4o.',
                     details: [
-                        'Même logique que reflet-daily-weekly',
-                        'Agrège sur un mois complet',
-                        'Publie reflet_month',
-                        'Envoie notification Slack',
-                        'Exécution: 1er du mois 02:00 UTC (21:00 EST)'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Tables headlines_issues_month',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table reflet_month',
+                        '',
+                        '🤖 MODÈLE IA: GPT-4o (OpenAI) via ellipsellm',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Agrège headlines du mois par enjeu',
+                        '• Même logique que reflet-daily-weekly',
+                        '• Synthétise l\'ensemble du mois par enjeu',
+                        '• Génère 1 fois par mois (ou hors-horaire)',
+                        '• Envoie notification Slack',
+                        '',
+                        '📋 OUTPUT:',
+                        '• reflet_month - Mensuel',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• MONTHLY: 20:30 UTC (15:30 EST) - exécution quotidienne, génère si données nouvelles',
+                        '',
+                        '💾 MÉMOIRE: 10 GB',
+                        '⏳ TIMEOUT: 15 minutes'
                     ]
                 },
                 'headline-of-headlines': {
                     title: 'Refiner: radar-headline-of-headlines.R',
-                    description: 'Génère un headline synthèse (Une des Unes) pour chaque période de 4h utilisant LLM.',
+                    description: 'Génère une "Une des Unes" synthétique (headline principal) pour chaque période de 4h via LLM.',
                     details: [
-                        'Lit salient_headlines_objects et salient_index',
-                        'Identifie les objets les plus saillants',
-                        'Détermine l\'enjeu principal de la période',
-                        'Utilise ellipsellm pour générer:',
-                        '  • Titre synthèse',
-                        '  • Texte descriptif',
-                        '  • Liste objets principaux',
-                        'Publie headline_of_headlines',
-                        'Exécution: 6x/jour (+55min après Glue)'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Tables salient_headlines_objects, salient_index',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table headline_of_headlines',
+                        '',
+                        '🤖 MODÈLE IA: GPT-4o (OpenAI) via ellipsellm',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Identifie objets les plus saillants du bloc 4h',
+                        '• Détermine l\'enjeu principal de la période',
+                        '• Génère LLM: titre, texte (2-3 lignes), liste objets',
+                        '• Sélectionne meilleur headline de référence',
+                        '',
+                        '📋 OUTPUT:',
+                        '• headline_of_headlines - Une synthésée par bloc 4h',
+                        '',
+                        '⏰ HORAIRES (6x/jour):',
+                        '• 00:28 UTC (19:28 EST veille) • 04:28 UTC (23:28 EST veille)',
+                        '• 08:28 UTC (03:28 EST) • 12:28 UTC (07:28 EST)',
+                        '• 16:28 UTC (11:28 EST) • 20:28 UTC (15:28 EST)',
+                        '',
+                        '⏱️ TIMING: +8min après salient-index',
+                        '💾 MÉMOIRE: 10 GB',
+                        '⏳ TIMEOUT: 15 minutes'
                     ]
                 },
                 'hot20': {
                     title: 'Refiner: radar-hot-20.R',
-                    description: 'Génère le TOP 20 des headlines les plus saillants de la semaine pour 3 pays.',
+                    description: 'Génère le TOP 20 des headlines les plus saillants de la semaine pour 3 pays avec visualisations.',
                     details: [
-                        'Lit salient_headlines_objects de la semaine',
-                        'Calcule scores de saillance par headline',
-                        'Génère TOP 20 pour QC, CAN, USA',
-                        'Publie hot_20_headlines',
-                        'Crée visualisations GT (PNG + HTML interactif)',
-                        'Envoie à Slack avec images',
-                        'Exécution: Vendredis 17:00 UTC (12:00 EST)'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_index (toute la semaine)',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table hot_20_headlines',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Agrège salient_index sur toute la semaine (lundi-dimanche)',
+                        '• Calcule scores de saillance totaux par headline',
+                        '• Génère TOP 20 pour QC, CAN, USA séparément',
+                        '• Ajoute colonnes variation: "Nouveau", "▲2", "▼1", "Retour", "Stable"',
+                        '• Génère visualisations GT (PNG + HTML interactif)',
+                        '• Upload images S3 + HTML',
+                        '• Envoie à Slack avec screenshots',
+                        '',
+                        '📋 OUTPUT:',
+                        '• hot_20_headlines - Classement hebdomadaire',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• WEEKLY: Vendredi 16:30 UTC (11:30 EST)',
+                        '',
+                        '💾 MÉMOIRE: 10 GB + 5 GB ephemeral storage (Athena)',
+                        '⏳ TIMEOUT: 15 minutes'
                     ]
                 },
                 'sonar': {
                     title: 'Refiner: sonar.R',
-                    description: 'Extrait et agrège les données de qualité SONAR depuis r-media-frontpages.',
+                    description: 'Extrait et agrège les données de qualité SONAR depuis r-media-frontpages pour monitoring.',
                     details: [
-                        'Lit r-media-frontpages (table Glue)',
-                        'Analyse qualité du scraping par média',
-                        'Calcule métriques sur 14 derniers jours',
-                        'Publie data_quality_14_days (datamart: sonar)',
-                        'Base pour sonar-heatmaps.R'
+                        '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-frontpages',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table data_quality_14_days (datamart: sonar)',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Analyse qualité du scraping par média',
+                        '• Calcule métriques sur 14 derniers jours',
+                        '• Stocke données pour visualisations heatmaps',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• DAILY: 12:00 UTC (07:00 EST)',
+                        '',
+                        '💾 MÉMOIRE: 5 GB',
+                        '⏳ TIMEOUT: 5 minutes'
                     ]
                 },
                 'sonar-heatmaps': {
                     title: 'Refiner: sonar-heatmaps.R',
                     description: 'Génère des heatmaps de qualité des données pour monitoring SONAR.',
                     details: [
-                        'Lit data_quality_14_days',
-                        'Crée heatmaps de qualité par média/jour',
-                        'Génère PNG et HTML interactif',
-                        'Publie sur S3',
-                        'Envoie à Slack',
-                        'Exécution: Mercredis 09:00 UTC (04:00 EST)'
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts (sonar) - Table data_quality_14_days',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Visualisations PNG + HTML interactif',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Lit données qualité SONAR (14 jours)',
+                        '• Génère heatmaps par média/jour',
+                        '• Crée PNG + HTML interactif',
+                        '• Upload sur S3 + Slack',
+                        '',
+                        '⏰ HORAIRES:',
+                        '• WEEKLY: Mercredi 12:30 UTC (07:30 EST)',
+                        '',
+                        '💾 MÉMOIRE: 5 GB',
+                        '⏳ TIMEOUT: 5 minutes'
                     ]
                 },
                 'vitrine-graph-data': {
                     title: 'Refiner: vitrine-graph-data.R',
-                    description: 'Publie toutes les données finales en JSON vers S3 pour le frontend vitrine.',
+                    description: 'Publie TOUTES les données finales en JSON vers S3 pour le frontend Vitrine.',
                     details: [
-                        'Lit TOUTES les tables finales:',
-                        '  • issues_score_day/week/month',
-                        '  • federal_parties_score_*',
-                        '  • provincial_parties_score_*',
-                        '  • reflet_day/week/month',
-                        '  • headline_of_headlines',
-                        'Convertit en JSON propre',
-                        'Publie 13 fichiers sur S3',
-                        'Structure: data/refined/{period}/{table}.json',
-                        'Exécution: 5x/jour (+36min): 00:39, 04:39, 08:39, 12:39, 16:39, 20:39 UTC'
+                        '📥 SOURCES: <span class="badge-dev">DEV</span>/datamarts - Lectures complètes de TOUTES les tables',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - JSON sur S3',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Agrège TOUTES les tables finales',
+                        '• Convertit en JSON propre (normalisé)',
+                        '• Optimise pour API frontend',
+                        '• Upload 13 fichiers JSON sur S3',
+                        '• Structure: s3://vitrinedemocratique/data/refined/{period}/{table}.json',
+                        '',
+                        '📋 OUTPUTS (13 fichiers JSON):',
+                        '• issues_score_{day|week|month}',
+                        '• federal_parties_score_{day|week|month}',
+                        '• provincial_parties_score_{day|week|month}',
+                        '• reflet_{day|week|month}',
+                        '• headline_of_headlines',
+                        '',
+                        '⏰ HORAIRES (5x/jour):',
+                        '• 08:39 UTC (03:39 EST) • 12:39 UTC (07:39 EST) • 16:39 UTC (11:39 EST)',
+                        '• 20:39 UTC (15:39 EST) • 00:39 UTC (19:39 EST veille)',
+                        '',
+                        '💾 MÉMOIRE: 10 GB + 5 GB ephemeral storage',
+                        '⏳ TIMEOUT: 15 minutes'
                     ]
                 }
             },
@@ -1198,6 +1516,7 @@
                 'hot20-files': {
                     title: 'Hot 20 - Fichiers PNG et HTML',
                     description: '6 fichiers générés chaque vendredi à 17:00 UTC (12:00 EST)',
+                    image: 'images_vitrine/hot20.png',
                     details: [
                         '📊 3 fichiers PNG (visualisations):',
                         '• hot20_qc.png - TOP 20 Québec',
@@ -1232,6 +1551,7 @@
                 'sonar-heatmaps': {
                     title: 'SONAR - Heatmaps de Qualité',
                     description: 'Visualisations de la qualité du scraping sur 14 jours',
+                    image: 'images_vitrine/sonar.png',
                     details: [
                         '📊 Fichiers générés:',
                         '• sonar_heatmap.png - Image statique',
@@ -1248,7 +1568,7 @@
                         '• Nombre d\'erreurs',
                         '• Score qualité global',
                         '',
-                        '⏰ Génération: Mercredis 09:00 UTC (04:00 EST)',
+                        '⏰ Génération: Mercredis 12:30 UTC (07:30 EST)',
                         '📍 Localisation: Publiés sur S3'
                     ]
                 },
@@ -1257,7 +1577,7 @@
                     description: 'Alertes hebdomadaires de monitoring qualité',
                     details: [
                         '📢 Canal: #sonar',
-                        '⏰ Fréquence: Mercredis 09:00 UTC (04:00 EST)',
+                        '⏰ Fréquence: Mercredis 12:30 UTC (07:30 EST)',
                         '📎 Contenu envoyé:',
                         '• Rapport de qualité sur 14 jours',
                         '• Heatmap PNG attachée',
@@ -1423,11 +1743,14 @@
             });
         });
 
-        // Collapsible pipelines
-        const headers = document.querySelectorAll('.pipeline-header');
-        headers.forEach(header => {
-            header.addEventListener('click', () => {
-                header.parentElement.classList.toggle('collapsed');
+        // Collapsible pipelines - simple approach
+        document.querySelectorAll('.pipeline-header').forEach(header => {
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', function(e) {
+                // Ne toggle que si on clique sur le toggle-icon ou directement sur le header
+                if (e.target.classList.contains('toggle-icon') || e.target === this) {
+                    this.closest('.pipeline').classList.toggle('collapsed');
+                }
             });
         });
 
@@ -1437,11 +1760,20 @@
         const closeBtn = document.querySelector('.close-modal');
 
         function showModal(type, key) {
+            console.log('📢 showModal appelé - type:', type, 'key:', key);
             const data = modalData[type][key];
-            if (!data) return;
+            if (!data) {
+                console.error('❌ Aucune donnée trouvée pour:', type, key);
+                return;
+            }
+            console.log('✅ Données trouvées:', data.title);
 
             let html = `<h2>${data.title}</h2>`;
             html += `<p><strong>${data.description}</strong></p>`;
+
+            if (data.image) {
+                html += `<div style="text-align: center; margin: 20px 0;"><img src="${data.image}" style="max-width: 100%; max-height: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/></div>`;
+            }
 
             if (data.columns) {
                 html += '<h3>📋 Colonnes de la table:</h3><ul>';
@@ -1461,6 +1793,7 @@
 
             modalBody.innerHTML = html;
             modal.classList.add('show');
+            console.log('✅ Modal affichée!');
         }
 
         closeBtn.addEventListener('click', () => {
@@ -1474,14 +1807,20 @@
         });
 
         // Add click handlers to nodes
-        document.querySelectorAll('[data-table]').forEach(node => {
-            node.addEventListener('click', () => {
+        const tableNodes = document.querySelectorAll('[data-table]');
+        console.log('📊 Nodes [data-table] trouvés:', tableNodes.length);
+        tableNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                console.log('🖱️ Clic détecté sur table:', node.dataset.table);
                 showModal('tables', node.dataset.table);
             });
         });
 
-        document.querySelectorAll('[data-refiner]').forEach(node => {
-            node.addEventListener('click', () => {
+        const refinerNodes = document.querySelectorAll('[data-refiner]');
+        console.log('⚙️ Nodes [data-refiner] trouvés:', refinerNodes.length);
+        refinerNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                console.log('🖱️ Clic détecté sur refiner:', node.dataset.refiner);
                 showModal('refiners', node.dataset.refiner);
             });
         });
@@ -1492,17 +1831,26 @@
             });
         });
 
-        document.querySelectorAll('[data-source]').forEach(node => {
-            node.addEventListener('click', () => {
+        const sourceNodes = document.querySelectorAll('[data-source]');
+        console.log('📡 Nodes [data-source] trouvés:', sourceNodes.length);
+        sourceNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                console.log('🖱️ Clic détecté sur source:', node.dataset.source);
                 showModal('sources', node.dataset.source);
             });
         });
 
-        document.querySelectorAll('[data-output]').forEach(node => {
-            node.addEventListener('click', () => {
+        const outputNodes = document.querySelectorAll('[data-output]');
+        console.log('📤 Nodes [data-output] trouvés:', outputNodes.length);
+        outputNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                console.log('🖱️ Clic détecté sur output:', node.dataset.output);
                 showModal('outputs', node.dataset.output);
             });
         });
+        
+        console.log('✅ Tous les event listeners attachés!');
+        }); // Fin DOMContentLoaded
     </script>
 </body>
 </html>
