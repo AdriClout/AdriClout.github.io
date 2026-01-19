@@ -455,12 +455,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>📊 Workflow Vitrine Démocratique 2025</h1>
-        <p class="subtitle">Architecture complète des pipelines de données • Version interactive 100% validée contre le code (2025-01-13) • <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; text-decoration: none; font-weight: bold;">🌐 Voir le site vitrine (DEV)</a></p>
+        <h1>📊 Workflow Vitrine Démocratique 2026</h1>
+        <p class="subtitle">Architecture complète des pipelines de données • Version interactive 100% validée contre le code (2026-01-19) • <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; text-decoration: none; font-weight: bold;">🌐 Voir le site vitrine (DEV)</a></p>
 
         <div class="controls">
             <button class="btn active" data-filter="all">Voir tous les pipelines</button>
-            <button class="btn" data-filter="salient">Salient Objects</button>
+            <button class="btn" data-filter="salient">Salient Index</button>
             <button class="btn" data-filter="issues">Issues Score</button>
             <button class="btn" data-filter="parties">Party Scores</button>
             <button class="btn" data-filter="reflet">Reflet</button>
@@ -472,34 +472,40 @@
 
         <!-- Filtres par type de node -->
         <div class="controls" style="margin-top: 10px; margin-bottom: 20px;">
-            <button class="btn-node btn-node-refiner active-node" data-node-filter="refiner">
-                <span class="node-color-box" style="background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);"></span>
-                Refiner (R)
+            <button class="btn-node btn-node-source active-node" data-node-filter="source">
+                <span class="node-color-box" style="background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);"></span>
+                Chargeur ETL
             </button>
             <button class="btn-node btn-node-table active-node" data-node-filter="table">
                 <span class="node-color-box" style="background: linear-gradient(135deg, #50C878 0%, #3BA05F 100%);"></span>
                 Table Datamart
             </button>
-            <button class="btn-node btn-node-output active-node" data-node-filter="output">
-                <span class="node-color-box" style="background: linear-gradient(135deg, #FFB347 0%, #FF8C00 100%);"></span>
-                Output (JSON/Slack)
-            </button>
             <button class="btn-node btn-node-dict active-node" data-node-filter="dict">
                 <span class="node-color-box" style="background: linear-gradient(135deg, #9B59B6 0%, #7D3C98 100%);"></span>
                 Dictionnaire
             </button>
-            <button class="btn-node btn-node-source active-node" data-node-filter="source">
-                <span class="node-color-box" style="background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);"></span>
-                Source Externe
+            <button class="btn-node btn-node-refiner active-node" data-node-filter="refiner">
+                <span class="node-color-box" style="background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);"></span>
+                Refiner (R)
+            </button>
+            <button class="btn-node btn-node-output active-node" data-node-filter="output">
+                <span class="node-color-box" style="background: linear-gradient(135deg, #FFB347 0%, #FF8C00 100%);"></span>
+                Output (JSON/Slack)
             </button>
         </div>
 
-        <!-- SALIENT OBJECTS (BASE PIPELINE) -->
+        <!-- Horaire Glue Jobs ETL -->
+        <p class="subtitle" style="margin-top: -10px; margin-bottom: 20px; font-size: 13px; color: #E74C3C; font-weight: 600;">
+            ⏰ Glue Jobs ETL (r-media-headlines, r-media-frontpages): 6x/jour → 00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC<br>
+            <span style="font-size: 12px; color: #999;">(19:03, 23:03, 03:03, 07:03, 11:03, 15:03 EST)</span>
+        </p>
+
+        <!-- SALIENT INDEX (BASE PIPELINE) -->
         <div class="pipeline pipeline-salient" data-pipeline="salient">
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
-                <span>🔵 Salient Objects (Pipeline de Base)</span>
-                <span class="frequency">6x/jour: 00:16, 04:16, 08:16, 12:16, 16:16, 20:16 UTC (19:16, 23:16, 03:16, 07:16, 11:16, 15:16 EST)</span>
+                <span>🔵 Salient Index (Pipeline de Base)</span>
+                <span class="frequency">6x/jour: 00:20, 04:20, 08:20, 12:20, 16:20, 20:20 UTC<br>(19:20, 23:20, 03:20, 07:20, 11:20, 15:20 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
@@ -539,7 +545,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📊 Issues Score (Scores par Enjeu)</span>
-                <span class="frequency">Quotidien: 00:15 UTC (19:15 EST veille)</span>
+                <span class="frequency">Daily: 12:09, 16:09, 20:09 UTC • Weekly: 20:11 UTC • Monthly: 20:14 UTC<br>(Daily: 07:09, 11:09, 15:09 EST • Weekly: 15:11 EST • Monthly: 15:14 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
@@ -568,7 +574,7 @@
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="issues-score">
                     radar-issues-score.R
-                    <div class="node-schedule">⏰ 00:15 UTC</div>
+                    <div class="node-schedule">⏰ 12:09, 16:09, 20:09 UTC</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -584,7 +590,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>🏛️ Party Scores (Mentions Partis Politiques)</span>
-                <span class="frequency">Quotidien: 00:30 UTC (19:30 EST veille)</span>
+                <span class="frequency">Daily: 12:18, 16:18, 20:18 UTC • Weekly: 20:20 UTC • Monthly: 20:22 UTC<br>(Daily: 07:18, 11:18, 15:18 EST • Weekly: 15:20 EST • Monthly: 15:22 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
@@ -613,7 +619,7 @@
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="party-score">
                     radar-party-score.R
-                    <div class="node-schedule">⏰ 00:30 UTC</div>
+                    <div class="node-schedule">⏰ 12:18, 16:18, 20:18 UTC</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -630,7 +636,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>💭 Reflet (Synthèses LLM par Enjeu)</span>
-                <span class="frequency">Daily: 01:00 UTC (20:00 EST) • Monthly: 1er du mois 02:00 UTC (21:00 EST)</span>
+                <span class="frequency">Daily: 12:25, 16:25, 20:25 UTC • Weekly: 20:28 UTC • Monthly: 20:30 UTC<br>(Daily: 07:25, 11:25, 15:25 EST • Weekly: 15:28 EST • Monthly: 15:30 EST)</span>
             </div>
             <div class="pipeline-content" style="display: grid; grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto; gap: 15px; align-items: center;">
                 <!-- Ligne 1: Daily/Weekly -->
@@ -646,7 +652,7 @@
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="reflet-daily-weekly">
                     radar-reflet-daily-weekly.R
-                    <div class="node-schedule">⏰ 01:00 UTC</div>
+                    <div class="node-schedule">⏰ 12:25, 16:25, 20:25 UTC</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -669,7 +675,7 @@
                 <!-- Ligne 2: Monthly - utilise grid-column pour alignement exact -->
                 <div class="node node-refiner" data-type="refiner" data-refiner="reflet-monthly" style="grid-column: 7; margin-top: 40px;">
                     radar-reflet-monthly.R
-                    <div class="node-schedule">⏰ 02:00 UTC (1er)</div>
+                    <div class="node-schedule">⏰ 20:30 UTC</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow" style="grid-column: 8; margin-top: 40px;">→</div>
@@ -685,22 +691,18 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📰 Headline of Headlines (Une des Unes)</span>
-                <span class="frequency">6x/jour: +55min après Glue</span>
+                <span class="frequency">6x/jour: 00:28, 04:28, 08:28, 12:28, 16:28, 20:28 UTC<br>(19:28, 23:28, 03:28, 07:28, 11:28, 15:28 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
                     salient_headlines_objects
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
-                <div class="arrow">+</div>
-                <div class="node node-table" data-type="table" data-table="salient_index" data-env-source="DEV">
-                    salient_index
-                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
-                </div>
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="headline-of-headlines">
                     radar-headline-of-headlines.R
                     <div class="node-detail">Synthèse LLM</div>
+                    <div class="node-schedule">⏰ 00:28, 04:28, 08:28, 12:28, 16:28, 20:28 UTC</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -717,7 +719,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>🔥 RADAR+ Hot 20 (TOP 20 Hebdomadaire)</span>
-                <span class="frequency">Vendredis: 17:00 UTC (12:00 EST)</span>
+                <span class="frequency">Vendredis: 16:30 UTC<br>(11:30 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
@@ -728,7 +730,7 @@
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="hot20">
                     radar-hot-20.R
-                    <div class="node-schedule">⏰ Ven 17:00</div>
+                    <div class="node-schedule">⏰ Ven 16:30</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -756,11 +758,17 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📡 SONAR Heatmaps (Monitoring Qualité)</span>
-                <span class="frequency">Mercredis: 12:30 UTC (07:30 EST)</span>
+                <span class="frequency">Mercredis: 12:30 UTC<br>(07:30 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-frontpages" data-env-source="PROD">
                     r-media-frontpages
+                    <div class="node-detail">Glue Job Python</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">+</div>
+                <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
+                    r-media-headlines
                     <div class="node-detail">Glue Job Python</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
@@ -784,7 +792,8 @@
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-output" data-type="output" data-output="sonar-heatmaps">
-                    Heatmaps PNG + HTML
+                    6 PNG Heatmaps
+                    <div class="node-detail">fp, uh, body, title, author, words</div>
                     <div class="info-badge">🖼️ Cliquer pour voir exemples</div>
                 </div>
                 <div class="arrow">→</div>
@@ -800,7 +809,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📤 Publication Vitrine (JSON vers S3 Frontend)</span>
-                <span class="frequency">5x/jour: 00:39, 04:39, 08:39, 12:39, 16:39, 20:39 UTC</span>
+                <span class="frequency">5x/jour: 04:39, 08:39, 12:39, 16:39, 20:39 UTC<br>(23:39, 03:39, 07:39, 11:39, 15:39 EST)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="all-final-tables" data-env-source="DEV">
@@ -1162,9 +1171,9 @@
                         '• headlines_issues_month - Mensuel',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 08:14 UTC (03:14 EST) | 12:14 UTC (07:14 EST) | 16:14 UTC (11:14 EST)',
-                        '• WEEKLY: 20:17 UTC (15:17 EST)',
-                        '• MONTHLY: 20:18 UTC (15:18 EST)',
+                        '• DAILY: 12:14, 16:14, 20:14 UTC',
+                        '• WEEKLY: 20:17 UTC',
+                        '• MONTHLY: 20:18 UTC',
                         '',
                         '💾 MÉMOIRE: 4 GB (DAILY/WEEKLY), 10 GB (MONTHLY)',
                         '⏳ TIMEOUT: 10 minutes (DAILY/WEEKLY), 15 minutes (MONTHLY)',
@@ -1191,9 +1200,9 @@
                         '• issues_score_month - Mensuel',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 08:09 UTC (03:09 EST) | 12:09 UTC (07:09 EST) | 16:09 UTC (11:09 EST)',
-                        '• WEEKLY: 20:11 UTC (15:11 EST)',
-                        '• MONTHLY: 20:14 UTC (15:14 EST)',
+                        '• DAILY: 12:09, 16:09, 20:09 UTC',
+                        '• WEEKLY: 20:11 UTC',
+                        '• MONTHLY: 20:14 UTC',
                         '',
                         '💾 MÉMOIRE: 4 GB (DAILY/WEEKLY), 10 GB (MONTHLY)',
                         '⏳ TIMEOUT: 10 minutes (DAILY/WEEKLY), 15 minutes (MONTHLY)',
@@ -1222,9 +1231,9 @@
                         '• Génère pour 3 pays: QC, CAN, USA',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 08:18 UTC (03:18 EST) | 12:18 UTC (07:18 EST) | 16:18 UTC (11:18 EST)',
-                        '• WEEKLY: 20:20 UTC (15:20 EST)',
-                        '• MONTHLY: 20:22 UTC (15:22 EST)',
+                        '• DAILY: 12:18, 16:18, 20:18 UTC',
+                        '• WEEKLY: 20:20 UTC',
+                        '• MONTHLY: 20:22 UTC',
                         '',
                         '💾 MÉMOIRE: 10 GB (tous)',
                         '⏳ TIMEOUT: 15 minutes (tous)',
@@ -1255,8 +1264,8 @@
                         '• reflet_week - Hebdomadaire (1 fois)',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 08:25 UTC (03:25 EST) | 12:25 UTC (07:25 EST) | 16:25 UTC (11:25 EST)',
-                        '• WEEKLY: 20:28 UTC (15:28 EST)',
+                        '• DAILY: 12:25, 16:25, 20:25 UTC',
+                        '• WEEKLY: 20:28 UTC',
                         '',
                         '💾 MÉMOIRE: 10 GB (tous)',
                         '⏳ TIMEOUT: 15 minutes (tous)',
@@ -1284,7 +1293,7 @@
                         '• reflet_month - Mensuel',
                         '',
                         '⏰ HORAIRES:',
-                        '• MONTHLY: 20:30 UTC (15:30 EST) - exécution quotidienne, génère si données nouvelles',
+                        '• MONTHLY: 20:30 UTC - exécution quotidienne, génère si données nouvelles',
                         '',
                         '💾 MÉMOIRE: 10 GB',
                         '⏳ TIMEOUT: 15 minutes'
@@ -1294,7 +1303,7 @@
                     title: 'Refiner: radar-headline-of-headlines.R',
                     description: 'Génère une "Une des Unes" synthétique (headline principal) pour chaque période de 4h via LLM.',
                     details: [
-                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Tables salient_headlines_objects, salient_index',
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects',
                         '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table headline_of_headlines',
                         '',
                         '🤖 MODÈLE IA: GPT-4o (OpenAI) via ellipsellm',
@@ -1322,12 +1331,13 @@
                     title: 'Refiner: radar-hot-20.R',
                     description: 'Génère le TOP 20 des headlines les plus saillants de la semaine pour 3 pays avec visualisations.',
                     details: [
-                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_index (toute la semaine)',
+                        '📥 SOURCE:',
+                        '• <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects (filtrée sur la semaine, recalcule les indices absolus)',
                         '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table hot_20_headlines',
                         '',
                         '⚙️ TRAITEMENT:',
-                        '• Agrège salient_index sur toute la semaine (lundi-dimanche)',
-                        '• Calcule scores de saillance totaux par headline',
+                        '• Agrège salient_headlines_objects sur la semaine complète (recalcule indices absolus pondérés)',
+                        '• Calcule scores de saillance totaux par objet',
                         '• Génère TOP 20 pour QC, CAN, USA séparément',
                         '• Ajoute colonnes variation: "Nouveau", "▲2", "▼1", "Retour", "Stable"',
                         '• Génère visualisations GT (PNG + HTML interactif)',
@@ -1338,7 +1348,7 @@
                         '• hot_20_headlines - Classement hebdomadaire',
                         '',
                         '⏰ HORAIRES:',
-                        '• WEEKLY: Vendredi 16:30 UTC (11:30 EST)',
+                        '• WEEKLY: Vendredi 16:30 UTC',
                         '',
                         '💾 MÉMOIRE: 10 GB + 5 GB ephemeral storage (Athena)',
                         '⏳ TIMEOUT: 15 minutes'
@@ -1346,41 +1356,61 @@
                 },
                 'sonar': {
                     title: 'Refiner: sonar.R',
-                    description: 'Extrait et agrège les données de qualité SONAR depuis r-media-frontpages pour monitoring.',
+                    description: 'ETL qualité : agrège frontpages + headlines de 14 jours en métriques structurées pour monitoring.',
                     details: [
-                        '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-frontpages',
-                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table data_quality_14_days (datamart: sonar)',
+                        '📥 SOURCES:',
+                        '• <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-frontpages',
+                        '• <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-headlines',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts (sonar) - Table data_quality_14_days',
                         '',
-                        '⚙️ TRAITEMENT:',
-                        '• Analyse qualité du scraping par média',
-                        '• Calcule métriques sur 14 derniers jours',
-                        '• Stocke données pour visualisations heatmaps',
+                        '⚙️ TRAITEMENT (6 métriques par média/jour):',
+                        '• fp_* = Nombre de frontpages scrapées',
+                        '• uh_* = Nombre de Unes uniques (unique headlines)',
+                        '• body_* = Nombre articles avec texte (body)',
+                        '• title_* = Nombre articles avec titre',
+                        '• author_* = Nombre articles avec auteur',
+                        '• words_* = Total mots (articles avec body)',
+                        '',
+                        '📊 STRUCTURE TABLE:',
+                        '• 1 ligne = 1 média (CBC, CTV, GAM, GN, JDM, LAP, LED, MG, NP, RCI, TTS, TVA, VS)',
+                        '• Colonnes: media + 6×14 colonnes (fp_YYYYMMDD, uh_YYYYMMDD, etc.)',
+                        '• NA → 0 (pas de données = pas d\'articles)',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 12:00 UTC (07:00 EST)',
+                        '• DAILY: Quotidien (données du jour +1)',
                         '',
                         '💾 MÉMOIRE: 5 GB',
-                        '⏳ TIMEOUT: 5 minutes'
+                        '⏳ TIMEOUT: 10 minutes'
                     ]
                 },
                 'sonar-heatmaps': {
                     title: 'Refiner: sonar-heatmaps.R',
-                    description: 'Génère des heatmaps de qualité des données pour monitoring SONAR.',
+                    description: 'Génère 6 heatmaps de monitoring pour surveillance qualité données SONAR.',
                     details: [
                         '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts (sonar) - Table data_quality_14_days',
-                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Visualisations PNG + HTML interactif',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - 6 PNG heatmaps',
                         '',
                         '⚙️ TRAITEMENT:',
-                        '• Lit données qualité SONAR (14 jours)',
-                        '• Génère heatmaps par média/jour',
-                        '• Crée PNG + HTML interactif',
-                        '• Upload sur S3 + Slack',
+                        '• Charge table sonar (14 jours de métriques)',
+                        '• Génère 6 heatmaps (média × jour):',
+                        '  1. Frontpages scrapées (fp_*)',
+                        '  2. Unes uniques (uh_*)',
+                        '  3. Articles avec texte (body_*)',
+                        '  4. Articles avec titre (title_*)',
+                        '  5. Articles avec auteur (author_*)',
+                        '  6. Total mots (words_*)',
+                        '• Format: gradient blanc → vert (GitHub style)',
+                        '• Upload sur S3 (datalake) + Slack #02_radar_plus_sonar',
+                        '',
+                        '📊 OUTPUTS:',
+                        '• 6 PNG files → S3 datalake (sonar-heatmaps)',
+                        '• Slack posts → #02_radar_plus_sonar channel',
                         '',
                         '⏰ HORAIRES:',
-                        '• WEEKLY: Mercredi 12:30 UTC (07:30 EST)',
+                        '• WEEKLY: Mercredi 09:00 UTC',
                         '',
                         '💾 MÉMOIRE: 5 GB',
-                        '⏳ TIMEOUT: 5 minutes'
+                        '⏳ TIMEOUT: 15 minutes'
                     ]
                 },
                 'vitrine-graph-data': {
@@ -1405,8 +1435,8 @@
                         '• headline_of_headlines',
                         '',
                         '⏰ HORAIRES (5x/jour):',
-                        '• 08:39 UTC (03:39 EST) • 12:39 UTC (07:39 EST) • 16:39 UTC (11:39 EST)',
-                        '• 20:39 UTC (15:39 EST) • 00:39 UTC (19:39 EST veille)',
+                        '• 04:39 UTC (23:39 EST veille) • 08:39 UTC (03:39 EST)',
+                        '• 12:39 UTC (07:39 EST) • 16:39 UTC (11:39 EST) • 20:39 UTC (15:39 EST)',
                         '',
                         '💾 MÉMOIRE: 10 GB + 5 GB ephemeral storage',
                         '⏳ TIMEOUT: 15 minutes'
@@ -1490,10 +1520,11 @@
                         '→ Glue Job ETL (6x/jour) agrège et transforme ces données',
                         '→ Table r-media-headlines = données nettoyées et prêtes',
                         '',
-                        '💡 Pourquoi "Source Externe"?',
+                        '💡 Pourquoi "Chargeur ETL"?',
                         '→ C\'est un Glue Job Python (pas un refiner R)',
-                        '→ Point d\'entrée du système (première transformation)',
-                        '→ Les scrapers en amont sont externes au système de refiners',
+                        '→ Point d\'entrée du système (chargement + transformation initiale)',
+                        '→ ETL = Extract (scrapers) → Transform (Glue) → Load (datawarehouse)',
+                        '→ Différent des refiners qui transforment des données déjà chargées',
                         '',
                         '🕐 Exécution: 6x/jour (00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC)',
                         '📊 Sortie: Table r-media-headlines dans datawarehouse'
@@ -1506,7 +1537,7 @@
                         'Scrape les pages d\'accueil de chaque média toutes les 4h',
                         'Capture des screenshots et métadonnées',
                         'Utilisé exclusivement par le pipeline SONAR',
-                        'Classé "Source Externe" car c\'est un Glue Job Python (pas un Refiner R)',
+                        'Classé "Chargeur ETL" car c\'est un Glue Job Python (pas un Refiner R)',
                         'Exécution: 6x/jour en parallèle avec r-media-headlines',
                         'Output: Table Glue brute (non-datamart)'
                     ]

@@ -76,64 +76,6 @@
             <span class="darkmode-text">Mode sombre</span>
           </button>
         </div>
-        <div class="header-theme">
-          <button id="theme-toggle" class="theme-btn" aria-label="Changer le thème">
-            <i class="fas fa-palette"></i>
-            <span class="theme-text">Thème</span>
-          </button>
-          <div id="theme-dropdown" class="theme-dropdown">
-            <button data-theme="tech-blue" class="theme-option active">
-              <span class="theme-color" style="background: linear-gradient(135deg, #2563eb, #1e40af);"></span>
-              <span class="theme-name">Bleu Tech</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="classic-burgundy" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #8B1538, #6d1129);"></span>
-              <span class="theme-name">Académique</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="green-data" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #047857, #065f46);"></span>
-              <span class="theme-name">Vert Données</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="navy-gold" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #1e3a8a, #1e40af);"></span>
-              <span class="theme-name">Marine & Or</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="modern-slate" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #0f766e, #115e59);"></span>
-              <span class="theme-name">Ardoise</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="monochrome" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #18181b, #09090b);"></span>
-              <span class="theme-name">Monochrome</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="purple-gradient" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);"></span>
-              <span class="theme-name">Violet</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="coral-sunset" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #f97316, #ea580c);"></span>
-              <span class="theme-name">Corail</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="deep-indigo" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #4f46e5, #4338ca);"></span>
-              <span class="theme-name">Indigo</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-            <button data-theme="magenta-creative" class="theme-option">
-              <span class="theme-color" style="background: linear-gradient(135deg, #db2777, #be185d);"></span>
-              <span class="theme-name">Rose</span>
-              <i class="fas fa-check theme-check"></i>
-            </button>
-          </div>
-        </div>
       </div>
     </header>
 
@@ -925,57 +867,6 @@
       })();
     </script>
 
-    <!-- Theme Selector Script -->
-    <script>
-      (function() {
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeDropdown = document.getElementById('theme-dropdown');
-        const themeOptions = document.querySelectorAll('.theme-option');
-        const body = document.body;
-
-        // Vérifier le thème sauvegardé
-        const savedTheme = localStorage.getItem('colorTheme') || 'tech-blue';
-        applyTheme(savedTheme);
-
-        // Toggle dropdown
-        themeToggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          themeDropdown.classList.toggle('open');
-        });
-
-        // Fermer dropdown en cliquant ailleurs
-        document.addEventListener('click', function(e) {
-          if (!themeDropdown.contains(e.target) && e.target !== themeToggle) {
-            themeDropdown.classList.remove('open');
-          }
-        });
-
-        // Sélection d'un thème
-        themeOptions.forEach(option => {
-          option.addEventListener('click', function() {
-            const theme = this.getAttribute('data-theme');
-            applyTheme(theme);
-            localStorage.setItem('colorTheme', theme);
-            themeDropdown.classList.remove('open');
-          });
-        });
-
-        function applyTheme(theme) {
-          // Appliquer l'attribut data-theme
-          body.setAttribute('data-theme', theme);
-          document.documentElement.setAttribute('data-theme', theme);
-
-          // Mettre à jour l'active state
-          themeOptions.forEach(option => {
-            if (option.getAttribute('data-theme') === theme) {
-              option.classList.add('active');
-            } else {
-              option.classList.remove('active');
-            }
-          });
-        }
-      })();
-    </script>
 
     <!-- Active Menu on Scroll Script -->
     <script>

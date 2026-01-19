@@ -23,7 +23,13 @@
       "WebFetch(domain:web3forms.com)",
       "Bash(sort:*)",
       "Bash(git mv:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "WebFetch(domain:scholar.google.com)",
+      "WebFetch(domain:bristoluniversitypressdigital.com)",
+      "WebFetch(domain:onlinelibrary.wiley.com)",
+      "WebFetch(domain:doi.org)",
+      "WebFetch(domain:ingsa.org)",
+      "WebFetch(domain:www.rfics.org)"
     ],
     "deny": [],
     "ask": []
