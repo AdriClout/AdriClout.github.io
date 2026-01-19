@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitrine Démocratique - Workflow 2025</title>
+    <title>Vitrine démocratique - Workflow 2025</title>
     <style>
         * {
             margin: 0;
@@ -455,8 +455,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>📊 Workflow Vitrine Démocratique 2026</h1>
-        <p class="subtitle">Architecture complète des pipelines de données • Version interactive 100% validée contre le code (2026-01-19) • <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; text-decoration: none; font-weight: bold;">🌐 Voir le site vitrine (DEV)</a></p>
+        <h1>📊 Les pipelines de la Vitrine démocratique</h1>
+        <p class="subtitle">Architecture complète • Dernière mise à jour le 19 janvier 2026 • <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; text-decoration: none; font-weight: bold;">🌐 Voir le site vitrine (DEV)</a></p>
 
         <div class="controls">
             <button class="btn active" data-filter="all">Voir tous les pipelines</button>
@@ -593,10 +593,10 @@
                 <span class="frequency">Daily: 12:18, 16:18, 20:18 UTC • Weekly: 20:20 UTC • Monthly: 20:22 UTC<br>(Daily: 07:18, 11:18, 15:18 EST • Weekly: 15:20 EST • Monthly: 15:22 EST)</span>
             </div>
             <div class="pipeline-content">
-                <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
-                    r-media-headlines
-                    <div class="node-detail">Glue Job Python ETL</div>
-                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                <div class="node node-table" data-type="table" data-table="salient_index" data-env-source="DEV">
+                    salient_index
+                    <div class="node-detail">Index de saillance par objet</div>
+                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">+</div>
                 <div class="node node-dict" data-type="dict" data-dict="parties-ca">
@@ -1213,31 +1213,54 @@
                 },
                 'party-score': {
                     title: 'Refiner: radar-party-score.R',
-                    description: 'Analyse les mentions de partis politiques (fédéral/provincial) et calcule le ton pondéré des headlines.',
+                    description: 'Calcule la pertinence et le ton des partis politiques basés sur les scores de saillance des objets extraits.',
                     details: [
-                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects',
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_index',
                         '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables federal_parties_score_* et provincial_parties_score_*',
                         '',
                         '🤖 DICTIONNAIRES:',
-                        '• dict-political-parties-ca (6 partis fédéraux)',
-                        '• dict-political-parties-qc (5 partis provinciaux)',
-                        '• dict-sentiments (analyse de ton)',
+                        '• dict-political-parties-ca (6 partis fédéraux: lpc, cpc, ndp, bq, gpc, ppc)',
+                        '• dict-political-parties-qc (5 partis provinciaux: caq, pq, plq, qs, pcq)',
+                        '• dict-sentiments (analyse de ton positif/négatif)',
                         '',
                         '⚙️ TRAITEMENT:',
-                        '• Identifie mentions de partis dans headlines',
-                        '• Pondère par media weight (comme salient-index)',
-                        '• Analyse ton (positif/négatif) via sentiment dict',
-                        '• Génère 6 tables: federal_day/week/month × provincial_day/week/month',
-                        '• Génère pour 3 pays: QC, CAN, USA',
+                        '1️⃣ MATCHING ROBUSTE:',
+                        '   • Cross-join entre objets saillants et dictionnaires partis',
+                        '   • Matching regex avec délimiteurs de mots (\\b pattern \\b)',
+                        '   • Évite faux positifs (ex: "tory" ne match pas "factory")',
+                        '   • Garde premier match pour éviter duplicats',
+                        '',
+                        '2️⃣ CALCUL DE PERTINENCE:',
+                        '   • Agrège scores de saillance (absolute_normalized_index) par parti/date',
+                        '   • Assure présence de tous les partis (0 si non mentionné)',
+                        '',
+                        '3️⃣ ANALYSE DE TON:',
+                        '   • Découpe bodies en phrases (évite splits sur "M.")',
+                        '   • Applique dict-sentiments via ellipsetxt::run_dictionary',
+                        '   • Calcule ton net: (pos + neg_pos - neg - neg_neg) / mots_phrase',
+                        '   • Moyenne par parti et date',
+                        '',
+                        '4️⃣ PONDÉRATION TEMPORELLE:',
+                        '   • Day: poids [1, 0.25, 0.20, 0.15, 0.10, 0.05, 0.02] sur 7 jours',
+                        '   • Week: poids [1, 0.85, 0.7, 0.55, 0.4, 0.25, 0.10] sur 7 jours',
+                        '   • Month: décroissance linéaire 1→0.1 sur 30 jours',
+                        '   • weighted_mentions = sum(salience × weight)',
+                        '   • weighted_tone = sum(tone × weight)',
+                        '',
+                        '5️⃣ OUTPUTS:',
+                        '   • 6 tables: federal/provincial × day/week/month',
+                        '   • Colonnes: party, weighted_mentions, weighted_tone, date_utc, date_montreal_tz',
+                        '   • Colonne pass (am/noon/pm) uniquement pour daily',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 12:18, 16:18, 20:18 UTC',
+                        '• DAILY: 12:18, 16:18, 20:18 UTC (pass=am/noon/pm)',
                         '• WEEKLY: 20:20 UTC',
                         '• MONTHLY: 20:22 UTC',
                         '',
                         '💾 MÉMOIRE: 10 GB (tous)',
                         '⏳ TIMEOUT: 15 minutes (tous)',
                         '',
+                        '🔗 DÉPENDANCES: Nécessite salient_index généré par radar-salient-index',
                         '🔗 Utilisé par: vitrine-graph-data, dashboard politique'
                     ]
                 },
@@ -1681,10 +1704,10 @@
                     ]
                 },
                 'frontend-vitrine': {
-                    title: 'Frontend Vitrine Démocratique',
+                    title: 'Frontend Vitrine démocratique',
                     description: 'Site web public affichant toutes les analyses politiques',
                     details: [
-                        '🌐 Site web: Vitrine Démocratique',
+                        '🌐 Site web: Vitrine démocratique',
                         '🔗 URL DEV: <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; font-weight: bold;">https://dev.vitrinedemocratique.com/beta.html</a>',
                         '',
                         '📊 Pages disponibles:',
