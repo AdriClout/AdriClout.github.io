@@ -233,6 +233,7 @@
         }
 
         /* Pipeline-specific colors - tous en gris */
+        .pipeline-articles .pipeline-header { background: linear-gradient(135deg, #555 0%, #333 100%); }
         .pipeline-salient .pipeline-header { background: linear-gradient(135deg, #555 0%, #333 100%); }
         .pipeline-issues .pipeline-header { background: linear-gradient(135deg, #555 0%, #333 100%); }
         .pipeline-parties .pipeline-header { background: linear-gradient(135deg, #555 0%, #333 100%); }
@@ -499,6 +500,34 @@
             ⏰ Glue Jobs ETL (r-media-headlines, r-media-frontpages): 6x/jour → 00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC<br>
             <span style="font-size: 12px; color: #999;">(19:03, 23:03, 03:03, 07:03, 11:03, 15:03 EST)</span>
         </p>
+
+        <!-- ARTICLES SEGMENTED (NOUVEAU PIPELINE DE BASE) -->
+        <div class="pipeline pipeline-articles" data-pipeline="articles">
+            <div class="pipeline-header">
+                <span class="toggle-icon">▼</span>
+                <span>📄 Articles Segmented (Pipeline de Prétraitement)</span>
+                <span class="frequency">6x/jour (horaires à venir - blocs de 4h)</span>
+            </div>
+            <div class="pipeline-content">
+                <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
+                    r-media-headlines
+                    <div class="node-detail">Glue Job Python</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-refiner" data-type="refiner" data-refiner="articles-segmented">
+                    radar-articles-segmented.R
+                    <div class="node-schedule">⏰ Horaire à venir</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-table" data-type="table" data-table="radar_articles" data-env-output="DEV">
+                    radar_articles
+                    <div class="node-detail">Articles segmentés (WTPSPLIT)</div>
+                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
+                </div>
+            </div>
+        </div>
 
         <!-- SALIENT INDEX (BASE PIPELINE) -->
         <div class="pipeline pipeline-salient" data-pipeline="salient">
@@ -1079,9 +1108,69 @@
                         'error_count - Nombre d\'erreurs',
                         'quality_score - Score qualité global'
                     ]
+                },
+                'radar_articles': {
+                    title: 'Table: radar_articles',
+                    description: 'Articles segmentés en phrases (base preprocessing pour tous les refiners RADAR+)',
+                    columns: [
+                        'media_id - Identifiant média (ex: JDM, LaPresse, CNN)',
+                        'headline_start_montreal_tz - Début Une (heure Montréal)',
+                        'headline_stop_montreal_tz - Fin Une (heure Montréal)',
+                        'headline_start_utc - Début Une (UTC)',
+                        'headline_stop_utc - Fin Une (UTC)',
+                        'headline_minutes - Durée Une en minutes',
+                        'headline_prop - Proportion durée (normalisé par intervalle 4h)',
+                        'title - Titre article (nettoyé)',
+                        'body - Corps article (nettoyé)',
+                        'url - URL article',
+                        'author - Auteur article',
+                        'language - Langue détectée (fr/en)',
+                        'country_id - Pays détecté (QC/CAN/USA)',
+                        'sentences - Phrases segmentées JSON: [{sid: 1, text: "..."}, ...]',
+                        'text_length - Longueur texte original (caractères)',
+                        'time_interval_montreal_tz - Intervalle 4h Montréal (00-04, 04-08...)',
+                        'time_interval_utc - Intervalle 4h UTC (00-04, 04-08...)'
+                    ]
                 }
             },
             refiners: {
+                'articles-segmented': {
+                    title: 'Refiner: radar-articles-segmented.R',
+                    description: 'Segmente les articles en phrases pour prétraitement (WTPSPLIT API + fallback regex).',
+                    details: [
+                        '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-headlines',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table radar_articles',
+                        '',
+                        '🔧 API SEGMENTATION: WTPSPLIT (https://llm-tool-infer-api.antoinelemor.com)',
+                        '• Batch processing: 10 articles par requête',
+                        '• Retry automatique sur erreurs HTTP 429/503 (max 5 tentatives)',
+                        '• Pause 0.3s entre batches pour rate limiting',
+                        '• Fallback regex si API inaccessible (patron simple par ponctuation)',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Charge blocs de 4h incrémentaux (00-04, 04-08, 08-12, 12-16, 16-20, 20-24)',
+                        '• Calcule durées de Une (headline_minutes)',
+                        '• Détecte langue (fr/en) et pays (QC/CAN/USA)',
+                        '• Convertit dates UTC ↔ Montreal (America/Montreal)',
+                        '• Segmente title + body en phrases avec identifiants (sid)',
+                        '• Calcule text_length (longueur texte original)',
+                        '',
+                        '📊 FORMAT SORTIE (16 colonnes):',
+                        '• media_id, headline_start/stop (Montreal + UTC)',
+                        '• headline_minutes, headline_prop',
+                        '• title, body, url, author, language, country_id',
+                        '• sentences (JSON array avec sid + text)',
+                        '• text_length, time_interval (Montreal + UTC)',
+                        '',
+                        '⏰ HORAIRES: À venir (6x/jour par blocs de 4h)',
+                        '',
+                        '💾 MÉMOIRE: 10 GB (10240 MB)',
+                        '⏳ TIMEOUT: 15 minutes',
+                        '',
+                        '🎯 UTILITÉ: Pipeline de base pour éliminer duplication de preprocessing',
+                        '→ Utilisé par: radar-salient-objects, radar-party-score, radar-issues-score (réforme à venir)'
+                    ]
+                },
                 'salient-objects': {
                     title: 'Refiner: radar-salient-objects.R',
                     description: 'Extrait les objets saillants (personnes, organisations, lieux, événements) des headlines en utilisant GPT-4o.',
