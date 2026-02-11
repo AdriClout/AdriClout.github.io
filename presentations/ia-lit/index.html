@@ -261,6 +261,28 @@
       margin: 0 auto;
     }
 
+    /* Ethics callout */
+    .ethics-callout {
+      max-width: 700px;
+      margin: -1rem auto 2.5rem;
+      padding: 1rem 1.4rem;
+      border-left: 3px solid var(--accent-orange);
+      background: rgba(245, 158, 11, 0.05);
+      border-radius: 0 10px 10px 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .ethics-callout .ethics-icon {
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      margin-top: 0.1rem;
+    }
+
     /* Tool cards grid */
     .tools-grid {
       display: grid;
@@ -574,6 +596,10 @@
         <h2 class="phase-title">Définir la question de recherche</h2>
         <p class="phase-desc">Explorer le sujet, raffiner la question et identifier les concepts clés avant de plonger dans la littérature.</p>
       </div>
+      <div class="ethics-callout">
+        <span class="ethics-icon">&#9888;</span>
+        <span>L'IA peut orienter votre question de recherche sans que vous le réalisiez. Restez maître de votre cadrage théorique et validez vos intuitions avec la littérature existante.</span>
+      </div>
       <div class="tools-grid cols-4" id="phase-1-tools">
         <!-- Les outils seront ajoutés ici -->
       </div>
@@ -585,6 +611,10 @@
         <div class="phase-number">03</div>
         <h2 class="phase-title">Rechercher la littérature</h2>
         <p class="phase-desc">Identifier les articles pertinents avec des moteurs de recherche scientifique augmentés par l'IA.</p>
+      </div>
+      <div class="ethics-callout">
+        <span class="ethics-icon">&#9888;</span>
+        <span>Ces outils ont des biais de couverture importants : surreprésentation anglophone, dominance des sciences naturelles et médicales, et revues à fort facteur d'impact. Demandez-vous toujours : que manque-t-il à mes résultats?</span>
       </div>
       <div class="tools-grid cols-4" id="phase-2-tools">
         <!-- Les outils seront ajoutés ici -->
@@ -598,6 +628,10 @@
         <h2 class="phase-title">Collecter et organiser les références</h2>
         <p class="phase-desc">Importer les meilleures sources dans Zotero, les annoter, les trier et structurer sa bibliothèque de recherche.</p>
       </div>
+      <div class="ethics-callout">
+        <span class="ethics-icon">&#9888;</span>
+        <span>Vos critères de sélection sont-ils explicites et reproductibles? Documentez votre stratégie de recherche et vos critères d'inclusion/exclusion pour assurer la transparence de votre démarche.</span>
+      </div>
       <div class="tools-grid" id="phase-3-tools">
         <!-- Les outils seront ajoutés ici -->
       </div>
@@ -610,6 +644,10 @@
         <h2 class="phase-title">Analyser et résumer</h2>
         <p class="phase-desc">Lire, résumer et évaluer les articles avec l'aide de l'IA pour ne garder que les plus pertinents.</p>
       </div>
+      <div class="ethics-callout">
+        <span class="ethics-icon">&#9888;</span>
+        <span>Un résumé généré par l'IA n'est pas une lecture. Validez toujours les extractions et les synthèses contre le texte original — les hallucinations et les omissions sont fréquentes.</span>
+      </div>
       <div class="tools-grid" id="phase-4-tools">
         <!-- Les outils seront ajoutés ici -->
       </div>
@@ -621,6 +659,10 @@
         <div class="phase-number">06</div>
         <h2 class="phase-title">Rédiger la revue de littérature</h2>
         <p class="phase-desc">Vous avez maintenant toutes les pièces du puzzle. Il ne reste qu'à synthétiser, structurer et rédiger votre revue de littérature en intégrant vos sources.</p>
+      </div>
+      <div class="ethics-callout">
+        <span class="ethics-icon">&#9888;</span>
+        <span>Déclarez votre utilisation de l'IA dans votre travail. La transparence est une exigence scientifique — et une obligation institutionnelle à l'Université Laval dès l'hiver 2026.</span>
       </div>
     </div>
 
@@ -788,6 +830,15 @@
         icon: "\u{1F4D6}",
         description: "Présentation complète sur Zotero : gestion des références, plugins essentiels et automatisation du workflow bibliographique.",
         tags: ["Ressource", "Tutoriel"],
+      },
+      {
+        phase: 3,
+        type: "resource",
+        name: "Intro à Zotero — FSS ULaval",
+        url: "https://www.youtube.com/watch?v=Y1mY9-dIEQU&list=PLDRDcpT8rD_5WAogIB_zAgMeyxA0NdAUX&index=3",
+        icon: "\u{1F3AC}",
+        description: "Vidéo d'introduction à Zotero par la Faculté des sciences sociales de l'Université Laval : import, collections, annotations, bibliographies et plugins.",
+        tags: ["Ressource", "Vidéo", "ULaval"],
       },
       // PHASE 4 — Analyser et résumer
       {
