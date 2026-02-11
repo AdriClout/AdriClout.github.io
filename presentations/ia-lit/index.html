@@ -466,6 +466,12 @@
       .tools-grid, .tools-grid.cols-4 { grid-template-columns: 1fr; }
       .hero-meta { flex-direction: column; align-items: center; gap: 0.8rem; }
       .phase { margin-bottom: 3rem; }
+      .scroll-indicator { position: static; transform: none; margin-top: 2rem; }
+      .scroll-indicator .arrow { margin: 0 auto; }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+      }
     }
 
     /* Smooth scroll */
