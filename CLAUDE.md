@@ -18,6 +18,7 @@ This is a personal academic website template for graduate students in social sci
 - `images/` - Site images including portrait and background
 - `cv/` - CV directory containing PDF, source (LaTeX/markdown/Quarto), and preview image (cv.jpg)
 - `projet_session/` - Projects directory containing R Markdown projects exported to HTML
+- `presentations/` - Conference presentations, one subdirectory per presentation (e.g. `presentations/ia-litrev/index.html`), self-contained with dark tech theme
 - `CNAME` - Custom domain configuration for GitHub Pages
 
 **Navigation**: Single-page site with smooth scrolling between sections using jQuery scrolly/scrollex

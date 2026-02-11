@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pipeline IA pour revues de littérature | Adrien Cloutier</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #111827;
+      --bg-card: #1a1f35;
+      --bg-card-hover: #222845;
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-green: #10b981;
+      --accent-orange: #f59e0b;
+      --accent-red: #ef4444;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --glow-blue: rgba(59, 130, 246, 0.4);
+      --glow-cyan: rgba(6, 182, 212, 0.4);
+      --glow-purple: rgba(139, 92, 246, 0.4);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Animated background grid */
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--accent-blue); top: -100px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--accent-purple); bottom: 20%; left: -100px; animation-delay: -7s; }
+    .orb-3 { width: 350px; height: 350px; background: var(--accent-cyan); top: 50%; right: 10%; animation-delay: -14s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* Header */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-badge .pulse {
+      width: 8px; height: 8px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 50%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-weight: 300;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .scroll-indicator .arrow {
+      width: 24px; height: 24px;
+      border-right: 2px solid var(--text-muted);
+      border-bottom: 2px solid var(--text-muted);
+      transform: rotate(45deg);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* Pipeline container */
+    .pipeline {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* Vertical pipeline line */
+    .pipeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      transform: translateX(-50%);
+    }
+
+    .pipeline-line-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.15) 5%, rgba(139, 92, 246, 0.15) 50%, rgba(6, 182, 212, 0.15) 95%, transparent);
+    }
+
+    .pipeline-line-glow {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple), var(--accent-cyan));
+      border-radius: 2px;
+      box-shadow: 0 0 15px var(--glow-blue), 0 0 30px var(--glow-purple);
+      transition: height 0.1s linear;
+    }
+
+    /* Phase sections */
+    .phase {
+      position: relative;
+      margin-bottom: 5rem;
+    }
+
+    .phase-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .phase-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .phase-number::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--phase-color, var(--accent-blue)), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .phase-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .phase-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Tool cards grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tools-grid.cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tool-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .tool-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--card-accent, var(--accent-blue)), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tool-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px var(--card-glow, var(--glow-blue));
+    }
+
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+
+    .tool-card-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--card-accent, var(--accent-blue));
+    }
+
+    .tool-card h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .tool-card p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .tool-card .tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--card-accent, var(--accent-blue));
+      margin-right: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .tool-card .link-arrow {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .tool-card:hover .link-arrow {
+      background: var(--card-accent, var(--accent-blue));
+      color: white;
+      transform: translate(2px, -2px);
+    }
+
+    /* Phase-specific colors */
+    .phase-0 { --phase-color: var(--accent-red); }
+    .phase-0 .phase-number { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+    .phase-0 .tool-card { --card-accent: var(--accent-red); --card-glow: rgba(239, 68, 68, 0.4); }
+
+    .phase-1 { --phase-color: var(--accent-blue); }
+    .phase-1 .phase-number { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+    .phase-1 .tool-card { --card-accent: var(--accent-blue); --card-glow: var(--glow-blue); }
+
+    .phase-2 { --phase-color: var(--accent-cyan); }
+    .phase-2 .phase-number { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+    .phase-2 .tool-card { --card-accent: var(--accent-cyan); --card-glow: var(--glow-cyan); }
+
+    .phase-3 { --phase-color: var(--accent-purple); }
+    .phase-3 .phase-number { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+    .phase-3 .tool-card { --card-accent: var(--accent-purple); --card-glow: var(--glow-purple); }
+
+    .phase-4 { --phase-color: var(--accent-green); }
+    .phase-4 .phase-number { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+    .phase-4 .tool-card { --card-accent: var(--accent-green); --card-glow: rgba(16, 185, 129, 0.4); }
+
+    .phase-5 { --phase-color: var(--accent-orange); }
+    .phase-5 .phase-number { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); }
+    .phase-5 .tool-card { --card-accent: var(--accent-orange); --card-glow: rgba(245, 158, 11, 0.4); }
+
+    .phase-6 { --phase-color: var(--accent-pink); }
+    .phase-6 .phase-number { background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); }
+    .phase-6 .tool-card { --card-accent: var(--accent-pink); --card-glow: rgba(236, 72, 153, 0.4); }
+
+    /* Footer */
+    .page-footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .page-footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    .page-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      transition: gap 0.3s;
+    }
+
+    .back-link:hover {
+      gap: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .pipeline-line { left: 24px; }
+      .tools-grid, .tools-grid.cols-4 { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; align-items: center; gap: 0.8rem; }
+      .phase { margin-bottom: 3rem; }
+    }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Selection */
+    ::selection {
+      background: rgba(59, 130, 246, 0.3);
+      color: white;
+    }
+
+    /* Counter animation */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding: 1.5rem 2rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+
+    /* Placeholder styling for empty cards */
+    .tool-card.placeholder {
+      border-style: dashed;
+      border-color: rgba(255,255,255,0.1);
+      opacity: 0.5;
+    }
+
+    .tool-card.placeholder:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      Conférence en direct
+    </div>
+    <h1>Pipeline IA pour les revues de littérature</h1>
+    <p class="subtitle">
+      De la question de recherche à la visualisation de la littérature : les meilleurs outils d'intelligence artificielle pour systématiser votre revue de littérature scientifique.
+    </p>
+    <div class="hero-meta">
+      <span>&#128197; 11 février 2026</span>
+      <span>&#127891; Adrien Cloutier</span>
+      <span>&#127963; Université Laval</span>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-number" id="stat-tools">0</div>
+        <div class="stat-label">Outils</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="stat-resources">0</div>
+        <div class="stat-label">Ressources</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="stat-phases">6</div>
+        <div class="stat-label">Phases</div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Explorer le pipeline</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- Pipeline -->
+  <div class="pipeline" id="pipeline">
+    <!-- Animated vertical line -->
+    <div class="pipeline-line">
+      <div class="pipeline-line-bg"></div>
+      <div class="pipeline-line-glow" id="pipeline-glow"></div>
+    </div>
+
+    <!-- PHASE 0: Connaître les règles -->
+    <div class="phase phase-0">
+      <div class="phase-header">
+        <div class="phase-number">01</div>
+        <h2 class="phase-title">Connaître les règles du jeu</h2>
+        <p class="phase-desc">Avant d'utiliser tout outil d'IA, s'informer des normes, principes et obligations en vigueur dans son institution.</p>
+      </div>
+      <div class="tools-grid cols-4" id="phase-0-tools">
+        <!-- Les outils seront ajoutés ici -->
+      </div>
+    </div>
+
+    <!-- PHASE 1: Définir la question de recherche -->
+    <div class="phase phase-1">
+      <div class="phase-header">
+        <div class="phase-number">02</div>
+        <h2 class="phase-title">Définir la question de recherche</h2>
+        <p class="phase-desc">Explorer le sujet, raffiner la question et identifier les concepts clés avant de plonger dans la littérature.</p>
+      </div>
+      <div class="tools-grid cols-4" id="phase-1-tools">
+        <!-- Les outils seront ajoutés ici -->
+      </div>
+    </div>
+
+    <!-- PHASE 2: Rechercher la littérature -->
+    <div class="phase phase-2">
+      <div class="phase-header">
+        <div class="phase-number">03</div>
+        <h2 class="phase-title">Rechercher la littérature</h2>
+        <p class="phase-desc">Identifier les articles pertinents avec des moteurs de recherche scientifique augmentés par l'IA.</p>
+      </div>
+      <div class="tools-grid cols-4" id="phase-2-tools">
+        <!-- Les outils seront ajoutés ici -->
+      </div>
+    </div>
+
+    <!-- PHASE 3: Analyser et trier -->
+    <div class="phase phase-3">
+      <div class="phase-header">
+        <div class="phase-number">04</div>
+        <h2 class="phase-title">Collecter et organiser les références</h2>
+        <p class="phase-desc">Importer les meilleures sources dans Zotero, les annoter, les trier et structurer sa bibliothèque de recherche.</p>
+      </div>
+      <div class="tools-grid" id="phase-3-tools">
+        <!-- Les outils seront ajoutés ici -->
+      </div>
+    </div>
+
+    <!-- PHASE 4: Analyser et résumer -->
+    <div class="phase phase-4">
+      <div class="phase-header">
+        <div class="phase-number">05</div>
+        <h2 class="phase-title">Analyser et résumer</h2>
+        <p class="phase-desc">Lire, résumer et évaluer les articles avec l'aide de l'IA pour ne garder que les plus pertinents.</p>
+      </div>
+      <div class="tools-grid" id="phase-4-tools">
+        <!-- Les outils seront ajoutés ici -->
+      </div>
+    </div>
+
+    <!-- PHASE 5: Rédaction -->
+    <div class="phase phase-5">
+      <div class="phase-header">
+        <div class="phase-number">06</div>
+        <h2 class="phase-title">Rédiger la revue de littérature</h2>
+        <p class="phase-desc">Vous avez maintenant toutes les pièces du puzzle. Il ne reste qu'à synthétiser, structurer et rédiger votre revue de littérature en intégrant vos sources.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <a href="../../index.html" class="back-link">&#8592; Retour au site principal</a>
+    <p>Adrien Cloutier &middot; Doctorant en science politique &middot; Universit&eacute; Laval</p>
+    <p style="margin-top: 0.5rem;">Conf&eacute;rence &mdash; Outils IA pour les revues de litt&eacute;rature scientifique &mdash; F&eacute;vrier 2026</p>
+  </footer>
+
+  <script>
+    // ==========================================
+    // TOOLS DATA - Add your tools here!
+    // ==========================================
+    const tools = [
+      // PHASE 0 — Connaître les règles du jeu
+      {
+        phase: 0,
+        type: "resource",
+        name: "Principes directeurs IA — ULaval",
+        url: "https://www.enseigner.ulaval.ca/numerique-et-ia/intelligence-artificielle/principes-directeurs-concernant-lintelligence-artificielle-dans-lenseignement-et-lapprentissage",
+        icon: "\u{1F3DB}",
+        description: "Les 5 principes fondamentaux de l'Université Laval pour encadrer l'utilisation de l'IA dans l'enseignement et l'apprentissage.",
+        tags: ["Ressource", "ULaval"],
+      },
+      {
+        phase: 0,
+        type: "resource",
+        name: "Outils d'IA en recherche documentaire — Bibliothèque",
+        url: "https://www.bibl.ulaval.ca/services/soutien-a-lapprentissage/outils-dintelligence-artificielle-ia-en-recherche-documentaire#citer-ou-declarer-l-utilisation",
+        icon: "\u{1F4DA}",
+        description: "Guide de la Bibliothèque sur l'utilisation des outils d'IA pour la recherche documentaire, incluant comment citer et déclarer l'utilisation.",
+        tags: ["Ressource", "ULaval", "Citation"],
+      },
+      {
+        phase: 0,
+        type: "resource",
+        name: "IA et droit d'auteur — Bureau du droit d'auteur",
+        url: "https://www.bda.ulaval.ca/intelligence-artificielle/",
+        icon: "\u{2696}",
+        description: "Enjeux de droit d'auteur liés à l'IA : contenu généré, intégrité intellectuelle et règles disciplinaires.",
+        tags: ["Ressource", "ULaval"],
+      },
+      {
+        phase: 0,
+        type: "resource",
+        name: "Utilisation responsable de l'IA générative — FESP",
+        url: "https://www.fesp.ulaval.ca/memoires-et-theses/utilisation-responsable-de-lintelligence-artificielle-generative",
+        icon: "\u{1F393}",
+        description: "Lignes directrices de la FESP pour l'utilisation responsable de l'IA dans les mémoires et thèses. Déclaration obligatoire dès hiver 2026.",
+        tags: ["Ressource", "ULaval", "FESP"],
+      },
+      // PHASE 1 — Définir la question de recherche
+      {
+        phase: 1,
+        name: "ChatGPT",
+        url: "https://chat.openai.com",
+        icon: "\u{1F4AC}",
+        description: "Assistant IA conversationnel pour brainstormer, explorer un sujet et raffiner sa question de recherche.",
+        tags: ["Freemium", "IA générative"],
+      },
+      {
+        phase: 1,
+        name: "Claude",
+        url: "https://claude.ai",
+        icon: "\u{1F9E0}",
+        description: "Assistant IA d'Anthropic, excellent pour l'analyse nuancée, la structuration d'idées et la réflexion conceptuelle.",
+        tags: ["Freemium", "IA générative"],
+      },
+      {
+        phase: 1,
+        name: "Perplexity",
+        url: "https://perplexity.ai",
+        icon: "\u{1F50D}",
+        description: "Moteur de recherche IA qui fournit des réponses sourcées avec références, idéal pour une exploration rapide de la littérature.",
+        tags: ["Freemium", "Recherche IA"],
+      },
+      {
+        phase: 1,
+        name: "Google Scholar",
+        url: "https://scholar.google.com",
+        icon: "\u{1F393}",
+        description: "Le moteur de recherche académique incontournable pour un premier repérage des articles clés et des tendances du champ.",
+        tags: ["Gratuit", "Recherche académique"],
+        free: true
+      },
+      // PHASE 2 — Rechercher la littérature
+      {
+        phase: 2,
+        name: "Elicit",
+        url: "https://elicit.com",
+        icon: "\u{1F52C}",
+        description: "Assistant de recherche IA qui trouve des articles pertinents, extrait les résultats clés et synthétise les findings à partir de questions en langage naturel.",
+        tags: ["Freemium", "Recherche IA"],
+      },
+      {
+        phase: 2,
+        name: "Consensus",
+        url: "https://consensus.app",
+        icon: "\u{2705}",
+        description: "Moteur de recherche qui utilise l'IA pour extraire et résumer les conclusions directement depuis les articles scientifiques.",
+        tags: ["Freemium", "Recherche IA"],
+      },
+      {
+        phase: 2,
+        name: "Connected Papers",
+        url: "https://www.connectedpapers.com",
+        icon: "\u{1F578}",
+        description: "Outil visuel qui génère un graphe d'articles similaires à partir d'un article de départ, pour découvrir la littérature connexe.",
+        tags: ["Freemium", "Visualisation"],
+      },
+      {
+        phase: 2,
+        name: "Research Rabbit",
+        url: "https://www.researchrabbit.ai",
+        icon: "\u{1F430}",
+        description: "Explore la littérature par réseau de citations et recommandations. Permet de construire des collections et de découvrir des articles connexes.",
+        tags: ["Gratuit", "Découverte"],
+        free: true
+      },
+      // PHASE 3 — Collecter et organiser les références
+      {
+        phase: 3,
+        name: "Zotero",
+        url: "https://www.zotero.org",
+        icon: "\u{1F4DA}",
+        description: "Le gestionnaire de références libre et gratuit. Le cœur de votre bibliothèque de recherche : import, annotation, organisation et citation.",
+        tags: ["Gratuit", "Open source", "Essentiel"],
+        free: true
+      },
+      {
+        phase: 3,
+        name: "Zotero Connector",
+        url: "https://www.zotero.org/download/connectors",
+        icon: "\u{1F310}",
+        description: "Extension navigateur (Chrome, Firefox, Edge, Safari) pour capturer des références en un clic directement depuis le web.",
+        tags: ["Gratuit", "Extension"],
+        free: true
+      },
+      {
+        phase: 3,
+        name: "ZotFile / ZotMoov",
+        url: "https://zotfile.com",
+        icon: "\u{1F4C1}",
+        description: "Gestion avancée des PDF : renommage automatique, déplacement des fichiers et sauvegarde locale de vos articles.",
+        tags: ["Gratuit", "Plugin Zotero"],
+        free: true
+      },
+      {
+        phase: 3,
+        name: "Better BibTeX",
+        url: "https://retorque.re/zotero-better-bibtex/",
+        icon: "\u{1F504}",
+        description: "Export automatique de vos collections en format .bib avec synchronisation continue. Indispensable pour les utilisateurs de LaTeX/Quarto.",
+        tags: ["Gratuit", "Plugin Zotero"],
+        free: true
+      },
+      {
+        phase: 3,
+        type: "resource",
+        name: "Guide Zotero — Étienne Proulx",
+        url: "https://www.etienneproulx.org/zotero/",
+        icon: "\u{1F4D6}",
+        description: "Présentation complète sur Zotero : gestion des références, plugins essentiels et automatisation du workflow bibliographique.",
+        tags: ["Ressource", "Tutoriel"],
+      },
+      // PHASE 4 — Analyser et résumer
+      {
+        phase: 4,
+        name: "NotebookLM",
+        url: "https://notebooklm.google.com",
+        icon: "\u{1F4D3}",
+        description: "Outil Google qui permet de charger ses articles et de les interroger par IA. Génère des résumés, des FAQ et même des podcasts audio à partir de vos sources.",
+        tags: ["Gratuit", "Google", "IA"],
+        free: true
+      },
+      {
+        phase: 4,
+        name: "Scholarcy",
+        url: "https://www.scholarcy.com",
+        icon: "\u{2702}",
+        description: "Résume automatiquement les articles scientifiques en flashcards : hypothèses, méthodes, résultats clés et références importantes.",
+        tags: ["Payant", "Résumé IA"],
+      },
+      {
+        phase: 4,
+        name: "Ivory Mind",
+        url: "https://ivorymind.com",
+        icon: "\u{1F9A3}",
+        description: "Assistant IA spécialisé pour l'analyse de la littérature scientifique. Aide à extraire les insights clés et à comparer les articles entre eux.",
+        tags: ["Freemium", "Analyse IA"],
+      },
+    ];
+
+    // ==========================================
+    // RENDER ENGINE
+    // ==========================================
+    function renderTools() {
+      // Clear all grids
+      for (let i = 0; i <= 4; i++) {
+        const grid = document.getElementById(`phase-${i}-tools`);
+        if (grid) grid.innerHTML = '';
+      }
+
+      // Sort tools by phase, then by order within phase
+      tools.sort((a, b) => a.phase - b.phase || (a.order || 0) - (b.order || 0));
+
+      tools.forEach((tool, index) => {
+        const grid = document.getElementById(`phase-${tool.phase}-tools`);
+        if (!grid) return;
+
+        const card = document.createElement('a');
+        card.href = tool.url || '#';
+        card.target = tool.url ? '_blank' : '_self';
+        card.rel = 'noopener noreferrer';
+        card.className = 'tool-card';
+        card.style.transitionDelay = `${(index % 3) * 0.1}s`;
+
+        const tagsHTML = (tool.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+
+        card.innerHTML = `
+          <div class="tool-card-icon">${tool.icon || '&#128295;'}</div>
+          <span class="link-arrow">&#8599;</span>
+          <h4>${tool.name}</h4>
+          <p>${tool.description || ''}</p>
+          <div>${tagsHTML}</div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      // Update stats
+      document.getElementById('stat-tools').textContent = tools.filter(t => t.type !== 'resource').length;
+      document.getElementById('stat-resources').textContent = tools.filter(t => t.type === 'resource').length;
+
+      // Hide empty phases
+      for (let i = 0; i <= 4; i++) {
+        const grid = document.getElementById(`phase-${i}-tools`);
+        const phase = grid?.closest('.phase');
+        if (phase) {
+          phase.style.display = grid.children.length === 0 ? 'none' : '';
+        }
+      }
+
+      // Re-observe for scroll animations
+      observeCards();
+    }
+
+    // ==========================================
+    // SCROLL ANIMATIONS
+    // ==========================================
+    function observeCards() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.tool-card').forEach(card => {
+        observer.observe(card);
+      });
+    }
+
+    // ==========================================
+    // PIPELINE GLOW ANIMATION
+    // ==========================================
+    function updatePipelineGlow() {
+      const pipeline = document.getElementById('pipeline');
+      const glow = document.getElementById('pipeline-glow');
+      if (!pipeline || !glow) return;
+
+      const rect = pipeline.getBoundingClientRect();
+      const pipelineTop = rect.top;
+      const pipelineHeight = rect.height;
+      const viewportCenter = window.innerHeight * 0.6;
+
+      const scrolled = Math.max(0, viewportCenter - pipelineTop);
+      const percent = Math.min(100, (scrolled / pipelineHeight) * 100);
+
+      glow.style.height = percent + '%';
+    }
+
+    window.addEventListener('scroll', updatePipelineGlow, { passive: true });
+
+    // ==========================================
+    // COUNTER ANIMATION
+    // ==========================================
+    function animateCounter(element, target) {
+      let current = 0;
+      const increment = Math.ceil(target / 30);
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = current;
+      }, 50);
+    }
+
+    // ==========================================
+    // INIT
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTools();
+      updatePipelineGlow();
+
+      // Animate stats when in view
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            animateCounter(el, parseInt(el.textContent));
+            statsObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.stat-number').forEach(el => {
+        statsObserver.observe(el);
+      });
+
+      // Show phases even if empty initially (for building the page)
+      for (let i = 0; i <= 4; i++) {
+        const grid = document.getElementById(`phase-${i}-tools`);
+        const phase = grid?.closest('.phase');
+        if (phase && tools.length === 0) {
+          phase.style.display = '';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
