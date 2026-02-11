@@ -277,6 +277,44 @@
       gap: 0.8rem;
     }
 
+    /* Disclaimer banner */
+    .disclaimer-banner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: -2rem auto 0;
+      padding: 1.5rem 2rem;
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    .disclaimer-banner p {
+      margin-bottom: 0.5rem;
+    }
+
+    .disclaimer-banner p:last-child {
+      margin-bottom: 0;
+    }
+
+    .disclaimer-banner strong {
+      color: var(--text-primary);
+    }
+
+    .disclaimer-date {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.2rem 0.7rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
     .ethics-callout .ethics-icon {
       flex-shrink: 0;
       font-size: 1.1rem;
@@ -542,11 +580,11 @@
   <section class="hero">
     <div class="hero-badge">
       <span class="pulse"></span>
-      Conférence en direct
+      Conférence
     </div>
     <h1>Pipeline IA pour les revues de littérature</h1>
     <p class="subtitle">
-      De la question de recherche à la visualisation de la littérature : les meilleurs outils d'intelligence artificielle pour systématiser votre revue de littérature scientifique.
+      De la question de recherche à la visualisation de la littérature : les meilleurs outils d'intelligence artificielle pour votre revue de littérature scientifique.
     </p>
     <div class="hero-meta">
       <span>&#128197; 11 février 2026</span>
@@ -574,6 +612,13 @@
       <div class="arrow"></div>
     </div>
   </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer-banner">
+    <p><strong>&#9888; Avertissement :</strong> Le domaine de l'intelligence artificielle évolue très rapidement. Les outils présentés sur cette page, leurs fonctionnalités et leurs conditions d'accès peuvent changer à tout moment. Cette page pourrait ne plus être à jour.</p>
+    <p><strong>&#129504; Rappel :</strong> Tous les outils d'IA font des erreurs (hallucinations, omissions, biais). Le jugement critique du chercheur demeure central à chaque étape du processus scientifique.</p>
+    <span class="disclaimer-date">Dernière mise à jour : février 2026</span>
+  </div>
 
   <!-- Pipeline -->
   <div class="pipeline" id="pipeline">
