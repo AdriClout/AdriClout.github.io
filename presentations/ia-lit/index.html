@@ -147,16 +147,13 @@
     }
 
     .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
       color: var(--text-muted);
       font-size: 0.8rem;
+      margin-top: 3rem;
       animation: bounce 2s ease-in-out infinite;
     }
 
@@ -168,8 +165,8 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(10px); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
     }
 
     /* Pipeline container */
@@ -282,7 +279,7 @@
       position: relative;
       z-index: 1;
       max-width: 900px;
-      margin: -2rem auto 0;
+      margin: 2rem auto 0;
       padding: 1.5rem 2rem;
       background: rgba(239, 68, 68, 0.06);
       border: 1px solid rgba(239, 68, 68, 0.2);
@@ -504,12 +501,6 @@
       .tools-grid, .tools-grid.cols-4 { grid-template-columns: 1fr; }
       .hero-meta { flex-direction: column; align-items: center; gap: 0.8rem; }
       .phase { margin-bottom: 3rem; }
-      .scroll-indicator { position: static; transform: none; margin-top: 2rem; }
-      .scroll-indicator .arrow { margin: 0 auto; }
-      @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(10px); }
-      }
     }
 
     /* Smooth scroll */
