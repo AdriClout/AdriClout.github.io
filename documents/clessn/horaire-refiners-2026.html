@@ -835,12 +835,12 @@
 
     <div class="container fade-in">
         <header>
-            <h1>📅 Réforme des horaires de la Vitrine démocratique 1.0</h1>
+            <h1>📅 Réforme des horaires pour une Vitrine démocratique Bêta 2.0</h1>
             <p class="subtitle">Système de mise à jour 6 fois/jour - Architecture complète (Heure de Montréal)</p>
             <div class="meta">
                 <div class="meta-item">
                     <span>📅</span>
-                    <span class="badge">17 février 2026</span>
+                    <span class="badge">21 février 2026</span>
                 </div>
                 <div class="meta-item">
                     <span>🎯</span>
@@ -848,7 +848,7 @@
                 </div>
                 <div class="meta-item">
                     <span>⏱️</span>
-                    <span class="badge">~53 min de traitement</span>
+                    <span class="badge">~57 min de traitement</span>
                 </div>
             </div>
         </header>
@@ -860,65 +860,65 @@
                 <div class="objective-card">
                     <h4>Objectif Principal</h4>
                     <p>La Vitrine Démocratique se met à jour <strong>6 fois par jour</strong> (toutes les 4 heures) avec les dernières données des médias et analyses.</p>
-                    <p style="margin-top: 0.5rem;"><strong>Modèle de fraîcheur:</strong> Les données collectées sur une fenêtre de 4h sont traitées et disponibles environ 53 minutes après le début du bloc.</p>
-                    <p style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 4px;"><strong>Exemple:</strong> Bloc débute à <strong>11:00</strong> → Traitement ~53min → Données prêtes vers <strong>11:53</strong> (heure de Montréal)</p>
+                    <p style="margin-top: 0.5rem;"><strong>Délai de disponibilité:</strong> Les données collectées sur une fenêtre de 4h sont traitées et disponibles environ 57 minutes après le début du bloc.</p>
+                    <p style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 4px;"><strong>Exemple:</strong> Bloc débute à <strong>11:03</strong> → Traitement ~57min → Données prêtes vers <strong>12:00</strong> (heure de Montréal)</p>
                     
                     <div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(16, 185, 129, 0.1)); border-radius: 8px; border: 2px solid var(--primary);">
                         <strong style="color: var(--primary);">⏱️ Horaire Complet (6 blocs/jour):</strong>
                         <div style="margin-top: 0.8rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
                             <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌙</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">NUIT</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 23h-3h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 03:00</div>
-                                <div style="font-size: 0.9em;">Pipeline: 03:00-03:53</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~03:53</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 04h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
                                 <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌅</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MATINÉE</div>
+                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MATIN</div>
                                 <div style="font-size: 0.85em; opacity: 0.7;">Données: 3h-7h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 07:00</div>
-                                <div style="font-size: 0.9em;">Pipeline: 07:00-07:53</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~07:53</div>
+                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 07:03</div>
+                                <div style="font-size: 0.9em;">Pipeline: 07:03-08:00</div>
+                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~08:00</div>
                                 <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 08h</div>
                             </div>
                             <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
                                 <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">☀️</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MATIN</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 7h-11h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 11:00</div>
-                                <div style="font-size: 0.9em;">Pipeline: 11:00-11:53</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~11:53</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 12h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">☀️</div>
                                 <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MIDI</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 11h-15h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 15:00</div>
-                                <div style="font-size: 0.9em;">Pipeline: 15:00-15:53</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~15:53</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 16h</div>
+                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 7h-11h</div>
+                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 11:03</div>
+                                <div style="font-size: 0.9em;">Pipeline: 11:03-12:00</div>
+                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~12:00</div>
+                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 12h</div>
                             </div>
                             <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
                                 <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌤️</div>
                                 <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">APRÈS-MIDI</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 15h-19h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 19:00</div>
-                                <div style="font-size: 0.9em;">Pipeline: 19:00-19:53</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~19:53</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 20h</div>
+                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 11h-15h</div>
+                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 15:03</div>
+                                <div style="font-size: 0.9em;">Pipeline: 15:03-16:00</div>
+                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~16:00</div>
+                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 16h</div>
                             </div>
                             <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
                                 <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌆</div>
                                 <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">SOIRÉE</div>
+                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 15h-19h</div>
+                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 19:03</div>
+                                <div style="font-size: 0.9em;">Pipeline: 19:03-20:00</div>
+                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~20:00</div>
+                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 20h</div>
+                            </div>
+                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
+                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌑</div>
+                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MINUIT</div>
                                 <div style="font-size: 0.85em; opacity: 0.7;">Données: 19h-23h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 23:00</div>
-                                <div style="font-size: 0.9em;">Pipeline: 23:00-23:53</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~23:53</div>
+                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 23:03</div>
+                                <div style="font-size: 0.9em;">Pipeline: 23:03-00:00</div>
+                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~00:00</div>
                                 <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 00h</div>
+                            </div>
+                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
+                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌙</div>
+                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">NUIT</div>
+                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 23h-3h</div>
+                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 03:03</div>
+                                <div style="font-size: 0.9em;">Pipeline: 03:03-04:00</div>
+                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~04:00</div>
+                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 04h</div>
                             </div>
                         </div>
 
@@ -929,66 +929,37 @@
                     <div style="margin-top: 1rem; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 8px;">
                         <strong style="color: var(--primary);">1️⃣ Glue Job GÉNÉRALE (toutes les 4h)</strong>
                         <ul style="margin-top: 0.5rem; padding-left: 1.5rem; font-size: 0.95em;">
-                            <li>Récupère tous les CSV des extracteurs des 4 dernières heures</li>
-                            <li>Agrège et consolide les données brutes</li>
-                            <li>Point de départ du pipeline de transformation</li>
-                            <li><strong>Durée:</strong> ~3 minutes</li>
+                            <li style="opacity: 0.75; font-style: italic;">Les <strong>extracteurs</strong> collectent les données brutes des médias (HTML, PDF, XML…) → stockées dans le <strong>data lake</strong></li>
+                            <li style="opacity: 0.75; font-style: italic;">Les <strong>chargeurs</strong> dissectent ces données brutes et les exportent en <strong>CSV</strong> → stockés dans le <strong>datawarehouse</strong></li>
+                            <li>Récupère tous les CSV produits par les chargeurs dans les <strong>4 dernières heures</strong> (datawarehouse)</li>
+                            <li>Les convertit en fichiers <strong>Parquet</strong> (format orienté colonnes requis par AWS Athena — Athena ne peut pas lire du CSV)</li>
+                            <li>Indexe les données dans les <strong>tables Glue</strong> correspondantes → rendues requêtables via Athena</li>
+                            <li>Point d'entrée pour <code>DATA_PREPARATION</code> et tout le pipeline RADAR+</li>
+                            <li><strong>Durée:</strong> max 2 minutes</li>
                         </ul>
                     </div>
                     
                     <div style="margin-top: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
                         <strong style="color: var(--success);">2️⃣ Glue Jobs SPÉCIFIQUES (après chaque raffineur)</strong>
                         <ul style="margin-top: 0.5rem; padding-left: 1.5rem; font-size: 0.95em;">
-                            <li>Chaque raffineur a son propre Glue Job dédié</li>
-                            <li>Écrit les résultats transformés vers Athena (tables SQL)</li>
-                            <li>Permet la persistance et l'interrogation des données</li>
-                            <li><strong>Durée:</strong> ~3 minutes chacun</li>
-                            <li><strong>Total:</strong> 9 Glue Jobs spécifiques × 3 min = 27 min additionnelles</li>
+                            <li>1 par raffineur — écrit les résultats vers Athena</li>
+                            <li><strong>Durée:</strong> ~3 min chacun, mais ils tournent en parallèle → <strong>+9 min au total</strong> sur le chemin critique</li>
                         </ul>
                     </div>
-                    
-                    <p style="margin-top: 1rem; padding: 0.8rem; background: rgba(241, 196, 15, 0.1); border-left: 4px solid var(--warning); border-radius: 4px; font-size: 0.95em;">
-                        <strong>💡 Impact:</strong> Ces Glue Jobs ajoutent ~30 minutes au temps total du pipeline (~60 min au lieu de ~30 min de transformation pure).
-                    </p>
                 </div>
 
                 <div class="objective-card">
                     <h4>🔬 Architecture Scientifique avec Modèles Locaux</h4>
                     <p><strong>TOUS les raffineurs</strong> utilisent maintenant <code>salient_index</code> comme source de vérité unique pour les scores de saillance.</p>
                     
-                    <p style="margin-top: 1rem;"><strong>Pipeline scientifique en 4 étapes:</strong></p>
+                    <p style="margin-top: 1rem;"><strong>Pipeline scientifique — DATA_PREPARATION (6 phases, 5 modèles):</strong></p>
                     <ol style="margin-top: 0.5rem; padding-left: 2rem;">
-                        <li><strong>ARTICLES_SEGMENTED (WTPSPLIT API):</strong>
-                            <ul style="margin-top: 0.3rem; font-size: 0.95em;">
-                                <li>Segmentation des phrases via API dédiée</li>
-                                <li>Durée: 3 min</li>
-                            </ul>
-                        </li>
-                        <li style="margin-top: 0.7rem;"><strong>SALIENT_OBJECTS (GLiNER v1 + gemma3:27b):</strong>
-                            <ul style="margin-top: 0.3rem; font-size: 0.95em;">
-                                <li><strong>Phase 1 - GLiNER v1:</strong> Extraction NER avec 18 labels (persons, locations, organizations, concepts, topics, events, products, brands, etc.)</li>
-                                <li><strong>Phase 2 - gemma3:27b (Ollama):</strong> Normalisation + traduction bilingue EN↔FR dans un seul prompt</li>
-                                <li>Cache 20-40% sur normalisation</li>
-                                <li>Traitement en 2 phases évite loading/unloading des modèles</li>
-                                <li>Durée: 25 min (modèles locaux plus lents mais reproductibles)</li>
-                            </ul>
-                        </li>
-                        <li style="margin-top: 0.7rem;"><strong>PARTY_SCORE (Classification):</strong>
-                            <ul style="margin-top: 0.3rem; font-size: 0.95em;">
-                                <li>Lit <code>salient_index</code> (ne recalcule PAS les scores)</li>
-                                <li>Modèles: Canadian political parties + sentiment analysis</li>
-                                <li>Auto-parallélisation côté serveur</li>
-                                <li>Durée: 1 min</li>
-                            </ul>
-                        </li>
-                        <li style="margin-top: 0.7rem;"><strong>ISSUES_SCORE (Enjeux du CAPP):</strong>
-                            <ul style="margin-top: 0.3rem; font-size: 0.95em;">
-                                <li>Lit <code>salient_index</code> (ne recalcule PAS les scores)</li>
-                                <li>Modèle: Multi-label classification (20+ thèmes CAP)</li>
-                                <li>Auto-parallélisation côté serveur</li>
-                                <li>Durée: 1 min</li>
-                            </ul>
-                        </li>
+                        <li><strong>Phase 1/6 — CAP themes:</strong> Classification thématique sur toutes les phrases (batch)</li>
+                        <li style="margin-top: 0.5rem;"><strong>Phase 2/6 — Canadian political parties:</strong> Détection des partis politiques sur toutes les phrases (batch)</li>
+                        <li style="margin-top: 0.5rem;"><strong>Phase 3/6 — Sentiment:</strong> Analyse de sentiment sur toutes les phrases (batch)</li>
+                        <li style="margin-top: 0.5rem;"><strong>Phase 4/6 — GLiNER (INFER API):</strong> Extraction NER sur toutes les phrases (batch) — 18 labels</li>
+                        <li style="margin-top: 0.5rem;"><strong>Phase 5/6 — gemma3:27b (Ollama):</strong> Normalisation + traduction EN/FR des entités, avec cache inter-articles</li>
+                        <li style="margin-top: 0.5rem;"><strong>Phase 6/6 — Assemblage:</strong> Fusion sentence_analysis + colonnes entités par article → <code>radar_articles</code> (29 colonnes)</li>
                     </ol>
                     
                     <p style="margin-top: 1rem; padding: 0.8rem; background: rgba(241, 196, 15, 0.15); border-left: 4px solid var(--warning); border-radius: 4px;">
@@ -999,189 +970,7 @@
             </div>
         </div>
 
-        <div class="section">
-            <h2>📊 Architecture Complète des Pipelines (6x/jour)</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.05rem;">Vue d'ensemble du flux complet, de la collecte des données jusqu'à la publication de la Vitrine:</p>
-            
-            <div class="pipeline-flow">
-                <!-- PHASE 1: PRÉPARATION -->
-                <div style="background: linear-gradient(to right, rgba(102, 126, 234, 0.05), transparent); padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary); margin-bottom: 1rem;">🔧 PHASE 1: Préparation des Données (Séquentiel - ~41 min)</h3>
-                    
-                    <div class="pipeline-step" style="background: linear-gradient(to right, rgba(102, 126, 234, 0.15), transparent); border-left: 4px solid var(--primary);">
-                        <strong>GLUE JOB GÉNÉRALE</strong> <span style="color: var(--primary);">[DÉBUT]</span> <span style="color: var(--text-light);">(3 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Traite le bloc du Matin (7:00-11:00)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Démarre à <strong>03:00, 07:00, 11:00, 15:00, 19:00, 23:00</strong> (heure de Montréal)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:03</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step">
-                        <strong>RADAR_ARTICLES_SEGMENTED</strong> <span style="color: var(--success);">[NOUVEAU]</span> <span style="color: var(--text-light);">(3 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ API WTPSPLIT: segmentation des phrases</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Input: <code>glue_job_general</code> (9 colonnes)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Output: <code>articles_segmented</code> (16 colonnes)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:09</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step" style="opacity: 0.8;">
-                        <strong>Glue Job spécifique</strong> <span style="color: var(--text-light);">(3 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Écriture vers Athena</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:12</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step">
-                        <strong>RADAR_SALIENT_OBJECTS</strong> <span style="color: var(--warning);">[MODIFIÉ]</span> <span style="color: var(--text-light);">(25 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Modèle: GLiNER v1 (NER - 18 labels)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Modèle: gemma3:27b (Normalisation + traduction bilingue)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Input: <code>articles_segmented</code> (16 colonnes)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Output: <code>salient_headlines_objects</code> (20 colonnes)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--warning);">→ Cache: 20-40% hits | Traitement en 2 phases évite loading/unloading des modèles</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:37</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step" style="opacity: 0.8;">
-                        <strong>Glue Job spécifique</strong> <span style="color: var(--text-light);">(3 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Écriture vers Athena</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:40</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step" style="background: linear-gradient(to right, rgba(102, 126, 234, 0.15), transparent); border-left: 4px solid var(--primary);">
-                        <strong>SALIENT_INDEX</strong> <span style="color: var(--primary);">⭐ SOURCE DE VÉRITÉ</span> <span style="color: var(--text-light);">(1 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ CALCULE les scores de saillance UNE SEULE FOIS (jamais recalculé)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Input: <code>salient_headlines_objects</code> (20 colonnes)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Output: <code>salient_index</code> (20 colonnes AVEC scores)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:41</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step" style="opacity: 0.8;">
-                        <strong>Glue Job spécifique</strong> <span style="color: var(--text-light);">(3 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Écriture vers Athena</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ TERMINE à XX:44 - Point de départ pour TOUT l'enrichissement</div>
-                    </div>
-                </div>
 
-                <!-- PHASE 2: ENRICHISSEMENT -->
-                <div style="background: linear-gradient(to right, rgba(241, 196, 15, 0.05), transparent); padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem;">
-                    <h3 style="color: var(--warning); margin-bottom: 1rem;">⚡ PHASE 2: Enrichissement (Parallèle après XX:44 - max 8 min)</h3>
-                    <p style="margin-bottom: 1rem; opacity: 0.9;"><strong>Tous ces pipelines</strong> démarrent en même temps après SALIENT_INDEX et lisent <code>salient_index</code>. <strong>Chaque pipeline a son Glue Job spécifique (+3 min)</strong>:</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                        <div class="pipeline-step">
-                            <strong>HEADLINE_OF_HEADLINES</strong> <span style="color: var(--text-light);">(5 min + 3 min GJ)</span>
-                            <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Lit <code>salient_index</code></div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Génère les titres de headlines</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ + Glue Job spécifique (3 min)</div>
-                        </div>
-                        
-                        <div class="pipeline-step">
-                            <strong>ISSUES_SCORE</strong> <span style="color: var(--text-light);">(1 min + 3 min GJ)</span>
-                            <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Lit <code>salient_index</code> (20 colonnes)</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Modèle: Enjeux du CAPP (multi-label, 20+ thèmes)</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Output: <code>issues_score</code> (30 colonnes)</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ + Glue Job spécifique (3 min)</div>
-                        </div>
-                        
-                        <div class="pipeline-step">
-                            <strong>PARTY_SCORES</strong> <span style="color: var(--text-light);">(1 min + 3 min GJ)</span>
-                            <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Lit <code>salient_index</code> (20 colonnes)</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Modèles: Canadian parties + sentiment</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Output: <code>party_score</code> (24 colonnes)</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ + Glue Job spécifique (3 min)</div>
-                        </div>
-                        
-                        <div class="pipeline-step">
-                            <strong>HEADLINES_ISSUES</strong> <span style="color: var(--text-light);">(5 min + 3 min GJ)</span>
-                            <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Lit <code>issues_score</code></div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Attend ISSUES_SCORE</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ + Glue Job spécifique (3 min)</div>
-                        </div>
-                        
-                        <div class="pipeline-step">
-                            <strong>REFLET</strong> <span style="color: var(--text-light);">(5 min + 3 min GJ)</span>
-                            <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Lit <code>salient_index</code>, <code>issues_score</code>, <code>party_score</code></div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ Attend ISSUES_SCORE + PARTY_SCORES</div>
-                            <div style="font-size: 0.85em; opacity: 0.8;">→ + Glue Job spécifique (3 min)</div>
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box" style="margin-top: 1rem;">
-                        <strong>⚡ Innovation majeure:</strong> Un seul calcul de saillance dans SALIENT_INDEX, réutilisé par tous. Auto-parallélisation côté serveur pour les modèles de classification.
-                    </div>
-                </div>
-
-                <!-- PHASE 3: PUBLICATION -->
-                <div style="background: linear-gradient(to right, rgba(16, 185, 129, 0.05), transparent); padding: 1.5rem; border-radius: 1rem;">
-                    <h3 style="color: var(--success); margin-bottom: 1rem;">🚀 PHASE 3: Données Prêtes (~XX:53)</h3>
-                    
-                    <div class="pipeline-step">
-                        <strong>Tous les enrichissements terminés</strong>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Tous les pipelines d'enrichissement terminés (~XX:53)</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Toutes les tables Athena disponibles avec leurs Glue Jobs</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step" style="background: linear-gradient(to right, rgba(16, 185, 129, 0.15), transparent); border-left: 4px solid var(--success);">
-                        <strong>ACTUELLEMENT: VITRINE_GRAPH_DATA</strong> <span style="color: var(--warning);">[TEMPORAIRE]</span> <span style="color: var(--text-light);">(3 min)</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ Agrège toutes les tables enrichies</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Génère les données JSON pour la visualisation</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ VITRINE PRÊTE environ 1h après le début du bloc</div>
-                    </div>
-                    
-                    <div class="arrow">↓</div>
-                    
-                    <div class="pipeline-step" style="background: linear-gradient(to right, rgba(74, 144, 226, 0.15), transparent); border-left: 4px solid var(--primary);">
-                        <strong>FUTURE API: Accès Direct</strong> <span style="color: var(--primary);">[PROCHAINEMENT]</span>
-                        <div style="font-size: 0.85em; margin-top: 0.3rem; opacity: 0.8;">→ <strong>Élimination de VITRINE_GRAPH_DATA</strong></div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Le backend appellera l'API directement</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ L'API chargera les fichiers Parquet depuis Athena</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Plus besoin de transformation JSON</div>
-                        <div style="font-size: 0.85em; opacity: 0.8;">→ Sécurité, contrôle d'accès, et monétisation possibles</div>
-                        <div style="font-size: 0.85em; opacity: 0.8; color: var(--success); font-weight: 600;">→ ✅ VITRINE PRÊTE dès ~XX:53 (gain de 7 min)</div>
-                    </div>
-                    
-                    <div class="highlight-box" style="margin-top: 1rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(102, 126, 234, 0.1));">
-                        <strong>🎯 Modèle de fraîcheur:</strong> Les données collectées sur chaque fenêtre de 4h sont traitées et disponibles <strong>environ 53 minutes après le début du bloc</strong>.<br>
-                        <span style="font-size: 0.9em; margin-top: 0.5rem; display: block; opacity: 0.9;">Exemple: bloc débute à <strong>11:00</strong> → traitement ~53min → données prêtes vers <strong>11:53</strong> (heure de Montréal)</span><br>
-                        <span style="font-size: 0.9em; margin-top: 0.5rem; display: block; opacity: 0.9; color: var(--primary); font-weight: 600;">🔮 Avec l'API: données prêtes vers <strong>11:53</strong> directement (élimination de VITRINE_GRAPH_DATA)</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="highlight-box" style="margin-top: 2rem;">
-                <strong>⏱️ Durée totale du bloc:</strong> ~53 minutes incluant tous les Glue Jobs spécifiques (Préparation ~41min incluant 3 GJ + Enrichissement parallèle max 8min incluant 5 GJ)<br>
-                <strong>🔮 Avec l'API future:</strong> VITRINE_GRAPH_DATA sera éliminé, le backend accédera directement aux Parquet via l'API<br>
-                <span style="font-size: 0.9em; margin-top: 0.5rem; display: block; opacity: 0.9;"><strong>💡 Optimisation continue:</strong> Ces temps reflètent notre architecture actuelle avec modèles locaux. L'objectif reste de réduire ce délai en optimisant les modèles et les performances.</span>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>📅 Pipelines Hebdomadaires & Mensuels</h2>
-            <p>Versions weekly/monthly des analyses, exécutées une fois par jour (15h30-15h45 EST) <span style="color: var(--warning); font-weight: 600;">— À valider</span> :</p>
-            <ul style="margin: 1rem 0; padding-left: 2rem;">
-                <li><strong>Weekly (à valider):</strong> Issues, Headlines Issues, Party Scores, Reflet</li>
-                <li><strong>Monthly (à valider):</strong> Issues, Headlines Issues, Party Scores, Reflet</li>
-            </ul>
-
-            <h3 style="margin-top: 2rem;">📊 Pipelines Spéciaux</h3>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li><strong>HOT_20:</strong> Vendredis à 11h30 EST</li>
-                    <li><strong>SONAR:</strong> Quotidien à 07h00 EST</li>
-                    <li><strong>SONAR_HEATMAPS:</strong> Mercredis à 07h30 EST</li>
-                </ul>
-        </div>
 
         <div class="section">
             <h2>📋 Durées Mesurées (AWS Monitoring)</h2>
@@ -1190,201 +979,220 @@
                 <thead>
                     <tr>
                         <th>Raffineur / Glue Job</th>
+                        <th>Heure de lancement</th>
+                        <th>Heure de fin</th>
                         <th>Durée Réelle</th>
-                        <th>Heure (ex: 11:00)</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>GLUE JOB GÉNÉRALE</td>
-                        <td>3 min</td>
-                        <td>11:00</td>
-                        <td>Traite le bloc du Matin (7:00-11:00)</td>
-                    </tr>
-                    <tr>
-                        <td>ARTICLES_SEGMENTED</td>
-                        <td>3 min</td>
                         <td>11:03</td>
-                        <td>API WTPSPLIT</td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>3 min</td>
-                        <td>11:06</td>
-                        <td>Écriture Athena</td>
+                        <td>11:05</td>
+                        <td>max 2 min</td>
+                        <td>Traite le bloc du Midi (7:00-11:00)</td>
                     </tr>
                     <tr>
-                        <td>SALIENT_OBJECTS</td>
-                        <td><strong>25 min</strong></td>
-                        <td>11:09</td>
-                        <td>GLiNER v1 + gemma3:27b</td>
+                        <td>DATA_PREPARATION</td>
+                        <td>11:05</td>
+                        <td>11:45</td>
+                        <td><strong>40 min</strong></td>
+                        <td>wtpsplit · CAP · partis · GLiNER · gemma3:27b — 6 phases — 29 colonnes → <code>radar_articles</code></td>
                     </tr>
                     <tr style="opacity: 0.7;">
                         <td>+ Glue Job spécifique</td>
+                        <td>11:45</td>
+                        <td>11:48</td>
                         <td>3 min</td>
-                        <td>11:34</td>
                         <td>Écriture Athena</td>
+                    </tr>
+                    <tr style="background: rgba(139, 92, 246, 0.1);">
+                        <td colspan="5" style="text-align: center; font-weight: 600; color: #8b5cf6;">⚡ Mini-bloc parallèle (dès 11:48) — SALIENT_INDEX + ISSUES_SCORE + PARTY_SCORES</td>
                     </tr>
                     <tr>
                         <td>SALIENT_INDEX</td>
+                        <td>11:48</td>
+                        <td>11:49</td>
                         <td>1 min</td>
-                        <td>11:37</td>
-                        <td>Calcul scores saillance</td>
+                        <td>Calcul scores saillance — lit <code>radar_articles</code></td>
                     </tr>
                     <tr style="opacity: 0.7;">
                         <td>+ Glue Job spécifique</td>
+                        <td>11:49</td>
+                        <td>11:52</td>
                         <td>3 min</td>
-                        <td>11:38</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr style="background: rgba(241, 196, 15, 0.1);">
-                        <td colspan="4" style="text-align: center; font-weight: 600; color: var(--warning);">⚡ Enrichissement (parallèle)</td>
-                    </tr>
-                    <tr>
-                        <td>HEADLINE_OF_HEADLINES</td>
-                        <td>5 min</td>
-                        <td>11:41</td>
-                        <td>Génération titres</td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>3 min</td>
-                        <td>11:46</td>
                         <td>Écriture Athena</td>
                     </tr>
                     <tr>
                         <td>ISSUES_SCORE</td>
+                        <td>11:48</td>
+                        <td>11:49</td>
                         <td>1 min</td>
-                        <td>11:41</td>
-                        <td>Classification Enjeux du CAPP</td>
+                        <td>Classification Enjeux du CAPP — lit <code>radar_articles</code></td>
                     </tr>
                     <tr style="opacity: 0.7;">
                         <td>+ Glue Job spécifique</td>
+                        <td>11:49</td>
+                        <td>11:52</td>
                         <td>3 min</td>
-                        <td>11:42</td>
                         <td>Écriture Athena</td>
                     </tr>
                     <tr>
                         <td>PARTY_SCORES</td>
+                        <td>11:48</td>
+                        <td>11:49</td>
                         <td>1 min</td>
-                        <td>11:41</td>
-                        <td>Partis + sentiment</td>
+                        <td>Partis + sentiment — lit <code>radar_articles</code></td>
                     </tr>
                     <tr style="opacity: 0.7;">
                         <td>+ Glue Job spécifique</td>
+                        <td>11:49</td>
+                        <td>11:52</td>
                         <td>3 min</td>
-                        <td>11:42</td>
+                        <td>Écriture Athena</td>
+                    </tr>
+                    <tr style="background: rgba(241, 196, 15, 0.1);">
+                        <td colspan="5" style="text-align: center; font-weight: 600; color: var(--warning);">⚡ Phase 2 — Enrichissement final (parallèle dès 11:52)</td>
+                    </tr>
+                    <tr>
+                        <td>HEADLINE_OF_HEADLINES</td>
+                        <td>11:52</td>
+                        <td>11:57</td>
+                        <td>5 min</td>
+                        <td>Génération titres</td>
+                    </tr>
+                    <tr style="opacity: 0.7;">
+                        <td>+ Glue Job spécifique</td>
+                        <td>11:57</td>
+                        <td>12:00</td>
+                        <td>3 min</td>
                         <td>Écriture Athena</td>
                     </tr>
                     <tr>
                         <td>HEADLINES_ISSUES</td>
+                        <td>11:52</td>
+                        <td>11:57</td>
                         <td>5 min</td>
-                        <td>11:42</td>
                         <td>Attend ISSUES_SCORE</td>
                     </tr>
                     <tr style="opacity: 0.7;">
                         <td>+ Glue Job spécifique</td>
+                        <td>11:57</td>
+                        <td>12:00</td>
                         <td>3 min</td>
-                        <td>11:47</td>
                         <td>Écriture Athena</td>
                     </tr>
                     <tr>
                         <td>REFLET</td>
+                        <td>11:52</td>
+                        <td>11:57</td>
                         <td>5 min</td>
-                        <td>11:42</td>
-                        <td>Attend ISSUES + PARTY</td>
+                        <td>Attend SALIENT_INDEX + ISSUES + PARTY</td>
                     </tr>
                     <tr style="opacity: 0.7;">
                         <td>+ Glue Job spécifique</td>
+                        <td>11:57</td>
+                        <td>12:00</td>
                         <td>3 min</td>
-                        <td>11:47</td>
                         <td>Écriture Athena</td>
                     </tr>
                     <tr style="background: rgba(16, 185, 129, 0.1);">
-                        <td colspan="4" style="text-align: center; font-weight: 600; color: var(--success);">🚀 Données Prêtes (~11:53)</td>
+                        <td colspan="5" style="text-align: center; font-weight: 600; color: var(--success);">🚀 Données Prêtes (~12:00)</td>
                     </tr>
                     <tr style="opacity: 0.5; text-decoration: line-through;">
                         <td>VITRINE_GRAPH_DATA</td>
-                        <td>3 min</td>
+                        <td>~12:00</td>
                         <td>--:--</td>
+                        <td>3 min</td>
                         <td style="color: var(--warning);">Sera éliminé avec l'API (accès direct Parquet)</td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="padding: 0.5rem; font-size: 0.9em; color: var(--primary); font-weight: 600;">
-                            ✅ Avec l'API: Données disponibles directement via Athena Parquet à ~11:53
+                        <td colspan="5" style="padding: 0.5rem; font-size: 0.9em; color: var(--primary); font-weight: 600;">
+                            ✅ Avec l'API: Données disponibles directement via Athena Parquet à ~12:00
                         </td>
                     </tr>
                     <tr style="background: rgba(241, 196, 15, 0.1);">
-                        <td colspan="4" style="text-align: center; font-weight: 600; color: var(--warning);">📅 Pipelines Hebdomadaires & Mensuels (1x/jour à 15h30 EST)</td>
+                        <td colspan="5" style="text-align: center; font-weight: 600; color: var(--warning);">📅 Pipelines Hebdomadaires & Mensuels (1x/jour à 15h30 EST)</td>
                     </tr>
                     <tr>
                         <td>ISSUES_SCORE_WEEKLY</td>
-                        <td>~1 min</td>
                         <td>15:30</td>
+                        <td></td>
+                        <td>~1 min</td>
                         <td>Agrégation hebdomadaire <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>ISSUES_SCORE_MONTHLY</td>
-                        <td>~1 min</td>
                         <td>15:31</td>
+                        <td></td>
+                        <td>~1 min</td>
                         <td>Agrégation mensuelle <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>PARTY_SCORES_WEEKLY</td>
-                        <td>~1 min</td>
                         <td>15:32</td>
+                        <td></td>
+                        <td>~1 min</td>
                         <td>Scores partis hebdo <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>PARTY_SCORES_MONTHLY</td>
-                        <td>~1 min</td>
                         <td>15:33</td>
+                        <td></td>
+                        <td>~1 min</td>
                         <td>Scores partis mensuel <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>HEADLINES_ISSUES_WEEKLY</td>
-                        <td>~5 min</td>
                         <td>15:34</td>
+                        <td></td>
+                        <td>~5 min</td>
                         <td>Headlines hebdo <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>HEADLINES_ISSUES_MONTHLY</td>
-                        <td>~5 min</td>
                         <td>15:39</td>
+                        <td></td>
+                        <td>~5 min</td>
                         <td>Headlines mensuel <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>REFLET_WEEKLY</td>
-                        <td>~5 min</td>
                         <td>15:44</td>
+                        <td></td>
+                        <td>~5 min</td>
                         <td>Reflet hebdomadaire <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr>
                         <td>REFLET_MONTHLY</td>
-                        <td>~5 min</td>
                         <td>15:49</td>
+                        <td></td>
+                        <td>~5 min</td>
                         <td>Reflet mensuel <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
                     </tr>
                     <tr style="background: rgba(147, 51, 234, 0.1);">
-                        <td colspan="4" style="text-align: center; font-weight: 600; color: #9333ea;">🎯 Pipelines Spéciaux</td>
+                        <td colspan="5" style="text-align: center; font-weight: 600; color: #9333ea;">🎯 Pipelines Spéciaux</td>
                     </tr>
                     <tr>
                         <td>HOT_20</td>
-                        <td>~5 min</td>
                         <td>11:30</td>
+                        <td></td>
+                        <td>~5 min</td>
                         <td>Vendredis 11h30 EST</td>
                     </tr>
                     <tr>
                         <td>SONAR</td>
-                        <td>~3 min</td>
                         <td>07:00</td>
+                        <td></td>
+                        <td>~3 min</td>
                         <td>Quotidien 07h00 EST</td>
                     </tr>
                     <tr>
                         <td>SONAR_HEATMAPS</td>
+                        <td>07:30</td>
+                        <td></td>
                         <td>~5 min</td>
-                        <td>07:03</td>
                         <td>Mercredis 07h30 EST</td>
                     </tr>
                 </tbody>
@@ -1441,63 +1249,106 @@
                         </div>
                     </div>
 
+                    <div class="time-block" style="margin-top: 1rem;">
+                        <div style="font-size: 0.8em; font-weight: 700; color: var(--danger); margin-bottom: 0.4rem; letter-spacing: 0.05em;">── HEBDOMADAIRE / MENSUEL ──</div>
+                        <div class="time-line">
+                            <span class="refiner-name">Issues / Party / Reflet hebdo:</span>
+                            <span class="times" style="color: var(--danger);">Non standardisé</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">Versions mensuelles:</span>
+                            <span class="times" style="color: var(--danger);">Non standardisé</span>
+                        </div>
+                    </div>
+
                     <div class="problems">
-                        <div class="problem-item">ARTICLES_SEGMENTED n'existait pas</div>
+                        <div class="problem-item">DATA_PREPARATION n'existait pas (RADAR_ARTICLES_SEGMENTED + SALIENT_OBJECTS séparés)</div>
                         <div class="problem-item">Seulement 5 blocs (pas de minuit)</div>
                         <div class="problem-item">Issues/Party/Reflet seulement 3x/jour</div>
                         <div class="problem-item">Pas de synchronisation claire</div>
+                        <div class="problem-item">Pipelines weekly/monthly non standardisés</div>
                     </div>
                 </div>
 
                 <div class="schedule-box schedule-new">
                     <div class="schedule-label new">✅ NOUVEL HORAIRE (Montréal - EST/EDT)</div>
                     <div class="time-block">
+                        <div style="font-size: 0.8em; font-weight: 700; color: #8b5cf6; margin-bottom: 0.4rem; letter-spacing: 0.05em;">── 6x/JOUR ──</div>
                         <div class="time-line">
                             <span class="refiner-name">GLUE JOB:</span>
-                            <span class="times">03:00  07:00  11:00  15:00  19:00  23:00</span>
+                            <span class="times">03:03  07:03  11:03  15:03  19:03  23:03</span>
                         </div>
                         <div class="time-line">
-                            <span class="refiner-name">ARTICLES_SEGMENTED:</span>
-                            <span class="times" style="color: var(--success);">03:03  07:03  11:03  15:03  19:03  23:03</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">SALIENT_OBJECTS:</span>
-                            <span class="times">03:09  07:09  11:09  15:09  19:09  23:09</span>
+                            <span class="refiner-name">DATA_PREPARATION:</span>
+                            <span class="times" style="color: var(--success);">03:05  07:05  11:05  15:05  19:05  23:05</span>
                         </div>
                         <div class="time-line">
                             <span class="refiner-name">SALIENT_INDEX:</span>
-                            <span class="times">03:37  07:37  11:37  15:37  19:37  23:37</span>
+                            <span class="times" style="color: var(--success);">03:48  07:48  11:48  15:48  19:48  23:48</span>
                         </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
-                            <span class="times">03:41  07:41  11:41  15:41  19:41  23:41</span>
-                        </div>
-                        <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
                         <div class="time-line">
                             <span class="refiner-name">ISSUES_SCORE:</span>
-                            <span class="times">03:41  07:41  11:41  15:41  19:41  23:41</span>
+                            <span class="times">03:48  07:48  11:48  15:48  19:48  23:48</span>
                         </div>
                         <div class="time-line">
                             <span class="refiner-name">PARTY_SCORES:</span>
-                            <span class="times">03:41  07:41  11:41  15:41  19:41  23:41</span>
+                            <span class="times">03:48  07:48  11:48  15:48  19:48  23:48</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
+                            <span class="times">03:52  07:52  11:52  15:52  19:52  23:52</span>
                         </div>
                         <div class="time-line">
                             <span class="refiner-name">HEADLINES_ISSUES:</span>
-                            <span class="times">03:42  07:42  11:42  15:42  19:42  23:42</span>
+                            <span class="times">03:52  07:52  11:52  15:52  19:52  23:52</span>
                         </div>
                         <div class="time-line">
                             <span class="refiner-name">REFLET:</span>
-                            <span class="times">03:42  07:42  11:42  15:42  19:42  23:42</span>
+                            <span class="times">03:52  07:52  11:52  15:52  19:52  23:52</span>
                         </div>
                         <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
-
+                        <div style="font-size: 0.8em; font-weight: 700; color: var(--warning); margin-bottom: 0.4rem; letter-spacing: 0.05em;">── HEBDOMADAIRE (lundi ~15h30 EST) ──</div>
+                        <div class="time-line">
+                            <span class="refiner-name">ISSUES_SCORE_WEEKLY:</span>
+                            <span class="times" style="color: var(--warning);">15:30</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">PARTY_SCORES_WEEKLY:</span>
+                            <span class="times" style="color: var(--warning);">15:32</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">HEADLINES_ISSUES_WEEKLY:</span>
+                            <span class="times" style="color: var(--warning);">15:34</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">REFLET_WEEKLY:</span>
+                            <span class="times" style="color: var(--warning);">15:44</span>
+                        </div>
+                        <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
+                        <div style="font-size: 0.8em; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; letter-spacing: 0.05em;">── MENSUEL (1er du mois ~15h30 EST) ──</div>
+                        <div class="time-line">
+                            <span class="refiner-name">ISSUES_SCORE_MONTHLY:</span>
+                            <span class="times" style="color: var(--primary);">15:31</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">PARTY_SCORES_MONTHLY:</span>
+                            <span class="times" style="color: var(--primary);">15:33</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">HEADLINES_ISSUES_MONTHLY:</span>
+                            <span class="times" style="color: var(--primary);">15:39</span>
+                        </div>
+                        <div class="time-line">
+                            <span class="refiner-name">REFLET_MONTHLY:</span>
+                            <span class="times" style="color: var(--primary);">15:49</span>
+                        </div>
                     </div>
 
                     <div class="improvements">
                         <div class="improvement-item"><strong>6 blocs complets</strong> par jour (toutes les 4h)</div>
-                        <div class="improvement-item"><strong>~53 min réels</strong> incluant tous les Glue Jobs (8 spécifiques × 3 min)</div>
-                        <div class="improvement-item"><strong>Pipelines parallèles</strong> après SALIENT_INDEX</div>
-                        <div class="improvement-item"><strong>TOUS les raffineurs 6x/jour</strong> (Issues, Party, Reflet, Headlines Issues)</div>
+                        <div class="improvement-item"><strong>~57 min réels</strong> incluant tous les Glue Jobs (7 spécifiques × 3 min)</div>
+                        <div class="improvement-item"><strong>Mini-bloc parallèle à XX:48</strong> (SALIENT_INDEX + ISSUES_SCORE + PARTY_SCORES simultanément)</div>
+                        <div class="improvement-item"><strong>TOUS les raffineurs 6x/jour</strong> + versions weekly &amp; monthly</div>
                         <div class="improvement-item" style="color: var(--success); font-weight: 600;"><strong>API Future:</strong> Élimination de VITRINE_GRAPH_DATA, accès direct aux Parquet</div>
                     </div>
                 </div>
@@ -1505,17 +1356,17 @@
         </div>
 
         <div class="section">
-            <h2>📈 Visualisation d'un Bloc (exemple: Bloc MATIN 7h-11h)</h2>
+            <h2>📈 Visualisation d'un Bloc (exemple: Bloc MIDI 7h-11h)</h2>
             <div class="visual-timeline">
                 <div style="margin-bottom: 2rem;">
                     <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: linear-gradient(to right, rgba(102, 126, 234, 0.1), rgba(16, 185, 129, 0.1)); border-radius: 8px;">
                         <div style="flex: 1;">
-                            <div style="font-weight: 700; font-size: 1.1rem; color: var(--primary);">⏱️ Timeline: 7h00 → 11h53 (heure de Montréal)</div>
+                            <div style="font-weight: 700; font-size: 1.1rem; color: var(--primary);">⏱️ Timeline: 7h00 → 12h00 (heure de Montréal)</div>
                             <ul style="margin: 0.7em 0 0 1.2em; font-size: 0.98em; color: var(--text-light); line-height: 1.7;">
                                 <li><strong>Données :</strong> 7h-11h</li>
-                                <li><strong>Glue Job :</strong> 11:00</li>
-                                <li><strong>Pipeline :</strong> 11:00-11:53</li>
-                                <li><span style='color: var(--success); font-weight: 600;'>✅ Données :</span> ~11:53</li>
+                                <li><strong>Glue Job :</strong> 11:03 <span style="opacity:0.6;">(schedulé 11:00)</span></li>
+                                <li><strong>Pipeline :</strong> 11:03-12:00</li>
+                                <li><span style='color: var(--success); font-weight: 600;'>✅ Données :</span> ~12:00</li>
                                 <li><span style='color: var(--warning); font-weight: 700;'>🎯 Vitrine :</span> 12h</li>
                             </ul>
                         </div>
@@ -1523,105 +1374,103 @@
                     
                     <!-- Timeline horizontal avec heures sur l'axe X -->
                     <div style="position: relative; height: 600px; padding: 20px; background: var(--surface); border-radius: 8px; border: 1px solid var(--border);">
-                        <!-- Axe X avec marqueurs d'heures -->
+                        <!-- Axe X avec marqueurs d'heures (échelle: 11:00→12:10 = 70 min, 1 min = 1.4286%) -->
                         <div style="position: absolute; bottom: 10px; left: 20px; right: 20px; height: 30px; border-top: 2px solid var(--text-light);">
                             <div style="position: absolute; left: 0%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
                             <div style="position: absolute; left: 0%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:00</div>
-                            
-                            <div style="position: absolute; left: 16.67%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 16.67%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:10</div>
-                            
-                            <div style="position: absolute; left: 33.33%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 33.33%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:20</div>
-                            
-                            <div style="position: absolute; left: 50%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 50%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:30</div>
-                            
-                            <div style="position: absolute; left: 66.67%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 66.67%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:40</div>
-                            
-                            <div style="position: absolute; left: 83.33%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 83.33%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:50</div>
-                            
-                            <div style="position: absolute; left: 100%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 100%; top: 12px; font-size: 0.85em; opacity: 0.7;">12:00</div>
-                        </div>
-                        
-                        <!-- Barres des raffineurs -->
-                        <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 540px;">
-                            <!-- GLUE JOB: 11:00-11:03 (0-5%) -->
-                            <div style="position: absolute; top: 0px; left: 0%; width: 5%; height: 30px; background: #667eea; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">GJ 3min</div>
-                            <div style="position: absolute; top: 0px; left: -80px; width: 75px; font-size: 0.8em; font-weight: 600; text-align: right;">GLUE JOB</div>
-                            
-                            <!-- ARTICLES_SEGMENTED: 11:03-11:06 (5-10%) -->
-                            <div style="position: absolute; top: 40px; left: 5%; width: 5%; height: 30px; background: #10b981; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">3min</div>
-                            <div style="position: absolute; top: 40px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">ARTICLES_SEG</div>
-                            
-                            <!-- Glue Job spécifique: 11:06-11:09 (10-15%) -->
-                            <div style="position: absolute; top: 75px; left: 10%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- SALIENT_OBJECTS: 11:09-11:34 (15-56.67%) -->
-                            <div style="position: absolute; top: 100px; left: 15%; width: 41.67%; height: 30px; background: #f59e0b; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">SALIENT_OBJECTS 25min</div>
-                            <div style="position: absolute; top: 100px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">SALIENT_OBJ</div>
-                            
-                            <!-- Glue Job spécifique: 11:34-11:37 (56.67-61.67%) -->
-                            <div style="position: absolute; top: 135px; left: 56.67%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- SALIENT_INDEX: 11:37-11:38 (61.67-63.33%) -->
-                            <div style="position: absolute; top: 160px; left: 61.67%; width: 1.67%; height: 30px; background: #8b5cf6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
-                            <div style="position: absolute; top: 160px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">SALIENT_IDX</div>
-                            
-                            <!-- Glue Job spécifique: 11:38-11:41 (63.33-68.33%) -->
-                            <div style="position: absolute; top: 195px; left: 63.33%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- Enrichissement parallèle (démarrent à 11:41 = 68.33%) -->
-                            <div style="position: absolute; top: 220px; left: 68.33%; width: calc(100% - 68.33%); height: 1px; background: #f59e0b; opacity: 0.3;"></div>
-                            <div style="position: absolute; top: 215px; left: 68%; font-size: 0.75em; color: var(--warning); font-weight: 600;">⚡ Parallèle</div>
-                            
-                            <!-- HEADLINE_OF_HEADLINES: 11:41-11:46 (68.33-76.67%) -->
-                            <div style="position: absolute; top: 230px; left: 68.33%; width: 8.33%; height: 25px; background: #ec4899; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">HOH 5m</div>
-                            <div style="position: absolute; top: 230px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">HEADLINE_HOH</div>
-                            
-                            <!-- Glue Job HOH: 11:46-11:49 (76.67-81.67%) -->
-                            <div style="position: absolute; top: 260px; left: 76.67%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- ISSUES_SCORE: 11:41-11:42 (68.33-70%) -->
-                            <div style="position: absolute; top: 285px; left: 68.33%; width: 1.67%; height: 25px; background: #3b82f6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
-                            <div style="position: absolute; top: 285px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">ISSUES</div>
-                            
-                            <!-- Glue Job ISSUES: 11:42-11:45 (70-75%) -->
-                            <div style="position: absolute; top: 315px; left: 70%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- PARTY_SCORES: 11:41-11:42 (68.33-70%) -->
-                            <div style="position: absolute; top: 340px; left: 68.33%; width: 1.67%; height: 25px; background: #14b8a6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
-                            <div style="position: absolute; top: 340px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">PARTY</div>
-                            
-                            <!-- Glue Job PARTY: 11:42-11:45 (70-75%) -->
-                            <div style="position: absolute; top: 365px; left: 70%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- HEADLINES_ISSUES: 11:42-11:47 (70-78.33%) -->
-                            <div style="position: absolute; top: 390px; left: 70%; width: 8.33%; height: 25px; background: #06b6d4; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">H_ISS 5m</div>
-                            <div style="position: absolute; top: 390px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">HEAD_ISSUES</div>
-                            
-                            <!-- Glue Job HEADLINES_ISSUES: 11:47-11:50 (78.33-83.33%) -->
-                            <div style="position: absolute; top: 420px; left: 78.33%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- REFLET: 11:42-11:47 (70-78.33%) -->
-                            <div style="position: absolute; top: 445px; left: 70%; width: 8.33%; height: 25px; background: #a855f7; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">REFLET 5m</div>
-                            <div style="position: absolute; top: 445px; left: -80px; width: 75px; font-size: 0.8em; text-align: right;">REFLET</div>
-                            
-                            <!-- Glue Job REFLET: 11:47-11:50 (78.33-83.33%) -->
-                            <div style="position: absolute; top: 475px; left: 78.33%; width: 5%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-                            
-                            <!-- Fin du pipeline - Données prêtes (11:50-11:53 = 83.33-88.33%) -->
-                            <div style="position: absolute; top: 500px; left: 83.33%; width: 5%; height: 30px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600; border: 2px solid #10b981;">PRÊT</div>
-                            <div style="position: absolute; top: 500px; left: -80px; width: 75px; font-size: 0.8em; text-align: right; color: var(--success); font-weight: 700;">✅ DONNÉES</div>
-                            
 
-                            
-                            <!-- Ligne de fin (11:53) -->
-                            <div style="position: absolute; top: 500px; left: 88.33%; width: 2px; height: 30px; background: var(--success); opacity: 0.5;"></div>
-                            <div style="position: absolute; top: 505px; left: calc(88.33% + 5px); font-size: 0.9em; color: var(--success); font-weight: 700;">✅ 11:53</div>
+                            <div style="position: absolute; left: 14.29%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 14.29%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:10</div>
+
+                            <div style="position: absolute; left: 28.57%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 28.57%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:20</div>
+
+                            <div style="position: absolute; left: 42.86%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 42.86%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:30</div>
+
+                            <div style="position: absolute; left: 57.14%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 57.14%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:40</div>
+
+                            <div style="position: absolute; left: 71.43%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 71.43%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:50</div>
+
+                            <div style="position: absolute; left: 85.71%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 85.71%; top: 12px; font-size: 0.85em; opacity: 0.7;">12:00</div>
+
+                            <div style="position: absolute; left: 100%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
+                            <div style="position: absolute; left: 100%; top: 12px; font-size: 0.85em; opacity: 0.7;">12:10</div>
+                        </div>
+
+                        <!-- Barres des raffineurs -->
+                        <!-- Échelle: 11:00→12:10 = 70 min, 1 min = 1.4286% -->
+                        <!-- Positions clés: 11:03=4.29% 11:05=7.14% 11:45=64.29% 11:48=68.57% 11:49=70% 11:52=74.29% 11:57=81.43% 12:00=85.71% -->
+                        <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 540px;">
+                            <!-- GLUE JOB GÉNÉRALE: 11:03-11:05 (4.29%-7.14%) -->
+                            <div style="position: absolute; top: 0px; left: 4.29%; width: 2.86%; height: 30px; background: #667eea; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">GJ 2m</div>
+                            <div style="position: absolute; top: 0px; left: -180px; width: 175px; font-size: 0.8em; font-weight: 600; text-align: right;">GLUE JOB GÉNÉRALE</div>
+
+                            <!-- DATA_PREPARATION: 11:05-11:45 (7.14%-64.29%) -->
+                            <div style="position: absolute; top: 40px; left: 7.14%; width: 57.14%; height: 30px; background: #10b981; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">DATA_PREPARATION 40min</div>
+                            <div style="position: absolute; top: 40px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">DATA_PREPARATION</div>
+
+                            <!-- Glue Job DATA_PREP: 11:45-11:48 (64.29%-68.57%) -->
+                            <div style="position: absolute; top: 75px; left: 64.29%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- ⚡ Mini-bloc parallèle à 11:48 (68.57%) -->
+                            <div style="position: absolute; top: 100px; left: 68.57%; width: 1px; height: 195px; background: #8b5cf6; opacity: 0.25;"></div>
+                            <div style="position: absolute; top: 95px; left: 69.2%; font-size: 0.72em; color: #8b5cf6; font-weight: 600;">⚡ Mini-bloc 11:48</div>
+
+                            <!-- SALIENT_INDEX: 11:48-11:49 (68.57%-70%) -->
+                            <div style="position: absolute; top: 110px; left: 68.57%; width: 1.43%; height: 25px; background: #8b5cf6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
+                            <div style="position: absolute; top: 110px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">SALIENT_INDEX</div>
+
+                            <!-- GJ SALIENT_INDEX: 11:49-11:52 (70%-74.29%) -->
+                            <div style="position: absolute; top: 140px; left: 70%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- ISSUES_SCORE: 11:48-11:49 (68.57%-70%) -->
+                            <div style="position: absolute; top: 165px; left: 68.57%; width: 1.43%; height: 25px; background: #3b82f6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
+                            <div style="position: absolute; top: 165px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">ISSUES_SCORE</div>
+
+                            <!-- GJ ISSUES_SCORE: 11:49-11:52 (70%-74.29%) -->
+                            <div style="position: absolute; top: 195px; left: 70%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- PARTY_SCORES: 11:48-11:49 (68.57%-70%) -->
+                            <div style="position: absolute; top: 220px; left: 68.57%; width: 1.43%; height: 25px; background: #14b8a6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
+                            <div style="position: absolute; top: 220px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">PARTY_SCORES</div>
+
+                            <!-- GJ PARTY_SCORES: 11:49-11:52 (70%-74.29%) -->
+                            <div style="position: absolute; top: 250px; left: 70%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- ⚡ Phase 2 parallèle à 11:52 (74.29%) -->
+                            <div style="position: absolute; top: 275px; left: 74.29%; width: 1px; height: 175px; background: #f59e0b; opacity: 0.25;"></div>
+                            <div style="position: absolute; top: 270px; left: 74.9%; font-size: 0.72em; color: var(--warning); font-weight: 600;">⚡ Phase 2 11:52</div>
+
+                            <!-- HEADLINE_OF_HEADLINES: 11:52-11:57 (74.29%-81.43%) -->
+                            <div style="position: absolute; top: 285px; left: 74.29%; width: 7.14%; height: 25px; background: #ec4899; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">HOH 5m</div>
+                            <div style="position: absolute; top: 285px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">HEADLINE_OF_HEADLINES</div>
+
+                            <!-- GJ HOH: 11:57-12:00 (81.43%-85.71%) -->
+                            <div style="position: absolute; top: 315px; left: 81.43%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- HEADLINES_ISSUES: 11:52-11:57 (74.29%-81.43%) -->
+                            <div style="position: absolute; top: 340px; left: 74.29%; width: 7.14%; height: 25px; background: #06b6d4; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">H_ISS 5m</div>
+                            <div style="position: absolute; top: 340px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">HEADLINES_ISSUES</div>
+
+                            <!-- GJ HEADLINES_ISSUES: 11:57-12:00 (81.43%-85.71%) -->
+                            <div style="position: absolute; top: 370px; left: 81.43%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- REFLET: 11:52-11:57 (74.29%-81.43%) -->
+                            <div style="position: absolute; top: 395px; left: 74.29%; width: 7.14%; height: 25px; background: #a855f7; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">REFLET 5m</div>
+                            <div style="position: absolute; top: 395px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">REFLET</div>
+
+                            <!-- GJ REFLET: 11:57-12:00 (81.43%-85.71%) -->
+                            <div style="position: absolute; top: 425px; left: 81.43%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
+
+                            <!-- Données prêtes à 12:00 (85.71%) -->
+                            <div style="position: absolute; top: 450px; left: 85.71%; width: 2px; height: 65px; background: var(--success); opacity: 0.6;"></div>
+                            <div style="position: absolute; top: 450px; left: 81.43%; width: 4.29%; height: 30px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600; border: 2px solid #10b981;">PRÊT</div>
+                            <div style="position: absolute; top: 450px; left: -180px; width: 175px; font-size: 0.8em; text-align: right; color: var(--success); font-weight: 700;">✅ DONNÉES</div>
+                            <div style="position: absolute; top: 485px; left: calc(85.71% + 5px); font-size: 0.9em; color: var(--success); font-weight: 700;">✅ 12:00</div>
                         </div>
                     </div>
                 </div>
@@ -1629,64 +1478,66 @@
         </div>
 
         <div class="section">
-            <h2>🔮 Impact de la Future API</h2>
-            
-            <div class="highlight-box">
-                <strong>⚠️ Note importante:</strong> L'architecture va évoluer avec l'arrivée de l'API
-            </div>
+            <h2>📅 Pipelines Hebdomadaires &amp; Mensuels</h2>
+            <p style="margin-bottom: 1.5rem; opacity: 0.9;">Versions weekly/monthly des analyses, exécutées une fois par jour <span style="color: var(--warning); font-weight: 600;">— À valider</span></p>
 
-            <h3>Actuellement (Glue Jobs + Lambda)</h3>
-            <ul style="margin: 1rem 0; padding-left: 2rem;">
-                <li>Glue Jobs récupèrent les CSV générés par les pipelines</li>
-                <li>Chaque raffineur Lambda analyse les données et publie dans Athena</li>
-                <li>Une seule Glue Job générale agrège toutes les tables</li>
+            <h3 style="margin-bottom: 1rem;">📆 Hebdomadaires (~15h30 EST)</h3>
+            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem;">
+                <li><strong>ISSUES_SCORE_WEEKLY</strong> — 15:30</li>
+                <li><strong>PARTY_SCORES_WEEKLY</strong> — 15:32</li>
+                <li><strong>HEADLINES_ISSUES_WEEKLY</strong> — 15:34</li>
+                <li><strong>REFLET_WEEKLY</strong> — 15:44</li>
             </ul>
 
-            <h3>Avec la Future API</h3>
-            <ul style="margin: 1rem 0; padding-left: 2rem;">
-                <li><strong>Élimination du raffineur VITRINE_GRAPH_DATA:</strong> Le backend va directement appeler l'API pour charger les fichiers Parquet depuis Athena</li>
-                <li><strong>Accès direct aux données Parquet:</strong> Plus besoin de transformer les données en JSON, l'API lit directement depuis l'infrastructure Athena</li>
-                <li><strong>Simplification de l'architecture:</strong> L'API facilite l'appel et centralise l'accès aux données</li>
-                <li><strong>Sécurité et contrôle d'accès:</strong> Possibilité d'ajouter des codes d'accès, des durées d'accès limitées, et de contrôler qui accède aux données</li>
-                <li><strong>Monétisation future:</strong> Infrastructure prête pour un modèle d'accès payant si souhaité</li>
-                <li><strong>Performance améliorée:</strong> Réduction des délais entre les étapes grâce à l'accès direct</li>
-                <li><strong>Flexibilité:</strong> Déclenchement de mises à jour à la demande possible</li>
+            <h3 style="margin-bottom: 1rem;">📆 Mensuels (~15h30 EST)</h3>
+            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem;">
+                <li><strong>ISSUES_SCORE_MONTHLY</strong> — 15:31</li>
+                <li><strong>PARTY_SCORES_MONTHLY</strong> — 15:33</li>
+                <li><strong>HEADLINES_ISSUES_MONTHLY</strong> — 15:39</li>
+                <li><strong>REFLET_MONTHLY</strong> — 15:49</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🎯 Pipelines Spéciaux</h3>
+            <ul style="margin: 0.5rem 0; padding-left: 2rem;">
+                <li><strong>HOT_20:</strong> Vendredis à 11h30 EST</li>
+                <li><strong>SONAR:</strong> Quotidien à 07h00 EST</li>
+                <li><strong>SONAR_HEATMAPS:</strong> Mercredis à 07h30 EST</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>🚀 Prochaines Étapes</h2>
-            
+
             <div class="timeline">
                 <div class="timeline-item">
                     <h4>✅ Validation de l'horaire (EN COURS)</h4>
                     <p>Approbation de l'équipe et confirmation des durées réelles en production</p>
                 </div>
-                
+
                 <div class="timeline-item">
-                    <h4>🔧 Déploiement de ARTICLES_SEGMENTED</h4>
-                    <p>PR #107 du repo aws-refiners - Création de l'infrastructure Lambda + ECR - Tests en environnement DEV</p>
+                    <h4>✅ Déploiement de RADAR_DATA_PREPARATION</h4>
+                    <p>Remplace radar-articles-segmented et radar-salient-objects — 5 modèles, 6 phases, 29 colonnes vers <code>radar_articles</code> — SALIENT_INDEX lit désormais directement depuis <code>radar_articles</code></p>
                 </div>
-                
+
                 <div class="timeline-item">
                     <h4>📊 Mise à jour de tous les raffineurs</h4>
                     <p>Application du nouvel horaire - Ajout du 6ème bloc (minuit) - Mise à jour des payloads</p>
                 </div>
-                
+
                 <div class="timeline-item">
                     <h4>🧪 Phase de Test (2 semaines)</h4>
                     <p>Monitoring intensif des temps d'exécution - Ajustements si nécessaire - Validation de la synchronisation</p>
                 </div>
-                
+
                 <div class="timeline-item">
                     <h4>📈 Optimisation Continue</h4>
-                    <p>Réduction progressive des marges de sécurité - Préparation à l'arrivée de l'API - Documentation des métriques</p>
+                    <p>Réduction progressive des marges de sécurité - Documentation des métriques</p>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p><strong>Version:</strong> 1.0 | <strong>Dernière mise à jour:</strong> 17 février 2026</p>
+            <p><strong>Version:</strong> Bêta 2.0 | <strong>Dernière mise à jour:</strong> 21 février 2026</p>
 
         </footer>
     </div>
@@ -1696,9 +1547,9 @@
 
     <!-- Indicateur de temps -->
     <div class="time-indicator" id="timeIndicator">
-        <div class="emoji">🌙</div>
-        <div class="time">04:00</div>
-        <div class="label">Bloc NUIT (23:00-3:00)</div>
+        <div class="emoji">🌅</div>
+        <div class="time">08:00</div>
+        <div class="label">Bloc MATIN (3:00-7:00)</div>
     </div>
 
     <script>
@@ -1729,43 +1580,43 @@
             
             let phase, emoji, time, label;
             
-            // 6 phases correspondant aux 6 blocs (Vitrine prête: 04:00, 08:00, 12:00, 16:00, 20:00, 00:00)
+            // 6 phases correspondant aux 6 blocs, commençant par MATIN (Vitrine: 08:00, 12:00, 16:00, 20:00, 00:00, 04:00)
             if (scrollPercent < 0.167) {
-                // 0-16.7% : Nuit profonde (NUIT: données 23h-3h, Vitrine prête à 04:00)
+                // 0-16.7% : Lever du soleil (MATIN: données 3h-7h, Vitrine prête à 08:00)
+                body.classList.add('phase-sunrise');
+                emoji = '🌅';
+                time = '08:00';
+                label = 'Bloc MATIN (3:00-7:00)';
+            } else if (scrollPercent < 0.333) {
+                // 16.7-33.3% : Matin lumineux (MIDI: données 7h-11h, Vitrine prête à 12:00)
+                body.classList.add('phase-morning');
+                emoji = '☀️';
+                time = '12:00';
+                label = 'Bloc MIDI (7:00-11:00)';
+            } else if (scrollPercent < 0.50) {
+                // 33.3-50% : Midi éclatant (APRÈS-MIDI: données 11h-15h, Vitrine prête à 16:00)
+                body.classList.add('phase-noon');
+                emoji = '🌤️';
+                time = '16:00';
+                label = 'Bloc APRÈS-MIDI (11:00-15:00)';
+            } else if (scrollPercent < 0.667) {
+                // 50-66.7% : Après-midi doré (SOIRÉE: données 15h-19h, Vitrine prête à 20:00)
+                body.classList.add('phase-afternoon');
+                emoji = '🌆';
+                time = '20:00';
+                label = 'Bloc SOIRÉE (15:00-19:00)';
+            } else if (scrollPercent < 0.833) {
+                // 66.7-83.3% : Coucher de soleil (MINUIT: données 19h-23h, Vitrine prête à 00:00)
+                body.classList.add('phase-sunset');
+                emoji = '🌑';
+                time = '00:00';
+                label = 'Bloc MINUIT (19:00-23:00)';
+            } else {
+                // 83.3-100% : Nuit profonde (NUIT: données 23h-3h, Vitrine prête à 04:00)
                 body.classList.add('phase-night-deep');
                 emoji = '🌙';
                 time = '04:00';
                 label = 'Bloc NUIT (23:00-3:00)';
-            } else if (scrollPercent < 0.333) {
-                // 16.7-33.3% : Lever du soleil (MATINÉE: données 3h-7h, Vitrine prête à 08:00)
-                body.classList.add('phase-sunrise');
-                emoji = '🌅';
-                time = '08:00';
-                label = 'Bloc MATINÉE (3:00-7:00)';
-            } else if (scrollPercent < 0.50) {
-                // 33.3-50% : Matin lumineux (MATIN: données 7h-11h, Vitrine prête à 12:00)
-                body.classList.add('phase-morning');
-                emoji = '☀️';
-                time = '12:00';
-                label = 'Bloc MATIN (7:00-11:00)';
-            } else if (scrollPercent < 0.667) {
-                // 50-66.7% : Midi éclatant (MIDI: données 11h-15h, Vitrine prête à 16:00)
-                body.classList.add('phase-noon');
-                emoji = '☀️';
-                time = '16:00';
-                label = 'Bloc MIDI (11:00-15:00)';
-            } else if (scrollPercent < 0.833) {
-                // 66.7-83.3% : Après-midi doré (APRÈS-MIDI: données 15h-19h, Vitrine prête à 20:00)
-                body.classList.add('phase-afternoon');
-                emoji = '🌤️';
-                time = '20:00';
-                label = 'Bloc APRÈS-MIDI (15:00-19:00)';
-            } else {
-                // 83.3-100% : Coucher de soleil (SOIRÉE: données 19h-23h, Vitrine prête à 00:00)
-                body.classList.add('phase-sunset');
-                emoji = '🌆';
-                time = '00:00';
-                label = 'Bloc SOIRÉE (19:00-23:00)';
             }
             
             // Mettre à jour l'indicateur
