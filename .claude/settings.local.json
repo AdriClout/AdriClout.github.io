@@ -29,7 +29,19 @@
       "WebFetch(domain:onlinelibrary.wiley.com)",
       "WebFetch(domain:doi.org)",
       "WebFetch(domain:ingsa.org)",
-      "WebFetch(domain:www.rfics.org)"
+      "WebFetch(domain:www.rfics.org)",
+      "WebFetch(domain:www.enseigner.ulaval.ca)",
+      "WebFetch(domain:www.bibl.ulaval.ca)",
+      "WebFetch(domain:www.bda.ulaval.ca)",
+      "WebFetch(domain:www.fesp.ulaval.ca)",
+      "WebFetch(domain:www.etienneproulx.org)",
+      "Bash(git rm:*)",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(du:*)",
+      "Bash(git reset:*)",
+      "Bash(git fsck:*)",
+      "WebFetch(domain:clessn.notion.site)",
+      "mcp__claude_ai_Notion__notion-fetch"
     ],
     "deny": [],
     "ask": []

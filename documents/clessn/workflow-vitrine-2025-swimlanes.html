@@ -457,10 +457,11 @@
 <body>
     <div class="container">
         <h1>📊 Les pipelines de la Vitrine démocratique</h1>
-        <p class="subtitle">Architecture complète • Dernière mise à jour le 19 janvier 2026 • <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; text-decoration: none; font-weight: bold;">🌐 Voir le site vitrine (DEV)</a></p>
+        <p class="subtitle">Architecture complète • Dernière mise à jour le 28 février 2026 • <a href="https://dev.vitrinedemocratique.com/beta.html" target="_blank" style="color: #4A90E2; text-decoration: none; font-weight: bold;">🌐 Voir le site vitrine (DEV)</a></p>
 
         <div class="controls">
             <button class="btn active" data-filter="all">Voir tous les pipelines</button>
+            <button class="btn" data-filter="articles">RADAR+ Data Prep</button>
             <button class="btn" data-filter="salient">Salient Index</button>
             <button class="btn" data-filter="issues">Issues Score</button>
             <button class="btn" data-filter="parties">Party Scores</button>
@@ -497,16 +498,15 @@
 
         <!-- Horaire Glue Jobs ETL -->
         <p class="subtitle" style="margin-top: -10px; margin-bottom: 20px; font-size: 13px; color: #E74C3C; font-weight: 600;">
-            ⏰ Glue Jobs ETL (r-media-headlines, r-media-frontpages): 6x/jour → 00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC<br>
-            <span style="font-size: 12px; color: #999;">(19:03, 23:03, 03:03, 07:03, 11:03, 15:03 EST)</span>
+            ⏰ Glue Jobs ETL (r-media-headlines, r-media-frontpages): 6x/jour → 19:03, 23:03, 03:03, 07:03, 11:03, 15:03 (heure du Québec)
         </p>
 
-        <!-- ARTICLES SEGMENTED (NOUVEAU PIPELINE DE BASE) -->
+        <!-- PIPELINE RADAR+ DATA PREPARATION -->
         <div class="pipeline pipeline-articles" data-pipeline="articles">
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
-                <span>📄 Articles Segmented (Pipeline de Prétraitement)</span>
-                <span class="frequency">6x/jour (horaires à venir - blocs de 4h)</span>
+                <span>📄 RADAR+ Data Preparation (Pipeline de Base)</span>
+                <span class="frequency">6x/jour: 19:06, 23:06, 03:06, 07:06, 11:06, 15:06 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
@@ -516,42 +516,56 @@
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="articles-segmented">
-                    radar-articles-segmented.R
-                    <div class="node-schedule">⏰ Horaire à venir</div>
+                    radar-data-preparation.R
+                    <div class="node-detail">Segmentation + annotation</div>
+                    <div class="node-schedule">⏰ 19:06, 23:06, 03:06, 07:06, 11:06, 15:06</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="radar_articles" data-env-output="DEV">
-                    radar_articles
-                    <div class="node-detail">Articles segmentés (WTPSPLIT)</div>
+                <div class="node node-table" data-type="table" data-table="radar_annotated" data-env-output="DEV">
+                    radar_annotated
+                    <div class="node-detail">19 cols : segmentation + annotation</div>
+                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-refiner" data-type="refiner" data-refiner="radar-object-extraction">
+                    radar-object-extraction.R
+                    <div class="node-detail">NER + normalisation</div>
+                    <div class="node-schedule">⏰ 19:24, 23:24, 03:24, 07:24, 11:24, 15:24</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-table" data-type="table" data-table="headlines_objects_extracted" data-env-output="DEV">
+                    headlines_objects_extracted
+                    <div class="node-detail">24 cols : NER bilingue (table intermédiaire de travail)</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
             </div>
         </div>
 
-        <!-- SALIENT INDEX (BASE PIPELINE) -->
+        <!-- SALIENT INDEX -->
         <div class="pipeline pipeline-salient" data-pipeline="salient">
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
-                <span>🔵 Salient Index (Pipeline de Base)</span>
-                <span class="frequency">6x/jour: 00:20, 04:20, 08:20, 12:20, 16:20, 20:20 UTC<br>(19:20, 23:20, 03:20, 07:20, 11:20, 15:20 EST)</span>
+                <span>🔵 Salient Index (Indices de Saillance)</span>
+                <span class="frequency">6x/jour: 19:20, 23:20, 03:20, 07:20, 11:20, 15:20 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
                     r-media-headlines
-                    <div class="node-detail">Glue Job Python</div>
+                    <div class="node-detail">Glue Job Python ETL</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="salient-objects">
                     radar-salient-objects.R
-                    <div class="node-schedule">⏰ +17min après Glue</div>
+                    <div class="node-detail">Extraction objets saillants</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-output="DEV">
+                <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
                     salient_headlines_objects
-                    <div class="node-detail">Table des objets saillants</div>
+                    <div class="node-detail">Même schéma</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">→</div>
@@ -574,7 +588,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📊 Issues Score (Scores par Enjeu)</span>
-                <span class="frequency">Daily: 12:09, 16:09, 20:09 UTC • Weekly: 20:11 UTC • Monthly: 20:14 UTC<br>(Daily: 07:09, 11:09, 15:09 EST • Weekly: 15:11 EST • Monthly: 15:14 EST)</span>
+                <span class="frequency">Quotidien: 07:09, 11:09, 15:09 • Hebdo: 15:11 • Mensuel: 15:14 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-headlines" data-env-source="PROD">
@@ -597,13 +611,13 @@
                 <div class="arrow">→</div>
                 <div class="node node-table" data-type="table" data-table="headlines_issues" data-env-output="DEV">
                     headlines_issues_*
-                    <div class="node-detail">day/week/month</div>
+                    <div class="node-detail">quotidien/hebdo/mensuel</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="issues-score">
                     radar-issues-score.R
-                    <div class="node-schedule">⏰ 12:09, 16:09, 20:09 UTC</div>
+                    <div class="node-schedule">⏰ 07:09, 11:09, 15:09</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -614,17 +628,45 @@
             </div>
         </div>
 
-        <!-- PARTY SCORES -->
+        <!-- PARTY SCORES (V2) -->
         <div class="pipeline pipeline-parties" data-pipeline="parties">
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
-                <span>🏛️ Party Scores (Mentions Partis Politiques)</span>
-                <span class="frequency">Daily: 12:18, 16:18, 20:18 UTC • Weekly: 20:20 UTC • Monthly: 20:22 UTC<br>(Daily: 07:18, 11:18, 15:18 EST • Weekly: 15:20 EST • Monthly: 15:22 EST)</span>
+                <span>🏛️ Party Scores v2 (Standardisation & Calendrier)</span>
+                <span class="frequency">6x/jour (après radar-data-preparation)</span>
+            </div>
+            <div class="pipeline-content">
+                <div class="node node-table" data-type="table" data-table="radar_annotated" data-env-source="DEV">
+                    radar_annotated
+                    <div class="node-detail">Sortie radar-data-preparation</div>
+                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-refiner" data-type="refiner" data-refiner="party-score-v2">
+                    radar-party-score-v2.R
+                    <div class="node-detail">Unifié: IA + SOV</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-table" data-type="table" data-table="parties_score_v2" data-env-output="DEV">
+                    federal_parties_score_v2_*<br>provincial_parties_score_v2_*
+                    <div class="node-detail">SOV % + Minutes + Variation</div>
+                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTY SCORES (LEGACY) -->
+        <div class="pipeline pipeline-parties" data-pipeline="parties">
+            <div class="pipeline-header">
+                <span class="toggle-icon">▼</span>
+                <span>🏛️ Party Scores legacy (Pertinence + Ton)</span>
+                <span class="frequency">Quotidien/Hebdo/Mensuel (pipeline historique maintenu)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="salient_index" data-env-source="DEV">
                     salient_index
-                    <div class="node-detail">Index de saillance par objet</div>
+                    <div class="node-detail">Source saillance objets</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">+</div>
@@ -642,19 +684,19 @@
                 <div class="arrow">+</div>
                 <div class="node node-dict" data-type="dict" data-dict="sentiments">
                     dict-sentiments
-                    <div class="node-detail">Analyse de ton</div>
+                    <div class="node-detail">Lexique tonalité</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-refiner" data-type="refiner" data-refiner="party-score">
+                <div class="node node-refiner" data-type="refiner" data-refiner="party-score-legacy">
                     radar-party-score.R
-                    <div class="node-schedule">⏰ 12:18, 16:18, 20:18 UTC</div>
+                    <div class="node-detail">Scores legacy (pondérés)</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
-                <div class="node node-table" data-type="table" data-table="parties_score" data-env-output="DEV">
+                <div class="node node-table" data-type="table" data-table="parties_score_legacy" data-env-output="DEV">
                     federal_parties_score_*<br>provincial_parties_score_*
-                    <div class="node-detail">day/week/month</div>
+                    <div class="node-detail">Legacy (sans suffixe _v2_)</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
             </div>
@@ -665,10 +707,10 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>💭 Reflet (Synthèses LLM par Enjeu)</span>
-                <span class="frequency">Daily: 12:25, 16:25, 20:25 UTC • Weekly: 20:28 UTC • Monthly: 20:30 UTC<br>(Daily: 07:25, 11:25, 15:25 EST • Weekly: 15:28 EST • Monthly: 15:30 EST)</span>
+                <span class="frequency">Quotidien: 07:25, 11:25, 15:25 • Hebdo: 15:28 • Mensuel: 15:30 (heure du Québec)</span>
             </div>
             <div class="pipeline-content" style="display: grid; grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto; gap: 15px; align-items: center;">
-                <!-- Ligne 1: Daily/Weekly -->
+                <!-- Ligne 1: Quotidien/Hebdo -->
                 <div class="node node-table" data-type="table" data-table="headlines_issues_day" data-env-source="DEV">
                     headlines_issues_day
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
@@ -681,7 +723,7 @@
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="reflet-daily-weekly">
                     radar-reflet-daily-weekly.R
-                    <div class="node-schedule">⏰ 12:25, 16:25, 20:25 UTC</div>
+                    <div class="node-schedule">⏰ 07:25, 11:25, 15:25</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -701,10 +743,10 @@
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
 
-                <!-- Ligne 2: Monthly - utilise grid-column pour alignement exact -->
+                <!-- Ligne 2: Mensuel - utilise grid-column pour alignement exact -->
                 <div class="node node-refiner" data-type="refiner" data-refiner="reflet-monthly" style="grid-column: 7; margin-top: 40px;">
                     radar-reflet-monthly.R
-                    <div class="node-schedule">⏰ 20:30 UTC</div>
+                    <div class="node-schedule">⏰ 15:30</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow" style="grid-column: 8; margin-top: 40px;">→</div>
@@ -720,18 +762,19 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📰 Headline of Headlines (Une des Unes)</span>
-                <span class="frequency">6x/jour: 00:28, 04:28, 08:28, 12:28, 16:28, 20:28 UTC<br>(19:28, 23:28, 03:28, 07:28, 11:28, 15:28 EST)</span>
+                <span class="frequency">6x/jour: 19:28, 23:28, 03:28, 07:28, 11:28, 15:28 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
                     salient_headlines_objects
+                    <div class="node-detail">Même schéma</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="headline-of-headlines">
                     radar-headline-of-headlines.R
                     <div class="node-detail">Synthèse LLM</div>
-                    <div class="node-schedule">⏰ 00:28, 04:28, 08:28, 12:28, 16:28, 20:28 UTC</div>
+                    <div class="node-schedule">⏰ 19:28, 23:28, 03:28, 07:28, 11:28, 15:28</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -748,18 +791,18 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>🔥 RADAR+ Hot 20 (TOP 20 Hebdomadaire)</span>
-                <span class="frequency">Vendredis: 16:30 UTC<br>(11:30 EST)</span>
+                <span class="frequency">Vendredis: 11:30 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="salient_headlines_objects" data-env-source="DEV">
                     salient_headlines_objects
-                    <div class="node-detail">Semaine complète</div>
+                    <div class="node-detail">Semaine complète (même schéma)</div>
                     <div class="info-badge">📋 Cliquer pour voir colonnes</div>
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="hot20">
                     radar-hot-20.R
-                    <div class="node-schedule">⏰ Ven 16:30</div>
+                    <div class="node-schedule">⏰ Ven 11:30</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -787,7 +830,7 @@
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📡 SONAR Heatmaps (Monitoring Qualité)</span>
-                <span class="frequency">Mercredis: 12:30 UTC<br>(07:30 EST)</span>
+                <span class="frequency">Mercredis: 07:30 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-source" data-type="source" data-source="r-media-frontpages" data-env-source="PROD">
@@ -816,7 +859,7 @@
                 <div class="arrow">→</div>
                 <div class="node node-refiner" data-type="refiner" data-refiner="sonar-heatmaps">
                     sonar-heatmaps.R
-                    <div class="node-schedule">⏰ Mer 09:00</div>
+                    <div class="node-schedule">⏰ Mer 07:30</div>
                     <div class="info-badge">ℹ️ Cliquer pour détails</div>
                 </div>
                 <div class="arrow">→</div>
@@ -833,17 +876,62 @@
             </div>
         </div>
 
+        <!-- AGORA SONAR -->
+        <div class="pipeline pipeline-sonar" data-pipeline="sonar">
+            <div class="pipeline-header">
+                <span class="toggle-icon">▼</span>
+                <span>🏛️ AGORA SONAR (Monitoring Qualité Parlementaire)</span>
+                <span class="frequency">Quotidien: qualité Agora • Hebdo: heatmaps (heure du Québec)</span>
+            </div>
+            <div class="pipeline-content">
+                <div class="node node-source" data-type="source" data-source="agora-tables" data-env-source="PROD">
+                    a-*-* (tables Agora)
+                    <div class="node-detail">Parlement + communiqués</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-refiner" data-type="refiner" data-refiner="agora-sonar">
+                    agora-sonar.R
+                    <div class="node-detail">Freshness + complétude</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-table" data-type="table" data-table="agora_sonar_daily" data-env-output="DEV">
+                    agora_sonar_daily
+                    <div class="node-detail">Datamart: agora_datamart</div>
+                    <div class="info-badge">📋 Cliquer pour voir colonnes</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-refiner" data-type="refiner" data-refiner="agora-sonar-heatmaps">
+                    agora-sonar-heatmaps.R
+                    <div class="node-detail">4 heatmaps qualité</div>
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-output" data-type="output" data-output="agora-heatmaps">
+                    4 PNG Heatmaps
+                    <div class="node-detail">lag, statut, contenu, orateur</div>
+                    <div class="info-badge">🖼️ Cliquer pour détails</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="node node-output" data-type="output" data-output="slack-agora-sonar">
+                    Slack: agora-sonar
+                    <div class="info-badge">ℹ️ Cliquer pour détails</div>
+                </div>
+            </div>
+        </div>
+
         <!-- PUBLICATION VITRINE -->
         <div class="pipeline pipeline-vitrine" data-pipeline="vitrine">
             <div class="pipeline-header">
                 <span class="toggle-icon">▼</span>
                 <span>📤 Publication Vitrine (JSON vers S3 Frontend)</span>
-                <span class="frequency">5x/jour: 04:39, 08:39, 12:39, 16:39, 20:39 UTC<br>(23:39, 03:39, 07:39, 11:39, 15:39 EST)</span>
+                <span class="frequency">5x/jour: 23:39, 03:39, 07:39, 11:39, 15:39 (heure du Québec)</span>
             </div>
             <div class="pipeline-content">
                 <div class="node node-table" data-type="table" data-table="all-final-tables" data-env-source="DEV">
                     Toutes les tables finales
-                    <div class="node-detail">issues_score_*, parties_score_*, reflet_*, headline_of_headlines</div>
+                    <div class="node-detail">issues_score_*, parties_score_*, parties_score_v2_*, reflet_*, headline_of_headlines</div>
                     <div class="info-badge">📋 Cliquer pour liste complète</div>
                 </div>
                 <div class="arrow">→</div>
@@ -854,7 +942,7 @@
                 </div>
                 <div class="arrow">→</div>
                 <div class="node node-output" data-type="output" data-output="json-files">
-                    13 fichiers JSON
+                    Jusqu'à 19 fichiers JSON
                     <div class="node-detail">Publiés sur S3</div>
                     <div class="info-badge">📄 Cliquer pour liste des fichiers</div>
                 </div>
@@ -886,16 +974,68 @@
         // Modal data
         const modalData = {
             tables: {
-                'salient_headlines_objects': {
-                    title: 'Table: salient_headlines_objects',
-                    description: 'Table principale contenant les headlines et leurs objets saillants extraits par GPT-4o',
+                'headlines_objects_extracted': {
+                    title: 'Table: headlines_objects_extracted',
+                    description: 'Headlines enrichis par radar-object-extraction.R (GLiNER + Gemma3). Schéma pass-through depuis radar_annotated + colonnes NER bilingues.',
                     columns: [
                         '📍 IDENTIFIANTS:',
+                        'id - Identifiant unique article',
+                        'title - Titre du headline',
+                        'author - Auteur de l\'article',
+                        'url - URL source',
+                        'media_id - Identifiant du média',
+                        'language - Langue (fr/en)',
+                        'country_id - Pays (QC/CAN/USA)',
+                        '',
+                        '⏰ TEMPORALITÉ:',
+                        'date_utc - Date UTC',
+                        'headline_start_utc - Début headline UTC',
+                        'headline_stop_utc - Fin headline UTC',
+                        'headline_minutes - Durée en minutes (INTEGER)',
+                        'headline_prop - Proportion dans la fenêtre (DOUBLE)',
+                        'n_scrapes - Nombre de scrapes agrégés',
+                        '',
+                        '📰 CONTENU + NLP:',
+                        'body - Corps du texte',
+                        'text_length - Longueur du texte (caractères)',
+                        'word_count - Nombre de mots',
+                        'sentences - Phrases segmentées (JSON)',
+                        'sentence_count - Nombre de phrases',
+                        'sentence_analysis - Annotations phrase (themes/partis/sentiment)',
+                        '',
+                        '🎯 NER (GLiNER + Gemma3):',
+                        'extracted_objects - Objets EN (CSV lowercase)',
+                        'extracted_objects_fr - Objets FR (CSV lowercase)',
+                        'entities_by_type - JSON par type {label: {en:[...], fr:[...]}}',
+                        'entities_detail - JSON détaillé [{sid, text, label, score, normalized_en, normalized_fr}]',
+                        'tag - Timestamp de publication'
+                    ],
+                    details: [
+                        '📊 24 colonnes au total',
+                        '🔄 Incrémental: borne_inf = dernier headline_stop_utc publié + 1s, fenêtre de 4h',
+                        '🧪 Filtrage strict de fenêtre: date_utc préfiltre puis headline_stop_utc dans [borne_inf, borne_sup)',
+                        '⚙️ GLiNER: threshold=0.85, cap=20 entités/article, batch=200 phrases',
+                        '⚙️ Gemma3: NORM_BATCH_SIZE=50, cache cross-article',
+                        'ℹ️ Table intermédiaire NER (data=headlines_objects_extracted)'
+                    ]
+                },
+                'salient_headlines_objects': {
+                    title: 'Table: salient_headlines_objects',
+                    description: 'Table principale contenant les headlines enrichis (33 colonnes). Contient toutes les colonnes de radar_annotated + colonnes NER GLiNER+Gemma3 (extracted_objects_fr, entities_by_type, entities_detail) + sentence_analysis (themes CAP, partis, sentiment).',
+                    columns: [
+                        '📍 IDENTIFIANTS ARTICLE:',
+                        'id - Identifiant unique article (depuis radar_annotated)',
                         'media_id - Identifiant du média (JDM, LAP, LED, CBC, CTV, etc. - EXCLUT TVA)',
                         'country_id - Pays (QC/CAN/USA)',
                         'language - Langue du headline (fr/en/autre)',
                         '',
-                        '⏰ TEMPORALITÉ:',
+                        '📅 DATES PUBLICATION:',
+                        'extraction_date - Date extraction (DATE)',
+                        'extraction_time - Heure extraction (TIME)',
+                        'date_utc - Date (UTC, depuis radar_annotated)',
+                        'date_montreal_tz - Date (heure Montréal, depuis radar_annotated)',
+                        '',
+                        '⏰ TEMPORALITÉ HEADLINE:',
                         'headline_start_montreal_tz - Début du headline en Une (heure Montréal, format: YYYY-MM-DD HH:MM:SS.mmm)',
                         'headline_stop_montreal_tz - Fin du headline en Une (heure Montréal)',
                         'headline_start_utc - Début du headline (UTC, format: YYYY-MM-DD HH:MM:SS.mmm)',
@@ -907,25 +1047,38 @@
                         '',
                         '📰 CONTENU (nettoyé):',
                         'title - Titre du headline (noms médias supprimés, espaces nettoyés)',
-                        'body - Corps du texte (noms médias supprimés)',
+                        'body - Corps du texte (mappé depuis full_body)',
                         'author - Auteur de l\'article',
-                        'url - URL de l\'article',
+                        'url - URL de l\'article (mappée depuis metadata_url)',
+                        'text_length - Longueur du texte en caractères (INTEGER)',
                         '',
-                        '🎯 EXTRACTION LLM:',
-                        'extracted_objects - Objets saillants extraits (CSV, en ANGLAIS, lowercase, sans ponctuation)',
-                        'prompt - Prompt utilisé pour extraction GPT-4o (TEXT)',
-                        'conversation - Conversation complète user+system (JSON)',
-                        'response - Réponse GPT-4o brute (JSON avec content, model, usage, etc.)',
+                        '📝 ANALYSE PAR PHRASE (depuis radar_annotated — radar-data-preparation):',
+                        'sentences - Phrases segmentées par WTPSPLIT (JSON array)',
+                        'sentence_count - Nombre de phrases (INTEGER)',
+                        'sentence_analysis - Annotations par phrase (JSON: themes CAP, partis politiques, sentiment, confidence)',
+                        '',
+                        '🎯 EXTRACTION NER (GLiNER + Gemma3 — radar-salient-objects):',
+                        'extracted_objects - Objets saillants en ANGLAIS (CSV lowercase, consommé par raffineurs aval)',
+                        'extracted_objects_fr - Objets saillants en FRANÇAIS (CSV lowercase)',
+                        'entities_by_type - Entités groupées par type (JSON: {label: {en: [...], fr: [...]}})',
+                        'entities_detail - Détail entités GLiNER (JSON array: {sid, text, label, score, normalized_en, normalized_fr})',
+                        '',
+                        '🔍 AUDIT (non utilisés par raffineurs aval):',
+                        'prompt - Vide (audit, pour compatibilité)',
+                        'conversation - Vide (audit, pour compatibilité)',
+                        'response - Vide (audit, pour compatibilité)',
                         '',
                         '🏷️ METADATA:',
                         'tag - Timestamp de publication (format: YYYY-MM-DD HH:MM)'
                     ],
                     details: [
-                        '🔄 Processus incrémental: Charge uniquement les nouveaux headlines depuis le dernier traité',
-                        '📊 Granularité: Blocs de 4 heures',
+                        '🔄 Processus incrémental (Pattern B): Lit radar_annotated, compare avec dernier bloc traité dans salient_headlines_objects',
+                        '📊 Granularité: Blocs de 4 heures (time_interval_utc déjà calculé dans radar_annotated)',
                         '🌍 Pays couverts: QC (Québec), CAN (Canada), USA (États-Unis)',
-                        '🚫 Exclusions: TVA (duplique JDM)',
-                        '🔤 Langues: fr (français), en (anglais)'
+                        '📺 Médias inclus: JDM, TVA, LED, LAP, RCI, MG (fr/QC) + CBC, CTV, VS, GN, NP, GAM, TTS (CAN) + CNN, FXN (USA)',
+                        '🔤 Langues: fr (français), en (anglais)',
+                        '📌 33 colonnes au total (vs 20 dans l\'ancienne version GPT-4o)',
+                        '⚠️ Consommée par: radar-salient-index, radar-headline-of-headlines, radar-hot-20 (utilisent extracted_objects)'
                     ]
                 },
                 'salient_index': {
@@ -967,7 +1120,7 @@
                         '🔄 Processus incrémental: Traite un bloc 4h à la fois',
                         '🌍 Granularité: Par pays × date × intervalle 4h × objet',
                         '📊 Tri: Par absolute_normalized_index DESC (les plus saillants en premier)',
-                        '🚫 Pas de tag column (contrairement à salient_headlines_objects)'
+                        '🚫 Pas de tag column'
                     ]
                 },
                 'headlines_issues_day': {
@@ -1022,16 +1175,41 @@
                         'pass - Période (am/pm) - uniquement pour _day, absent pour week/month'
                     ]
                 },
-                'parties_score': {
-                    title: 'Tables: *_parties_score_*',
-                    description: 'Mentions et ton pondérés par parti politique (validé depuis radar-party-score.R)',
+                'headlines_issues': {
+                    title: 'Tables: headlines_issues_*',
+                    description: 'Alias de navigation pour le nœud groupé headlines_issues_* (quotidien/hebdo/mensuel).',
                     columns: [
-                        'party - Nom parti (lpc/cpc/ndp/bq/gpc/ppc pour fédéral | caq/pq/plq/qs/pcq pour provincial)',
-                        'weighted_mentions - Mentions pondérées (nombre décimal)',
-                        'weighted_tone - Ton pondéré positif/négatif (nombre décimal)',
-                        'date_utc - Date la plus récente de la période',
-                        'date_montreal_tz - Date (heure Montréal)',
-                        'pass - Période (am/pm) - uniquement pour _day, absent pour week/month'
+                        'headlines_issues_day - Format quotidien (avec pass)',
+                        'headlines_issues_week - Format hebdomadaire',
+                        'headlines_issues_month - Format mensuel'
+                    ]
+                },
+                'parties_score_v2': {
+                    title: 'Tables: *_parties_score_* (v2)',
+                    description: 'Scores standardisés Share of Voice (SOV) avec reset calendrier (validé v2).',
+                    columns: [
+                        'party - Code parti (BQ, CAQ, CPC, GPC, LPC, NDP, PCQ, PLQ, PPC, PQ, QS)',
+                        'weighted_mentions - Share of Voice (0.0 à 1.0). Somme = 100% du jour/semaine/mois.',
+                        'total_raw_score - Volume brut en minutes cumulées depuis le reset.',
+                        'weighted_tone - Ton moyen numérique (-1.0 à +1.0).',
+                        'variation_pct - % de changement du SOV vs période précédente.',
+                        'date_utc / date_montreal_tz - Horodatages de fin de calcul.',
+                        'period_start / period_end - Fenêtre exacte de l\'accumulation.',
+                        'threshold - Seuil d\'éclipse (0.02).',
+                        'pass - am/noon/pm (uniquement pour quotidien).'
+                    ]
+                },
+                'parties_score_legacy': {
+                    title: 'Tables: *_parties_score_* (legacy)',
+                    description: 'Tables historiques calculées par radar-party-score.R (sans suffixe _v2_).',
+                    columns: [
+                        'party - Code parti (lpc, cpc, ndp, bq, gpc, ppc, caq, pq, plq, qs, pcq)',
+                        'weighted_mentions - Score de pertinence pondéré',
+                        'weighted_tone - Ton pondéré',
+                        'threshold - Seuil d\'éclipse (0.02)',
+                        'date_utc / date_montreal_tz - Date de référence du calcul',
+                        'pass - Présent uniquement pour quotidien',
+                        'Tables publiées: federal_parties_score_day/week/month + provincial_parties_score_day/week/month'
                     ]
                 },
                 'reflet_day': {
@@ -1098,109 +1276,196 @@
                 },
                 'data_quality_14_days': {
                     title: 'Table: data_quality_14_days',
-                    description: 'Données de qualité SONAR sur 14 jours (datamart: sonar)',
+                    description: 'Données de qualité SONAR sur 14 jours glissants (datamart: sonar). 1 ligne par média, 6 métriques × 14 jours = 84 colonnes de données.',
                     columns: [
-                        'date - Date',
-                        'media_id - Identifiant média',
-                        'country_id - Pays',
-                        'scraping_success - Taux de succès scraping',
-                        'data_completeness - Complétude des données',
-                        'error_count - Nombre d\'erreurs',
-                        'quality_score - Score qualité global'
+                        '📍 IDENTIFIANT:',
+                        'media - ID du média (CBC, CTV, GAM, GN, JDM, LAP, LED, MG, NP, RCI, TTS, TVA, VS)',
+                        '',
+                        '📊 MÉTRIQUES (6 × 14 jours, format: metrique_YYYYMMDD):',
+                        'fp_YYYYMMDD - Nombre de frontpages scrapées ce jour',
+                        'uh_YYYYMMDD - Nombre de Unes uniques (unique headlines)',
+                        'body_YYYYMMDD - Nombre d\'articles avec texte (body)',
+                        'title_YYYYMMDD - Nombre d\'articles avec titre',
+                        'author_YYYYMMDD - Nombre d\'articles avec auteur',
+                        'words_YYYYMMDD - Total mots (articles avec body)',
+                        '',
+                        '📌 STRUCTURE: 1 + (6 × 14) = 85 colonnes',
+                        'NA → 0 (pas de données = pas d\'articles)'
                     ]
                 },
-                'radar_articles': {
-                    title: 'Table: radar_articles',
-                    description: 'Articles segmentés en phrases (base preprocessing pour tous les refiners RADAR+)',
+                'radar_annotated': {
+                    title: 'Table: radar_annotated',
+                    description: 'Articles segmentés et annotés par radar-data-preparation.R. Contient segmentation WTPSPLIT + annotation CAP themes, partis politiques et sentiment.',
                     columns: [
-                        'media_id - Identifiant média (ex: JDM, LaPresse, CNN)',
-                        'headline_start_montreal_tz - Début Une (heure Montréal)',
-                        'headline_stop_montreal_tz - Fin Une (heure Montréal)',
-                        'headline_start_utc - Début Une (UTC)',
-                        'headline_stop_utc - Fin Une (UTC)',
-                        'headline_minutes - Durée Une en minutes',
-                        'headline_prop - Proportion durée (normalisé par intervalle 4h)',
-                        'title - Titre article (nettoyé)',
-                        'body - Corps article (nettoyé)',
-                        'url - URL article',
-                        'author - Auteur article',
-                        'language - Langue détectée (fr/en)',
-                        'country_id - Pays détecté (QC/CAN/USA)',
-                        'sentences - Phrases segmentées JSON: [{sid: 1, text: "..."}, ...]',
-                        'text_length - Longueur texte original (caractères)',
-                        'time_interval_montreal_tz - Intervalle 4h Montréal (00-04, 04-08...)',
-                        'time_interval_utc - Intervalle 4h UTC (00-04, 04-08...)'
+                        '📍 IDENTIFIANTS:',
+                        'id - Identifiant article',
+                        'title - Titre (nettoyé des suffixes médias)',
+                        'author - Auteur',
+                        'url - URL source (renommé depuis metadata_url)',
+                        'media_id - Identifiant du média',
+                        'language - "fr" ou "en"',
+                        'country_id - "QC", "CAN" ou "USA"',
+                        '',
+                        '⏰ TEMPORALITÉ:',
+                        'date_utc - Date UTC',
+                        'headline_start_utc - Première apparition (UTC)',
+                        'headline_stop_utc - Dernière apparition (UTC)',
+                        'headline_minutes - Durée en Une (min 10)',
+                        'headline_prop - Proportion de la Une (0-1)',
+                        'n_scrapes - Nombre de scrapes agrégés',
+                        '',
+                        '📰 CONTENU:',
+                        'body - Corps de l\'article (nettoyé)',
+                        'text_length - Longueur du body (caractères)',
+                        'word_count - Nombre de mots',
+                        '',
+                        '🔬 ANALYSE:',
+                        'sentences - Phrases segmentées JSON [{sid, text}, ...]',
+                        'sentence_count - Nombre de phrases',
+                        'sentence_analysis - Annotation par phrase (themes, partis, sentiment)'
+                    ],
+                    details: [
+                        '📊 19 colonnes au total (UTC uniquement)',
+                        '🔄 Processus incrémental par blocs de 4h',
+                        '🎯 Contient sentence_analysis avec: themes CAP, partis politiques, sentiment',
+                        '→ Lue par radar-object-extraction.R pour GLiNER + Gemma3'
+                    ]
+                },
+                'agora_sonar_daily': {
+                    title: 'Table: agora_sonar_daily',
+                    description: 'Table de monitoring Agora publiée par agora-sonar.R dans agora_datamart (qualité, fraîcheur, complétude).',
+                    columns: [
+                        'date_utc - Date de la mesure (UTC)',
+                        'date_montreal_tz - Date Montréal',
+                        'country_id - Pays/source (CAN, QC, EU)',
+                        'source_type - Type de source (debates, commissions, press_releases)',
+                        'table_name - Nom table Agora analysée',
+                        'total_records - Nombre de lignes chargées pour la date',
+                        'last_event_date - Dernière date événement observée',
+                        'lag_days - Délai en jours depuis last_event_date',
+                        'freshness_issue - Flag de fraîcheur (0/1)',
+                        'pct_with_content - % avec contenu textuel',
+                        'pct_with_speaker - % avec orateur/parti renseigné',
+                        'pct_with_lang_en - % avec champ anglais (quand applicable)',
+                        'quality_score - Score composite qualité (0-1)',
+                        'alert_status - NORMAL / WARNING / CRITICAL / NO_DATA / ERROR'
+                    ],
+                    details: [
+                        '📊 Datamart cible: agora_datamart.agora_sonar_daily',
+                        '🔄 Publication en remplacement complet (table glissante)',
+                        '⚠️ Utilisée par agora-sonar-heatmaps.R (fenêtre 14 jours)'
+                    ]
+                },
+                'all-final-tables': {
+                    title: 'Entrée: Toutes les tables finales',
+                    description: 'Nœud agrégé listant les tables consommées par vitrine-graph-data.R avant publication JSON.',
+                    columns: [
+                        'issues_score_*',
+                        'federal_parties_score_*',
+                        'provincial_parties_score_*',
+                        'federal_parties_score_v2_*',
+                        'provincial_parties_score_v2_*',
+                        'reflet_*',
+                        'headline_of_headlines'
                     ]
                 }
             },
             refiners: {
                 'articles-segmented': {
-                    title: 'Refiner: radar-articles-segmented.R',
-                    description: 'Segmente les articles en phrases pour prétraitement (WTPSPLIT API + fallback regex).',
+                    title: 'Refiner: radar-data-preparation.R',
+                    description: 'Segmentation WTPSPLIT + annotation CAP themes + partis politiques + sentiment via INFER API. Publie radar_annotated (19 colonnes).',
                     details: [
                         '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-headlines',
-                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table radar_articles',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table radar_annotated (19 colonnes)',
                         '',
-                        '🔧 API SEGMENTATION: WTPSPLIT (https://llm-tool-infer-api.antoinelemor.com)',
-                        '• Batch processing: 10 articles par requête',
-                        '• Retry automatique sur erreurs HTTP 429/503 (max 5 tentatives)',
-                        '• Pause 0.3s entre batches pour rate limiting',
-                        '• Fallback regex si API inaccessible (patron simple par ponctuation)',
+                        '🔧 MODÈLES INFER API:',
+                        '• wtpsplit → segmentation en phrases (batches de 10 articles)',
+                        '• CAP themes → classification 21 catégories (seuils calibrés, Micro F1: 0.70)',
+                        '• canadian political parties → détection 10 partis (seuils calibrés, Micro F1: 0.88)',
+                        '• sentiment → positif / négatif / neutre',
                         '',
-                        '⚙️ TRAITEMENT:',
-                        '• Charge blocs de 4h incrémentaux (00-04, 04-08, 08-12, 12-16, 16-20, 20-24)',
-                        '• Calcule durées de Une (headline_minutes)',
-                        '• Détecte langue (fr/en) et pays (QC/CAN/USA)',
-                        '• Convertit dates UTC ↔ Montreal (America/Montreal)',
-                        '• Segmente title + body en phrases avec identifiants (sid)',
-                        '• Calcule text_length (longueur texte original)',
+                        '⚙️ TRAITEMENT (4 phases):',
+                        '• Phase 1/4 : Charge blocs de 4h, déduplique, segmente WTPSPLIT',
+                        '• Phase 2/4 : Annotation themes CAP (toutes phrases en un appel)',
+                        '• Phase 3/4 : Annotation partis politiques (toutes phrases en un appel)',
+                        '• Phase 4/4 : Annotation sentiment + assemblage sentence_analysis',
                         '',
-                        '📊 FORMAT SORTIE (16 colonnes):',
-                        '• media_id, headline_start/stop (Montreal + UTC)',
-                        '• headline_minutes, headline_prop',
-                        '• title, body, url, author, language, country_id',
-                        '• sentences (JSON array avec sid + text)',
-                        '• text_length, time_interval (Montreal + UTC)',
+                        '📊 FORMAT SORTIE (19 colonnes) - sentence_analysis JSON par article:',
+                        '• sid, text, parties, party_probabilities',
+                        '• sentiment, confidence',
+                        '• themes, theme_probabilities',
                         '',
-                        '⏰ HORAIRES: À venir (6x/jour par blocs de 4h)',
+                        '⏰ HORAIRES: 19:06, 23:06, 03:06, 07:06, 11:06, 15:06 (heure du Québec, 3 min après r-media-headlines)',
                         '',
                         '💾 MÉMOIRE: 10 GB (10240 MB)',
                         '⏳ TIMEOUT: 15 minutes',
                         '',
-                        '🎯 UTILITÉ: Pipeline de base pour éliminer duplication de preprocessing',
-                        '→ Utilisé par: radar-salient-objects, radar-party-score, radar-issues-score (réforme à venir)'
+                        '🎯 UTILITÉ: segmentation + annotation',
+                        '→ Publie radar_annotated, lue par radar-object-extraction.R pour GLiNER + Gemma3'
                     ]
                 },
+                'radar-object-extraction': {
+                    title: 'Refiner: radar-object-extraction.R',
+                    description: 'Extraction d\'entités GLiNER + normalisation/traduction Gemma3. Lit radar_annotated et publie headlines_objects_extracted (24 colonnes).',
+                    details: [
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table radar_annotated (19 colonnes)',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table headlines_objects_extracted (24 colonnes)',
+                        '',
+                        '🔧 MODÈLES INFER API + OLLAMA:',
+                        '• GLiNER v1 → /models/gliner/infer — extraction NER (13 labels détaillés)',
+                        '• Gemma3:27b → /ollama/generate — normalisation + dédup + traduction EN/FR',
+                        '',
+                        '⚙️ PARAMÈTRES GLiNER:',
+                        '• Threshold: 0.85 (gliner_threshold)',
+                        '• Cap: 20 entités/article max (tri par score de confiance GLiNER décroissant, on garde les 20 meilleures)',
+                        '• Batch phrases: 200 phrases/appel GLiNER',
+                        '',
+                        '⚙️ PARAMÈTRES GEMMA3:',
+                        '• NORM_BATCH_SIZE: 50 entités/appel Ollama',
+                        '• Cross-article pooling: toutes les formes uniques du bloc normalisées en 1 passe (cache cross-article)',
+                        '',
+                        '⚙️ TRAITEMENT (incrémental — fenêtre 4h UTC):',
+                        '• borne_inf = dernier headline_stop_utc publié dans headlines_objects_extracted + 1 seconde',
+                        '• borne_sup = borne_inf + 4 heures',
+                        '• Pré-filtre source par date_utc, puis filtre strict sur headline_stop_utc',
+                        '• Phase 1 : phrases poolées du bloc → GLiNER',
+                        '• Phase 2 : normalisation/traduction Gemma3 avec cache cross-article',
+                        '• Publication vers headlines_objects_extracted (24 colonnes)',
+                        '',
+                        '📊 COLONNES ENRICHIES:',
+                        '• extracted_objects - CSV anglais lowercase',
+                        '• extracted_objects_fr - CSV français lowercase',
+                        '• entities_by_type - JSON {label: {en: [...], fr: [...]}}',
+                        '• entities_detail - JSON [{sid, text, label, score, normalized_en, normalized_fr}]',
+                        '• tag - timestamp publication',
+                        '',
+                        '⏰ HORAIRES: 19:24, 23:24, 03:24, 07:24, 11:24, 15:24 (heure du Québec, 18 min après radar-data-preparation)',
+                        '',
+                        '💾 MÉMOIRE: 10 GB (10240 MB)',
+                        '⏳ TIMEOUT: 15 minutes',
+                        '',
+                        '🎯 UTILITÉ: enrichissement NER + normalisation bilingue (pipeline parallèle local)'
+                    ]
+                },
+                // NOTE: radar-object-extraction.R opère en flux parallèle local
+                // (output headlines_objects_extracted) à partir de radar_annotated.
                 'salient-objects': {
                     title: 'Refiner: radar-salient-objects.R',
-                    description: 'Extrait les objets saillants (personnes, organisations, lieux, événements) des headlines en utilisant GPT-4o.',
+                    description: 'Extrait les objets saillants des headlines médias et publie la table canonique salient_headlines_objects.',
                     details: [
                         '📥 SOURCE: <span class="badge-prod">PROD</span>/datawarehouse - Table r-media-headlines',
                         '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table salient_headlines_objects',
                         '',
-                        '🤖 MODÈLE IA: GPT-4o (OpenAI) via ellipsellm',
-                        '📝 SYSTEM MESSAGE: "Tu es un journaliste expert en extraction d\'objets saillants..."',
-                        '',
                         '⚙️ TRAITEMENT:',
-                        '• Calcule les durées de Une pour chaque headline (headline_minutes)',
-                        '• Nettoie les titres/textes (supprime noms médias, espaces superflus)',
-                        '• Exclut TVA (duplique Journal de Montréal)',
-                        '• Détecte langue (fr/en) et pays (QC/CAN/USA)',
-                        '• Crée intervalles 4h (Montréal: 00-04, 04-08... et UTC)',
+                        '• Fenêtrage incrémental par blocs de 4 heures',
+                        '• Extraction d\'objets saillants à partir des headlines',
+                        '• Normalisation des objets + enrichissement temporel (UTC/Montréal, intervalles 4h)',
+                        '• Publication de la table consommée par radar-salient-index',
                         '',
-                        '🎯 EXTRACTION LLM (objets en ANGLAIS uniquement):',
-                        '• Uniformise formulations ("donald trump" toujours identique)',
-                        '• Priorité aux objets du titre s\'ils sont dans le texte',
-                        '• Formulations simples ("united states" pas "usa")',
-                        '• Une seule formulation par objet (pas trump + donald trump)',
-                        '• Concentration sur les plus saillants uniquement',
+                        '📋 OUTPUT:',
+                        '• salient_headlines_objects - Table canonique des objets saillants',
                         '',
-                        '⏰ HORAIRES (6x/jour):',
-                        '• 00:16 UTC (19:16 EST veille) • 04:16 UTC (23:16 EST veille)',
-                        '• 08:16 UTC (03:16 EST) • 12:16 UTC (07:16 EST)',
-                        '• 16:16 UTC (11:16 EST) • 20:16 UTC (15:16 EST)',
-                        '',
-                        '⏱️ TIMING: +13min après Glue Job (qui tourne à xx:03 UTC)',
+                        '⏱️ TIMING: en amont de radar-salient-index',
                         '💾 MÉMOIRE: 10 GB (10240 MB)',
                         '⏳ TIMEOUT: 15 minutes'
                     ]
@@ -1213,6 +1478,7 @@
                         '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table salient_index',
                         '',
                         '⚙️ TRAITEMENT (calculs mathématiques):',
+                        '• Lit extracted_objects depuis salient_headlines_objects',
                         '• Sépare les objets CSV en lignes (separate_rows)',
                         '• Normalise: lowercase + suppression ponctuation',
                         '• Applique pondération intra-média (headline_minutes / mean_time)',
@@ -1227,11 +1493,10 @@
                         '• TTS: 221.3 • TVA: 125.0 • VS: 505.3',
                         '',
                         '⏰ HORAIRES (6x/jour):',
-                        '• 00:20 UTC (19:20 EST veille) • 04:20 UTC (23:20 EST veille)',
-                        '• 08:20 UTC (03:20 EST) • 12:20 UTC (07:20 EST)',
-                        '• 16:20 UTC (11:20 EST) • 20:20 UTC (15:20 EST)',
+                        '• 19:20 • 23:20 • 03:20',
+                        '• 07:20 • 11:20 • 15:20 (heure du Québec)',
                         '',
-                        '⏱️ TIMING: +4min après radar-salient-objects (qui tourne à xx:16 UTC)',
+                        '⏱️ TIMING: Après radar-salient-objects',
                         '💾 MÉMOIRE: 10 GB (10240 MB)',
                         '⏳ TIMEOUT: 15 minutes',
                         '',
@@ -1260,14 +1525,14 @@
                         '• headlines_issues_month - Mensuel',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 12:14, 16:14, 20:14 UTC',
-                        '• WEEKLY: 20:17 UTC',
-                        '• MONTHLY: 20:18 UTC',
+                        '• QUOTIDIEN: 07:14, 11:14, 15:14',
+                        '• HEBDO: 15:17',
+                        '• MENSUEL: 15:18 (heure du Québec)',
                         '',
-                        '💾 MÉMOIRE: 4 GB (DAILY/WEEKLY), 10 GB (MONTHLY)',
-                        '⏳ TIMEOUT: 10 minutes (DAILY/WEEKLY), 15 minutes (MONTHLY)',
+                        '💾 MÉMOIRE: 4 GB (quotidien/hebdo), 10 GB (mensuel)',
+                        '⏳ TIMEOUT: 10 minutes (quotidien/hebdo), 15 minutes (mensuel)',
                         '',
-                        '🔗 DÉPENDANCES: Utilise sorties radar-salient-objects'
+                        '🔗 DÉPENDANCES: Utilise r-media-headlines + dict-issues-two-categories'
                     ]
                 },
                 'issues-score': {
@@ -1281,7 +1546,7 @@
                         '• Compte mentions par enjeu',
                         '• Normalise en proportions (0-1, somme=1.0)',
                         '• Ajoute colonnes pour chaque enjeu',
-                        '• Agrège par pass (am/noon/pm) pour daily',
+                        '• Agrège par pass (am/noon/pm) pour le quotidien',
                         '',
                         '📊 OUTPUTS:',
                         '• issues_score_day - Quotidien (3 passes)',
@@ -1289,68 +1554,71 @@
                         '• issues_score_month - Mensuel',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 12:09, 16:09, 20:09 UTC',
-                        '• WEEKLY: 20:11 UTC',
-                        '• MONTHLY: 20:14 UTC',
+                        '• QUOTIDIEN: 07:09, 11:09, 15:09',
+                        '• HEBDO: 15:11',
+                        '• MENSUEL: 15:14 (heure du Québec)',
                         '',
-                        '💾 MÉMOIRE: 4 GB (DAILY/WEEKLY), 10 GB (MONTHLY)',
-                        '⏳ TIMEOUT: 10 minutes (DAILY/WEEKLY), 15 minutes (MONTHLY)',
+                        '💾 MÉMOIRE: 4 GB (quotidien/hebdo), 10 GB (mensuel)',
+                        '⏳ TIMEOUT: 10 minutes (quotidien/hebdo), 15 minutes (mensuel)',
                         '',
                         '🚫 PAS de LLM: Uniquement calculs statistiques',
                         '🔗 Utilisé par: vitrine-graph-data pour frontend'
                     ]
                 },
-                'party-score': {
-                    title: 'Refiner: radar-party-score.R',
-                    description: 'Calcule la pertinence et le ton des partis politiques basés sur les scores de saillance des objets extraits.',
+                'party-score-v2': {
+                    title: 'Refiner: radar-party-score-v2.R',
+                    description: 'Calcule les Party Scores v2 avec reset calendrier (jour/semaine/mois), Share of Voice, ton moyen pondéré et variation vs période précédente.',
                     details: [
-                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table salient_index',
-                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables federal_parties_score_* et provincial_parties_score_*',
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table radar_annotated',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Tables federal_parties_score_v2_* et provincial_parties_score_v2_*',
                         '',
-                        '🤖 DICTIONNAIRES:',
-                        '• dict-political-parties-ca (6 partis fédéraux: lpc, cpc, ndp, bq, gpc, ppc)',
-                        '• dict-political-parties-qc (5 partis provinciaux: caq, pq, plq, qs, pcq)',
-                        '• dict-sentiments (analyse de ton positif/négatif)',
+                        '⚙️ LOGIQUE DE RESET (America/Montreal):',
+                        '• Day: reset à 00:00 Montréal',
+                        '• Week: reset lundi 00:00 Montréal',
+                        '• Month: reset le 1er du mois 00:00 Montréal',
                         '',
                         '⚙️ TRAITEMENT:',
-                        '1️⃣ MATCHING ROBUSTE:',
-                        '   • Cross-join entre objets saillants et dictionnaires partis',
-                        '   • Matching regex avec délimiteurs de mots (\\b pattern \\b)',
-                        '   • Évite faux positifs (ex: "tory" ne match pas "factory")',
-                        '   • Garde premier match pour éviter duplicats',
+                        '• Recalibre les partis depuis sentence_analysis (party_probabilities) avec seuils par parti',
+                        '• Convertit sentiment + confidence en ton numérique par phrase',
+                        '• Agrège en Share of Voice (weighted_mentions) sur la période active',
+                        '• Calcule weighted_tone, total_raw_score, threshold et variation_pct',
+                        '• Assure la présence de tous les partis (codes fixes) même à 0',
                         '',
-                        '2️⃣ CALCUL DE PERTINENCE:',
-                        '   • Agrège scores de saillance (absolute_normalized_index) par parti/date',
-                        '   • Assure présence de tous les partis (0 si non mentionné)',
-                        '',
-                        '3️⃣ ANALYSE DE TON:',
-                        '   • Découpe bodies en phrases (évite splits sur "M.")',
-                        '   • Applique dict-sentiments via ellipsetxt::run_dictionary',
-                        '   • Calcule ton net: (pos + neg_pos - neg - neg_neg) / mots_phrase',
-                        '   • Moyenne par parti et date',
-                        '',
-                        '4️⃣ PONDÉRATION TEMPORELLE:',
-                        '   • Day: poids [1, 0.25, 0.20, 0.15, 0.10, 0.05, 0.02] sur 7 jours',
-                        '   • Week: poids [1, 0.85, 0.7, 0.55, 0.4, 0.25, 0.10] sur 7 jours',
-                        '   • Month: décroissance linéaire 1→0.1 sur 30 jours',
-                        '   • weighted_mentions = sum(salience × weight)',
-                        '   • weighted_tone = sum(tone × weight)',
-                        '',
-                        '5️⃣ OUTPUTS:',
-                        '   • 6 tables: federal/provincial × day/week/month',
-                        '   • Colonnes: party, weighted_mentions, weighted_tone, date_utc, date_montreal_tz',
-                        '   • Colonne pass (am/noon/pm) uniquement pour daily',
+                        '📋 OUTPUTS:',
+                        '• 6 tables: federal/provincial × day/week/month (suffixe _v2_)',
+                        '• Colonnes clés: party, weighted_mentions, weighted_tone, total_raw_score, variation_pct, threshold',
+                        '• Colonne pass (am/noon/pm) uniquement pour le quotidien',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 12:18, 16:18, 20:18 UTC (pass=am/noon/pm)',
-                        '• WEEKLY: 20:20 UTC',
-                        '• MONTHLY: 20:22 UTC',
+                        '• QUOTIDIEN: 07:18, 11:18, 15:18 (pass=am/noon/pm)',
+                        '• HEBDO: 15:20',
+                        '• MENSUEL: 15:22 (heure du Québec)',
                         '',
                         '💾 MÉMOIRE: 10 GB (tous)',
                         '⏳ TIMEOUT: 15 minutes (tous)',
                         '',
-                        '🔗 DÉPENDANCES: Nécessite salient_index généré par radar-salient-index',
+                        '🔗 DÉPENDANCES: nécessite radar_annotated généré par radar-data-preparation',
                         '🔗 Utilisé par: vitrine-graph-data, dashboard politique'
+                    ]
+                },
+                'party-score-legacy': {
+                    title: 'Refiner: radar-party-score.R (legacy)',
+                    description: 'Pipeline historique des Party Scores: matching dictionnaires sur salient_index + tonalité dictionnaire + pondération temporelle.',
+                    details: [
+                        '📥 SOURCES:',
+                        '• <span class="badge-dev">DEV</span>/datamarts - Table vitrine_datamart-salient_index',
+                        '• <span class="badge-prod">PROD</span>/datawarehouse - dict-sentiments',
+                        '• <span class="badge-prod">PROD</span>/datawarehouse - dict-political-parties-ca',
+                        '• <span class="badge-prod">PROD</span>/datawarehouse - dict-political-parties-qc',
+                        '📤 OUTPUTS: <span class="badge-dev">DEV</span>/datamarts - federal_parties_score_* + provincial_parties_score_*',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Match objets saillants ↔ partis via patterns dictionnaires',
+                        '• Calcul tonalité à partir des bodies avec dict-sentiments',
+                        '• Pondération temporelle quotidien/hebdo/mensuel',
+                        '• Split fédéral/provincial + publication tables legacy',
+                        '',
+                        '📌 Statut: pipeline legacy maintenu en parallèle de la v2'
                     ]
                 },
                 'reflet-daily-weekly': {
@@ -1368,7 +1636,7 @@
                         '•   • Sélectionne headlines pertinents avec scores',
                         '•   • Génère synthèse LLM: liste de points clés',
                         '•   • Format: bullet list de 3-5 points',
-                        '• Génère 3 versions: am, noon, pm (daily) et 1 (weekly)',
+                        '• Génère 3 versions: am, noon, pm (quotidien) et 1 (hebdo)',
                         '• Envoie notifications Slack',
                         '',
                         '📋 OUTPUTS:',
@@ -1376,8 +1644,8 @@
                         '• reflet_week - Hebdomadaire (1 fois)',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: 12:25, 16:25, 20:25 UTC',
-                        '• WEEKLY: 20:28 UTC',
+                        '• QUOTIDIEN: 07:25, 11:25, 15:25',
+                        '• HEBDO: 15:28 (heure du Québec)',
                         '',
                         '💾 MÉMOIRE: 10 GB (tous)',
                         '⏳ TIMEOUT: 15 minutes (tous)',
@@ -1405,7 +1673,7 @@
                         '• reflet_month - Mensuel',
                         '',
                         '⏰ HORAIRES:',
-                        '• MONTHLY: 20:30 UTC - exécution quotidienne, génère si données nouvelles',
+                        '• MENSUEL: 15:30 (heure du Québec) - exécution quotidienne, génère si données nouvelles',
                         '',
                         '💾 MÉMOIRE: 10 GB',
                         '⏳ TIMEOUT: 15 minutes'
@@ -1427,12 +1695,11 @@
                         '• Sélectionne meilleur headline de référence',
                         '',
                         '📋 OUTPUT:',
-                        '• headline_of_headlines - Une synthésée par bloc 4h',
+                        '• headline_of_headlines - Une synthétisée par bloc 4h',
                         '',
                         '⏰ HORAIRES (6x/jour):',
-                        '• 00:28 UTC (19:28 EST veille) • 04:28 UTC (23:28 EST veille)',
-                        '• 08:28 UTC (03:28 EST) • 12:28 UTC (07:28 EST)',
-                        '• 16:28 UTC (11:28 EST) • 20:28 UTC (15:28 EST)',
+                        '• 19:28 • 23:28 • 03:28',
+                        '• 07:28 • 11:28 • 15:28 (heure du Québec)',
                         '',
                         '⏱️ TIMING: +8min après salient-index',
                         '💾 MÉMOIRE: 10 GB',
@@ -1460,7 +1727,7 @@
                         '• hot_20_headlines - Classement hebdomadaire',
                         '',
                         '⏰ HORAIRES:',
-                        '• WEEKLY: Vendredi 16:30 UTC',
+                        '• HEBDO: Vendredi 11:30 (heure du Québec)',
                         '',
                         '💾 MÉMOIRE: 10 GB + 5 GB ephemeral storage (Athena)',
                         '⏳ TIMEOUT: 15 minutes'
@@ -1489,7 +1756,7 @@
                         '• NA → 0 (pas de données = pas d\'articles)',
                         '',
                         '⏰ HORAIRES:',
-                        '• DAILY: Quotidien (données du jour +1)',
+                        '• QUOTIDIEN: données du jour +1',
                         '',
                         '💾 MÉMOIRE: 5 GB',
                         '⏳ TIMEOUT: 10 minutes'
@@ -1519,8 +1786,48 @@
                         '• Slack posts → #02_radar_plus_sonar channel',
                         '',
                         '⏰ HORAIRES:',
-                        '• WEEKLY: Mercredi 09:00 UTC',
+                        '• WEEKLY: Mercredi 07:30 (heure du Québec)',
                         '',
+                        '💾 MÉMOIRE: 5 GB',
+                        '⏳ TIMEOUT: 15 minutes'
+                    ]
+                },
+                'agora-sonar': {
+                    title: 'Refiner: agora-sonar.R',
+                    description: 'Calcule les métriques de qualité et fraîcheur des tables parlementaires Agora puis publie agora_sonar_daily.',
+                    details: [
+                        '📥 SOURCES: <span class="badge-prod">PROD</span>/datawarehouse - Tables a-ca-*, a-qc-*, a-eu-*',
+                        '📤 OUTPUT: <span class="badge-dev">DEV</span>/datamarts - Table agora_datamart.agora_sonar_daily',
+                        '',
+                        '⚙️ TRAITEMENT:',
+                        '• Mesure du lag par table (dernière date événement vs aujourd\'hui)',
+                        '• Calcul des taux de complétude (contenu, orateur, champs EN)',
+                        '• Scoring composite quality_score + statut d\'alerte (NORMAL/WARNING/CRITICAL/NO_DATA/ERROR)',
+                        '• Résumé par pays + alertes critiques',
+                        '',
+                        '📋 OUTPUT:',
+                        '• agora_sonar_daily - Monitoring quotidien multi-sources Agora',
+                        '',
+                        '📣 Notification Slack: canal agora-sonar (résumé + alertes)',
+                        '💾 MÉMOIRE: 5 GB',
+                        '⏳ TIMEOUT: 10 minutes'
+                    ]
+                },
+                'agora-sonar-heatmaps': {
+                    title: 'Refiner: agora-sonar-heatmaps.R',
+                    description: 'Construit les heatmaps hebdomadaires de qualité Agora à partir de agora_sonar_daily et les publie sur Slack + datalake.',
+                    details: [
+                        '📥 SOURCE: <span class="badge-dev">DEV</span>/datamarts - Table agora_datamart.agora_sonar_daily',
+                        '📤 OUTPUTS: 4 PNG heatmaps + publication Slack + upload datalake (dataset agora-sonar-heatmaps)',
+                        '',
+                        '⚙️ HEATMAPS GÉNÉRÉES (fenêtre 14 jours):',
+                        '• lag_days (délai depuis dernière extraction)',
+                        '• alert_status (NORMAL/WARNING/CRITICAL/NO_DATA/ERROR)',
+                        '• pct_with_content (complétude texte)',
+                        '• pct_with_speaker (couverture orateurs)',
+                        '',
+                        '📣 Canal Slack: agora-sonar (upload PNG)',
+                        '🗃️ Datalake: dataset agora-sonar-heatmaps',
                         '💾 MÉMOIRE: 5 GB',
                         '⏳ TIMEOUT: 15 minutes'
                     ]
@@ -1536,19 +1843,21 @@
                         '• Agrège TOUTES les tables finales',
                         '• Convertit en JSON propre (normalisé)',
                         '• Optimise pour API frontend',
-                        '• Upload 13 fichiers JSON sur S3',
+                        '• Upload jusqu\'à 19 fichiers JSON sur S3 (selon tables présentes/non vides)',
                         '• Structure: s3://vitrinedemocratique/data/refined/{period}/{table}.json',
                         '',
-                        '📋 OUTPUTS (13 fichiers JSON):',
+                        '📋 OUTPUTS (jusqu\'à 19 fichiers JSON):',
                         '• issues_score_{day|week|month}',
                         '• federal_parties_score_{day|week|month}',
                         '• provincial_parties_score_{day|week|month}',
+                        '• federal_parties_score_v2_{day|week|month}',
+                        '• provincial_parties_score_v2_{day|week|month}',
                         '• reflet_{day|week|month}',
                         '• headline_of_headlines',
                         '',
                         '⏰ HORAIRES (5x/jour):',
-                        '• 04:39 UTC (23:39 EST veille) • 08:39 UTC (03:39 EST)',
-                        '• 12:39 UTC (07:39 EST) • 16:39 UTC (11:39 EST) • 20:39 UTC (15:39 EST)',
+                        '• 23:39 • 03:39 • 07:39',
+                        '• 11:39 • 15:39 (heure du Québec)',
                         '',
                         '💾 MÉMOIRE: 10 GB + 5 GB ephemeral storage',
                         '⏳ TIMEOUT: 15 minutes'
@@ -1619,7 +1928,7 @@
                     details: [
                         '🔴 Type: Glue Job Python ETL (pas un refiner R)',
                         '📍 Localisation: Code Python externe au repo refiners',
-                        '⏰ Fréquence: 6x/jour (00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC)',
+                        '⏰ Fréquence: 6x/jour (19:03, 23:03, 03:03, 07:03, 11:03, 15:03 heure du Québec)',
                         '🎯 Fonction: Job ETL qui transforme les données brutes de scraping',
                         '',
                         '📋 Processus ETL (Extract-Transform-Load):',
@@ -1638,7 +1947,7 @@
                         '→ ETL = Extract (scrapers) → Transform (Glue) → Load (datawarehouse)',
                         '→ Différent des refiners qui transforment des données déjà chargées',
                         '',
-                        '🕐 Exécution: 6x/jour (00:03, 04:03, 08:03, 12:03, 16:03, 20:03 UTC)',
+                        '🕐 Exécution: 6x/jour (19:03, 23:03, 03:03, 07:03, 11:03, 15:03 heure du Québec)',
                         '📊 Sortie: Table r-media-headlines dans datawarehouse'
                     ]
                 },
@@ -1653,12 +1962,28 @@
                         'Exécution: 6x/jour en parallèle avec r-media-headlines',
                         'Output: Table Glue brute (non-datamart)'
                     ]
+                },
+                'agora-tables': {
+                    title: 'Sources: tables Agora (a-*-*)',
+                    description: 'Ensemble des tables parlementaires/communiqués lues par agora-sonar.R pour le monitoring qualité.',
+                    details: [
+                        '📥 Tables analysées:',
+                        '• a-ca-parliament-debates',
+                        '• a-ca-press-releases',
+                        '• a-eu-parliament-debates',
+                        '• a-qc-parliament-debates',
+                        '• a-qc-parliamentary-commissions',
+                        '• a-qc-press-releases',
+                        '',
+                        '🎯 Objectif: surveiller fraîcheur, complétude et statut d\'alerte des flux Agora',
+                        '🌍 Couverture: CAN, QC, EU'
+                    ]
                 }
             },
             outputs: {
                 'hot20-files': {
                     title: 'Hot 20 - Fichiers PNG et HTML',
-                    description: '6 fichiers générés chaque vendredi à 17:00 UTC (12:00 EST)',
+                    description: '6 fichiers générés chaque vendredi à 12:00 (heure du Québec)',
                     image: 'images_vitrine/hot20.png',
                     details: [
                         '📊 3 fichiers PNG (visualisations):',
@@ -1672,7 +1997,7 @@
                         '• hot20_usa.html - Version interactive USA',
                         '',
                         '📍 Localisation: Publiés sur S3',
-                        '⏰ Génération: Vendredis 17:00 UTC (12:00 EST)',
+                        '⏰ Génération: Vendredis 12:00 (heure du Québec)',
                         '🎨 Format: Tables GT (Grammar of Tables) avec styling professionnel'
                     ]
                 },
@@ -1681,7 +2006,7 @@
                     description: 'Publication hebdomadaire dans le canal Slack #hot20',
                     details: [
                         '📢 Canal: #hot20',
-                        '⏰ Fréquence: Chaque vendredi 17:00 UTC (12:00 EST)',
+                        '⏰ Fréquence: Chaque vendredi 12:00 (heure du Québec)',
                         '📎 Contenu envoyé:',
                         '• Message récapitulatif de la semaine',
                         '• 3 images PNG attachées (QC, CAN, USA)',
@@ -1711,7 +2036,7 @@
                         '• Nombre d\'erreurs',
                         '• Score qualité global',
                         '',
-                        '⏰ Génération: Mercredis 12:30 UTC (07:30 EST)',
+                        '⏰ Génération: Mercredis 07:30 (heure du Québec)',
                         '📍 Localisation: Publiés sur S3'
                     ]
                 },
@@ -1720,7 +2045,7 @@
                     description: 'Alertes hebdomadaires de monitoring qualité',
                     details: [
                         '📢 Canal: #sonar',
-                        '⏰ Fréquence: Mercredis 12:30 UTC (07:30 EST)',
+                        '⏰ Fréquence: Mercredis 07:30 (heure du Québec)',
                         '📎 Contenu envoyé:',
                         '• Rapport de qualité sur 14 jours',
                         '• Heatmap PNG attachée',
@@ -1736,6 +2061,33 @@
                         '💡 But: Monitoring proactif de la santé du système'
                     ]
                 },
+                'agora-heatmaps': {
+                    title: 'AGORA SONAR - Heatmaps qualité',
+                    description: '4 heatmaps PNG générées par agora-sonar-heatmaps.R sur une fenêtre glissante de 14 jours.',
+                    details: [
+                        '📊 Fichiers PNG:',
+                        '• agora_sonar_lag_days.png',
+                        '• agora_sonar_alert_status.png',
+                        '• agora_sonar_content.png',
+                        '• agora_sonar_speaker.png',
+                        '',
+                        '📍 Publication: Slack (agora-sonar) + datalake (dataset agora-sonar-heatmaps)',
+                        '🗓️ Fenêtre: 14 jours glissants'
+                    ]
+                },
+                'slack-agora-sonar': {
+                    title: 'Notifications Slack - AGORA SONAR',
+                    description: 'Rapport qualité Agora et diffusion des heatmaps dans le canal Agora SONAR.',
+                    details: [
+                        '📢 Canal Slack: agora-sonar (channel_id C0AG1QQMXNE)',
+                        '📎 Contenu envoyé:',
+                        '• résumé qualité par pays/source',
+                        '• alertes critiques si présentes',
+                        '• 4 heatmaps PNG hebdomadaires',
+                        '',
+                        '🎯 But: monitoring proactif des flux parlementaires Agora'
+                    ]
+                },
                 'all-final-tables': {
                     title: 'Toutes les Tables Finales',
                     description: 'Collection complète des tables datamart pour publication',
@@ -1747,9 +2099,13 @@
                         '• issues_score_week - Agrégation hebdomadaire',
                         '• issues_score_month - Agrégation mensuelle',
                         '',
-                        '🏛️ Party Scores (6 tables):',
+                        '🏛️ Party Scores legacy (6 tables):',
                         '• federal_parties_score_day/week/month',
                         '• provincial_parties_score_day/week/month',
+                        '',
+                        '🏛️ Party Scores v2 (6 tables):',
+                        '• federal_parties_score_v2_day/week/month',
+                        '• provincial_parties_score_v2_day/week/month',
                         '',
                         '💭 Reflet (3 tables):',
                         '• reflet_day - Synthèses quotidiennes LLM',
@@ -1759,32 +2115,38 @@
                         '📰 Headline of Headlines (1 table):',
                         '• headline_of_headlines - Une des Unes par période 4h',
                         '',
-                        '🎯 Total: 13 tables → 13 fichiers JSON publiés'
+                        '🎯 Total max: 19 tables → jusqu\'à 19 fichiers JSON publiés'
                     ]
                 },
                 'json-files': {
-                    title: '13 Fichiers JSON Publiés',
+                    title: 'Jusqu\'à 19 Fichiers JSON Publiés',
                     description: 'Données transformées en JSON pour le frontend',
                     details: [
                         '📁 Structure S3:',
                         's3://bucket/data/refined/',
                         '',
-                        '📂 day/ (4 fichiers):',
+                        '📂 day/ (jusqu\'à 6 fichiers):',
                         '• issues_score_day.json',
                         '• federal_parties_score_day.json',
                         '• provincial_parties_score_day.json',
+                        '• federal_parties_score_v2_day.json',
+                        '• provincial_parties_score_v2_day.json',
                         '• reflet_day.json',
                         '',
-                        '📂 week/ (4 fichiers):',
+                        '📂 week/ (jusqu\'à 6 fichiers):',
                         '• issues_score_week.json',
                         '• federal_parties_score_week.json',
                         '• provincial_parties_score_week.json',
+                        '• federal_parties_score_v2_week.json',
+                        '• provincial_parties_score_v2_week.json',
                         '• reflet_week.json',
                         '',
-                        '📂 month/ (5 fichiers):',
+                        '📂 month/ (jusqu\'à 7 fichiers):',
                         '• issues_score_month.json',
                         '• federal_parties_score_month.json',
                         '• provincial_parties_score_month.json',
+                        '• federal_parties_score_v2_month.json',
+                        '• provincial_parties_score_v2_month.json',
                         '• reflet_month.json',
                         '• headline_of_headlines.json',
                         '',
@@ -1807,7 +2169,7 @@
                         '• Une des Unes (headline of headlines)',
                         '',
                         '🔄 Données:',
-                        '• Lectures depuis S3 (13 fichiers JSON)',
+                        '• Lectures depuis S3 (jusqu\'à 19 fichiers JSON)',
                         '• Mise à jour: 5x/jour via vitrine-graph-data.R',
                         '• Latence: ~40 minutes après scraping',
                         '',
