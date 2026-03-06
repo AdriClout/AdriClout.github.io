@@ -1,1716 +1,2706 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Présentation de la Vitrine Démocratique Bêta 2.0</title>
     <style>
-        :root {
-            --primary: #4A90E2;
-            --primary-dark: #357ABD;
-            --success: #50C878;
-            --danger: #E74C3C;
-            --warning: #FFB347;
-            --bg-gradient-start: #667eea;
-            --bg-gradient-end: #764ba2;
-            --surface: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-        }
+      :root {
+        --primary: #4a90e2;
+        --primary-dark: #357abd;
+        --success: #50c878;
+        --danger: #e74c3c;
+        --warning: #ffb347;
+        --bg-gradient-start: #667eea;
+        --bg-gradient-end: #764ba2;
+        --surface: #ffffff;
+        --text: #1e293b;
+        --text-light: #64748b;
+        --border: #e2e8f0;
+      }
 
-        :root[data-theme="dark"] {
-            --primary: #4A90E2;
-            --primary-dark: #357ABD;
-            --success: #50C878;
-            --danger: #E74C3C;
-            --warning: #FFB347;
-            --bg-gradient-start: #1a1a2e;
-            --bg-gradient-end: #16213e;
-            --surface: #0f3460;
-            --text: #e2e8f0;
-            --text-light: #94a3b8;
-            --border: #334155;
-        }
+      :root[data-theme='dark'] {
+        --primary: #4a90e2;
+        --primary-dark: #357abd;
+        --success: #50c878;
+        --danger: #e74c3c;
+        --warning: #ffb347;
+        --bg-gradient-start: #1a1a2e;
+        --bg-gradient-end: #16213e;
+        --surface: #0f3460;
+        --text: #e2e8f0;
+        --text-light: #94a3b8;
+        --border: #334155;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-            transition: background 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow-x: hidden;
-        }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 20px;
+        transition: background 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow-x: hidden;
+      }
 
-        /* Cycle jour/nuit animé au scroll */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            opacity: 0;
-            transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        }
+      /* Cycle jour/nuit animé au scroll */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        opacity: 0;
+        transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+      }
 
-        /* Soleil/Lune décoratifs */
-        body::after {
-            content: '☀️';
-            position: fixed;
-            top: 10%;
-            right: 10%;
-            font-size: 80px;
-            z-index: 3;
-            opacity: 0.3;
-            transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: drop-shadow(0 0 30px rgba(255, 200, 0, 0.5));
-        }
+      /* Soleil/Lune décoratifs */
+      body::after {
+        content: '☀️';
+        position: fixed;
+        top: 10%;
+        right: 10%;
+        font-size: 80px;
+        z-index: 3;
+        opacity: 0.3;
+        transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: drop-shadow(0 0 30px rgba(255, 200, 0, 0.5));
+      }
 
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+      }
 
-        :root[data-theme="dark"] .container {
-            background: rgba(15, 52, 96, 0.85);
-        }
+      :root[data-theme='dark'] .container {
+        background: rgba(15, 52, 96, 0.85);
+      }
 
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--surface);
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+      /* Theme Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: 50px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-        }
+      .theme-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
 
-        .theme-toggle-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text);
-        }
+      .theme-toggle-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text);
+      }
 
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 3rem 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
-        }
+      header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 3rem 2rem;
+        margin-bottom: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+      }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
 
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
+      .subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
 
-        .meta {
-            margin-top: 1rem;
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
+      .meta {
+        margin-top: 1rem;
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
 
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        .badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
+      .badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
 
-        .section {
-            background: var(--surface);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+      .section {
+        background: var(--surface);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
 
-        .section:hover {
-            /* transform: translateY(-2px); */
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
+      .section:hover {
+        /* transform: translateY(-2px); */
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
 
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        h3 {
-            font-size: 1.3rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--text);
-        }
+      h3 {
+        font-size: 1.3rem;
+        margin: 1.5rem 0 1rem;
+        color: var(--text);
+      }
 
-        .objectives {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
+      .objectives {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
 
-        .objective-card {
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(53, 122, 189, 0.1) 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
+      .objective-card {
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(53, 122, 189, 0.1) 100%);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid var(--primary);
+        transition: all 0.3s ease;
+      }
 
-        .objective-card:hover {
-            /* transform: translateX(5px); */
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
-        }
+      .objective-card:hover {
+        /* transform: translateX(5px); */
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+      }
 
-        :root[data-theme="dark"] .objective-card {
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(53, 122, 189, 0.15) 100%);
-        }
+      :root[data-theme='dark'] .objective-card {
+        background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(53, 122, 189, 0.15) 100%);
+      }
 
-        .objective-card h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
+      .objective-card h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
 
-        .pipeline-flow {
-            background: linear-gradient(to right, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.5));
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-            border: 2px solid var(--border);
-        }
+      .pipeline-flow {
+        background: linear-gradient(to right, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.5));
+        padding: 2rem;
+        border-radius: 10px;
+        margin: 1rem 0;
+        font-family: 'Courier New', monospace;
+        overflow-x: auto;
+        border: 2px solid var(--border);
+      }
 
-        :root[data-theme="dark"] .pipeline-flow {
-            background: linear-gradient(to right, rgba(15, 52, 96, 0.3), rgba(22, 33, 62, 0.3));
-        }
+      :root[data-theme='dark'] .pipeline-flow {
+        background: linear-gradient(to right, rgba(15, 52, 96, 0.3), rgba(22, 33, 62, 0.3));
+      }
 
-        .pipeline-step {
-            margin: 0.5rem 0;
-            padding: 0.8rem 1.2rem;
-            background: var(--surface);
-            border-radius: 8px;
-            display: inline-block;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--border);
-            transition: all 0.3s ease;
-        }
+      .pipeline-step {
+        margin: 0.5rem 0;
+        padding: 0.8rem 1.2rem;
+        background: var(--surface);
+        border-radius: 8px;
+        display: inline-block;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid var(--border);
+        transition: all 0.3s ease;
+      }
 
-        .pipeline-step:hover {
-            /* transform: scale(1.05); */
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-            border-color: var(--primary);
-        }
+      .pipeline-step:hover {
+        /* transform: scale(1.05); */
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        border-color: var(--primary);
+      }
 
-        .arrow {
-            color: var(--primary);
-            font-weight: bold;
-            margin: 0.8rem 0;
-            font-size: 2.5rem;
-        }
+      .arrow {
+        color: var(--primary);
+        font-weight: bold;
+        margin: 0.8rem 0;
+        font-size: 2.5rem;
+      }
 
-        .duration-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
+      .duration-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+      }
 
-        .duration-table th,
-        .duration-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
+      .duration-table th,
+      .duration-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
 
-        .duration-table th {
-            background: var(--bg);
-            font-weight: 600;
-            color: var(--primary);
-        }
+      .duration-table th {
+        background: var(--bg);
+        font-weight: 600;
+        color: var(--primary);
+      }
 
-        .duration-table tr:hover {
-            background: var(--bg);
-        }
+      .duration-table tr:hover {
+        background: var(--bg);
+      }
 
+      .schedule-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      @media (max-width: 768px) {
         .schedule-compare {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .schedule-compare {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .schedule-box {
-            border-radius: 8px;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .schedule-old {
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
-            border: 3px solid var(--danger);
-            transition: all 0.3s ease;
-        }
-
-        .schedule-old:hover {
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
-        }
-
-        .schedule-new {
-            background: linear-gradient(135deg, rgba(80, 200, 120, 0.1) 0%, rgba(58, 160, 95, 0.1) 100%);
-            border: 3px solid var(--success);
-            transition: all 0.3s ease;
-        }
-
-        .schedule-new:hover {
-            box-shadow: 0 6px 20px rgba(80, 200, 120, 0.3);
-        }
-
-        :root[data-theme="dark"] .schedule-old {
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(192, 57, 43, 0.15) 100%);
-        }
-
-        :root[data-theme="dark"] .schedule-new {
-            background: linear-gradient(135deg, rgba(80, 200, 120, 0.15) 0%, rgba(58, 160, 95, 0.15) 100%);
-        }
-
-        .schedule-label {
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .schedule-label.old {
-            color: var(--danger);
-        }
-
-        .schedule-label.new {
-            color: var(--success);
-        }
-
-        .time-block {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.8;
-            background: var(--surface);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 0.5rem 0;
-            border: 1px solid var(--border);
-        }
-
-        .time-line {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.25rem 0;
-        }
-
-        .refiner-name {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .times {
-            color: var(--text-light);
-        }
-
-        .improvements {
-            display: grid;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .improvement-item {
-            background: linear-gradient(to right, rgba(80, 200, 120, 0.1), transparent);
-            border-left: 4px solid var(--success);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .improvement-item:hover {
-            /* transform: translateX(5px); */
-            background: linear-gradient(to right, rgba(80, 200, 120, 0.15), transparent);
-        }
-
-        :root[data-theme="dark"] .improvement-item {
-            background: linear-gradient(to right, rgba(80, 200, 120, 0.15), transparent);
-        }
-
-        .improvement-item strong {
-            color: var(--success);
-        }
-
-        .problems {
-            display: grid;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .problem-item {
-            background: linear-gradient(to right, rgba(231, 76, 60, 0.1), transparent);
-            border-left: 4px solid var(--danger);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .problem-item:hover {
-            /* transform: translateX(5px); */
-            background: linear-gradient(to right, rgba(231, 76, 60, 0.15), transparent);
-        }
-
-        :root[data-theme="dark"] .problem-item {
-            background: linear-gradient(to right, rgba(231, 76, 60, 0.15), transparent);
-        }
-
-        .problem-item::before {
-            content: "❌ ";
-        }
-
-        .tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .tab {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 1rem;
-            color: var(--text-light);
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .tab:hover {
-            color: var(--primary);
-            background: rgba(74, 144, 226, 0.1);
-        }
-
-        .tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-            background: rgba(74, 144, 226, 0.15);
-            font-weight: 600;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.5rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--primary);
-        }
-
-        .timeline-item h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(255, 179, 71, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
-            border-left: 4px solid var(--warning);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .highlight-box:hover {
-            /* transform: translateX(5px); */
-            box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
-        }
-
-        :root[data-theme="dark"] .highlight-box {
-            background: linear-gradient(135deg, rgba(255, 179, 71, 0.15) 0%, rgba(255, 140, 0, 0.15) 100%);
-        }
-
-        .highlight-box strong {
-            color: #92400e;
-        }
-
-        code {
-            background: rgba(74, 144, 226, 0.1);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            color: var(--primary);
-            border: 1px solid rgba(74, 144, 226, 0.2);
-        }
-
-        :root[data-theme="dark"] code {
-            background: rgba(74, 144, 226, 0.2);
-            border-color: rgba(74, 144, 226, 0.3);
-        }
-
-        pre {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 1.5rem;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            border: 2px solid #334155;
-        }
-
-        :root[data-theme="dark"] pre {
-            background: #0f172a;
-            border-color: #1e293b;
-        }
-
-        .visual-timeline {
-            margin: 2rem 0;
-            padding: 2rem;
-            background: var(--surface);
-            border-radius: 10px;
-            border: 2px solid var(--border);
-        }
-
-        .hour-block {
-            margin: 1.5rem 0;
-            padding: 1.5rem;
-            background: rgba(74, 144, 226, 0.05);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .hour-block:hover {
-            background: rgba(74, 144, 226, 0.1);
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
-        }
-
-        :root[data-theme="dark"] .hour-block {
-            background: rgba(74, 144, 226, 0.08);
-        }
-
-        :root[data-theme="dark"] .hour-block:hover {
-            background: rgba(74, 144, 226, 0.12);
-        }
-
-        .hour-label {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .refiner-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .refiner-bar {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .refiner-label {
-            min-width: 200px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .bar-container {
-            flex: 1;
-            height: 24px;
-            background: var(--border);
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            border-radius: 4px;
-            transition: width 0.5s ease;
-            display: flex;
-            align-items: center;
-            padding: 0 0.5rem;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        footer {
-            margin-top: 3rem;
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 2px solid var(--border);
-        }
-
-        @media print {
-            body {
-                background: white;
-            }
-            .theme-toggle {
-                display: none;
-            }
-            .section {
-                box-shadow: none;
-                border: 1px solid var(--border);
-                page-break-inside: avoid;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .slide-in {
-            animation: slideIn 0.5s ease-out;
-        }
-
-        /* Classes de cycle jour/nuit pour le scroll - Transitions fluides */
-        body.phase-night-deep {
-            --bg-gradient-start: #0a1628;
-            --bg-gradient-end: #1a1f3a;
-        }
-        body.phase-night-deep::after {
-            content: '🌙';
-            top: 15%;
-            opacity: 0.3;
-            filter: drop-shadow(0 0 40px rgba(180, 190, 255, 0.5));
-        }
-
-        body.phase-sunrise {
-            --bg-gradient-start: #2d4663;
-            --bg-gradient-end: #4a6fa5;
-        }
-        body.phase-sunrise::after {
-            content: '🌅';
-            top: 18%;
-            opacity: 0.35;
-            filter: drop-shadow(0 0 45px rgba(255, 200, 150, 0.6));
-        }
-
-        body.phase-morning {
-            --bg-gradient-start: #4a90e2;
-            --bg-gradient-end: #6ba3d4;
-        }
-        body.phase-morning::after {
-            content: '☀️';
-            top: 12%;
-            opacity: 0.35;
-            filter: drop-shadow(0 0 50px rgba(255, 220, 120, 0.7));
-        }
-
-        body.phase-noon {
-            --bg-gradient-start: #5ea3d9;
-            --bg-gradient-end: #87bfe8;
-        }
-        body.phase-noon::after {
-            content: '☀️';
-            top: 10%;
-            font-size: 90px;
-            opacity: 0.4;
-            filter: drop-shadow(0 0 60px rgba(255, 235, 140, 0.8));
-        }
-
-        body.phase-afternoon {
-            --bg-gradient-start: #6b8cce;
-            --bg-gradient-end: #8ba5d9;
-        }
-        body.phase-afternoon::after {
-            content: '🌤️';
-            top: 20%;
-            opacity: 0.35;
-            filter: drop-shadow(0 0 50px rgba(255, 210, 130, 0.7));
-        }
-
-        body.phase-sunset {
-            --bg-gradient-start: #4a5f8e;
-            --bg-gradient-end: #6a7dad;
-        }
-        body.phase-sunset::after {
-            content: '🌆';
-            top: 25%;
-            opacity: 0.35;
-            filter: drop-shadow(0 0 55px rgba(255, 180, 120, 0.7));
-        }
-
-        /* Étoiles décoratives pour les phases nocturnes */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1 !important;
-            opacity: 0;
-            transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body.phase-night-deep .stars {
-            opacity: 1;
-        }
-
-        body.phase-sunrise .stars {
-            opacity: 0.4;
-        }
-
-        body.phase-sunset .stars {
-            opacity: 0.3;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        /* Indicateur de temps en haut à gauche */
-        .time-indicator {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 15px 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            z-index: 99999 !important;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            pointer-events: none;
-        }
-
-        :root[data-theme="dark"] .time-indicator {
-            background: rgba(15, 52, 96, 0.9);
-            border-color: rgba(74, 144, 226, 0.3);
-        }
-
-        .time-indicator .emoji {
-            font-size: 32px;
-            display: block;
-            text-align: center;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-
-        .time-indicator .time {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        .time-indicator .label {
-            font-size: 11px;
-            color: var(--text-light);
-            text-align: center;
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .schedule-box {
+        border-radius: 8px;
+        padding: 1.5rem;
+        position: relative;
+      }
+
+      .schedule-old {
+        background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
+        border: 3px solid var(--danger);
+        transition: all 0.3s ease;
+      }
+
+      .schedule-old:hover {
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+      }
+
+      .schedule-new {
+        background: linear-gradient(135deg, rgba(80, 200, 120, 0.1) 0%, rgba(58, 160, 95, 0.1) 100%);
+        border: 3px solid var(--success);
+        transition: all 0.3s ease;
+      }
+
+      .schedule-new:hover {
+        box-shadow: 0 6px 20px rgba(80, 200, 120, 0.3);
+      }
+
+      :root[data-theme='dark'] .schedule-old {
+        background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(192, 57, 43, 0.15) 100%);
+      }
+
+      :root[data-theme='dark'] .schedule-new {
+        background: linear-gradient(135deg, rgba(80, 200, 120, 0.15) 0%, rgba(58, 160, 95, 0.15) 100%);
+      }
+
+      .schedule-label {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .schedule-label.old {
+        color: var(--danger);
+      }
+
+      .schedule-label.new {
+        color: var(--success);
+      }
+
+      .time-block {
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.8;
+        background: var(--surface);
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 0.5rem 0;
+        border: 1px solid var(--border);
+      }
+
+      .time-line {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.25rem 0;
+      }
+
+      .refiner-name {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .times {
+        color: var(--text-light);
+      }
+
+      .improvements {
+        display: grid;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .improvement-item {
+        background: linear-gradient(to right, rgba(80, 200, 120, 0.1), transparent);
+        border-left: 4px solid var(--success);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .improvement-item:hover {
+        /* transform: translateX(5px); */
+        background: linear-gradient(to right, rgba(80, 200, 120, 0.15), transparent);
+      }
+
+      :root[data-theme='dark'] .improvement-item {
+        background: linear-gradient(to right, rgba(80, 200, 120, 0.15), transparent);
+      }
+
+      .improvement-item strong {
+        color: var(--success);
+      }
+
+      .problems {
+        display: grid;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .problem-item {
+        background: linear-gradient(to right, rgba(231, 76, 60, 0.1), transparent);
+        border-left: 4px solid var(--danger);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .problem-item:hover {
+        /* transform: translateX(5px); */
+        background: linear-gradient(to right, rgba(231, 76, 60, 0.15), transparent);
+      }
+
+      :root[data-theme='dark'] .problem-item {
+        background: linear-gradient(to right, rgba(231, 76, 60, 0.15), transparent);
+      }
+
+      .problem-item::before {
+        content: '❌ ';
+      }
+
+      .tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid var(--border);
+      }
+
+      .tab {
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 1rem;
+        color: var(--text-light);
+        transition: all 0.3s;
+        border-bottom: 3px solid transparent;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .tab:hover {
+        color: var(--primary);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .tab.active {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+        background: rgba(74, 144, 226, 0.15);
+        font-weight: 600;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+        margin: 2rem 0;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--primary);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-bottom: 2rem;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -2.5rem;
+        top: 0.5rem;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--primary);
+        border: 3px solid white;
+        box-shadow: 0 0 0 2px var(--primary);
+      }
+
+      .timeline-item h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .highlight-box {
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
+        border-left: 4px solid var(--warning);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 1.5rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .highlight-box:hover {
+        /* transform: translateX(5px); */
+        box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+      }
+
+      :root[data-theme='dark'] .highlight-box {
+        background: linear-gradient(135deg, rgba(255, 179, 71, 0.15) 0%, rgba(255, 140, 0, 0.15) 100%);
+      }
+
+      .highlight-box strong {
+        color: #92400e;
+      }
+
+      code {
+        background: rgba(74, 144, 226, 0.1);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+        color: var(--primary);
+        border: 1px solid rgba(74, 144, 226, 0.2);
+      }
+
+      :root[data-theme='dark'] code {
+        background: rgba(74, 144, 226, 0.2);
+        border-color: rgba(74, 144, 226, 0.3);
+      }
+
+      pre {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1.5rem;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin: 1rem 0;
+        border: 2px solid #334155;
+      }
+
+      :root[data-theme='dark'] pre {
+        background: #0f172a;
+        border-color: #1e293b;
+      }
+
+      .visual-timeline {
+        margin: 2rem 0;
+        padding: 2rem;
+        background: var(--surface);
+        border-radius: 10px;
+        border: 2px solid var(--border);
+      }
+
+      .hour-block {
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: rgba(74, 144, 226, 0.05);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .hour-block:hover {
+        background: rgba(74, 144, 226, 0.1);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+      }
+
+      :root[data-theme='dark'] .hour-block {
+        background: rgba(74, 144, 226, 0.08);
+      }
+
+      :root[data-theme='dark'] .hour-block:hover {
+        background: rgba(74, 144, 226, 0.12);
+      }
+
+      .hour-label {
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .refiner-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .refiner-bar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .refiner-label {
+        min-width: 200px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .bar-container {
+        flex: 1;
+        height: 24px;
+        background: var(--border);
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        border-radius: 4px;
+        transition: width 0.5s ease;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      footer {
+        margin-top: 3rem;
+        padding: 2rem;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        border-top: 2px solid var(--border);
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+        .theme-toggle {
+          display: none;
+        }
+        .section {
+          box-shadow: none;
+          border: 1px solid var(--border);
+          page-break-inside: avoid;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      .slide-in {
+        animation: slideIn 0.5s ease-out;
+      }
+
+      /* Classes de cycle jour/nuit pour le scroll - Transitions fluides */
+      body.phase-night-deep {
+        --bg-gradient-start: #0a1628;
+        --bg-gradient-end: #1a1f3a;
+      }
+      body.phase-night-deep::after {
+        content: '🌙';
+        top: 15%;
+        opacity: 0.3;
+        filter: drop-shadow(0 0 40px rgba(180, 190, 255, 0.5));
+      }
+
+      body.phase-sunrise {
+        --bg-gradient-start: #2d4663;
+        --bg-gradient-end: #4a6fa5;
+      }
+      body.phase-sunrise::after {
+        content: '🌅';
+        top: 18%;
+        opacity: 0.35;
+        filter: drop-shadow(0 0 45px rgba(255, 200, 150, 0.6));
+      }
+
+      body.phase-morning {
+        --bg-gradient-start: #4a90e2;
+        --bg-gradient-end: #6ba3d4;
+      }
+      body.phase-morning::after {
+        content: '☀️';
+        top: 12%;
+        opacity: 0.35;
+        filter: drop-shadow(0 0 50px rgba(255, 220, 120, 0.7));
+      }
+
+      body.phase-noon {
+        --bg-gradient-start: #5ea3d9;
+        --bg-gradient-end: #87bfe8;
+      }
+      body.phase-noon::after {
+        content: '☀️';
+        top: 10%;
+        font-size: 90px;
+        opacity: 0.4;
+        filter: drop-shadow(0 0 60px rgba(255, 235, 140, 0.8));
+      }
+
+      body.phase-afternoon {
+        --bg-gradient-start: #6b8cce;
+        --bg-gradient-end: #8ba5d9;
+      }
+      body.phase-afternoon::after {
+        content: '🌤️';
+        top: 20%;
+        opacity: 0.35;
+        filter: drop-shadow(0 0 50px rgba(255, 210, 130, 0.7));
+      }
+
+      body.phase-sunset {
+        --bg-gradient-start: #4a5f8e;
+        --bg-gradient-end: #6a7dad;
+      }
+      body.phase-sunset::after {
+        content: '🌆';
+        top: 25%;
+        opacity: 0.35;
+        filter: drop-shadow(0 0 55px rgba(255, 180, 120, 0.7));
+      }
+
+      /* Étoiles décoratives pour les phases nocturnes */
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1 !important;
+        opacity: 0;
+        transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body.phase-night-deep .stars {
+        opacity: 1;
+      }
+
+      body.phase-sunrise .stars {
+        opacity: 0.4;
+      }
+
+      body.phase-sunset .stars {
+        opacity: 0.3;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 3s infinite;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Indicateur de temps en haut à gauche */
+      .time-indicator {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 15px 25px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        z-index: 99999 !important;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        pointer-events: none;
+      }
+
+      :root[data-theme='dark'] .time-indicator {
+        background: rgba(15, 52, 96, 0.9);
+        border-color: rgba(74, 144, 226, 0.3);
+      }
+
+      .time-indicator .emoji {
+        font-size: 32px;
+        display: block;
+        text-align: center;
+        margin-bottom: 8px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+
+      .time-indicator .time {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--primary);
+        text-align: center;
+      }
+
+      .time-indicator .label {
+        font-size: 11px;
+        color: var(--text-light);
+        text-align: center;
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">
-        <span id="theme-icon">🌙</span>
-        <span class="theme-toggle-text">Mode Sombre</span>
+      <span id="theme-icon">🌙</span>
+      <span class="theme-toggle-text">Mode Sombre</span>
     </button>
 
     <div class="container fade-in">
-        <header>
-            <h1>📅 Réforme des horaires pour une Vitrine démocratique Bêta 2.0</h1>
-            <p class="subtitle">Système de mise à jour 6 fois/jour - Architecture complète (Heure de Montréal)</p>
-            <div class="meta">
-                <div class="meta-item">
-                    <span>📅</span>
-                    <span class="badge">21 février 2026</span>
-                </div>
-                <div class="meta-item">
-                    <span>🎯</span>
-                    <span class="badge">6 blocs par jour</span>
-                </div>
-                <div class="meta-item">
-                    <span>⏱️</span>
-                    <span class="badge">~57 min de traitement</span>
-                </div>
-            </div>
-        </header>
+      <header>
+        <h1>📅 Réforme des horaires pour une Vitrine démocratique Bêta 2.0</h1>
+        <p class="subtitle">Système de mise à jour 6 fois/jour - Architecture complète (Heure de Montréal)</p>
+        <div class="meta">
+          <div class="meta-item">
+            <span>📅</span>
+            <span class="badge">21 février 2026</span>
+          </div>
+          <div class="meta-item">
+            <span>🎯</span>
+            <span class="badge">6 blocs par jour</span>
+          </div>
+          <div class="meta-item">
+            <span>⏱️</span>
+            <span class="badge">~54 min données / ~57 min vitrine</span>
+          </div>
+        </div>
+      </header>
 
-        <div class="section">
-            <h2>🎯 Contexte et Objectifs</h2>
-            
-            <div class="objectives">
-                <div class="objective-card">
-                    <h4>Objectif Principal</h4>
-                    <p>La Vitrine Démocratique se met à jour <strong>6 fois par jour</strong> (toutes les 4 heures) avec les dernières données des médias et analyses.</p>
-                    <p style="margin-top: 0.5rem;"><strong>Délai de disponibilité:</strong> Les données collectées sur une fenêtre de 4h sont traitées et disponibles environ 57 minutes après le début du bloc.</p>
-                    <p style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 4px;"><strong>Exemple:</strong> Bloc débute à <strong>11:03</strong> → Traitement ~57min → Données prêtes vers <strong>12:00</strong> (heure de Montréal)</p>
-                    
-                    <div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(16, 185, 129, 0.1)); border-radius: 8px; border: 2px solid var(--primary);">
-                        <strong style="color: var(--primary);">⏱️ Horaire Complet (6 blocs/jour):</strong>
-                        <div style="margin-top: 0.8rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌅</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MATIN</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 3h-7h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 07:03</div>
-                                <div style="font-size: 0.9em;">Pipeline: 07:03-08:00</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~08:00</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 08h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">☀️</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MIDI</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 7h-11h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 11:03</div>
-                                <div style="font-size: 0.9em;">Pipeline: 11:03-12:00</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~12:00</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 12h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌤️</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">APRÈS-MIDI</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 11h-15h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 15:03</div>
-                                <div style="font-size: 0.9em;">Pipeline: 15:03-16:00</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~16:00</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 16h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌆</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">SOIRÉE</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 15h-19h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 19:03</div>
-                                <div style="font-size: 0.9em;">Pipeline: 19:03-20:00</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~20:00</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 20h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌑</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">MINUIT</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 19h-23h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 23:03</div>
-                                <div style="font-size: 0.9em;">Pipeline: 23:03-00:00</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~00:00</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 00h</div>
-                            </div>
-                            <div style="background: var(--surface); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--primary); display: flex; flex-direction: column;">
-                                <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🌙</div>
-                                <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem;">NUIT</div>
-                                <div style="font-size: 0.85em; opacity: 0.7;">Données: 23h-3h</div>
-                                <div style="font-size: 0.9em; margin-top: 0.5rem;">Glue Job: 03:03</div>
-                                <div style="font-size: 0.9em;">Pipeline: 03:03-04:00</div>
-                                <div style="font-size: 0.9em; color: var(--success); font-weight: 600;">✅ Données: ~04:00</div>
-                                <div style="font-size: 0.9em; color: var(--warning); font-weight: 700; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border);">🎯 Vitrine: 04h</div>
-                            </div>
-                        </div>
-
-                    <div class="objective-card">
-                    <h4>🔧 Architecture des Glue Jobs (ETL)</h4>
-                    <p>Le pipeline utilise <strong>deux types de Glue Jobs</strong> AWS pour gérer l'extraction, la transformation et le chargement des données:</p>
-                    
-                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 8px;">
-                        <strong style="color: var(--primary);">1️⃣ Glue Job GÉNÉRALE (toutes les 4h)</strong>
-                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem; font-size: 0.95em;">
-                            <li style="opacity: 0.75; font-style: italic;">Les <strong>extracteurs</strong> collectent les données brutes des médias (HTML, PDF, XML…) → stockées dans le <strong>data lake</strong></li>
-                            <li style="opacity: 0.75; font-style: italic;">Les <strong>chargeurs</strong> dissectent ces données brutes et les exportent en <strong>CSV</strong> → stockés dans le <strong>datawarehouse</strong></li>
-                            <li>Récupère tous les CSV produits par les chargeurs dans les <strong>4 dernières heures</strong> (datawarehouse)</li>
-                            <li>Les convertit en fichiers <strong>Parquet</strong> (format orienté colonnes requis par AWS Athena — Athena ne peut pas lire du CSV)</li>
-                            <li>Indexe les données dans les <strong>tables Glue</strong> correspondantes → rendues requêtables via Athena</li>
-                            <li>Point d'entrée pour <code>DATA_PREPARATION</code> et tout le pipeline RADAR+</li>
-                            <li><strong>Durée:</strong> max 2 minutes</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
-                        <strong style="color: var(--success);">2️⃣ Glue Jobs SPÉCIFIQUES (après chaque raffineur)</strong>
-                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem; font-size: 0.95em;">
-                            <li>1 par raffineur — écrit les résultats vers Athena</li>
-                            <li><strong>Durée:</strong> ~3 min chacun, mais ils tournent en parallèle → <strong>+9 min au total</strong> sur le chemin critique</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="objective-card">
-                    <h4>🔬 Architecture Scientifique avec Modèles Locaux</h4>
-                    <p><strong>TOUS les raffineurs</strong> utilisent maintenant <code>salient_index</code> comme source de vérité unique pour les scores de saillance.</p>
-                    
-                    <p style="margin-top: 1rem;"><strong>Pipeline scientifique — DATA_PREPARATION (6 phases, 5 modèles):</strong></p>
-                    <ol style="margin-top: 0.5rem; padding-left: 2rem;">
-                        <li><strong>Phase 1/6 — CAP themes:</strong> Classification thématique sur toutes les phrases (batch)</li>
-                        <li style="margin-top: 0.5rem;"><strong>Phase 2/6 — Canadian political parties:</strong> Détection des partis politiques sur toutes les phrases (batch)</li>
-                        <li style="margin-top: 0.5rem;"><strong>Phase 3/6 — Sentiment:</strong> Analyse de sentiment sur toutes les phrases (batch)</li>
-                        <li style="margin-top: 0.5rem;"><strong>Phase 4/6 — GLiNER (INFER API):</strong> Extraction NER sur toutes les phrases (batch) — 18 labels</li>
-                        <li style="margin-top: 0.5rem;"><strong>Phase 5/6 — gemma3:27b (Ollama):</strong> Normalisation + traduction EN/FR des entités, avec cache inter-articles</li>
-                        <li style="margin-top: 0.5rem;"><strong>Phase 6/6 — Assemblage:</strong> Fusion sentence_analysis + colonnes entités par article → <code>radar_articles</code> (29 colonnes)</li>
-                    </ol>
-                    
-                    <p style="margin-top: 1rem; padding: 0.8rem; background: rgba(241, 196, 15, 0.15); border-left: 4px solid var(--warning); border-radius: 4px;">
-                        <strong style="color: var(--warning);">⚖️ Trade-off:</strong> Plus lent que GPT-4 (~25 min vs ~2 min), mais scientifiquement rigoureux, reproductible, et traçable.<br>
-                        <strong style="color: var(--success); margin-top: 0.5rem; display: block;">💡 Objectif d'optimisation continue:</strong> Réduire le délai de traitement en améliorant les performances des modèles locaux et l'architecture du pipeline.
-                    </p>
-                </div>
-            </div>
+      <div class="section">
+        <h2>🎯 Contexte et Objectifs</h2>
+        <div class="highlight-box">
+          <strong>⚠️ Nouvelle contrainte AWS Lambda :</strong> <br>
+          Tous les raffineurs doivent être découpés en plusieurs lambdas si leur exécution dépasse <strong>15 minutes</strong>.<br>
+          L’architecture a été adaptée pour garantir que chaque lambda respecte ce timeout maximal.
         </div>
 
+        <div class="objectives">
+          <div class="objective-card">
+            <h4>Objectif Principal</h4>
+            <p>
+              La Vitrine Démocratique se met à jour <strong>6 fois par jour</strong> (toutes les 4 heures) avec les
+              dernières données des médias et analyses.
+            </p>
+            <p style="margin-top: 0.5rem">
+              <strong>Délai de disponibilité:</strong> Les données collectées sur une fenêtre de 4h sont traitées en
+              ~54 minutes (datamarts), puis publiées frontend en ~57 minutes.
+            </p>
+            <p style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 4px">
+              <strong>Exemple:</strong> Bloc débute à <strong>11:03</strong> → Datamarts prêts vers
+              <strong>11:57</strong> → Frontend vitrine vers <strong>12:00</strong> (heure de Montréal)
+            </p>
 
+            <div
+              style="
+                margin-top: 1rem;
+                padding: 1rem;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(16, 185, 129, 0.1));
+                border-radius: 8px;
+                border: 2px solid var(--primary);
+              "
+            >
+              <strong style="color: var(--primary)">⏱️ Horaire Complet (6 blocs/jour):</strong>
+              <p style="margin-top: 0.6rem; font-size: 0.9em; color: var(--warning); font-weight: 700">
+                🟡 Grille cible planifiée (transition en cours, pas encore entièrement appliquée dans le TS)
+              </p>
+              <div
+                style="
+                  margin-top: 0.8rem;
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                  gap: 0.8rem;
+                "
+              >
+                <div
+                  style="
+                    background: var(--surface);
+                    padding: 1rem;
+                    border-radius: 6px;
+                    border-left: 4px solid var(--primary);
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div style="font-size: 1.5rem; margin-bottom: 0.3rem">🌅</div>
+                  <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem">
+                    MATIN
+                  </div>
+                  <div style="font-size: 0.85em; opacity: 0.7">Données: 3h-7h</div>
+                  <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 07:03</div>
+                  <div style="font-size: 0.9em">Pipeline: 07:06-07:57</div>
+                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~07:57</div>
+                  <div
+                    style="
+                      font-size: 0.9em;
+                      color: var(--warning);
+                      font-weight: 700;
+                      margin-top: auto;
+                      padding-top: 0.8rem;
+                      border-top: 1px solid var(--border);
+                    "
+                  >
+                    🎯 Vitrine: 08h
+                  </div>
+                </div>
+                <div
+                  style="
+                    background: var(--surface);
+                    padding: 1rem;
+                    border-radius: 6px;
+                    border-left: 4px solid var(--primary);
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div style="font-size: 1.5rem; margin-bottom: 0.3rem">☀️</div>
+                  <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem">
+                    MIDI
+                  </div>
+                  <div style="font-size: 0.85em; opacity: 0.7">Données: 7h-11h</div>
+                  <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 11:03</div>
+                  <div style="font-size: 0.9em">Pipeline: 11:06-11:57</div>
+                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~11:57</div>
+                  <div
+                    style="
+                      font-size: 0.9em;
+                      color: var(--warning);
+                      font-weight: 700;
+                      margin-top: auto;
+                      padding-top: 0.8rem;
+                      border-top: 1px solid var(--border);
+                    "
+                  >
+                    🎯 Vitrine: 12h
+                  </div>
+                </div>
+                <div
+                  style="
+                    background: var(--surface);
+                    padding: 1rem;
+                    border-radius: 6px;
+                    border-left: 4px solid var(--primary);
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div style="font-size: 1.5rem; margin-bottom: 0.3rem">🌤️</div>
+                  <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem">
+                    APRÈS-MIDI
+                  </div>
+                  <div style="font-size: 0.85em; opacity: 0.7">Données: 11h-15h</div>
+                  <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 15:03</div>
+                  <div style="font-size: 0.9em">Pipeline: 15:06-15:57</div>
+                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~15:57</div>
+                  <div
+                    style="
+                      font-size: 0.9em;
+                      color: var(--warning);
+                      font-weight: 700;
+                      margin-top: auto;
+                      padding-top: 0.8rem;
+                      border-top: 1px solid var(--border);
+                    "
+                  >
+                    🎯 Vitrine: 16h
+                  </div>
+                </div>
+                <div
+                  style="
+                    background: var(--surface);
+                    padding: 1rem;
+                    border-radius: 6px;
+                    border-left: 4px solid var(--primary);
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div style="font-size: 1.5rem; margin-bottom: 0.3rem">🌆</div>
+                  <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem">
+                    SOIRÉE
+                  </div>
+                  <div style="font-size: 0.85em; opacity: 0.7">Données: 15h-19h</div>
+                  <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 19:03</div>
+                  <div style="font-size: 0.9em">Pipeline: 19:06-19:57</div>
+                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~19:57</div>
+                  <div
+                    style="
+                      font-size: 0.9em;
+                      color: var(--warning);
+                      font-weight: 700;
+                      margin-top: auto;
+                      padding-top: 0.8rem;
+                      border-top: 1px solid var(--border);
+                    "
+                  >
+                    🎯 Vitrine: 20h
+                  </div>
+                </div>
+                <div
+                  style="
+                    background: var(--surface);
+                    padding: 1rem;
+                    border-radius: 6px;
+                    border-left: 4px solid var(--primary);
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div style="font-size: 1.5rem; margin-bottom: 0.3rem">🌑</div>
+                  <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem">
+                    MINUIT
+                  </div>
+                  <div style="font-size: 0.85em; opacity: 0.7">Données: 19h-23h</div>
+                  <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 23:03</div>
+                  <div style="font-size: 0.9em">Pipeline: 23:06-23:57</div>
+                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~23:57</div>
+                  <div
+                    style="
+                      font-size: 0.9em;
+                      color: var(--warning);
+                      font-weight: 700;
+                      margin-top: auto;
+                      padding-top: 0.8rem;
+                      border-top: 1px solid var(--border);
+                    "
+                  >
+                    🎯 Vitrine: 00h
+                  </div>
+                </div>
+                <div
+                  style="
+                    background: var(--surface);
+                    padding: 1rem;
+                    border-radius: 6px;
+                    border-left: 4px solid var(--primary);
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div style="font-size: 1.5rem; margin-bottom: 0.3rem">🌙</div>
+                  <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.3rem">
+                    NUIT
+                  </div>
+                  <div style="font-size: 0.85em; opacity: 0.7">Données: 23h-3h</div>
+                  <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 03:03</div>
+                  <div style="font-size: 0.9em">Pipeline: 03:06-03:57</div>
+                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~03:57</div>
+                  <div
+                    style="
+                      font-size: 0.9em;
+                      color: var(--warning);
+                      font-weight: 700;
+                      margin-top: auto;
+                      padding-top: 0.8rem;
+                      border-top: 1px solid var(--border);
+                    "
+                  >
+                    🎯 Vitrine: 04h
+                  </div>
+                </div>
+              </div>
 
-        <div class="section">
+              <div class="objective-card">
+                <h4>🔧 Architecture des Glue Jobs (ETL)</h4>
+                <p>
+                  Le pipeline utilise <strong>deux types de Glue Jobs</strong> AWS pour gérer l'extraction, la
+                  transformation et le chargement des données:
+                </p>
+
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(102, 126, 234, 0.1); border-radius: 8px">
+                  <strong style="color: var(--primary)">1️⃣ Glue Job GÉNÉRALE (toutes les 4h)</strong>
+                  <ul style="margin-top: 0.5rem; padding-left: 1.5rem; font-size: 0.95em">
+                    <li style="opacity: 0.75; font-style: italic">
+                      Les <strong>extracteurs</strong> collectent les données brutes des médias (HTML, PDF, XML…) →
+                      stockées dans le <strong>data lake</strong>
+                    </li>
+                    <li style="opacity: 0.75; font-style: italic">
+                      Les <strong>chargeurs</strong> dissectent ces données brutes et les exportent en
+                      <strong>CSV</strong> → stockés dans le <strong>datawarehouse</strong>
+                    </li>
+                    <li>
+                      Récupère tous les CSV produits par les chargeurs dans les
+                      <strong>4 dernières heures</strong> (datawarehouse)
+                    </li>
+                    <li>
+                      Les convertit en fichiers <strong>Parquet</strong> (format orienté colonnes requis par AWS Athena
+                      — Athena ne peut pas lire du CSV)
+                    </li>
+                    <li>
+                      Indexe les données dans les <strong>tables Glue</strong> correspondantes → rendues requêtables via
+                      Athena
+                    </li>
+                    <li>Point d'entrée pour <code>DATA_PREPARATION</code> et tout le pipeline RADAR+</li>
+                    <li><strong>Durée:</strong> max 2 minutes</li>
+                  </ul>
+                </div>
+
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px">
+                  <strong style="color: var(--success)">2️⃣ Glue Jobs SPÉCIFIQUES (après chaque raffineur)</strong>
+                  <ul style="margin-top: 0.5rem; padding-left: 1.5rem; font-size: 0.95em">
+                    <li>1 par raffineur — écrit les résultats vers Athena</li>
+                    <li>
+                      <strong>Durée:</strong> ~3 min chacun, mais ils tournent en parallèle →
+                      <strong>+9 min au total</strong> sur le chemin critique
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="objective-card">
+                <h4>🔬 Architecture Scientifique avec Modèles Locaux</h4>
+                <p>
+                  <strong>Les raffineurs dépendants de la saillance</strong> utilisent <code>salient_index</code> comme
+                  source de vérité. Les raffineurs longs sont systématiquement splittés en plusieurs lambdas de 15 min max pour respecter la contrainte AWS Lambda et accélérer le pipeline.
+                </p>
+
+                <p style="margin-top: 1rem">
+                  <strong>Pipeline scientifique — DATA_PREPARATION (6 phases, 5 modèles):</strong>
+                </p>
+                <ol style="margin-top: 0.5rem; padding-left: 2rem">
+                  <li>
+                    <strong>Phase 1/6 — CAP themes:</strong> Classification thématique sur toutes les phrases (batch)
+                  </li>
+                  <li style="margin-top: 0.5rem">
+                    <strong>Phase 2/6 — Canadian political parties:</strong> Détection des partis politiques sur toutes
+                    les phrases (batch)
+                  </li>
+                  <li style="margin-top: 0.5rem">
+                    <strong>Phase 3/6 — Sentiment:</strong> Analyse de sentiment sur toutes les phrases (batch)
+                  </li>
+                  <li style="margin-top: 0.5rem">
+                    <strong>Phase 4/6 — GLiNER (INFER API):</strong> Extraction NER sur toutes les phrases (batch) — 18
+                    labels
+                  </li>
+                  <li style="margin-top: 0.5rem">
+                    <strong>Phase 5/6 — gemma3:27b (Ollama):</strong> Normalisation + traduction EN/FR des entités, avec
+                    cache inter-articles
+                  </li>
+                  <li style="margin-top: 0.5rem">
+                    <strong>Phase 6/6 — Assemblage:</strong> Fusion sentence_analysis + colonnes entités par article →
+                    <code>radar_articles</code> (29 colonnes)
+                  </li>
+                </ol>
+
+                <p
+                  style="
+                    margin-top: 1rem;
+                    padding: 0.8rem;
+                    background: rgba(241, 196, 15, 0.15);
+                    border-left: 4px solid var(--warning);
+                    border-radius: 4px;
+                  "
+                >
+                  <strong style="color: var(--warning)">⚖️ Trade-off:</strong> Plus lent que GPT-4 (~25 min vs ~2 min),
+                  mais scientifiquement rigoureux, reproductible, et traçable.<br />
+                  <strong style="color: var(--success); margin-top: 0.5rem; display: block"
+                    >💡 Objectif d'optimisation continue:</strong
+                  >
+                  Réduire le délai de traitement en améliorant les performances des modèles locaux et l'architecture du
+                  pipeline.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
             <h2>📋 Durées Mesurées (AWS Monitoring)</h2>
-            <p style="margin-bottom: 1rem; opacity: 0.9;">Temps d'exécution réels observés en production (exemple: bloc Glue Job à 11:00):</p>
-            <table class="duration-table">
-                <thead>
-                    <tr>
-                        <th>Raffineur / Glue Job</th>
-                        <th>Heure de lancement</th>
-                        <th>Heure de fin</th>
-                        <th>Durée Réelle</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>GLUE JOB GÉNÉRALE</td>
-                        <td>11:03</td>
-                        <td>11:05</td>
-                        <td>max 2 min</td>
-                        <td>Traite le bloc du Midi (7:00-11:00)</td>
-                    </tr>
-                    <tr>
-                        <td>DATA_PREPARATION</td>
-                        <td>11:05</td>
-                        <td>11:45</td>
-                        <td><strong>40 min</strong></td>
-                        <td>wtpsplit · CAP · partis · GLiNER · gemma3:27b — 6 phases — 29 colonnes → <code>radar_articles</code></td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:45</td>
-                        <td>11:48</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr style="background: rgba(139, 92, 246, 0.1);">
-                        <td colspan="5" style="text-align: center; font-weight: 600; color: #8b5cf6;">⚡ Mini-bloc parallèle (dès 11:48) — SALIENT_INDEX + ISSUES_SCORE + PARTY_SCORES</td>
-                    </tr>
-                    <tr>
-                        <td>SALIENT_INDEX</td>
-                        <td>11:48</td>
-                        <td>11:49</td>
-                        <td>1 min</td>
-                        <td>Calcul scores saillance — lit <code>radar_articles</code></td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:49</td>
-                        <td>11:52</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr>
-                        <td>ISSUES_SCORE</td>
-                        <td>11:48</td>
-                        <td>11:49</td>
-                        <td>1 min</td>
-                        <td>Classification Enjeux du CAPP — lit <code>radar_articles</code></td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:49</td>
-                        <td>11:52</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr>
-                        <td>PARTY_SCORES</td>
-                        <td>11:48</td>
-                        <td>11:49</td>
-                        <td>1 min</td>
-                        <td>Partis + sentiment — lit <code>radar_articles</code></td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:49</td>
-                        <td>11:52</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr style="background: rgba(241, 196, 15, 0.1);">
-                        <td colspan="5" style="text-align: center; font-weight: 600; color: var(--warning);">⚡ Phase 2 — Enrichissement final (parallèle dès 11:52)</td>
-                    </tr>
-                    <tr>
-                        <td>HEADLINE_OF_HEADLINES</td>
-                        <td>11:52</td>
-                        <td>11:57</td>
-                        <td>5 min</td>
-                        <td>Génération titres</td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:57</td>
-                        <td>12:00</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr>
-                        <td>HEADLINES_ISSUES</td>
-                        <td>11:52</td>
-                        <td>11:57</td>
-                        <td>5 min</td>
-                        <td>Attend ISSUES_SCORE</td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:57</td>
-                        <td>12:00</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr>
-                        <td>REFLET</td>
-                        <td>11:52</td>
-                        <td>11:57</td>
-                        <td>5 min</td>
-                        <td>Attend SALIENT_INDEX + ISSUES + PARTY</td>
-                    </tr>
-                    <tr style="opacity: 0.7;">
-                        <td>+ Glue Job spécifique</td>
-                        <td>11:57</td>
-                        <td>12:00</td>
-                        <td>3 min</td>
-                        <td>Écriture Athena</td>
-                    </tr>
-                    <tr style="background: rgba(16, 185, 129, 0.1);">
-                        <td colspan="5" style="text-align: center; font-weight: 600; color: var(--success);">🚀 Données Prêtes (~12:00)</td>
-                    </tr>
-                    <tr style="opacity: 0.5; text-decoration: line-through;">
-                        <td>VITRINE_GRAPH_DATA</td>
-                        <td>~12:00</td>
-                        <td>--:--</td>
-                        <td>3 min</td>
-                        <td style="color: var(--warning);">Sera éliminé avec l'API (accès direct Parquet)</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" style="padding: 0.5rem; font-size: 0.9em; color: var(--primary); font-weight: 600;">
-                            ✅ Avec l'API: Données disponibles directement via Athena Parquet à ~12:00
-                        </td>
-                    </tr>
-                    <tr style="background: rgba(241, 196, 15, 0.1);">
-                        <td colspan="5" style="text-align: center; font-weight: 600; color: var(--warning);">📅 Pipelines Hebdomadaires & Mensuels (1x/jour à 15h30 EST)</td>
-                    </tr>
-                    <tr>
-                        <td>ISSUES_SCORE_WEEKLY</td>
-                        <td>15:30</td>
-                        <td></td>
-                        <td>~1 min</td>
-                        <td>Agrégation hebdomadaire <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>ISSUES_SCORE_MONTHLY</td>
-                        <td>15:31</td>
-                        <td></td>
-                        <td>~1 min</td>
-                        <td>Agrégation mensuelle <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>PARTY_SCORES_WEEKLY</td>
-                        <td>15:32</td>
-                        <td></td>
-                        <td>~1 min</td>
-                        <td>Scores partis hebdo <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>PARTY_SCORES_MONTHLY</td>
-                        <td>15:33</td>
-                        <td></td>
-                        <td>~1 min</td>
-                        <td>Scores partis mensuel <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>HEADLINES_ISSUES_WEEKLY</td>
-                        <td>15:34</td>
-                        <td></td>
-                        <td>~5 min</td>
-                        <td>Headlines hebdo <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>HEADLINES_ISSUES_MONTHLY</td>
-                        <td>15:39</td>
-                        <td></td>
-                        <td>~5 min</td>
-                        <td>Headlines mensuel <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>REFLET_WEEKLY</td>
-                        <td>15:44</td>
-                        <td></td>
-                        <td>~5 min</td>
-                        <td>Reflet hebdomadaire <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr>
-                        <td>REFLET_MONTHLY</td>
-                        <td>15:49</td>
-                        <td></td>
-                        <td>~5 min</td>
-                        <td>Reflet mensuel <span style="color: var(--warning); font-weight: 600;">— À valider</span></td>
-                    </tr>
-                    <tr style="background: rgba(147, 51, 234, 0.1);">
-                        <td colspan="5" style="text-align: center; font-weight: 600; color: #9333ea;">🎯 Pipelines Spéciaux</td>
-                    </tr>
-                    <tr>
-                        <td>HOT_20</td>
-                        <td>11:30</td>
-                        <td></td>
-                        <td>~5 min</td>
-                        <td>Vendredis 11h30 EST</td>
-                    </tr>
-                    <tr>
-                        <td>SONAR</td>
-                        <td>07:00</td>
-                        <td></td>
-                        <td>~3 min</td>
-                        <td>Quotidien 07h00 EST</td>
-                    </tr>
-                    <tr>
-                        <td>SONAR_HEATMAPS</td>
-                        <td>07:30</td>
-                        <td></td>
-                        <td>~5 min</td>
-                        <td>Mercredis 07h30 EST</td>
-                    </tr>
-                </tbody>
+            <p style="margin-bottom: 1rem; opacity: 0.9">
+              <span style="color: var(--success); font-weight: 700">✅ Conforme (TS actuel)</span> : horaire déjà aligné avec la cible.
+              <span style="margin-left: 0.7rem; color: var(--warning); font-weight: 700">🟡 À adapter</span> : horaire encore à migrer.
+            </p>
+            <p style="margin-bottom: 1rem; opacity: 0.9">
+              Lecture rapide par raffineur (base: bloc MIDI 11:00, heure de Montréal).
+            </p>
+            <table class="duration-table" style="margin-bottom: 1rem">
+              <thead>
+                <tr>
+                  <th>Raffineur</th>
+                  <th>Horaire TS actuel</th>
+                  <th>Horaire cible</th>
+                  <th>Statut</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DATA_PREPARATION</td>
+                  <td>11:06</td>
+                  <td>11:06</td>
+                  <td style="color: var(--success); font-weight: 700">✅ Conforme</td>
+                </tr>
+                <tr>
+                  <td>OBJECT_EXTRACTION</td>
+                  <td>11:24</td>
+                  <td>11:24</td>
+                  <td style="color: var(--success); font-weight: 700">✅ Conforme</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORES_V2 (daily)</td>
+                  <td>11:31</td>
+                  <td>11:31</td>
+                  <td style="color: var(--success); font-weight: 700">✅ Conforme</td>
+                </tr>
+                <tr>
+                  <td>ISSUES_SCORE (daily)</td>
+                  <td>3x/jour @ :09</td>
+                  <td>6x/jour @ :31</td>
+                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                </tr>
+                <tr>
+                  <td>SALIENT_INDEX</td>
+                  <td>6x/jour @ :20</td>
+                  <td>6x/jour @ :42</td>
+                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                </tr>
+                <tr>
+                  <td>HEADLINE_OF_HEADLINES</td>
+                  <td>6x/jour @ :28</td>
+                  <td>6x/jour @ :46</td>
+                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                </tr>
+                <tr>
+                  <td>HEADLINES_ISSUES (daily)</td>
+                  <td>3x/jour @ :14</td>
+                  <td>6x/jour @ :46</td>
+                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                </tr>
+                <tr>
+                  <td>REFLET (daily)</td>
+                  <td>3x/jour @ :25</td>
+                  <td>6x/jour @ :46</td>
+                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                </tr>
+                <tr>
+                  <td>VITRINE_GRAPH_DATA</td>
+                  <td>5x/jour @ :39</td>
+                  <td>6x/jour @ :57</td>
+                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                </tr>
+              </tbody>
             </table>
-            
-            <div class="highlight-box" style="margin-top: 1.5rem;">
-                <strong>💡 Note:</strong> Chaque raffineur a son propre Glue Job spécifique qui écrit les résultats vers Athena. Ces 3 minutes s'ajoutent à chaque étape du pipeline.
-            </div>
-        </div>
+            <p style="margin-bottom: 1rem; opacity: 0.9">
+              <span style="color: var(--warning); font-weight: 700">🟡 Détail cible</span> : séquencement complet de référence pour un bloc Glue Job à 11:00.
+            </p>
+            <table class="duration-table">
+              <thead>
+                <tr>
+                  <th>Raffineur / Glue Job</th>
+                  <th>Heure de lancement</th>
+                  <th>Heure de fin</th>
+                  <th>Durée Réelle</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GLUE JOB GÉNÉRALE</td>
+                  <td>11:03</td>
+                  <td>11:05</td>
+                  <td>max 2 min</td>
+                  <td>Traite le bloc du Midi (7:00-11:00)</td>
+                </tr>
+                <tr>
+                  <td>DATA_PREPARATION</td>
+                  <td>11:06</td>
+                  <td>11:21</td>
+                  <td><strong>15 min</strong></td>
+                  <td>
+                    Pipeline principal radar-data-preparation
+                  </td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:21</td>
+                  <td>11:24</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr>
+                  <td>OBJECT_EXTRACTION</td>
+                  <td>11:24</td>
+                  <td>11:39</td>
+                  <td><strong>15 min</strong></td>
+                  <td>Extraction/normalisation d'objets (radar-object-extraction) — démarre après DATA_PREPARATION + Glue</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:39</td>
+                  <td>11:42</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr style="background: rgba(139, 92, 246, 0.1)">
+                  <td colspan="5" style="text-align: center; font-weight: 600; color: #8b5cf6">
+                    ⚡ Raffineurs dépendant de DATA_PREPARATION (+ Glue)
+                  </td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORES_V2 (daily)</td>
+                  <td>11:31</td>
+                  <td>11:32</td>
+                  <td>1 min</td>
+                  <td>Scores partis v2 (dépend de DATA_PREPARATION)</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:32</td>
+                  <td>11:35</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr>
+                  <td>ISSUES_SCORE (daily)</td>
+                  <td>11:31</td>
+                  <td>11:32</td>
+                  <td>1 min</td>
+                  <td>Classification enjeux du CAPP</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:32</td>
+                  <td>11:35</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr style="background: rgba(139, 92, 246, 0.1)">
+                  <td colspan="5" style="text-align: center; font-weight: 600; color: #8b5cf6">
+                    ⚡ Raffineurs dépendant de OBJECT_EXTRACTION (+ Glue, dès 11:42)
+                  </td>
+                </tr>
+                <tr>
+                  <td>SALIENT_INDEX</td>
+                  <td>11:42</td>
+                  <td>11:43</td>
+                  <td>1 min</td>
+                  <td>Calcul scores saillance</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:43</td>
+                  <td>11:46</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr style="background: rgba(241, 196, 15, 0.1)">
+                  <td colspan="5" style="text-align: center; font-weight: 600; color: var(--warning)">
+                    ⚡ Phase 2 — Agrégations finales (dès 11:46)
+                  </td>
+                </tr>
+                <tr>
+                  <td>HEADLINES_ISSUES (daily)</td>
+                  <td>11:46</td>
+                  <td>11:51</td>
+                  <td>5 min</td>
+                  <td>Headlines daily (après ISSUES_SCORE)</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:51</td>
+                  <td>11:54</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr>
+                  <td>HEADLINE_OF_HEADLINES</td>
+                  <td>11:46</td>
+                  <td>11:51</td>
+                  <td>5 min</td>
+                  <td>Génération titres (après SALIENT_INDEX)</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:51</td>
+                  <td>11:54</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr>
+                  <td>REFLET (daily)</td>
+                  <td>11:46</td>
+                  <td>11:51</td>
+                  <td>5 min</td>
+                  <td>Synthèse reflet (après issues/party_v2/salient)</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:51</td>
+                  <td>11:54</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr style="background: rgba(16, 185, 129, 0.1)">
+                  <td colspan="5" style="text-align: center; font-weight: 600; color: var(--success)">
+                    🚀 Datamarts prêts (~11:57)
+                  </td>
+                </tr>
+                <tr>
+                  <td>VITRINE_GRAPH_DATA</td>
+                  <td>11:57</td>
+                  <td>12:00</td>
+                  <td>3 min</td>
+                  <td>Publication JSON frontend (toujours actif)</td>
+                </tr>
+                <tr>
+                  <td colspan="5" style="padding: 0.5rem; font-size: 0.9em; color: var(--primary); font-weight: 600">
+                    Données frontend prévues après publication vitrine-graph-data (~12:00)
+                  </td>
+                </tr>
+                <tr style="background: rgba(241, 196, 15, 0.1)">
+                  <td colspan="5" style="text-align: center; font-weight: 600; color: var(--warning)">
+                    📅 Pipelines Hebdomadaires & Mensuels (EST)
+                  </td>
+                </tr>
+                <tr>
+                  <td>ISSUES_SCORE_WEEKLY</td>
+                  <td>15:11</td>
+                  <td></td>
+                  <td>~1 min</td>
+                  <td>
+                    Agrégation hebdomadaire
+                  </td>
+                </tr>
+                <tr>
+                  <td>ISSUES_SCORE_MONTHLY</td>
+                  <td>15:14</td>
+                  <td></td>
+                  <td>~1 min</td>
+                  <td>Agrégation mensuelle</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORES_V2_WEEKLY</td>
+                  <td>15:22</td>
+                  <td></td>
+                  <td>~1 min</td>
+                  <td>Scores partis v2 hebdo</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORES_V2_MONTHLY</td>
+                  <td>15:24</td>
+                  <td></td>
+                  <td>~1 min</td>
+                  <td>Scores partis v2 mensuel</td>
+                </tr>
+                <tr>
+                  <td>HEADLINES_ISSUES_WEEKLY</td>
+                  <td>15:17</td>
+                  <td></td>
+                  <td>~5 min</td>
+                  <td>Headlines hebdo</td>
+                </tr>
+                <tr>
+                  <td>HEADLINES_ISSUES_MONTHLY</td>
+                  <td>15:18</td>
+                  <td></td>
+                  <td>~5 min</td>
+                  <td>Headlines mensuel</td>
+                </tr>
+                <tr>
+                  <td>REFLET_WEEKLY</td>
+                  <td>15:28</td>
+                  <td></td>
+                  <td>~5 min</td>
+                  <td>Reflet hebdomadaire</td>
+                </tr>
+                <tr>
+                  <td>REFLET_MONTHLY</td>
+                  <td>15:30</td>
+                  <td></td>
+                  <td>~5 min</td>
+                  <td>Reflet mensuel</td>
+                </tr>
+                <tr style="background: rgba(147, 51, 234, 0.1)">
+                  <td colspan="5" style="text-align: center; font-weight: 600; color: #9333ea">
+                    🎯 Pipelines Spéciaux
+                  </td>
+                </tr>
+                <tr>
+                  <td>HOT_20</td>
+                  <td>11:30</td>
+                  <td></td>
+                  <td>~5 min</td>
+                  <td>Vendredis 11h30 EST</td>
+                </tr>
+                <tr>
+                  <td>SONAR</td>
+                  <td>07:00</td>
+                  <td></td>
+                  <td>~3 min</td>
+                  <td>Quotidien 07h00 EST</td>
+                </tr>
+                <tr>
+                  <td>SONAR_HEATMAPS</td>
+                  <td>07:30</td>
+                  <td></td>
+                  <td>~5 min</td>
+                  <td>Mercredis 07h30 EST</td>
+                </tr>
+              </tbody>
+            </table>
 
-        <div class="section">
+            <div class="highlight-box" style="margin-top: 1.5rem">
+              <strong>💡 Note:</strong> Chaque raffineur a son propre Glue Job spécifique qui écrit les résultats vers
+              Athena. Ces 3 minutes s'ajoutent à chaque étape du pipeline.
+            </div>
+          </div>
+
+          <div class="section">
             <h2>🔄 Comparaison des Horaires</h2>
-            
+            <p style="margin-bottom: 1rem; opacity: 0.9">
+              <span style="color: var(--success); font-weight: 700">✅ Appliqué</span> = horaire actuellement en place.
+              <span style="margin-left: 0.7rem; color: var(--warning); font-weight: 700">🟡 À venir</span> = cible de réforme documentée ici.
+            </p>
+
             <div class="schedule-compare">
-                <div class="schedule-box schedule-old">
-                    <div class="schedule-label old">❌ ANCIEN HORAIRE (Montréal)</div>
-                    <div class="time-block">
-                        <div class="time-line">
-                            <span class="refiner-name">GLUE JOB:</span>
-                            <span class="times">00:03  04:03  08:03  12:03  16:03  20:03</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">SALIENT_OBJECTS:</span>
-                            <span class="times">00:16  04:16  08:16  12:16  16:16  20:16</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">SALIENT_INDEX:</span>
-                            <span class="times">00:20  04:20  08:20  12:20  16:20  20:20</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
-                            <span class="times">00:28  04:28  08:28  12:28  16:28  20:28</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
-                            <span class="times">--:--  04:39  08:39  12:39  16:39  20:39</span>
-                        </div>
-                        <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
-                        <div class="time-line">
-                            <span class="refiner-name">ISSUES_SCORE:</span>
-                            <span class="times">--:--  --:--  08:09  12:09  16:09  --:--</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">PARTY_SCORES:</span>
-                            <span class="times">--:--  --:--  08:18  12:18  16:18  --:--</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINES_ISSUES:</span>
-                            <span class="times">--:--  --:--  08:10  12:10  16:10  --:--</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">REFLET:</span>
-                            <span class="times">--:--  --:--  08:24  12:24  16:24  --:--</span>
-                        </div>
-                    </div>
-
-                    <div class="time-block" style="margin-top: 1rem;">
-                        <div style="font-size: 0.8em; font-weight: 700; color: var(--danger); margin-bottom: 0.4rem; letter-spacing: 0.05em;">── HEBDOMADAIRE / MENSUEL ──</div>
-                        <div class="time-line">
-                            <span class="refiner-name">Issues / Party / Reflet hebdo:</span>
-                            <span class="times" style="color: var(--danger);">Non standardisé</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">Versions mensuelles:</span>
-                            <span class="times" style="color: var(--danger);">Non standardisé</span>
-                        </div>
-                    </div>
-
-                    <div class="problems">
-                        <div class="problem-item">DATA_PREPARATION n'existait pas (RADAR_ARTICLES_SEGMENTED + SALIENT_OBJECTS séparés)</div>
-                        <div class="problem-item">Seulement 5 blocs (pas de minuit)</div>
-                        <div class="problem-item">Issues/Party/Reflet seulement 3x/jour</div>
-                        <div class="problem-item">Pas de synchronisation claire</div>
-                        <div class="problem-item">Pipelines weekly/monthly non standardisés</div>
-                    </div>
+              <div class="schedule-box schedule-old">
+                <div class="schedule-label old">✅ HORAIRE ACTUEL (APPLIQUÉ DANS LE TS) — Montréal (EST/EDT)</div>
+                <div class="time-block">
+                  <div class="time-line">
+                    <span class="refiner-name">GLUE JOB:</span>
+                    <span class="times">00:03 04:03 08:03 12:03 16:03 20:03</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SALIENT_INDEX:</span>
+                    <span class="times">00:20 04:20 08:20 12:20 16:20 20:20</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
+                    <span class="times">00:28 04:28 08:28 12:28 16:28 20:28</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
+                    <span class="times">--:-- 04:39 08:39 12:39 16:39 20:39</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE:</span>
+                    <span class="times">--:-- --:-- 08:09 12:09 16:09 --:--</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORES:</span>
+                    <span class="times">--:-- --:-- 08:18 12:18 16:18 --:--</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES:</span>
+                    <span class="times">--:-- --:-- 08:10 12:10 16:10 --:--</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET:</span>
+                    <span class="times">--:-- --:-- 08:24 12:24 16:24 --:--</span>
+                  </div>
                 </div>
 
-                <div class="schedule-box schedule-new">
-                    <div class="schedule-label new">✅ NOUVEL HORAIRE (Montréal - EST/EDT)</div>
-                    <div class="time-block">
-                        <div style="font-size: 0.8em; font-weight: 700; color: #8b5cf6; margin-bottom: 0.4rem; letter-spacing: 0.05em;">── 6x/JOUR ──</div>
-                        <div class="time-line">
-                            <span class="refiner-name">GLUE JOB:</span>
-                            <span class="times">03:03  07:03  11:03  15:03  19:03  23:03</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">DATA_PREPARATION:</span>
-                            <span class="times" style="color: var(--success);">03:05  07:05  11:05  15:05  19:05  23:05</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">SALIENT_INDEX:</span>
-                            <span class="times" style="color: var(--success);">03:48  07:48  11:48  15:48  19:48  23:48</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">ISSUES_SCORE:</span>
-                            <span class="times">03:48  07:48  11:48  15:48  19:48  23:48</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">PARTY_SCORES:</span>
-                            <span class="times">03:48  07:48  11:48  15:48  19:48  23:48</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
-                            <span class="times">03:52  07:52  11:52  15:52  19:52  23:52</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINES_ISSUES:</span>
-                            <span class="times">03:52  07:52  11:52  15:52  19:52  23:52</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">REFLET:</span>
-                            <span class="times">03:52  07:52  11:52  15:52  19:52  23:52</span>
-                        </div>
-                        <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
-                        <div style="font-size: 0.8em; font-weight: 700; color: var(--warning); margin-bottom: 0.4rem; letter-spacing: 0.05em;">── HEBDOMADAIRE (lundi ~15h30 EST) ──</div>
-                        <div class="time-line">
-                            <span class="refiner-name">ISSUES_SCORE_WEEKLY:</span>
-                            <span class="times" style="color: var(--warning);">15:30</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">PARTY_SCORES_WEEKLY:</span>
-                            <span class="times" style="color: var(--warning);">15:32</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINES_ISSUES_WEEKLY:</span>
-                            <span class="times" style="color: var(--warning);">15:34</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">REFLET_WEEKLY:</span>
-                            <span class="times" style="color: var(--warning);">15:44</span>
-                        </div>
-                        <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
-                        <div style="font-size: 0.8em; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; letter-spacing: 0.05em;">── MENSUEL (1er du mois ~15h30 EST) ──</div>
-                        <div class="time-line">
-                            <span class="refiner-name">ISSUES_SCORE_MONTHLY:</span>
-                            <span class="times" style="color: var(--primary);">15:31</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">PARTY_SCORES_MONTHLY:</span>
-                            <span class="times" style="color: var(--primary);">15:33</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">HEADLINES_ISSUES_MONTHLY:</span>
-                            <span class="times" style="color: var(--primary);">15:39</span>
-                        </div>
-                        <div class="time-line">
-                            <span class="refiner-name">REFLET_MONTHLY:</span>
-                            <span class="times" style="color: var(--primary);">15:49</span>
-                        </div>
-                    </div>
-
-                    <div class="improvements">
-                        <div class="improvement-item"><strong>6 blocs complets</strong> par jour (toutes les 4h)</div>
-                        <div class="improvement-item"><strong>~57 min réels</strong> incluant tous les Glue Jobs (7 spécifiques × 3 min)</div>
-                        <div class="improvement-item"><strong>Mini-bloc parallèle à XX:48</strong> (SALIENT_INDEX + ISSUES_SCORE + PARTY_SCORES simultanément)</div>
-                        <div class="improvement-item"><strong>TOUS les raffineurs 6x/jour</strong> + versions weekly &amp; monthly</div>
-                        <div class="improvement-item" style="color: var(--success); font-weight: 600;"><strong>API Future:</strong> Élimination de VITRINE_GRAPH_DATA, accès direct aux Parquet</div>
-                    </div>
+                <div class="time-block" style="margin-top: 1rem">
+                  <div
+                    style="
+                      font-size: 0.8em;
+                      font-weight: 700;
+                      color: var(--danger);
+                      margin-bottom: 0.4rem;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    ── HEBDOMADAIRE / MENSUEL ──
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">Issues / Party / Reflet hebdo:</span>
+                    <span class="times" style="color: var(--danger)">Non standardisé</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">Versions mensuelles:</span>
+                    <span class="times" style="color: var(--danger)">Non standardisé</span>
+                  </div>
                 </div>
+
+                <div class="problems">
+                  <div class="problem-item">
+                    DATA_PREPARATION n'existait pas (RADAR_ARTICLES_SEGMENTED séparé)
+                  </div>
+                  <div class="problem-item">Seulement 5 blocs (pas de minuit)</div>
+                  <div class="problem-item">Issues/Party/Reflet seulement 3x/jour</div>
+                  <div class="problem-item">Pas de synchronisation claire</div>
+                  <div class="problem-item">Pipelines weekly/monthly non standardisés</div>
+                </div>
+              </div>
+
+              <div class="schedule-box schedule-new">
+                <div class="schedule-label new">🟡 HORAIRE CIBLE (À VENIR) — Montréal (EST/EDT)</div>
+                <div class="time-block">
+                  <div
+                    style="
+                      font-size: 0.8em;
+                      font-weight: 700;
+                      color: #8b5cf6;
+                      margin-bottom: 0.4rem;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    ── 6x/JOUR ──
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">GLUE JOB:</span>
+                    <span class="times">03:03 07:03 11:03 15:03 19:03 23:03</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">DATA_PREPARATION:</span>
+                    <span class="times" style="color: var(--success)">03:06 07:06 11:06 15:06 19:06 23:06</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">OBJECT_EXTRACTION:</span>
+                    <span class="times" style="color: var(--success)">03:24 07:24 11:24 15:24 19:24 23:24</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SALIENT_INDEX:</span>
+                    <span class="times" style="color: var(--success)">03:42 07:42 11:42 15:42 19:42 23:42</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE:</span>
+                    <span class="times">03:31 07:31 11:31 15:31 19:31 23:31</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORES_V2:</span>
+                    <span class="times">03:31 07:31 11:31 15:31 19:31 23:31</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
+                    <span class="times">03:57 07:57 11:57 15:57 19:57 23:57</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div
+                    style="
+                      font-size: 0.8em;
+                      font-weight: 700;
+                      color: var(--warning);
+                      margin-bottom: 0.4rem;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    ── HEBDOMADAIRE (EST) ──
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE_WEEKLY:</span>
+                    <span class="times" style="color: var(--warning)">15:11</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORES_V2_WEEKLY:</span>
+                    <span class="times" style="color: var(--warning)">15:22</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES_WEEKLY:</span>
+                    <span class="times" style="color: var(--warning)">15:17</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET_WEEKLY:</span>
+                    <span class="times" style="color: var(--warning)">15:28</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div
+                    style="
+                      font-size: 0.8em;
+                      font-weight: 700;
+                      color: var(--primary);
+                      margin-bottom: 0.4rem;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    ── MENSUEL (EST) ──
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE_MONTHLY:</span>
+                    <span class="times" style="color: var(--primary)">15:14</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORES_V2_MONTHLY:</span>
+                    <span class="times" style="color: var(--primary)">15:24</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES_MONTHLY:</span>
+                    <span class="times" style="color: var(--primary)">15:18</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET_MONTHLY:</span>
+                    <span class="times" style="color: var(--primary)">15:30</span>
+                  </div>
+                </div>
+
+                <div class="improvements">
+                  <div class="improvement-item"><strong>6 blocs complets</strong> par jour (toutes les 4h)</div>
+                  <div class="improvement-item">
+                    <strong>~54 min données (~57 min vitrine)</strong> sur le chemin principal
+                  </div>
+                  <div class="improvement-item">
+                    <strong>Chaînage explicite</strong> DATA_PREPARATION → OBJECT_EXTRACTION → SALIENT_INDEX →
+                    ISSUES_SCORE / PARTY_SCORES_V2 → enrichissements aval (selon les dépendances)
+                  </div>
+                  <div class="improvement-item">
+                    <strong>Cadence réaliste</strong> 6x/jour pour le cœur + daily ciblés + weekly/monthly
+                  </div>
+                  <div class="improvement-item" style="color: var(--success); font-weight: 600">
+                    <strong>API Future:</strong> Élimination de VITRINE_GRAPH_DATA, accès direct aux Parquet
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div class="section">
+          <div class="section">
             <h2>📈 Visualisation d'un Bloc (exemple: Bloc MIDI 7h-11h)</h2>
             <div class="visual-timeline">
-                <div style="margin-bottom: 2rem;">
-                    <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: linear-gradient(to right, rgba(102, 126, 234, 0.1), rgba(16, 185, 129, 0.1)); border-radius: 8px;">
-                        <div style="flex: 1;">
-                            <div style="font-weight: 700; font-size: 1.1rem; color: var(--primary);">⏱️ Timeline: 7h00 → 12h00 (heure de Montréal)</div>
-                            <ul style="margin: 0.7em 0 0 1.2em; font-size: 0.98em; color: var(--text-light); line-height: 1.7;">
-                                <li><strong>Données :</strong> 7h-11h</li>
-                                <li><strong>Glue Job :</strong> 11:03 <span style="opacity:0.6;">(schedulé 11:00)</span></li>
-                                <li><strong>Pipeline :</strong> 11:03-12:00</li>
-                                <li><span style='color: var(--success); font-weight: 600;'>✅ Données :</span> ~12:00</li>
-                                <li><span style='color: var(--warning); font-weight: 700;'>🎯 Vitrine :</span> 12h</li>
-                            </ul>
-                        </div>
+              <div style="margin-bottom: 2rem">
+                <!-- Timeline horizontal avec heures sur l'axe X -->
+                <div
+                  style="
+                    position: relative;
+                    height: 600px;
+                    padding: 20px;
+                    background: var(--surface);
+                    border-radius: 8px;
+                    border: 1px solid var(--border);
+                  "
+                >
+                  <!-- Axe X avec marqueurs d'heures (échelle: 11:00→12:10 = 70 min, 1 min = 1.4286%) -->
+                  <div
+                    style="
+                      position: absolute;
+                      bottom: 10px;
+                      left: 20px;
+                      right: 20px;
+                      height: 30px;
+                      border-top: 2px solid var(--text-light);
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        left: 0%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 0%; top: 12px; font-size: 0.85em; opacity: 0.7">11:00</div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 14.29%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 14.29%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:10
                     </div>
-                    
-                    <!-- Timeline horizontal avec heures sur l'axe X -->
-                    <div style="position: relative; height: 600px; padding: 20px; background: var(--surface); border-radius: 8px; border: 1px solid var(--border);">
-                        <!-- Axe X avec marqueurs d'heures (échelle: 11:00→12:10 = 70 min, 1 min = 1.4286%) -->
-                        <div style="position: absolute; bottom: 10px; left: 20px; right: 20px; height: 30px; border-top: 2px solid var(--text-light);">
-                            <div style="position: absolute; left: 0%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 0%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:00</div>
 
-                            <div style="position: absolute; left: 14.29%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 14.29%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:10</div>
-
-                            <div style="position: absolute; left: 28.57%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 28.57%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:20</div>
-
-                            <div style="position: absolute; left: 42.86%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 42.86%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:30</div>
-
-                            <div style="position: absolute; left: 57.14%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 57.14%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:40</div>
-
-                            <div style="position: absolute; left: 71.43%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 71.43%; top: 12px; font-size: 0.85em; opacity: 0.7;">11:50</div>
-
-                            <div style="position: absolute; left: 85.71%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 85.71%; top: 12px; font-size: 0.85em; opacity: 0.7;">12:00</div>
-
-                            <div style="position: absolute; left: 100%; top: -5px; width: 2px; height: 10px; background: var(--text-light);"></div>
-                            <div style="position: absolute; left: 100%; top: 12px; font-size: 0.85em; opacity: 0.7;">12:10</div>
-                        </div>
-
-                        <!-- Barres des raffineurs -->
-                        <!-- Échelle: 11:00→12:10 = 70 min, 1 min = 1.4286% -->
-                        <!-- Positions clés: 11:03=4.29% 11:05=7.14% 11:45=64.29% 11:48=68.57% 11:49=70% 11:52=74.29% 11:57=81.43% 12:00=85.71% -->
-                        <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 540px;">
-                            <!-- GLUE JOB GÉNÉRALE: 11:03-11:05 (4.29%-7.14%) -->
-                            <div style="position: absolute; top: 0px; left: 4.29%; width: 2.86%; height: 30px; background: #667eea; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">GJ 2m</div>
-                            <div style="position: absolute; top: 0px; left: -180px; width: 175px; font-size: 0.8em; font-weight: 600; text-align: right;">GLUE JOB GÉNÉRALE</div>
-
-                            <!-- DATA_PREPARATION: 11:05-11:45 (7.14%-64.29%) -->
-                            <div style="position: absolute; top: 40px; left: 7.14%; width: 57.14%; height: 30px; background: #10b981; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600;">DATA_PREPARATION 40min</div>
-                            <div style="position: absolute; top: 40px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">DATA_PREPARATION</div>
-
-                            <!-- Glue Job DATA_PREP: 11:45-11:48 (64.29%-68.57%) -->
-                            <div style="position: absolute; top: 75px; left: 64.29%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- ⚡ Mini-bloc parallèle à 11:48 (68.57%) -->
-                            <div style="position: absolute; top: 100px; left: 68.57%; width: 1px; height: 195px; background: #8b5cf6; opacity: 0.25;"></div>
-                            <div style="position: absolute; top: 95px; left: 69.2%; font-size: 0.72em; color: #8b5cf6; font-weight: 600;">⚡ Mini-bloc 11:48</div>
-
-                            <!-- SALIENT_INDEX: 11:48-11:49 (68.57%-70%) -->
-                            <div style="position: absolute; top: 110px; left: 68.57%; width: 1.43%; height: 25px; background: #8b5cf6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
-                            <div style="position: absolute; top: 110px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">SALIENT_INDEX</div>
-
-                            <!-- GJ SALIENT_INDEX: 11:49-11:52 (70%-74.29%) -->
-                            <div style="position: absolute; top: 140px; left: 70%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- ISSUES_SCORE: 11:48-11:49 (68.57%-70%) -->
-                            <div style="position: absolute; top: 165px; left: 68.57%; width: 1.43%; height: 25px; background: #3b82f6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
-                            <div style="position: absolute; top: 165px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">ISSUES_SCORE</div>
-
-                            <!-- GJ ISSUES_SCORE: 11:49-11:52 (70%-74.29%) -->
-                            <div style="position: absolute; top: 195px; left: 70%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- PARTY_SCORES: 11:48-11:49 (68.57%-70%) -->
-                            <div style="position: absolute; top: 220px; left: 68.57%; width: 1.43%; height: 25px; background: #14b8a6; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">1m</div>
-                            <div style="position: absolute; top: 220px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">PARTY_SCORES</div>
-
-                            <!-- GJ PARTY_SCORES: 11:49-11:52 (70%-74.29%) -->
-                            <div style="position: absolute; top: 250px; left: 70%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- ⚡ Phase 2 parallèle à 11:52 (74.29%) -->
-                            <div style="position: absolute; top: 275px; left: 74.29%; width: 1px; height: 175px; background: #f59e0b; opacity: 0.25;"></div>
-                            <div style="position: absolute; top: 270px; left: 74.9%; font-size: 0.72em; color: var(--warning); font-weight: 600;">⚡ Phase 2 11:52</div>
-
-                            <!-- HEADLINE_OF_HEADLINES: 11:52-11:57 (74.29%-81.43%) -->
-                            <div style="position: absolute; top: 285px; left: 74.29%; width: 7.14%; height: 25px; background: #ec4899; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">HOH 5m</div>
-                            <div style="position: absolute; top: 285px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">HEADLINE_OF_HEADLINES</div>
-
-                            <!-- GJ HOH: 11:57-12:00 (81.43%-85.71%) -->
-                            <div style="position: absolute; top: 315px; left: 81.43%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- HEADLINES_ISSUES: 11:52-11:57 (74.29%-81.43%) -->
-                            <div style="position: absolute; top: 340px; left: 74.29%; width: 7.14%; height: 25px; background: #06b6d4; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">H_ISS 5m</div>
-                            <div style="position: absolute; top: 340px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">HEADLINES_ISSUES</div>
-
-                            <!-- GJ HEADLINES_ISSUES: 11:57-12:00 (81.43%-85.71%) -->
-                            <div style="position: absolute; top: 370px; left: 81.43%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- REFLET: 11:52-11:57 (74.29%-81.43%) -->
-                            <div style="position: absolute; top: 395px; left: 74.29%; width: 7.14%; height: 25px; background: #a855f7; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: white; font-weight: 600;">REFLET 5m</div>
-                            <div style="position: absolute; top: 395px; left: -180px; width: 175px; font-size: 0.8em; text-align: right;">REFLET</div>
-
-                            <!-- GJ REFLET: 11:57-12:00 (81.43%-85.71%) -->
-                            <div style="position: absolute; top: 425px; left: 81.43%; width: 4.29%; height: 20px; background: #94a3b8; border-radius: 4px; opacity: 0.7; display: flex; align-items: center; justify-content: center; font-size: 0.65em; color: white;">+GJ 3m</div>
-
-                            <!-- Données prêtes à 12:00 (85.71%) -->
-                            <div style="position: absolute; top: 450px; left: 85.71%; width: 2px; height: 65px; background: var(--success); opacity: 0.6;"></div>
-                            <div style="position: absolute; top: 450px; left: 81.43%; width: 4.29%; height: 30px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.75em; color: white; font-weight: 600; border: 2px solid #10b981;">PRÊT</div>
-                            <div style="position: absolute; top: 450px; left: -180px; width: 175px; font-size: 0.8em; text-align: right; color: var(--success); font-weight: 700;">✅ DONNÉES</div>
-                            <div style="position: absolute; top: 485px; left: calc(85.71% + 5px); font-size: 0.9em; color: var(--success); font-weight: 700;">✅ 12:00</div>
-                        </div>
+                    <div
+                      style="
+                        position: absolute;
+                        left: 28.57%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 28.57%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:20
                     </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 42.86%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 42.86%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:30
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 57.14%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 57.14%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:40
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 71.43%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 71.43%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:50
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 85.71%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 85.71%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      12:00
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 100%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div style="position: absolute; left: 100%; top: 12px; font-size: 0.85em; opacity: 0.7">12:10</div>
+                  </div>
+
+                  <!-- Barres des raffineurs -->
+                  <!-- Échelle: 11:00→12:10 = 70 min, 1 min = 1.4286% -->
+                  <!-- Positions clés: 11:03=4.29% 11:05=7.14% 11:21=30% 11:24=34.29% 11:31=44.29% 11:42=60% 11:46=65.71% 11:51=72.86% 11:54=77.14% 11:57=81.43% -->
+                  <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 540px">
+                    <!-- GLUE JOB GÉNÉRALE: 11:03-11:05 (4.29%-7.14%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 4.29%;
+                        width: 2.86%;
+                        height: 30px;
+                        background: #667eea;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      GJ 2m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        font-weight: 600;
+                        text-align: right;
+                      "
+                    >
+                      GLUE JOB GÉNÉRALE
+                    </div>
+
+                    <!-- DATA_PREPARATION: 11:06-11:21 (8.57%-30%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 40px;
+                        left: 8.57%;
+                        width: 21.43%;
+                        height: 30px;
+                        background: #10b981;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      DATA_PREPARATION (15min)
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 40px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      DATA_PREPARATION
+                    </div>
+                    <!-- OBJECT_EXTRACTION: 11:24-11:39 (34.29%-55.71%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 75px;
+                        left: 34.29%;
+                        width: 21.43%;
+                        height: 30px;
+                        background: #f59e0b;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      OBJECT_EXTRACTION (15min)
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 75px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      OBJECT_EXTRACTION
+                    </div>
+
+                    <!-- Glue Job DATA_PREP: 11:21-11:24 (30%-34.29%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 75px;
+                        left: 30%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- ⚡ Démarrages dépendant de DATA_PREPARATION à 11:31 (44.29%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 100px;
+                        left: 44.29%;
+                        width: 1px;
+                        height: 170px;
+                        background: #8b5cf6;
+                        opacity: 0.25;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 112px;
+                        left: 45.1%;
+                        font-size: 0.72em;
+                        color: #8b5cf6;
+                        font-weight: 600;
+                      "
+                    >
+                      ⚡ Départs (11:31)
+                    </div>
+
+                    <!-- SALIENT_INDEX: 11:42-11:43 (60%-61.43%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 110px;
+                        left: 60%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #8b5cf6;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 110px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      SALIENT_INDEX
+                    </div>
+
+                    <!-- GJ SALIENT_INDEX: 11:43-11:46 (61.43%-65.71%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 140px;
+                        left: 61.43%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- ISSUES_SCORE: 11:31-11:32 (44.29%-45.71%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 165px;
+                        left: 44.29%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #3b82f6;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 165px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      ISSUES_SCORE
+                    </div>
+
+                    <!-- GJ ISSUES_SCORE: 11:32-11:35 (45.71%-50%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 195px;
+                        left: 45.71%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- PARTY_SCORES_V2: 11:31-11:32 (44.29%-45.71%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 220px;
+                        left: 44.29%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #14b8a6;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 220px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      PARTY_SCORES_V2
+                    </div>
+
+                    <!-- GJ PARTY_SCORES_V2: 11:32-11:35 (45.71%-50%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 250px;
+                        left: 45.71%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- ⚡ Phase 2 parallèle à 11:46 (65.71%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 275px;
+                        left: 65.71%;
+                        width: 1px;
+                        height: 175px;
+                        background: #f59e0b;
+                        opacity: 0.25;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 270px;
+                        left: 66.3%;
+                        font-size: 0.72em;
+                        color: var(--warning);
+                        font-weight: 600;
+                      "
+                    >
+                      ⚡ Phase 2 11:46
+                    </div>
+
+                    <!-- HEADLINE_OF_HEADLINES: 11:46-11:51 (65.71%-72.86%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 285px;
+                        left: 65.71%;
+                        width: 7.14%;
+                        height: 25px;
+                        background: #ec4899;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.7em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      HOH 5m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 285px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      HEADLINE_OF_HEADLINES
+                    </div>
+
+                    <!-- GJ HOH: 11:51-11:54 (72.86%-77.14%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 315px;
+                        left: 72.86%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- HEADLINES_ISSUES: 11:46-11:51 (65.71%-72.86%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 340px;
+                        left: 65.71%;
+                        width: 7.14%;
+                        height: 25px;
+                        background: #06b6d4;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.7em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      H_ISS 5m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 340px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      HEADLINES_ISSUES
+                    </div>
+
+                    <!-- GJ HEADLINES_ISSUES: 11:51-11:54 (72.86%-77.14%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 370px;
+                        left: 72.86%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- REFLET: 11:46-11:51 (65.71%-72.86%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 395px;
+                        left: 65.71%;
+                        width: 7.14%;
+                        height: 25px;
+                        background: #a855f7;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.7em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      REFLET 5m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 395px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                      "
+                    >
+                      REFLET
+                    </div>
+
+                    <!-- GJ REFLET: 11:51-11:54 (72.86%-77.14%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 425px;
+                        left: 72.86%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- Données prêtes à 11:57 (81.43%) -->
+                    <div
+                      style="
+                        position: absolute;
+                        top: 450px;
+                        left: 81.43%;
+                        width: 2px;
+                        height: 65px;
+                        background: var(--success);
+                        opacity: 0.6;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 450px;
+                        left: 77.14%;
+                        width: 4.29%;
+                        height: 30px;
+                        background: linear-gradient(135deg, #10b981, #059669);
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                        border: 2px solid #10b981;
+                      "
+                    >
+                      PRÊT
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 450px;
+                        left: -180px;
+                        width: 175px;
+                        font-size: 0.8em;
+                        text-align: right;
+                        color: var(--success);
+                        font-weight: 700;
+                      "
+                    >
+                      ✅ DONNÉES
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 485px;
+                        left: calc(81.43% + 5px);
+                        font-size: 0.9em;
+                        color: var(--success);
+                        font-weight: 700;
+                      "
+                    >
+                      ✅ 11:57
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div class="section">
+          <div class="section">
             <h2>📅 Pipelines Hebdomadaires &amp; Mensuels</h2>
-            <p style="margin-bottom: 1.5rem; opacity: 0.9;">Versions weekly/monthly des analyses, exécutées une fois par jour <span style="color: var(--warning); font-weight: 600;">— À valider</span></p>
+            <p style="margin-bottom: 1.5rem; opacity: 0.9">
+              Versions weekly/monthly des analyses, exécutées une fois par jour
+            </p>
 
-            <h3 style="margin-bottom: 1rem;">📆 Hebdomadaires (~15h30 EST)</h3>
-            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem;">
-                <li><strong>ISSUES_SCORE_WEEKLY</strong> — 15:30</li>
-                <li><strong>PARTY_SCORES_WEEKLY</strong> — 15:32</li>
-                <li><strong>HEADLINES_ISSUES_WEEKLY</strong> — 15:34</li>
-                <li><strong>REFLET_WEEKLY</strong> — 15:44</li>
+            <h3 style="margin-bottom: 1rem">📆 Hebdomadaires (EST)</h3>
+            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem">
+              <li><strong>ISSUES_SCORE_WEEKLY</strong> — 15:11</li>
+              <li><strong>HEADLINES_ISSUES_WEEKLY</strong> — 15:17</li>
+              <li><strong>PARTY_SCORES_V2_WEEKLY</strong> — 15:22</li>
+              <li><strong>REFLET_WEEKLY</strong> — 15:28</li>
             </ul>
 
-            <h3 style="margin-bottom: 1rem;">📆 Mensuels (~15h30 EST)</h3>
-            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem;">
-                <li><strong>ISSUES_SCORE_MONTHLY</strong> — 15:31</li>
-                <li><strong>PARTY_SCORES_MONTHLY</strong> — 15:33</li>
-                <li><strong>HEADLINES_ISSUES_MONTHLY</strong> — 15:39</li>
-                <li><strong>REFLET_MONTHLY</strong> — 15:49</li>
+            <h3 style="margin-bottom: 1rem">📆 Mensuels (EST)</h3>
+            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem">
+              <li><strong>ISSUES_SCORE_MONTHLY</strong> — 15:14</li>
+              <li><strong>HEADLINES_ISSUES_MONTHLY</strong> — 15:18</li>
+              <li><strong>PARTY_SCORES_V2_MONTHLY</strong> — 15:24</li>
+              <li><strong>REFLET_MONTHLY</strong> — 15:30</li>
             </ul>
 
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🎯 Pipelines Spéciaux</h3>
-            <ul style="margin: 0.5rem 0; padding-left: 2rem;">
-                <li><strong>HOT_20:</strong> Vendredis à 11h30 EST</li>
-                <li><strong>SONAR:</strong> Quotidien à 07h00 EST</li>
-                <li><strong>SONAR_HEATMAPS:</strong> Mercredis à 07h30 EST</li>
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem">🎯 Pipelines Spéciaux</h3>
+            <ul style="margin: 0.5rem 0; padding-left: 2rem">
+              <li><strong>HOT_20:</strong> Vendredis à 11h30 EST</li>
+              <li><strong>SONAR:</strong> Quotidien à 07h00 EST</li>
+              <li><strong>SONAR_HEATMAPS:</strong> Mercredis à 07h30 EST</li>
             </ul>
-        </div>
+          </div>
 
-        <div class="section">
+          <div class="section">
             <h2>🚀 Prochaines Étapes</h2>
 
             <div class="timeline">
-                <div class="timeline-item">
-                    <h4>✅ Validation de l'horaire (EN COURS)</h4>
-                    <p>Approbation de l'équipe et confirmation des durées réelles en production</p>
-                </div>
+              <div class="timeline-item">
+                <h4>✅ Validation de l'horaire (EN COURS)</h4>
+                <p>Approbation de l'équipe et confirmation des durées réelles en production</p>
+              </div>
 
-                <div class="timeline-item">
-                    <h4>✅ Déploiement de RADAR_DATA_PREPARATION</h4>
-                    <p>Remplace radar-articles-segmented et radar-salient-objects — 5 modèles, 6 phases, 29 colonnes vers <code>radar_articles</code> — SALIENT_INDEX lit désormais directement depuis <code>radar_articles</code></p>
-                </div>
+              <div class="timeline-item">
+                <h4>✅ Déploiement de RADAR_DATA_PREPARATION</h4>
+                <p>
+                  Remplace radar-articles-segmented — 5 modèles, 6 phases, 29 colonnes vers
+                  <code>radar_articles</code> — SALIENT_INDEX lit désormais directement depuis
+                  <code>radar_articles</code>
+                </p>
+              </div>
 
-                <div class="timeline-item">
-                    <h4>📊 Mise à jour de tous les raffineurs</h4>
-                    <p>Application du nouvel horaire - Ajout du 6ème bloc (minuit) - Mise à jour des payloads</p>
-                </div>
+              <div class="timeline-item">
+                <h4>📊 Mise à jour de tous les raffineurs</h4>
+                <p>Application du nouvel horaire - Ajout du 6ème bloc (minuit) - Mise à jour des payloads</p>
+              </div>
 
-                <div class="timeline-item">
-                    <h4>🧪 Phase de Test (2 semaines)</h4>
-                    <p>Monitoring intensif des temps d'exécution - Ajustements si nécessaire - Validation de la synchronisation</p>
-                </div>
+              <div class="timeline-item">
+                <h4>🧪 Phase de Test (2 semaines)</h4>
+                <p>
+                  Monitoring intensif des temps d'exécution - Ajustements si nécessaire - Validation de la
+                  synchronisation
+                </p>
+              </div>
 
-                <div class="timeline-item">
-                    <h4>📈 Optimisation Continue</h4>
-                    <p>Réduction progressive des marges de sécurité - Documentation des métriques</p>
-                </div>
+              <div class="timeline-item">
+                <h4>📈 Optimisation Continue</h4>
+                <p>Réduction progressive des marges de sécurité - Documentation des métriques</p>
+              </div>
             </div>
+          </div>
+
+          <footer>
+            <p><strong>Version:</strong> Bêta 2.0 | <strong>Dernière mise à jour:</strong> 21 février 2026</p>
+          </footer>
         </div>
 
-        <footer>
-            <p><strong>Version:</strong> Bêta 2.0 | <strong>Dernière mise à jour:</strong> 21 février 2026</p>
+        <!-- Étoiles décoratives -->
+        <div class="stars" id="stars"></div>
 
-        </footer>
-    </div>
+        <!-- Indicateur de temps -->
+        <div class="time-indicator" id="timeIndicator">
+          <div class="emoji">🌅</div>
+          <div class="time">08:00</div>
+          <div class="label">Bloc MATIN (3:00-7:00)</div>
+        </div>
 
-    <!-- Étoiles décoratives -->
-    <div class="stars" id="stars"></div>
+        <script>
+          // Créer les étoiles
+          function createStars() {
+            const starsContainer = document.getElementById('stars')
+            const starCount = 50
 
-    <!-- Indicateur de temps -->
-    <div class="time-indicator" id="timeIndicator">
-        <div class="emoji">🌅</div>
-        <div class="time">08:00</div>
-        <div class="label">Bloc MATIN (3:00-7:00)</div>
-    </div>
-
-    <script>
-        // Créer les étoiles
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 50;
-            
             for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
+              const star = document.createElement('div')
+              star.className = 'star'
+              star.style.left = Math.random() * 100 + '%'
+              star.style.top = Math.random() * 100 + '%'
+              star.style.animationDelay = Math.random() * 3 + 's'
+              starsContainer.appendChild(star)
             }
-        }
+          }
 
-        // Cycle jour/nuit basé sur le scroll
-        function updateDayNightCycle() {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = scrollHeight > 0 ? window.scrollY / scrollHeight : 0;
-            const body = document.body;
-            const timeIndicator = document.getElementById('timeIndicator');
-            
+          // Cycle jour/nuit basé sur le scroll
+          function updateDayNightCycle() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+            const scrollPercent = scrollHeight > 0 ? window.scrollY / scrollHeight : 0
+            const body = document.body
+            const timeIndicator = document.getElementById('timeIndicator')
+
             // Retirer toutes les classes de phase
-            body.classList.remove('phase-night-deep', 'phase-sunrise', 'phase-morning', 'phase-noon', 'phase-afternoon', 'phase-sunset', 'phase-night');
-            
-            let phase, emoji, time, label;
-            
+            body.classList.remove(
+              'phase-night-deep',
+              'phase-sunrise',
+              'phase-morning',
+              'phase-noon',
+              'phase-afternoon',
+              'phase-sunset',
+              'phase-night',
+            )
+
+            let phase, emoji, time, label
+
             // 6 phases correspondant aux 6 blocs, commençant par MATIN (Vitrine: 08:00, 12:00, 16:00, 20:00, 00:00, 04:00)
             if (scrollPercent < 0.167) {
-                // 0-16.7% : Lever du soleil (MATIN: données 3h-7h, Vitrine prête à 08:00)
-                body.classList.add('phase-sunrise');
-                emoji = '🌅';
-                time = '08:00';
-                label = 'Bloc MATIN (3:00-7:00)';
+              // 0-16.7% : Lever du soleil (MATIN: données 3h-7h, Vitrine prête à 08:00)
+              body.classList.add('phase-sunrise')
+              emoji = '🌅'
+              time = '08:00'
+              label = 'Bloc MATIN (3:00-7:00)'
             } else if (scrollPercent < 0.333) {
-                // 16.7-33.3% : Matin lumineux (MIDI: données 7h-11h, Vitrine prête à 12:00)
-                body.classList.add('phase-morning');
-                emoji = '☀️';
-                time = '12:00';
-                label = 'Bloc MIDI (7:00-11:00)';
-            } else if (scrollPercent < 0.50) {
-                // 33.3-50% : Midi éclatant (APRÈS-MIDI: données 11h-15h, Vitrine prête à 16:00)
-                body.classList.add('phase-noon');
-                emoji = '🌤️';
-                time = '16:00';
-                label = 'Bloc APRÈS-MIDI (11:00-15:00)';
+              // 16.7-33.3% : Matin lumineux (MIDI: données 7h-11h, Vitrine prête à 12:00)
+              body.classList.add('phase-morning')
+              emoji = '☀️'
+              time = '12:00'
+              label = 'Bloc MIDI (7:00-11:00)'
+            } else if (scrollPercent < 0.5) {
+              // 33.3-50% : Midi éclatant (APRÈS-MIDI: données 11h-15h, Vitrine prête à 16:00)
+              body.classList.add('phase-noon')
+              emoji = '🌤️'
+              time = '16:00'
+              label = 'Bloc APRÈS-MIDI (11:00-15:00)'
             } else if (scrollPercent < 0.667) {
-                // 50-66.7% : Après-midi doré (SOIRÉE: données 15h-19h, Vitrine prête à 20:00)
-                body.classList.add('phase-afternoon');
-                emoji = '🌆';
-                time = '20:00';
-                label = 'Bloc SOIRÉE (15:00-19:00)';
+              // 50-66.7% : Après-midi doré (SOIRÉE: données 15h-19h, Vitrine prête à 20:00)
+              body.classList.add('phase-afternoon')
+              emoji = '🌆'
+              time = '20:00'
+              label = 'Bloc SOIRÉE (15:00-19:00)'
             } else if (scrollPercent < 0.833) {
-                // 66.7-83.3% : Coucher de soleil (MINUIT: données 19h-23h, Vitrine prête à 00:00)
-                body.classList.add('phase-sunset');
-                emoji = '🌑';
-                time = '00:00';
-                label = 'Bloc MINUIT (19:00-23:00)';
+              // 66.7-83.3% : Coucher de soleil (MINUIT: données 19h-23h, Vitrine prête à 00:00)
+              body.classList.add('phase-sunset')
+              emoji = '🌑'
+              time = '00:00'
+              label = 'Bloc MINUIT (19:00-23:00)'
             } else {
-                // 83.3-100% : Nuit profonde (NUIT: données 23h-3h, Vitrine prête à 04:00)
-                body.classList.add('phase-night-deep');
-                emoji = '🌙';
-                time = '04:00';
-                label = 'Bloc NUIT (23:00-3:00)';
+              // 83.3-100% : Nuit profonde (NUIT: données 23h-3h, Vitrine prête à 04:00)
+              body.classList.add('phase-night-deep')
+              emoji = '🌙'
+              time = '04:00'
+              label = 'Bloc NUIT (23:00-3:00)'
             }
-            
+
             // Mettre à jour l'indicateur
             if (timeIndicator) {
-                timeIndicator.querySelector('.emoji').textContent = emoji;
-                timeIndicator.querySelector('.time').textContent = time;
-                timeIndicator.querySelector('.label').textContent = label;
+              timeIndicator.querySelector('.emoji').textContent = emoji
+              timeIndicator.querySelector('.time').textContent = time
+              timeIndicator.querySelector('.label').textContent = label
             }
-        }
+          }
 
-        // Initialiser au chargement
-        window.addEventListener('DOMContentLoaded', () => {
-            createStars();
-            updateDayNightCycle();
-        });
+          // Initialiser au chargement
+          window.addEventListener('DOMContentLoaded', () => {
+            createStars()
+            updateDayNightCycle()
+          })
 
-        // Mettre à jour au scroll
-        window.addEventListener('scroll', updateDayNightCycle);
+          // Mettre à jour au scroll
+          window.addEventListener('scroll', updateDayNightCycle)
 
-        // Theme Toggle
-        function toggleTheme() {
-            const root = document.documentElement;
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            const icon = document.getElementById('theme-icon');
-            const text = document.querySelector('.theme-toggle-text');
-            
-            root.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
+          // Theme Toggle
+          function toggleTheme() {
+            const root = document.documentElement
+            const currentTheme = root.getAttribute('data-theme')
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+            const icon = document.getElementById('theme-icon')
+            const text = document.querySelector('.theme-toggle-text')
+
+            root.setAttribute('data-theme', newTheme)
+            localStorage.setItem('theme', newTheme)
+
             if (newTheme === 'dark') {
-                icon.textContent = '☀️';
-                text.textContent = 'Mode Clair';
+              icon.textContent = '☀️'
+              text.textContent = 'Mode Clair'
             } else {
-                icon.textContent = '🌙';
-                text.textContent = 'Mode Sombre';
+              icon.textContent = '🌙'
+              text.textContent = 'Mode Sombre'
             }
-        }
+          }
 
-        // Load saved theme
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            const root = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            const text = document.querySelector('.theme-toggle-text');
-            
-            root.setAttribute('data-theme', savedTheme);
-            
+          // Load saved theme
+          window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light'
+            const root = document.documentElement
+            const icon = document.getElementById('theme-icon')
+            const text = document.querySelector('.theme-toggle-text')
+
+            root.setAttribute('data-theme', savedTheme)
+
             if (savedTheme === 'dark') {
-                icon.textContent = '☀️';
-                text.textContent = 'Mode Clair';
+              icon.textContent = '☀️'
+              text.textContent = 'Mode Clair'
             }
-        });
+          })
 
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          // Add smooth scroll behavior
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+              e.preventDefault()
+              const target = document.querySelector(this.getAttribute('href'))
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' })
+              }
+            })
+          })
 
-        // Animate bars on load
-        window.addEventListener('load', () => {
-            const bars = document.querySelectorAll('.bar-fill');
+          // Animate bars on load
+          window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.bar-fill')
             bars.forEach((bar, index) => {
-                setTimeout(() => {
-                    bar.style.opacity = '1';
-                }, index * 100);
-            });
-        });
+              setTimeout(() => {
+                bar.style.opacity = '1'
+              }, index * 100)
+            })
+          })
 
-        // Add slide-in animation to sections on scroll
-        const observerOptions = {
+          // Add slide-in animation to sections on scroll
+          const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+            rootMargin: '0px 0px -100px 0px',
+          }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('slide-in');
-                }
-            });
-        }, observerOptions);
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('slide-in')
+              }
+            })
+          }, observerOptions)
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.section').forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
-</body>
+          document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.section').forEach((section) => {
+              observer.observe(section)
+            })
+          })
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
