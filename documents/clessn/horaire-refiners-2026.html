@@ -78,6 +78,179 @@
         filter: drop-shadow(0 0 30px rgba(255, 200, 0, 0.5));
       }
 
+        .full-day-row-label {
+          position: absolute;
+          left: 12px;
+          font-size: 0.68rem;
+          color: var(--text-light);
+          font-weight: 600;
+          white-space: nowrap;
+          max-width: 190px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .full-day-row-lane {
+          position: absolute;
+          border-top: 1px dashed rgba(139, 92, 246, 0.1);
+        }
+
+        .event-dot {
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-time {
+          position: absolute;
+          transform: translateX(-50%);
+          font-size: 0.62rem;
+          color: var(--text-light);
+        }
+
+        .event-time.ready {
+          color: var(--success);
+          font-weight: 700;
+        }
+
+        .event-tag {
+          position: absolute;
+          transform: translate(-50%, -50%);
+          font-size: 0.58rem;
+          color: #fff;
+          font-weight: 700;
+          border-radius: 6px;
+          padding: 1px 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        }
+
+        .full-day-section-label {
+          position: absolute;
+          left: 12px;
+          font-size: 0.62rem;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          opacity: 0.85;
+        }
+
+        .full-day-section-line {
+          position: absolute;
+          left: 8px;
+          right: 8px;
+          height: 1px;
+          background: rgba(139, 92, 246, 0.22);
+        }
+
+        .full-day-row-lane.daily {
+          border-top-color: rgba(16, 185, 129, 0.18);
+        }
+
+        .full-day-row-lane.weekly,
+        .full-day-row-lane.monthly,
+        .full-day-row-lane.special {
+          border-top-color: rgba(59, 130, 246, 0.16);
+        }
+
+        .full-day-row-label.weekly,
+        .full-day-row-label.monthly,
+        .full-day-row-label.special {
+          color: #93c5fd;
+        }
+
+        .full-day-row-label.daily {
+          color: #86efac;
+        }
+
+        .full-day-row-label.vitrine {
+          color: #4ade80;
+        }
+
+        .full-day-row-label.core {
+          color: #c4b5fd;
+        }
+
+        .full-day-row-label.shadow {
+          color: #67e8f9;
+        }
+
+        .full-day-row-label.special {
+          color: #fcd34d;
+        }
+
+        .full-day-row-label.monthly {
+          color: #f9a8d4;
+        }
+
+        .full-day-row-label.weekly {
+          color: #93c5fd;
+        }
+
+        .full-day-row-label.legend-muted {
+          color: var(--text-light);
+        }
+
+        .full-day-row-label strong {
+          color: inherit;
+        }
+
+        .full-day-track .ready-dot {
+          box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+        }
+
+        .full-day-track .ready-label {
+          white-space: nowrap;
+        }
+
+        .full-day-track .axis-title {
+          position: absolute;
+          right: 12px;
+          bottom: 6px;
+          font-size: 0.62rem;
+          color: var(--text-light);
+          opacity: 0.8;
+        }
+
+        .full-day-track .time-window-chip {
+          position: absolute;
+          top: 10px;
+          right: 12px;
+          font-size: 0.62rem;
+          color: var(--text-light);
+          border: 1px solid var(--border);
+          border-radius: 999px;
+          padding: 2px 8px;
+        }
+
+        .full-day-summary {
+          margin-top: 0.8rem;
+          font-size: 0.83rem;
+          color: var(--text-light);
+        }
+
+        .full-day-summary strong {
+          color: var(--text);
+        }
+
+        .full-day-summary code {
+          font-size: 0.8em;
+        }
+
+        @media (max-width: 980px) {
+          .full-day-row-label {
+            max-width: 145px;
+          }
+        }
+
+        @media (max-width: 740px) {
+          .full-day-row-label {
+            max-width: 110px;
+            font-size: 0.62rem;
+          }
+        }
       .container {
         max-width: 1800px;
         margin: 0 auto;
@@ -97,7 +270,7 @@
       /* Theme Toggle Button */
       .theme-toggle {
         position: fixed;
-        top: 20px;
+        top: 160px;
         right: 20px;
         background: var(--surface);
         border: 2px solid var(--border);
@@ -372,6 +545,54 @@
         color: var(--text-light);
       }
 
+      .times.align-15-slot {
+        display: inline-block;
+        width: 35ch;
+        text-align: left;
+        padding-left: 18ch;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .times.align-20-slot {
+        display: inline-block;
+        width: 35ch;
+        text-align: left;
+        padding-left: 30ch;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .times.align-07-slot {
+        display: inline-block;
+        width: 35ch;
+        text-align: left;
+        padding-left: 6ch;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .times.align-11-slot {
+        display: inline-block;
+        width: 35ch;
+        text-align: left;
+        padding-left: 12ch;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .times.align-12-slot {
+        display: inline-block;
+        width: 35ch;
+        text-align: left;
+        padding-left: 18ch;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .times.align-16-slot {
+        display: inline-block;
+        width: 35ch;
+        text-align: left;
+        padding-left: 24ch;
+        font-variant-numeric: tabular-nums;
+      }
+
       .improvements {
         display: grid;
         gap: 1rem;
@@ -634,6 +855,325 @@
         font-weight: 600;
       }
 
+      /* Tooltip barre timeline */
+      #bar-tooltip {
+        position: fixed;
+        display: none;
+        z-index: 99999;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 14px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+        pointer-events: none;
+        min-width: 200px;
+        max-width: 280px;
+        font-size: 0.82em;
+        color: var(--text);
+        line-height: 1.6;
+      }
+      #bar-tooltip .tt-name {
+        font-weight: 700;
+        font-size: 0.95em;
+        color: var(--primary);
+        margin-bottom: 4px;
+      }
+      #bar-tooltip .tt-row {
+        display: flex;
+        gap: 6px;
+      }
+      #bar-tooltip .tt-label {
+        color: var(--text-light);
+        min-width: 60px;
+      }
+      #bar-tooltip .tt-note {
+        margin-top: 6px;
+        font-style: italic;
+        color: var(--text-light);
+        font-size: 0.9em;
+        border-top: 1px solid var(--border);
+        padding-top: 4px;
+      }
+      .has-tooltip {
+        cursor: pointer;
+      }
+
+      .timeline-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+        align-items: center;
+      }
+
+      .timeline-controls label {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        font-weight: 600;
+      }
+
+      .timeline-controls select {
+        margin-left: 0.4rem;
+        padding: 0.35rem 0.5rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+      }
+
+      .timeline-hint {
+        font-size: 0.84rem;
+        color: var(--text-light);
+        margin-bottom: 0.8rem;
+      }
+
+      .full-day-view {
+        display: none;
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: rgba(74, 144, 226, 0.04);
+      }
+
+      .full-day-track {
+        position: relative;
+        height: 430px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      .macro-lane-title {
+        position: absolute;
+        left: 10px;
+        font-size: 0.73rem;
+        font-weight: 700;
+        color: var(--text-light);
+        letter-spacing: 0.04em;
+      }
+
+      .macro-lane-bg {
+        position: absolute;
+        left: 14%;
+        width: 82%;
+        height: 30px;
+        border-radius: 10px;
+        background: rgba(148, 163, 184, 0.12);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .macro-segment {
+        position: absolute;
+        height: 30px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #fff;
+        padding: 0 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      }
+
+      .macro-segment.online {
+        background: linear-gradient(135deg, #10b981, #059669);
+        opacity: 0.8;
+      }
+
+      .macro-segment.processing {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        opacity: 0.85;
+      }
+
+      .macro-segment.data {
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        opacity: 0.8;
+      }
+
+      .macro-segment.active {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55), 0 0 0 4px rgba(34, 211, 238, 0.35);
+        opacity: 1;
+        transform: translateY(-1px);
+      }
+
+      .macro-segment.upcoming {
+        box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.45);
+        opacity: 1;
+      }
+
+      .macro-now-line {
+        position: absolute;
+        width: 2px;
+        top: 42px;
+        bottom: 34px;
+        background: #22d3ee;
+        box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+      }
+
+      .macro-now-tag {
+        position: absolute;
+        top: 18px;
+        transform: translateX(-50%);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #22d3ee;
+        background: rgba(8, 47, 73, 0.85);
+        border: 1px solid rgba(34, 211, 238, 0.4);
+        border-radius: 999px;
+        padding: 2px 8px;
+      }
+
+      .macro-caption {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 8px;
+        font-size: 0.78rem;
+        color: var(--text-light);
+      }
+
+      .full-day-axis-label {
+        position: absolute;
+        top: 84px;
+        transform: translateX(-50%);
+        font-size: 0.72rem;
+        color: var(--text-light);
+      }
+
+      .full-day-axis-line {
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: 120px;
+        background: rgba(139, 92, 246, 0.14);
+      }
+
+      .cycle-bar {
+        position: absolute;
+        top: 36px;
+        height: 20px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #10b981, #06b6d4);
+        color: #fff;
+        font-size: 0.64rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      .ready-dot {
+        position: absolute;
+        top: 72px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+      }
+
+      .ready-label {
+        position: absolute;
+        top: 84px;
+        transform: translateX(-50%);
+        font-size: 0.68rem;
+        color: var(--success);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .full-day-summary {
+        margin-top: 0.8rem;
+        font-size: 0.83rem;
+        color: var(--text-light);
+      }
+
+      .macro-status {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: rgba(16, 185, 129, 0.08);
+        padding: 0.9rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .macro-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        align-items: center;
+        margin-bottom: 0.8rem;
+      }
+
+      .macro-controls label {
+        font-size: 0.82rem;
+        color: var(--text-light);
+        font-weight: 600;
+      }
+
+      .macro-controls input {
+        margin-left: 0.4rem;
+        padding: 0.3rem 0.45rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+      }
+
+      .macro-highlight {
+        font-size: 0.84rem;
+        color: #86efac;
+        font-weight: 700;
+      }
+
+      .macro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.55rem;
+      }
+
+      .macro-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.55rem 0.65rem;
+      }
+
+      .macro-label {
+        font-size: 0.72rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .macro-value {
+        margin-top: 0.2rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .full-day-toggle {
+        margin: 0.4rem 0 0.7rem 0;
+        padding: 0.45rem 0.7rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .full-day-details {
+        display: none;
+      }
+
       footer {
         margin-top: 3rem;
         padding: 2rem;
@@ -801,7 +1341,7 @@
       .time-indicator {
         position: fixed;
         top: 20px;
-        left: 20px;
+        right: 20px;
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(10px);
         border-radius: 15px;
@@ -855,7 +1395,7 @@
         <div class="meta">
           <div class="meta-item">
             <span>📅</span>
-            <span class="badge">21 février 2026</span>
+            <span class="badge">15 mars 2026</span>
           </div>
           <div class="meta-item">
             <span>🎯</span>
@@ -885,7 +1425,7 @@
             </p>
             <p style="margin-top: 0.5rem">
               <strong>Délai de disponibilité:</strong> Les données collectées sur une fenêtre de 4h sont traitées en
-              ~54 minutes (datamarts), puis publiées frontend en ~57 minutes.
+              ~54 minutes (datamarts).
             </p>
             <p style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 4px">
               <strong>Exemple:</strong> Bloc débute à <strong>11:03</strong> → Datamarts prêts vers
@@ -902,9 +1442,7 @@
               "
             >
               <strong style="color: var(--primary)">⏱️ Horaire Complet (6 blocs/jour):</strong>
-              <p style="margin-top: 0.6rem; font-size: 0.9em; color: var(--warning); font-weight: 700">
-                🟡 Grille cible planifiée (transition en cours, pas encore entièrement appliquée dans le TS)
-              </p>
+
               <div
                 style="
                   margin-top: 0.8rem;
@@ -930,7 +1468,7 @@
                   <div style="font-size: 0.85em; opacity: 0.7">Données: 3h-7h</div>
                   <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 07:03</div>
                   <div style="font-size: 0.9em">Pipeline: 07:06-07:57</div>
-                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~07:57</div>
+                  <div style="font-size: 0.9em; color: var(--success); font-weight: 700">Données prévues: ~07:57</div>
                   <div
                     style="
                       font-size: 0.9em;
@@ -961,7 +1499,7 @@
                   <div style="font-size: 0.85em; opacity: 0.7">Données: 7h-11h</div>
                   <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 11:03</div>
                   <div style="font-size: 0.9em">Pipeline: 11:06-11:57</div>
-                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~11:57</div>
+                  <div style="font-size: 0.9em; color: var(--success); font-weight: 700">Données prévues: ~11:57</div>
                   <div
                     style="
                       font-size: 0.9em;
@@ -992,7 +1530,7 @@
                   <div style="font-size: 0.85em; opacity: 0.7">Données: 11h-15h</div>
                   <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 15:03</div>
                   <div style="font-size: 0.9em">Pipeline: 15:06-15:57</div>
-                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~15:57</div>
+                  <div style="font-size: 0.9em; color: var(--success); font-weight: 700">Données prévues: ~15:57</div>
                   <div
                     style="
                       font-size: 0.9em;
@@ -1023,7 +1561,7 @@
                   <div style="font-size: 0.85em; opacity: 0.7">Données: 15h-19h</div>
                   <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 19:03</div>
                   <div style="font-size: 0.9em">Pipeline: 19:06-19:57</div>
-                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~19:57</div>
+                  <div style="font-size: 0.9em; color: var(--success); font-weight: 700">Données prévues: ~19:57</div>
                   <div
                     style="
                       font-size: 0.9em;
@@ -1054,7 +1592,7 @@
                   <div style="font-size: 0.85em; opacity: 0.7">Données: 19h-23h</div>
                   <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 23:03</div>
                   <div style="font-size: 0.9em">Pipeline: 23:06-23:57</div>
-                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~23:57</div>
+                  <div style="font-size: 0.9em; color: var(--success); font-weight: 700">Données prévues: ~23:57</div>
                   <div
                     style="
                       font-size: 0.9em;
@@ -1085,7 +1623,7 @@
                   <div style="font-size: 0.85em; opacity: 0.7">Données: 23h-3h</div>
                   <div style="font-size: 0.9em; margin-top: 0.5rem">Glue Job: 03:03</div>
                   <div style="font-size: 0.9em">Pipeline: 03:06-03:57</div>
-                  <div style="font-size: 0.9em; color: var(--warning); font-weight: 700">🟡 Données prévues: ~03:57</div>
+                  <div style="font-size: 0.9em; color: var(--success); font-weight: 700">Données prévues: ~03:57</div>
                   <div
                     style="
                       font-size: 0.9em;
@@ -1204,8 +1742,1234 @@
             </div>
           </div>
 
+
+
           <div class="section">
-            <h2>📋 Durées Mesurées (AWS Monitoring)</h2>
+            <h2>📈 Visualisation des Blocs</h2>
+            <div class="timeline-controls">
+              <label>
+                Vue
+                <select id="timeline-view-select">
+                  <option value="block-0">00:00 (MINUIT)</option>
+                  <option value="block-4">04:00 (NUIT)</option>
+                  <option value="block-8" selected>08:00 (MATIN)</option>
+                  <option value="block-12">12:00 (MIDI)</option>
+                  <option value="block-16">16:00 (APRÈS-MIDI)</option>
+                  <option value="block-20">20:00 (SOIRÉE)</option>
+                  <option disabled>──────────────</option>
+                  <option value="full">Journée complète (24h)</option>
+                </select>
+              </label>
+            </div>
+            <div class="timeline-hint" id="timeline-hint">
+              Exemple affiché pour le bloc 08:00 (MATIN), pipeline 07:00→08:10. Survoler une barre pour voir les horaires exacts.
+            </div>
+            <div class="visual-timeline">
+              <div id="single-block-view" style="margin-bottom: 2rem">
+                <!-- Timeline horizontal avec heures sur l'axe X -->
+                <div
+                  style="
+                    position: relative;
+                    height: 960px;
+                    padding: 20px;
+                    background: var(--surface);
+                    border-radius: 8px;
+                    border: 1px solid var(--border);
+                  "
+                >
+                  <!-- Axe X avec marqueurs d'heures (échelle: 11:00→12:10 = 70 min, 1 min = 1.4286%) -->
+                  <div
+                    style="
+                      position: absolute;
+                      bottom: 10px;
+                      left: 20px;
+                      right: 20px;
+                      height: 30px;
+                      border-top: 2px solid var(--text-light);
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        left: 0%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="0" style="position: absolute; left: 0%; top: 12px; font-size: 0.85em; opacity: 0.7">11:00</div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 14.29%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="10" style="position: absolute; left: 14.29%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:10
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 28.57%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="20" style="position: absolute; left: 28.57%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:20
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 42.86%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="30" style="position: absolute; left: 42.86%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:30
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 57.14%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="40" style="position: absolute; left: 57.14%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:40
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 71.43%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="50" style="position: absolute; left: 71.43%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      11:50
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 85.71%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="60" style="position: absolute; left: 85.71%; top: 12px; font-size: 0.85em; opacity: 0.7">
+                      12:00
+                    </div>
+
+                    <div
+                      style="
+                        position: absolute;
+                        left: 100%;
+                        top: -5px;
+                        width: 2px;
+                        height: 10px;
+                        background: var(--text-light);
+                      "
+                    ></div>
+                    <div class="block-axis-label" data-offset-min="70" style="position: absolute; left: 100%; top: 12px; font-size: 0.85em; opacity: 0.7">12:10</div>
+                  </div>
+
+                  <!-- Barres des raffineurs -->
+                  <!-- Échelle: 11:00→12:10 = 70 min, 1 min = 1.4286% -->
+                  <!-- Positions clés: 11:03=4.29% 11:05=7.14% 11:21=30% 11:24=34.29% 11:31=44.29% 11:39=55.71% 11:42=60% 11:46=65.71% 11:47=67.14% 11:50=71.43% 11:51=72.86% 11:54=77.14% 11:57=81.43% -->
+                  <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 900px">
+                    <!-- Lignes guides toutes les 10 minutes -->
+                    <div style="position: absolute; top: 0; left: 0%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 14.29%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 28.57%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 42.86%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 57.14%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 71.43%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 85.71%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+                    <div style="position: absolute; top: 0; left: 100%; width: 1px; height: 870px; background: #8b5cf6; opacity: 0.14"></div>
+
+                    <!-- GLUE JOB GÉNÉRALE: 11:03-11:05 (4.29%-7.14%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="GLUE JOB GÉNÉRALE"
+                      data-start="11:03"
+                      data-end="11:05"
+                      data-duration="max 2 min"
+                      data-notes="Traite le bloc du Midi (7:00-11:00)"
+                      style="
+                        position: absolute;
+                        top: 0px;
+                        left: 4.29%;
+                        width: 2.86%;
+                        height: 30px;
+                        background: #667eea;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      GJ 2m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 6px;
+                        left: calc(7.14% + 6px);
+                        font-size: 0.72em;
+                        font-weight: 600;
+                        color: var(--text-light);
+                      "
+                    >
+                      GLUE JOB GÉNÉRALE
+                    </div>
+
+                    <!-- DATA_PREPARATION: 11:06-11:21 (8.57%-30%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="DATA_PREPARATION"
+                      data-start="11:06"
+                      data-end="11:21"
+                      data-duration="15 min"
+                      data-notes="Pipeline principal radar-data-preparation"
+                      style="
+                        position: absolute;
+                        top: 40px;
+                        left: 8.57%;
+                        width: 21.43%;
+                        height: 30px;
+                        background: #10b981;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      DATA_PREPARATION (15min)
+                    </div>
+
+                    <!-- SALIENT_OBJECTS: 11:16 (trigger marker) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="SALIENT_OBJECTS"
+                      data-start="11:16"
+                      data-end="11:17"
+                      data-duration="~1 min (trigger)"
+                      data-notes="Raffineur actif a :16 sur chaque cycle (duree variable selon charge)"
+                      style="
+                        position: absolute;
+                        top: 75px;
+                        left: 22.86%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #22c55e;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 77px;
+                        left: calc(22.86% - 112px);
+                        width: 107px;
+                        text-align: right;
+                        font-size: 0.68em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      SALIENT_OBJECTS
+                    </div>
+
+                    <!-- OBJECT_EXTRACTION: 11:24-11:39 (34.29%-55.71%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="OBJECT_EXTRACTION"
+                      data-start="11:24"
+                      data-end="11:39"
+                      data-duration="15 min"
+                      data-notes="Extraction/normalisation d'objets — démarre après DATA_PREPARATION + Glue"
+                      style="
+                        position: absolute;
+                        top: 75px;
+                        left: 34.29%;
+                        width: 21.43%;
+                        height: 30px;
+                        background: #f59e0b;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      OBJECT_EXTRACTION (15min)
+                    </div>
+                    <!-- GJ OBJECT_EXTRACTION: 11:39-11:42 (55.71%-60%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (OBJECT_EXTRACTION)"
+                      data-start="11:39"
+                      data-end="11:42"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 110px;
+                        left: 55.71%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- Glue Job DATA_PREP: 11:21-11:24 (30%-34.29%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (DATA_PREPARATION)"
+                      data-start="11:21"
+                      data-end="11:24"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 75px;
+                        left: 30%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- SALIENT_INDEX: 11:42-11:43 (60%-61.43%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="SALIENT_INDEX"
+                      data-start="11:42"
+                      data-end="11:43"
+                      data-duration="1 min"
+                      data-notes="Calcul scores saillance — dépend de OBJECT_EXTRACTION + Glue"
+                      style="
+                        position: absolute;
+                        top: 110px;
+                        left: 60%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #8b5cf6;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 114px;
+                        left: calc(61.43% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      SALIENT_INDEX
+                    </div>
+
+                    <!-- GJ SALIENT_INDEX: 11:43-11:46 (61.43%-65.71%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (SALIENT_INDEX)"
+                      data-start="11:43"
+                      data-end="11:46"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 140px;
+                        left: 61.43%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- ISSUES_SCORE: 11:31-11:32 (44.29%-45.71%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="ISSUES_SCORE (daily)"
+                      data-start="11:31"
+                      data-end="11:32"
+                      data-duration="1 min"
+                      data-notes="Classification enjeux du CAPP — dépend de DATA_PREPARATION"
+                      style="
+                        position: absolute;
+                        top: 165px;
+                        left: 44.29%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #3b82f6;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 169px;
+                        left: calc(45.71% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      ISSUES_SCORE
+                    </div>
+
+                    <!-- GJ ISSUES_SCORE: 11:32-11:35 (45.71%-50%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (ISSUES_SCORE)"
+                      data-start="11:32"
+                      data-end="11:35"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 195px;
+                        left: 45.71%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- PARTY_SCORE_SALIENT_SHADOW: 11:31-11:32 (44.29%-45.71%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="PARTY_SCORE_SALIENT_SHADOW (daily)"
+                      data-start="11:31"
+                      data-end="11:32"
+                      data-duration="1 min"
+                      data-notes="Scores partis salient shadow — dépend de DATA_PREPARATION"
+                      style="
+                        position: absolute;
+                        top: 220px;
+                        left: 44.29%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #14b8a6;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 224px;
+                        left: calc(45.71% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      PARTY_SCORE_SALIENT_SHADOW
+                    </div>
+
+                    <!-- GJ PARTY_SCORE_SALIENT_SHADOW: 11:32-11:35 (45.71%-50%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (PARTY_SCORE_SALIENT_SHADOW)"
+                      data-start="11:32"
+                      data-end="11:35"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 250px;
+                        left: 45.71%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- PARTY_SCORE: 11:46-11:47 (65.71%-67.14%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="PARTY_SCORE (daily)"
+                      data-start="11:46"
+                      data-end="11:47"
+                      data-duration="1 min"
+                      data-notes="Scores partis — dépend de SALIENT_INDEX"
+                      style="
+                        position: absolute;
+                        top: 278px;
+                        left: 65.71%;
+                        width: 1.43%;
+                        height: 25px;
+                        background: #f97316;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      1m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 282px;
+                        left: calc(67.14% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      PARTY_SCORE
+                    </div>
+
+                    <!-- GJ PARTY_SCORE: 11:47-11:50 (67.14%-71.43%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (PARTY_SCORE)"
+                      data-start="11:47"
+                      data-end="11:50"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 308px;
+                        left: 67.14%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- HEADLINE_OF_HEADLINES: 11:46-11:51 (65.71%-72.86%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="HEADLINE_OF_HEADLINES"
+                      data-start="11:46"
+                      data-end="11:51"
+                      data-duration="5 min"
+                      data-notes="Génération titres — dépend de SALIENT_INDEX"
+                      style="
+                        position: absolute;
+                        top: 342px;
+                        left: 65.71%;
+                        width: 7.14%;
+                        height: 25px;
+                        background: #ec4899;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.7em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      5m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 346px;
+                        left: calc(72.86% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      HEADLINE_OF_HEADLINES
+                    </div>
+
+                    <!-- GJ HOH: 11:51-11:54 (72.86%-77.14%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (HEADLINE_OF_HEADLINES)"
+                      data-start="11:51"
+                      data-end="11:54"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 372px;
+                        left: 72.86%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- HEADLINES_ISSUES: 11:46-11:51 (65.71%-72.86%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="HEADLINES_ISSUES (daily)"
+                      data-start="11:46"
+                      data-end="11:51"
+                      data-duration="5 min"
+                      data-notes="Headlines daily — dépend de ISSUES_SCORE"
+                      style="
+                        position: absolute;
+                        top: 397px;
+                        left: 65.71%;
+                        width: 7.14%;
+                        height: 25px;
+                        background: #06b6d4;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.7em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      5m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 401px;
+                        left: calc(72.86% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      HEADLINES_ISSUES
+                    </div>
+
+                    <!-- GJ HEADLINES_ISSUES: 11:51-11:54 (72.86%-77.14%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (HEADLINES_ISSUES)"
+                      data-start="11:51"
+                      data-end="11:54"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 427px;
+                        left: 72.86%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- REFLET: 11:46-11:51 (65.71%-72.86%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="REFLET (daily)"
+                      data-start="11:46"
+                      data-end="11:51"
+                      data-duration="5 min"
+                      data-notes="Synthèse reflet — dépend de ISSUES_SCORE, PARTY_SCORE, PARTY_SCORE_SALIENT_SHADOW, SALIENT_INDEX"
+                      style="
+                        position: absolute;
+                        top: 452px;
+                        left: 65.71%;
+                        width: 7.14%;
+                        height: 25px;
+                        background: #a855f7;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.7em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      5m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 456px;
+                        left: calc(72.86% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      REFLET
+                    </div>
+                    <!-- GJ REFLET: 11:51-11:54 (72.86%-77.14%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="Glue Job (REFLET)"
+                      data-start="11:51"
+                      data-end="11:54"
+                      data-duration="3 min"
+                      data-notes="Écriture Athena"
+                      style="
+                        position: absolute;
+                        top: 482px;
+                        left: 72.86%;
+                        width: 4.29%;
+                        height: 20px;
+                        background: #94a3b8;
+                        border-radius: 4px;
+                        opacity: 0.7;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                      "
+                    >
+                      +GJ 3m
+                    </div>
+
+                    <!-- VITRINE_GRAPH_DATA: 11:54-11:57 (77.14%-81.43%) -->
+                    <div
+                      class="has-tooltip"
+                      data-name="VITRINE_GRAPH_DATA"
+                      data-start="11:54"
+                      data-end="11:57"
+                      data-duration="3 min"
+                      data-notes="Publication JSON frontend — toujours actif"
+                      style="
+                        position: absolute;
+                        top: 507px;
+                        left: 77.14%;
+                        width: 4.29%;
+                        height: 30px;
+                        background: linear-gradient(135deg, #10b981, #059669);
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.65em;
+                        color: white;
+                        font-weight: 600;
+                      "
+                    >
+                      3m
+                    </div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 511px;
+                        left: calc(81.43% + 6px);
+                        font-size: 0.72em;
+                        color: var(--text-light);
+                        font-weight: 600;
+                      "
+                    >
+                      VITRINE_GRAPH_DATA
+                    </div>
+                    <!-- Données prêtes à 11:57 (81.43%) -->
+                    <div
+                      id="block-ready-label"
+                      data-offset-min="57"
+                      style="
+                        position: absolute;
+                        top: 547px;
+                        left: calc(81.43% + 6px);
+                        font-size: 0.8em;
+                        color: var(--success);
+                        font-weight: 700;
+                      "
+                    >
+                      ✅ 11:57 données prêtes
+                    </div>
+
+                    <div
+                      id="once-per-day-overlay"
+                      style="
+                        display: none;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 577px;
+                        height: 300px;
+                        border-top: 1px dashed rgba(147, 197, 253, 0.45);
+                      "
+                    >
+                      <div
+                        style="
+                          position: absolute;
+                          left: 0;
+                          top: -16px;
+                          font-size: 0.7em;
+                          color: #93c5fd;
+                          font-weight: 700;
+                          letter-spacing: 0.02em;
+                        "
+                      >
+                        1x/jour (bloc 16:00)
+                      </div>
+
+                      <div class="has-tooltip" data-name="HEADLINES_ISSUES_WEEKLY" data-start="11:17" data-end="11:18" data-duration="1 min" data-notes="Raffineur hebdomadaire" style="position: absolute; left: 24.29%; top: 8px; width: 1.43%; height: 16px; border-radius: 4px; background: #60a5fa; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (HEADLINES_ISSUES_WEEKLY)" data-start="11:18" data-end="11:21" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 25.71%; top: 8px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 10px; left: calc(30% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">HEADLINES_ISSUES_WEEKLY</div>
+
+                      <div class="has-tooltip" data-name="HEADLINES_ISSUES_MONTHLY" data-start="11:20" data-end="11:21" data-duration="1 min" data-notes="Raffineur mensuel" style="position: absolute; left: 28.57%; top: 36px; width: 1.43%; height: 16px; border-radius: 4px; background: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (HEADLINES_ISSUES_MONTHLY)" data-start="11:21" data-end="11:24" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 30%; top: 36px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 38px; left: calc(34.29% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">HEADLINES_ISSUES_MONTHLY</div>
+
+                      <div class="has-tooltip" data-name="ISSUES_SCORE_WEEKLY" data-start="11:35" data-end="11:36" data-duration="1 min" data-notes="Raffineur hebdomadaire" style="position: absolute; left: 50%; top: 64px; width: 1.43%; height: 16px; border-radius: 4px; background: #60a5fa; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (ISSUES_SCORE_WEEKLY)" data-start="11:36" data-end="11:39" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 51.43%; top: 64px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 66px; left: calc(55.71% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">ISSUES_SCORE_WEEKLY</div>
+
+                      <div class="has-tooltip" data-name="ISSUES_SCORE_MONTHLY" data-start="11:39" data-end="11:40" data-duration="1 min" data-notes="Raffineur mensuel" style="position: absolute; left: 55.71%; top: 92px; width: 1.43%; height: 16px; border-radius: 4px; background: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (ISSUES_SCORE_MONTHLY)" data-start="11:40" data-end="11:43" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 57.14%; top: 92px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 94px; left: calc(61.43% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">ISSUES_SCORE_MONTHLY</div>
+
+                      <div class="has-tooltip" data-name="PARTY_SCORE_SALIENT_SHADOW_WEEKLY" data-start="11:35" data-end="11:36" data-duration="1 min" data-notes="Raffineur hebdomadaire" style="position: absolute; left: 50%; top: 120px; width: 1.43%; height: 16px; border-radius: 4px; background: #60a5fa; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (PARTY_SCORE_SALIENT_SHADOW_WEEKLY)" data-start="11:36" data-end="11:39" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 51.43%; top: 120px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 122px; left: calc(55.71% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">PARTY_SCORE_SALIENT_SHADOW_WEEKLY</div>
+
+                      <div class="has-tooltip" data-name="PARTY_SCORE_SALIENT_SHADOW_MONTHLY" data-start="11:39" data-end="11:40" data-duration="1 min" data-notes="Raffineur mensuel" style="position: absolute; left: 55.71%; top: 148px; width: 1.43%; height: 16px; border-radius: 4px; background: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (PARTY_SCORE_SALIENT_SHADOW_MONTHLY)" data-start="11:40" data-end="11:43" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 57.14%; top: 148px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 150px; left: calc(61.43% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">PARTY_SCORE_SALIENT_SHADOW_MONTHLY</div>
+
+                      <div class="has-tooltip" data-name="PARTY_SCORE_WEEKLY" data-start="11:35" data-end="11:36" data-duration="1 min" data-notes="Raffineur hebdomadaire" style="position: absolute; left: 50%; top: 176px; width: 1.43%; height: 16px; border-radius: 4px; background: #60a5fa; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (PARTY_SCORE_WEEKLY)" data-start="11:36" data-end="11:39" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 51.43%; top: 176px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 178px; left: calc(55.71% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">PARTY_SCORE_WEEKLY</div>
+
+                      <div class="has-tooltip" data-name="PARTY_SCORE_MONTHLY" data-start="11:39" data-end="11:40" data-duration="1 min" data-notes="Raffineur mensuel" style="position: absolute; left: 55.71%; top: 204px; width: 1.43%; height: 16px; border-radius: 4px; background: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (PARTY_SCORE_MONTHLY)" data-start="11:40" data-end="11:43" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 57.14%; top: 204px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 206px; left: calc(61.43% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">PARTY_SCORE_MONTHLY</div>
+
+                      <div class="has-tooltip" data-name="REFLET_WEEKLY" data-start="11:37" data-end="11:38" data-duration="1 min" data-notes="Raffineur hebdomadaire" style="position: absolute; left: 52.86%; top: 232px; width: 1.43%; height: 16px; border-radius: 4px; background: #60a5fa; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (REFLET_WEEKLY)" data-start="11:38" data-end="11:41" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 54.29%; top: 232px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 234px; left: calc(58.57% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">REFLET_WEEKLY</div>
+
+                      <div class="has-tooltip" data-name="REFLET_MONTHLY" data-start="11:40" data-end="11:41" data-duration="1 min" data-notes="Raffineur mensuel" style="position: absolute; left: 57.14%; top: 260px; width: 1.43%; height: 16px; border-radius: 4px; background: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 0.6em; color: white; font-weight: 700">1m</div>
+                      <div class="has-tooltip" data-name="Glue Job (REFLET_MONTHLY)" data-start="11:41" data-end="11:44" data-duration="3 min" data-notes="Écriture Athena" style="position: absolute; left: 58.57%; top: 260px; width: 4.29%; height: 16px; border-radius: 4px; background: #94a3b8; opacity: 0.82; display: flex; align-items: center; justify-content: center; font-size: 0.58em; color: white">+GJ 3m</div>
+                      <div style="position: absolute; top: 262px; left: calc(62.86% + 6px); font-size: 0.69em; color: var(--text-light); font-weight: 600">REFLET_MONTHLY</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="full-day-view" id="full-day-view">
+                <div class="macro-controls" style="margin-bottom: 0.7rem">
+                  <label>
+                    Heure de référence
+                    <input type="time" id="macro-time-input" step="60" />
+                  </label>
+                  <div class="macro-highlight" id="macro-now-highlight"></div>
+                </div>
+                <div class="full-day-track" id="full-day-track"></div>
+                <div class="full-day-summary" id="full-day-summary"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>🔄 Comparaison des Horaires</h2>
+
+            <div class="schedule-compare">
+              <div class="schedule-box schedule-old">
+                <div class="schedule-label old">✅ HORAIRE ACTUEL (APPLIQUÉ DANS LE TS) — UTC</div>
+                <div class="time-block">
+                  <div class="time-line">
+                    <span class="refiner-name">GLUE JOB:</span>
+                    <span class="times">00:03 04:03 08:03 12:03 16:03 20:03</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">DATA_PREPARATION:</span>
+                    <span class="times">00:06 04:06 08:06 12:06 16:06 20:06</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">OBJECT_EXTRACTION:</span>
+                    <span class="times">00:24 04:24 08:24 12:24 16:24 20:24</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SALIENT_OBJECTS:</span>
+                    <span class="times">00:16 04:16 08:16 12:16 16:16 20:16</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SALIENT_INDEX:</span>
+                    <span class="times">00:20 04:20 08:20 12:20 16:20 20:20</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
+                    <span class="times">00:28 04:28 08:28 12:28 16:28 20:28</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
+                    <span class="times">00:39 08:39 12:39 16:39 20:39</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE:</span>
+                    <span class="times">12:09 16:09 20:09</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE:</span>
+                    <span class="times">00:29 04:29 08:29 12:29 16:29 20:29</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_SALIENT_SHADOW:</span>
+                    <span class="times">00:31 04:31 08:31 12:31 16:31 20:31</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES:</span>
+                    <span class="times">12:14 16:14 20:14</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET:</span>
+                    <span class="times">12:25 16:25 20:25</span>
+                  </div>
+                </div>
+
+                <div class="time-block" style="margin-top: 1rem">
+                  <div
+                    style="
+                      font-size: 0.8em;
+                      font-weight: 700;
+                      color: var(--danger);
+                      margin-bottom: 0.4rem;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    ── HEBDOMADAIRE / MENSUEL ──
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE_WEEKLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:11</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES_WEEKLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:17</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_WEEKLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:20</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_SALIENT_SHADOW_WEEKLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:22</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET_WEEKLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:28</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE_MONTHLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:14</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES_MONTHLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:18</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_MONTHLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:22</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_SALIENT_SHADOW_MONTHLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:24</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET_MONTHLY:</span>
+                    <span class="times align-20-slot" style="color: var(--danger)">20:30</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">SONAR:</span>
+                    <span class="times align-12-slot" style="color: var(--danger)">12:00</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SONAR_HEATMAPS (mercredi):</span>
+                    <span class="times align-12-slot" style="color: var(--danger)">12:30</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HOT_20 (vendredi):</span>
+                    <span class="times align-16-slot" style="color: var(--danger)">16:30</span>
+                  </div>
+                </div>
+
+                <div class="problems">
+                  <div class="problem-item">Mélange de cadences: certains daily en 3x/jour, d'autres en 6x/jour</div>
+                  <div class="problem-item">VITRINE_GRAPH_DATA en 5x/jour (pas encore aligné 6x)</div>
+                  <div class="problem-item">Horaires de production exprimés en UTC dans le code actuel</div>
+                  <div class="problem-item">Le ciblage final est documenté en heure de Montréal</div>
+                </div>
+              </div>
+
+              <div class="schedule-box schedule-new">
+                <div class="schedule-label new">🟡 HORAIRE CIBLE (À VENIR) — Montréal (EST/EDT)</div>
+                <div class="time-block">
+                  <div class="time-line">
+                    <span class="refiner-name">GLUE JOB:</span>
+                    <span class="times">03:03 07:03 11:03 15:03 19:03 23:03</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">DATA_PREPARATION:</span>
+                    <span class="times">03:06 07:06 11:06 15:06 19:06 23:06</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">OBJECT_EXTRACTION:</span>
+                    <span class="times">03:24 07:24 11:24 15:24 19:24 23:24</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SALIENT_OBJECTS:</span>
+                    <span class="times">03:16 07:16 11:16 15:16 19:16 23:16</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SALIENT_INDEX:</span>
+                    <span class="times">03:42 07:42 11:42 15:42 19:42 23:42</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
+                    <span class="times">03:57 07:57 11:57 15:57 19:57 23:57</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE:</span>
+                    <span class="times">03:31 07:31 11:31 15:31 19:31 23:31</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_SALIENT_SHADOW:</span>
+                    <span class="times">03:31 07:31 11:31 15:31 19:31 23:31</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET:</span>
+                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
+                  </div>
+                </div>
+
+                <div class="time-block" style="margin-top: 1rem">
+                  <div
+                    style="
+                      font-size: 0.8em;
+                      font-weight: 700;
+                      color: var(--primary);
+                      margin-bottom: 0.4rem;
+                      letter-spacing: 0.05em;
+                    "
+                  >
+                    ── HEBDOMADAIRE / MENSUEL ──
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE_WEEKLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:35</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES_WEEKLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:17</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_SALIENT_SHADOW_WEEKLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:35</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_WEEKLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:35</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET_WEEKLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:37</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">ISSUES_SCORE_MONTHLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:39</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HEADLINES_ISSUES_MONTHLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:20</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_SALIENT_SHADOW_MONTHLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:39</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">PARTY_SCORE_MONTHLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:39</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">REFLET_MONTHLY:</span>
+                    <span class="times align-15-slot" style="color: var(--primary)">15:40</span>
+                  </div>
+                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
+                  <div class="time-line">
+                    <span class="refiner-name">SONAR:</span>
+                    <span class="times align-07-slot" style="color: var(--primary)">07:00</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">SONAR_HEATMAPS (mercredi):</span>
+                    <span class="times align-07-slot" style="color: var(--primary)">07:30</span>
+                  </div>
+                  <div class="time-line">
+                    <span class="refiner-name">HOT_20 (vendredi):</span>
+                    <span class="times align-11-slot" style="color: var(--primary)">11:59</span>
+                  </div>
+                </div>
+
+                <div class="improvements">
+                  <div class="improvement-item"><strong>6 blocs complets</strong> par jour (toutes les 4h)</div>
+                  <div class="improvement-item">
+                    <strong>~54 min données (~57 min vitrine)</strong> sur le chemin principal
+                  </div>
+                  <div class="improvement-item">
+                    <strong>Chaînage explicite</strong> DATA_PREPARATION → OBJECT_EXTRACTION → SALIENT_INDEX →
+                    ISSUES_SCORE / PARTY_SCORE / PARTY_SCORE_SALIENT_SHADOW → enrichissements aval (selon les dépendances)
+                  </div>
+                  <div class="improvement-item">
+                    <strong>Cadence réaliste</strong> 6x/jour pour le cœur + daily ciblés + weekly/monthly
+                  </div>
+                  <div class="improvement-item" style="color: var(--success); font-weight: 600">
+                    <strong>API Future:</strong> Élimination de VITRINE_GRAPH_DATA, accès direct aux Parquet
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>📊 Suivi de Migration</h2>
             <p style="margin-bottom: 1rem; opacity: 0.9">
               <span style="color: var(--success); font-weight: 700">✅ Conforme (TS actuel)</span> : horaire déjà aligné avec la cible.
               <span style="margin-left: 0.7rem; color: var(--warning); font-weight: 700">🟡 À adapter</span> : horaire encore à migrer.
@@ -1236,10 +3000,22 @@
                   <td style="color: var(--success); font-weight: 700">✅ Conforme</td>
                 </tr>
                 <tr>
-                  <td>PARTY_SCORES_V2 (daily)</td>
+                  <td>SALIENT_OBJECTS</td>
+                  <td>11:16</td>
+                  <td>—</td>
+                  <td style="color: var(--danger); font-weight: 700">🔴 À débrancher</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORE_SALIENT_SHADOW (daily)</td>
                   <td>11:31</td>
                   <td>11:31</td>
                   <td style="color: var(--success); font-weight: 700">✅ Conforme</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORE (daily)</td>
+                  <td>6x/jour @ :29</td>
+                  <td>—</td>
+                  <td style="color: var(--danger); font-weight: 700">🔴 À débrancher</td>
                 </tr>
                 <tr>
                   <td>ISSUES_SCORE (daily)</td>
@@ -1274,22 +3050,15 @@
                 <tr>
                   <td>VITRINE_GRAPH_DATA</td>
                   <td>5x/jour @ :39</td>
-                  <td>6x/jour @ :57</td>
-                  <td style="color: var(--warning); font-weight: 700">🟡 À adapter</td>
+                  <td>—</td>
+                  <td style="color: var(--danger); font-weight: 700">🔴 À débrancher (post-API)</td>
                 </tr>
               </tbody>
             </table>
-            <p style="margin-bottom: 1rem; opacity: 0.9">
-              <span style="color: var(--warning); font-weight: 700">🟡 Détail cible</span> : séquencement complet de référence pour un bloc Glue Job à 11:00.
-            </p>
-            <table class="duration-table">
+            <table class="duration-table" style="display:none">
               <thead>
                 <tr>
-                  <th>Raffineur / Glue Job</th>
-                  <th>Heure de lancement</th>
-                  <th>Heure de fin</th>
-                  <th>Durée Réelle</th>
-                  <th>Notes</th>
+                  <th>placeholder</th>
                 </tr>
               </thead>
               <tbody>
@@ -1336,11 +3105,11 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>PARTY_SCORES_V2 (daily)</td>
+                  <td>PARTY_SCORE_SALIENT_SHADOW (daily)</td>
                   <td>11:31</td>
                   <td>11:32</td>
                   <td>1 min</td>
-                  <td>Scores partis v2 (dépend de DATA_PREPARATION)</td>
+                  <td>Scores partis salient shadow (dépend de DATA_PREPARATION)</td>
                 </tr>
                 <tr style="opacity: 0.7">
                   <td>+ Glue Job spécifique</td>
@@ -1388,6 +3157,20 @@
                   </td>
                 </tr>
                 <tr>
+                  <td>PARTY_SCORE (daily)</td>
+                  <td>11:46</td>
+                  <td>11:47</td>
+                  <td>1 min</td>
+                  <td>Scores partis (après SALIENT_INDEX)</td>
+                </tr>
+                <tr style="opacity: 0.7">
+                  <td>+ Glue Job spécifique</td>
+                  <td>11:47</td>
+                  <td>11:50</td>
+                  <td>3 min</td>
+                  <td>Écriture Athena</td>
+                </tr>
+                <tr>
                   <td>HEADLINES_ISSUES (daily)</td>
                   <td>11:46</td>
                   <td>11:51</td>
@@ -1420,7 +3203,7 @@
                   <td>11:46</td>
                   <td>11:51</td>
                   <td>5 min</td>
-                  <td>Synthèse reflet (après issues/party_v2/salient)</td>
+                  <td>Synthèse reflet (après issues/party_score/party_score_salient_shadow/salient)</td>
                 </tr>
                 <tr style="opacity: 0.7">
                   <td>+ Glue Job spécifique</td>
@@ -1453,7 +3236,7 @@
                 </tr>
                 <tr>
                   <td>ISSUES_SCORE_WEEKLY</td>
-                  <td>15:11</td>
+                  <td>15:35</td>
                   <td></td>
                   <td>~1 min</td>
                   <td>
@@ -1462,24 +3245,38 @@
                 </tr>
                 <tr>
                   <td>ISSUES_SCORE_MONTHLY</td>
-                  <td>15:14</td>
+                  <td>15:39</td>
                   <td></td>
                   <td>~1 min</td>
                   <td>Agrégation mensuelle</td>
                 </tr>
                 <tr>
-                  <td>PARTY_SCORES_V2_WEEKLY</td>
-                  <td>15:22</td>
+                  <td>PARTY_SCORE_WEEKLY</td>
+                  <td>15:35</td>
                   <td></td>
                   <td>~1 min</td>
-                  <td>Scores partis v2 hebdo</td>
+                  <td>Scores partis hebdo</td>
                 </tr>
                 <tr>
-                  <td>PARTY_SCORES_V2_MONTHLY</td>
-                  <td>15:24</td>
+                  <td>PARTY_SCORE_SALIENT_SHADOW_WEEKLY</td>
+                  <td>15:35</td>
                   <td></td>
                   <td>~1 min</td>
-                  <td>Scores partis v2 mensuel</td>
+                  <td>Scores partis salient shadow hebdo</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORE_MONTHLY</td>
+                  <td>15:39</td>
+                  <td></td>
+                  <td>~1 min</td>
+                  <td>Scores partis mensuel</td>
+                </tr>
+                <tr>
+                  <td>PARTY_SCORE_SALIENT_SHADOW_MONTHLY</td>
+                  <td>15:39</td>
+                  <td></td>
+                  <td>~1 min</td>
+                  <td>Scores partis mensuel</td>
                 </tr>
                 <tr>
                   <td>HEADLINES_ISSUES_WEEKLY</td>
@@ -1490,21 +3287,21 @@
                 </tr>
                 <tr>
                   <td>HEADLINES_ISSUES_MONTHLY</td>
-                  <td>15:18</td>
+                  <td>15:20</td>
                   <td></td>
                   <td>~5 min</td>
                   <td>Headlines mensuel</td>
                 </tr>
                 <tr>
                   <td>REFLET_WEEKLY</td>
-                  <td>15:28</td>
+                  <td>15:37</td>
                   <td></td>
                   <td>~5 min</td>
                   <td>Reflet hebdomadaire</td>
                 </tr>
                 <tr>
                   <td>REFLET_MONTHLY</td>
-                  <td>15:30</td>
+                  <td>15:40</td>
                   <td></td>
                   <td>~5 min</td>
                   <td>Reflet mensuel</td>
@@ -1519,7 +3316,7 @@
                   <td>11:30</td>
                   <td></td>
                   <td>~5 min</td>
-                  <td>Vendredis 11h30 EST</td>
+                  <td>Vendredis 11h59 EST</td>
                 </tr>
                 <tr>
                   <td>SONAR</td>
@@ -1538,945 +3335,6 @@
               </tbody>
             </table>
 
-            <div class="highlight-box" style="margin-top: 1.5rem">
-              <strong>💡 Note:</strong> Chaque raffineur a son propre Glue Job spécifique qui écrit les résultats vers
-              Athena. Ces 3 minutes s'ajoutent à chaque étape du pipeline.
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>🔄 Comparaison des Horaires</h2>
-            <p style="margin-bottom: 1rem; opacity: 0.9">
-              <span style="color: var(--success); font-weight: 700">✅ Appliqué</span> = horaire actuellement en place.
-              <span style="margin-left: 0.7rem; color: var(--warning); font-weight: 700">🟡 À venir</span> = cible de réforme documentée ici.
-            </p>
-
-            <div class="schedule-compare">
-              <div class="schedule-box schedule-old">
-                <div class="schedule-label old">✅ HORAIRE ACTUEL (APPLIQUÉ DANS LE TS) — Montréal (EST/EDT)</div>
-                <div class="time-block">
-                  <div class="time-line">
-                    <span class="refiner-name">GLUE JOB:</span>
-                    <span class="times">00:03 04:03 08:03 12:03 16:03 20:03</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">SALIENT_INDEX:</span>
-                    <span class="times">00:20 04:20 08:20 12:20 16:20 20:20</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
-                    <span class="times">00:28 04:28 08:28 12:28 16:28 20:28</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
-                    <span class="times">--:-- 04:39 08:39 12:39 16:39 20:39</span>
-                  </div>
-                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
-                  <div class="time-line">
-                    <span class="refiner-name">ISSUES_SCORE:</span>
-                    <span class="times">--:-- --:-- 08:09 12:09 16:09 --:--</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">PARTY_SCORES:</span>
-                    <span class="times">--:-- --:-- 08:18 12:18 16:18 --:--</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">HEADLINES_ISSUES:</span>
-                    <span class="times">--:-- --:-- 08:10 12:10 16:10 --:--</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">REFLET:</span>
-                    <span class="times">--:-- --:-- 08:24 12:24 16:24 --:--</span>
-                  </div>
-                </div>
-
-                <div class="time-block" style="margin-top: 1rem">
-                  <div
-                    style="
-                      font-size: 0.8em;
-                      font-weight: 700;
-                      color: var(--danger);
-                      margin-bottom: 0.4rem;
-                      letter-spacing: 0.05em;
-                    "
-                  >
-                    ── HEBDOMADAIRE / MENSUEL ──
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">Issues / Party / Reflet hebdo:</span>
-                    <span class="times" style="color: var(--danger)">Non standardisé</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">Versions mensuelles:</span>
-                    <span class="times" style="color: var(--danger)">Non standardisé</span>
-                  </div>
-                </div>
-
-                <div class="problems">
-                  <div class="problem-item">
-                    DATA_PREPARATION n'existait pas (RADAR_ARTICLES_SEGMENTED séparé)
-                  </div>
-                  <div class="problem-item">Seulement 5 blocs (pas de minuit)</div>
-                  <div class="problem-item">Issues/Party/Reflet seulement 3x/jour</div>
-                  <div class="problem-item">Pas de synchronisation claire</div>
-                  <div class="problem-item">Pipelines weekly/monthly non standardisés</div>
-                </div>
-              </div>
-
-              <div class="schedule-box schedule-new">
-                <div class="schedule-label new">🟡 HORAIRE CIBLE (À VENIR) — Montréal (EST/EDT)</div>
-                <div class="time-block">
-                  <div
-                    style="
-                      font-size: 0.8em;
-                      font-weight: 700;
-                      color: #8b5cf6;
-                      margin-bottom: 0.4rem;
-                      letter-spacing: 0.05em;
-                    "
-                  >
-                    ── 6x/JOUR ──
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">GLUE JOB:</span>
-                    <span class="times">03:03 07:03 11:03 15:03 19:03 23:03</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">DATA_PREPARATION:</span>
-                    <span class="times" style="color: var(--success)">03:06 07:06 11:06 15:06 19:06 23:06</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">OBJECT_EXTRACTION:</span>
-                    <span class="times" style="color: var(--success)">03:24 07:24 11:24 15:24 19:24 23:24</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">SALIENT_INDEX:</span>
-                    <span class="times" style="color: var(--success)">03:42 07:42 11:42 15:42 19:42 23:42</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">ISSUES_SCORE:</span>
-                    <span class="times">03:31 07:31 11:31 15:31 19:31 23:31</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">PARTY_SCORES_V2:</span>
-                    <span class="times">03:31 07:31 11:31 15:31 19:31 23:31</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">HEADLINE_OF_HEADLINES:</span>
-                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">HEADLINES_ISSUES:</span>
-                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">REFLET:</span>
-                    <span class="times">03:46 07:46 11:46 15:46 19:46 23:46</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">VITRINE_GRAPH_DATA:</span>
-                    <span class="times">03:57 07:57 11:57 15:57 19:57 23:57</span>
-                  </div>
-                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
-                  <div
-                    style="
-                      font-size: 0.8em;
-                      font-weight: 700;
-                      color: var(--warning);
-                      margin-bottom: 0.4rem;
-                      letter-spacing: 0.05em;
-                    "
-                  >
-                    ── HEBDOMADAIRE (EST) ──
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">ISSUES_SCORE_WEEKLY:</span>
-                    <span class="times" style="color: var(--warning)">15:11</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">PARTY_SCORES_V2_WEEKLY:</span>
-                    <span class="times" style="color: var(--warning)">15:22</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">HEADLINES_ISSUES_WEEKLY:</span>
-                    <span class="times" style="color: var(--warning)">15:17</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">REFLET_WEEKLY:</span>
-                    <span class="times" style="color: var(--warning)">15:28</span>
-                  </div>
-                  <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border)" />
-                  <div
-                    style="
-                      font-size: 0.8em;
-                      font-weight: 700;
-                      color: var(--primary);
-                      margin-bottom: 0.4rem;
-                      letter-spacing: 0.05em;
-                    "
-                  >
-                    ── MENSUEL (EST) ──
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">ISSUES_SCORE_MONTHLY:</span>
-                    <span class="times" style="color: var(--primary)">15:14</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">PARTY_SCORES_V2_MONTHLY:</span>
-                    <span class="times" style="color: var(--primary)">15:24</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">HEADLINES_ISSUES_MONTHLY:</span>
-                    <span class="times" style="color: var(--primary)">15:18</span>
-                  </div>
-                  <div class="time-line">
-                    <span class="refiner-name">REFLET_MONTHLY:</span>
-                    <span class="times" style="color: var(--primary)">15:30</span>
-                  </div>
-                </div>
-
-                <div class="improvements">
-                  <div class="improvement-item"><strong>6 blocs complets</strong> par jour (toutes les 4h)</div>
-                  <div class="improvement-item">
-                    <strong>~54 min données (~57 min vitrine)</strong> sur le chemin principal
-                  </div>
-                  <div class="improvement-item">
-                    <strong>Chaînage explicite</strong> DATA_PREPARATION → OBJECT_EXTRACTION → SALIENT_INDEX →
-                    ISSUES_SCORE / PARTY_SCORES_V2 → enrichissements aval (selon les dépendances)
-                  </div>
-                  <div class="improvement-item">
-                    <strong>Cadence réaliste</strong> 6x/jour pour le cœur + daily ciblés + weekly/monthly
-                  </div>
-                  <div class="improvement-item" style="color: var(--success); font-weight: 600">
-                    <strong>API Future:</strong> Élimination de VITRINE_GRAPH_DATA, accès direct aux Parquet
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>📈 Visualisation d'un Bloc (exemple: Bloc MIDI 7h-11h)</h2>
-            <div class="visual-timeline">
-              <div style="margin-bottom: 2rem">
-                <!-- Timeline horizontal avec heures sur l'axe X -->
-                <div
-                  style="
-                    position: relative;
-                    height: 600px;
-                    padding: 20px;
-                    background: var(--surface);
-                    border-radius: 8px;
-                    border: 1px solid var(--border);
-                  "
-                >
-                  <!-- Axe X avec marqueurs d'heures (échelle: 11:00→12:10 = 70 min, 1 min = 1.4286%) -->
-                  <div
-                    style="
-                      position: absolute;
-                      bottom: 10px;
-                      left: 20px;
-                      right: 20px;
-                      height: 30px;
-                      border-top: 2px solid var(--text-light);
-                    "
-                  >
-                    <div
-                      style="
-                        position: absolute;
-                        left: 0%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 0%; top: 12px; font-size: 0.85em; opacity: 0.7">11:00</div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 14.29%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 14.29%; top: 12px; font-size: 0.85em; opacity: 0.7">
-                      11:10
-                    </div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 28.57%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 28.57%; top: 12px; font-size: 0.85em; opacity: 0.7">
-                      11:20
-                    </div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 42.86%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 42.86%; top: 12px; font-size: 0.85em; opacity: 0.7">
-                      11:30
-                    </div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 57.14%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 57.14%; top: 12px; font-size: 0.85em; opacity: 0.7">
-                      11:40
-                    </div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 71.43%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 71.43%; top: 12px; font-size: 0.85em; opacity: 0.7">
-                      11:50
-                    </div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 85.71%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 85.71%; top: 12px; font-size: 0.85em; opacity: 0.7">
-                      12:00
-                    </div>
-
-                    <div
-                      style="
-                        position: absolute;
-                        left: 100%;
-                        top: -5px;
-                        width: 2px;
-                        height: 10px;
-                        background: var(--text-light);
-                      "
-                    ></div>
-                    <div style="position: absolute; left: 100%; top: 12px; font-size: 0.85em; opacity: 0.7">12:10</div>
-                  </div>
-
-                  <!-- Barres des raffineurs -->
-                  <!-- Échelle: 11:00→12:10 = 70 min, 1 min = 1.4286% -->
-                  <!-- Positions clés: 11:03=4.29% 11:05=7.14% 11:21=30% 11:24=34.29% 11:31=44.29% 11:42=60% 11:46=65.71% 11:51=72.86% 11:54=77.14% 11:57=81.43% -->
-                  <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 540px">
-                    <!-- GLUE JOB GÉNÉRALE: 11:03-11:05 (4.29%-7.14%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 0px;
-                        left: 4.29%;
-                        width: 2.86%;
-                        height: 30px;
-                        background: #667eea;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.75em;
-                        color: white;
-                        font-weight: 600;
-                      "
-                    >
-                      GJ 2m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 0px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        font-weight: 600;
-                        text-align: right;
-                      "
-                    >
-                      GLUE JOB GÉNÉRALE
-                    </div>
-
-                    <!-- DATA_PREPARATION: 11:06-11:21 (8.57%-30%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 40px;
-                        left: 8.57%;
-                        width: 21.43%;
-                        height: 30px;
-                        background: #10b981;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.75em;
-                        color: white;
-                        font-weight: 600;
-                      "
-                    >
-                      DATA_PREPARATION (15min)
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 40px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      DATA_PREPARATION
-                    </div>
-                    <!-- OBJECT_EXTRACTION: 11:24-11:39 (34.29%-55.71%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 75px;
-                        left: 34.29%;
-                        width: 21.43%;
-                        height: 30px;
-                        background: #f59e0b;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.75em;
-                        color: white;
-                        font-weight: 600;
-                      "
-                    >
-                      OBJECT_EXTRACTION (15min)
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 75px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      OBJECT_EXTRACTION
-                    </div>
-
-                    <!-- Glue Job DATA_PREP: 11:21-11:24 (30%-34.29%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 75px;
-                        left: 30%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- ⚡ Démarrages dépendant de DATA_PREPARATION à 11:31 (44.29%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 100px;
-                        left: 44.29%;
-                        width: 1px;
-                        height: 170px;
-                        background: #8b5cf6;
-                        opacity: 0.25;
-                      "
-                    ></div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 112px;
-                        left: 45.1%;
-                        font-size: 0.72em;
-                        color: #8b5cf6;
-                        font-weight: 600;
-                      "
-                    >
-                      ⚡ Départs (11:31)
-                    </div>
-
-                    <!-- SALIENT_INDEX: 11:42-11:43 (60%-61.43%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 110px;
-                        left: 60%;
-                        width: 1.43%;
-                        height: 25px;
-                        background: #8b5cf6;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      1m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 110px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      SALIENT_INDEX
-                    </div>
-
-                    <!-- GJ SALIENT_INDEX: 11:43-11:46 (61.43%-65.71%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 140px;
-                        left: 61.43%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- ISSUES_SCORE: 11:31-11:32 (44.29%-45.71%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 165px;
-                        left: 44.29%;
-                        width: 1.43%;
-                        height: 25px;
-                        background: #3b82f6;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      1m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 165px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      ISSUES_SCORE
-                    </div>
-
-                    <!-- GJ ISSUES_SCORE: 11:32-11:35 (45.71%-50%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 195px;
-                        left: 45.71%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- PARTY_SCORES_V2: 11:31-11:32 (44.29%-45.71%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 220px;
-                        left: 44.29%;
-                        width: 1.43%;
-                        height: 25px;
-                        background: #14b8a6;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      1m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 220px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      PARTY_SCORES_V2
-                    </div>
-
-                    <!-- GJ PARTY_SCORES_V2: 11:32-11:35 (45.71%-50%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 250px;
-                        left: 45.71%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- ⚡ Phase 2 parallèle à 11:46 (65.71%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 275px;
-                        left: 65.71%;
-                        width: 1px;
-                        height: 175px;
-                        background: #f59e0b;
-                        opacity: 0.25;
-                      "
-                    ></div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 270px;
-                        left: 66.3%;
-                        font-size: 0.72em;
-                        color: var(--warning);
-                        font-weight: 600;
-                      "
-                    >
-                      ⚡ Phase 2 11:46
-                    </div>
-
-                    <!-- HEADLINE_OF_HEADLINES: 11:46-11:51 (65.71%-72.86%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 285px;
-                        left: 65.71%;
-                        width: 7.14%;
-                        height: 25px;
-                        background: #ec4899;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.7em;
-                        color: white;
-                        font-weight: 600;
-                      "
-                    >
-                      HOH 5m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 285px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      HEADLINE_OF_HEADLINES
-                    </div>
-
-                    <!-- GJ HOH: 11:51-11:54 (72.86%-77.14%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 315px;
-                        left: 72.86%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- HEADLINES_ISSUES: 11:46-11:51 (65.71%-72.86%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 340px;
-                        left: 65.71%;
-                        width: 7.14%;
-                        height: 25px;
-                        background: #06b6d4;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.7em;
-                        color: white;
-                        font-weight: 600;
-                      "
-                    >
-                      H_ISS 5m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 340px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      HEADLINES_ISSUES
-                    </div>
-
-                    <!-- GJ HEADLINES_ISSUES: 11:51-11:54 (72.86%-77.14%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 370px;
-                        left: 72.86%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- REFLET: 11:46-11:51 (65.71%-72.86%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 395px;
-                        left: 65.71%;
-                        width: 7.14%;
-                        height: 25px;
-                        background: #a855f7;
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.7em;
-                        color: white;
-                        font-weight: 600;
-                      "
-                    >
-                      REFLET 5m
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 395px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                      "
-                    >
-                      REFLET
-                    </div>
-
-                    <!-- GJ REFLET: 11:51-11:54 (72.86%-77.14%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 425px;
-                        left: 72.86%;
-                        width: 4.29%;
-                        height: 20px;
-                        background: #94a3b8;
-                        border-radius: 4px;
-                        opacity: 0.7;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.65em;
-                        color: white;
-                      "
-                    >
-                      +GJ 3m
-                    </div>
-
-                    <!-- Données prêtes à 11:57 (81.43%) -->
-                    <div
-                      style="
-                        position: absolute;
-                        top: 450px;
-                        left: 81.43%;
-                        width: 2px;
-                        height: 65px;
-                        background: var(--success);
-                        opacity: 0.6;
-                      "
-                    ></div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 450px;
-                        left: 77.14%;
-                        width: 4.29%;
-                        height: 30px;
-                        background: linear-gradient(135deg, #10b981, #059669);
-                        border-radius: 4px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 0.75em;
-                        color: white;
-                        font-weight: 600;
-                        border: 2px solid #10b981;
-                      "
-                    >
-                      PRÊT
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 450px;
-                        left: -180px;
-                        width: 175px;
-                        font-size: 0.8em;
-                        text-align: right;
-                        color: var(--success);
-                        font-weight: 700;
-                      "
-                    >
-                      ✅ DONNÉES
-                    </div>
-                    <div
-                      style="
-                        position: absolute;
-                        top: 485px;
-                        left: calc(81.43% + 5px);
-                        font-size: 0.9em;
-                        color: var(--success);
-                        font-weight: 700;
-                      "
-                    >
-                      ✅ 11:57
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>📅 Pipelines Hebdomadaires &amp; Mensuels</h2>
-            <p style="margin-bottom: 1.5rem; opacity: 0.9">
-              Versions weekly/monthly des analyses, exécutées une fois par jour
-            </p>
-
-            <h3 style="margin-bottom: 1rem">📆 Hebdomadaires (EST)</h3>
-            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem">
-              <li><strong>ISSUES_SCORE_WEEKLY</strong> — 15:11</li>
-              <li><strong>HEADLINES_ISSUES_WEEKLY</strong> — 15:17</li>
-              <li><strong>PARTY_SCORES_V2_WEEKLY</strong> — 15:22</li>
-              <li><strong>REFLET_WEEKLY</strong> — 15:28</li>
-            </ul>
-
-            <h3 style="margin-bottom: 1rem">📆 Mensuels (EST)</h3>
-            <ul style="margin: 0.5rem 0 1.5rem 0; padding-left: 2rem">
-              <li><strong>ISSUES_SCORE_MONTHLY</strong> — 15:14</li>
-              <li><strong>HEADLINES_ISSUES_MONTHLY</strong> — 15:18</li>
-              <li><strong>PARTY_SCORES_V2_MONTHLY</strong> — 15:24</li>
-              <li><strong>REFLET_MONTHLY</strong> — 15:30</li>
-            </ul>
-
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem">🎯 Pipelines Spéciaux</h3>
-            <ul style="margin: 0.5rem 0; padding-left: 2rem">
-              <li><strong>HOT_20:</strong> Vendredis à 11h30 EST</li>
-              <li><strong>SONAR:</strong> Quotidien à 07h00 EST</li>
-              <li><strong>SONAR_HEATMAPS:</strong> Mercredis à 07h30 EST</li>
-            </ul>
           </div>
 
           <div class="section">
@@ -2484,7 +3342,7 @@
 
             <div class="timeline">
               <div class="timeline-item">
-                <h4>✅ Validation de l'horaire (EN COURS)</h4>
+                <h4>✅ Validation de l'horaire (COMPLÉTÉ)</h4>
                 <p>Approbation de l'équipe et confirmation des durées réelles en production</p>
               </div>
 
@@ -2498,8 +3356,8 @@
               </div>
 
               <div class="timeline-item">
-                <h4>📊 Mise à jour de tous les raffineurs</h4>
-                <p>Application du nouvel horaire - Ajout du 6ème bloc (minuit) - Mise à jour des payloads</p>
+                <h4>� Mise à jour de tous les raffineurs (EN COURS)</h4>
+                <p>Migration UTC → heure locale Montréal - Application du nouvel horaire - Ajout du 6ème bloc (minuit) - Mise à jour des payloads</p>
               </div>
 
               <div class="timeline-item">
@@ -2518,12 +3376,15 @@
           </div>
 
           <footer>
-            <p><strong>Version:</strong> Bêta 2.0 | <strong>Dernière mise à jour:</strong> 21 février 2026</p>
+            <p><strong>Version:</strong> Bêta 2.0 | <strong>Dernière mise à jour:</strong> 15 mars 2026</p>
           </footer>
         </div>
 
         <!-- Étoiles décoratives -->
         <div class="stars" id="stars"></div>
+
+        <!-- Tooltip barre timeline -->
+        <div id="bar-tooltip"></div>
 
         <!-- Indicateur de temps -->
         <div class="time-indicator" id="timeIndicator">
@@ -2699,6 +3560,353 @@
               observer.observe(section)
             })
           })
+
+          function toMinutes(hhmm) {
+            const [h, m] = hhmm.split(':').map(Number)
+            return h * 60 + m
+          }
+
+          function pad2(n) {
+            return String(n).padStart(2, '0')
+          }
+
+          function minutesToHHMM(mins) {
+            const m = ((mins % 1440) + 1440) % 1440
+            const h = Math.floor(m / 60)
+            const mm = m % 60
+            return `${pad2(h)}:${pad2(mm)}`
+          }
+
+          const BASE_REFERENCE_MIN = toMinutes('11:00')
+          const tooltip = document.getElementById('bar-tooltip')
+          const blockStartSelect = null
+          const timelineViewSelect = document.getElementById('timeline-view-select')
+          const singleBlockView = document.getElementById('single-block-view')
+          const fullDayView = document.getElementById('full-day-view')
+          const fullDayTrack = document.getElementById('full-day-track')
+          const fullDaySummary = document.getElementById('full-day-summary')
+          const timelineHint = document.getElementById('timeline-hint')
+          const axisLabels = Array.from(document.querySelectorAll('.block-axis-label'))
+          const readyLabel = document.getElementById('block-ready-label')
+          const oncePerDayOverlay = document.getElementById('once-per-day-overlay')
+          const onceDailyTimeLabels = Array.from(document.querySelectorAll('.once-daily-time'))
+          const macroTimeInput = document.getElementById('macro-time-input')
+          const macroNowHighlight = document.getElementById('macro-now-highlight')
+
+          const VITRINE_BLOCKS = [
+            { readyHour: 0, name: 'MINUIT', short: 'MN' },
+            { readyHour: 4, name: 'NUIT', short: 'NT' },
+            { readyHour: 8, name: 'MATIN', short: 'AM' },
+            { readyHour: 12, name: 'MIDI', short: 'MD' },
+            { readyHour: 16, name: 'APRÈS-MIDI', short: 'PM' },
+            { readyHour: 20, name: 'SOIRÉE', short: 'SO' },
+          ]
+
+          let currentBlockStartMin = 7 * 60
+
+          function getSelectedBlockMin() {
+            const val = timelineViewSelect.value
+            const hour = val.startsWith('block-') ? Number(val.replace('block-', '')) : 8
+            return hour * 60
+          }
+
+          function getCurrentBlockStartMin() {
+            return (getSelectedBlockMin() + 23 * 60) % 1440
+          }
+
+          function getReferenceMinutes() {
+            if (macroTimeInput && macroTimeInput.value) {
+              return toMinutes(macroTimeInput.value)
+            }
+
+            const now = new Date()
+            return now.getHours() * 60 + now.getMinutes()
+          }
+
+          function getVitrineState(referenceMin) {
+            const nowHour = Math.floor(referenceMin / 60)
+            const readyHours = VITRINE_BLOCKS.map((b) => b.readyHour)
+            const currentReady = readyHours.slice().reverse().find((h) => h <= nowHour) ?? 20
+            const nextReady = readyHours.find((h) => h > currentReady) ?? 24
+
+            const currentBlock = VITRINE_BLOCKS.find((b) => b.readyHour === currentReady) || VITRINE_BLOCKS[0]
+            const nextBlock = VITRINE_BLOCKS.find((b) => b.readyHour === (nextReady % 24)) || VITRINE_BLOCKS[0]
+
+            const onlineDataStart = (currentReady + 19) % 24
+            const onlineDataEnd = (currentReady + 23) % 24
+
+            const nextProcessStart = ((nextReady + 23) % 24) * 60
+            const nextProcessEnd = (nextReady % 24) * 60
+
+            const processingNow =
+              nextProcessStart < nextProcessEnd
+                ? referenceMin >= nextProcessStart && referenceMin < nextProcessEnd
+                : referenceMin >= nextProcessStart || referenceMin < nextProcessEnd
+
+            return {
+              currentReady,
+              nextReady,
+              currentBlock,
+              nextBlock,
+              onlineDataStart,
+              onlineDataEnd,
+              processingNow,
+            }
+          }
+
+          function updateBlockTimelineLabels() {
+            currentBlockStartMin = getCurrentBlockStartMin()
+            const selectedBlockMin = getSelectedBlockMin()
+
+            axisLabels.forEach((labelEl) => {
+              const offset = Number(labelEl.dataset.offsetMin || '0')
+              labelEl.textContent = minutesToHHMM(currentBlockStartMin + offset)
+            })
+
+            if (readyLabel) {
+              const readyOffset = Number(readyLabel.dataset.offsetMin || '57')
+              readyLabel.textContent = `✅ ${minutesToHHMM(currentBlockStartMin + readyOffset)} données prêtes`
+            }
+
+            if (oncePerDayOverlay) {
+              oncePerDayOverlay.style.display = selectedBlockMin === 16 * 60 ? 'block' : 'none'
+            }
+
+            onceDailyTimeLabels.forEach((labelEl) => {
+              const offset = Number(labelEl.dataset.offsetMin || '0')
+              labelEl.textContent = minutesToHHMM(currentBlockStartMin + offset)
+            })
+
+            timelineHint.textContent =
+              'Bloc ' +
+              minutesToHHMM(selectedBlockMin) +
+              ' sélectionné. Pipeline ' +
+              minutesToHHMM(currentBlockStartMin) +
+              '->' +
+              minutesToHHMM(currentBlockStartMin + 70) +
+              '. Survoler une barre pour voir les horaires exacts.'
+          }
+
+          function renderFullDayView() {
+            const referenceMin = getReferenceMinutes()
+            const state = getVitrineState(referenceMin)
+
+            fullDayTrack.innerHTML = ''
+
+            const laneLeft = 14
+            const laneWidth = 82
+            const onlineY = 120
+            const processingY = 225
+            const dataY = 330
+
+            function minuteToPct(minute) {
+              return laneLeft + (minute / 1440) * laneWidth
+            }
+
+            function hourToPct(hour) {
+              return laneLeft + (hour / 24) * laneWidth
+            }
+
+            function addSegment({ top, startHour, endHour, text, type, active, upcoming = false }) {
+              const segments = []
+              if (startHour <= endHour) {
+                segments.push([startHour, endHour])
+              } else {
+                segments.push([startHour, 24], [0, endHour])
+              }
+
+              const lengths = segments.map(([from, to]) => to - from)
+              const maxLength = Math.max(...lengths)
+              const labelIndex = lengths.findIndex((l) => l === maxLength)
+
+              segments.forEach(([from, to], idx) => {
+                if (to <= from) {
+                  return
+                }
+
+                const seg = document.createElement('div')
+                seg.className = `macro-segment ${type}${active ? ' active' : ''}${upcoming ? ' upcoming' : ''}`
+                seg.style.top = `${top}px`
+                seg.style.left = `${hourToPct(from)}%`
+                seg.style.width = `${Math.max((to - from) / 24 * laneWidth, 0.8)}%`
+                seg.textContent = idx === labelIndex ? text : ''
+                fullDayTrack.appendChild(seg)
+              })
+            }
+
+            for (let h = 0; h <= 24; h += 2) {
+              const x = hourToPct(h)
+              const line = document.createElement('div')
+              line.className = 'full-day-axis-line'
+              line.style.left = `${x}%`
+              line.style.height = '260px'
+              fullDayTrack.appendChild(line)
+
+              const label = document.createElement('div')
+              label.className = 'full-day-axis-label'
+              label.style.left = `${x}%`
+              label.textContent = h === 24 ? '24:00' : `${pad2(h)}:00`
+              fullDayTrack.appendChild(label)
+            }
+
+            const onlineLaneBg = document.createElement('div')
+            onlineLaneBg.className = 'macro-lane-bg'
+            onlineLaneBg.style.top = `${onlineY}px`
+            fullDayTrack.appendChild(onlineLaneBg)
+
+            const processingLaneBg = document.createElement('div')
+            processingLaneBg.className = 'macro-lane-bg'
+            processingLaneBg.style.top = `${processingY}px`
+            fullDayTrack.appendChild(processingLaneBg)
+
+            const onlineTitle = document.createElement('div')
+            onlineTitle.className = 'macro-lane-title'
+            onlineTitle.style.top = `${onlineY - 26}px`
+            onlineTitle.textContent = 'En ligne (ce que voit l utilisateur)'
+            fullDayTrack.appendChild(onlineTitle)
+
+            const processingTitle = document.createElement('div')
+            processingTitle.className = 'macro-lane-title'
+            processingTitle.style.top = `${processingY - 26}px`
+            processingTitle.textContent = 'Traitement en cours (pipeline 1h avant diffusion)'
+            fullDayTrack.appendChild(processingTitle)
+
+            const dataLaneBg = document.createElement('div')
+            dataLaneBg.className = 'macro-lane-bg'
+            dataLaneBg.style.top = `${dataY}px`
+            fullDayTrack.appendChild(dataLaneBg)
+
+            const dataTitle = document.createElement('div')
+            dataTitle.className = 'macro-lane-title'
+            dataTitle.style.top = `${dataY - 26}px`
+            dataTitle.textContent = 'Données collectées (fenêtre 4h)'
+            fullDayTrack.appendChild(dataTitle)
+
+            VITRINE_BLOCKS.forEach((block, index) => {
+              const nextReady = VITRINE_BLOCKS[(index + 1) % VITRINE_BLOCKS.length].readyHour
+              addSegment({
+                top: onlineY,
+                startHour: block.readyHour,
+                endHour: nextReady,
+                text: block.name,
+                type: 'online',
+                active: state.currentBlock.readyHour === block.readyHour,
+              })
+
+              const dataStart = (block.readyHour - 5 + 24) % 24
+              const dataEnd = (block.readyHour - 1 + 24) % 24
+              const dataLabel = `${pad2(dataStart)}h-${pad2(dataEnd)}h`
+              addSegment({
+                top: processingY,
+                startHour: (block.readyHour + 23) % 24,
+                endHour: block.readyHour,
+                text: block.name === 'APRÈS-MIDI' ? 'PM' : block.name,
+                type: 'processing',
+                active: state.processingNow && state.nextBlock.readyHour === block.readyHour,
+                upcoming: !state.processingNow && state.nextBlock.readyHour === block.readyHour,
+              })
+
+              addSegment({
+                top: dataY,
+                startHour: dataStart,
+                endHour: dataEnd,
+                text: dataLabel,
+                type: 'data',
+                active: state.processingNow && state.nextBlock.readyHour === block.readyHour,
+                upcoming: !state.processingNow && state.nextBlock.readyHour === block.readyHour,
+              })
+            })
+
+            const nowPct = Math.min(Math.max(minuteToPct(referenceMin), laneLeft + 0.5), laneLeft + laneWidth - 0.5)
+
+            const nowLine = document.createElement('div')
+            nowLine.className = 'macro-now-line'
+            nowLine.style.left = `${nowPct}%`
+            fullDayTrack.appendChild(nowLine)
+
+            const nowTag = document.createElement('div')
+            nowTag.className = 'macro-now-tag'
+            nowTag.style.left = `${nowPct}%`
+            nowTag.textContent = `Il est ${minutesToHHMM(referenceMin)}`
+            fullDayTrack.appendChild(nowTag)
+
+            const caption = document.createElement('div')
+            caption.className = 'macro-caption'
+            caption.textContent = 'Chaque bloc est diffuse 4h. Le traitement du bloc suivant commence 1h avant sa mise en ligne.'
+            fullDayTrack.appendChild(caption)
+
+            if (macroNowHighlight) {
+              macroNowHighlight.textContent = `Reference: ${minutesToHHMM(referenceMin)} (Montreal)`
+            }
+
+            fullDaySummary.innerHTML = `<strong>Etat actuel:</strong> bloc en ligne <strong>${state.currentBlock.name}</strong> (depuis ${pad2(
+              state.currentReady
+            )}:00). ${
+              state.processingNow
+                ? `Le traitement du bloc ${state.nextBlock.name} est en cours.`
+                : `Prochain traitement: ${state.nextBlock.name} a ${pad2((state.nextReady + 23) % 24)}:00.`
+            }`;
+          }
+
+          function applyTimelineView() {
+            if (timelineViewSelect.value === 'full') {
+              singleBlockView.style.display = 'none'
+              fullDayView.style.display = 'block'
+              if (macroTimeInput && !macroTimeInput.value) {
+                macroTimeInput.value = minutesToHHMM(getReferenceMinutes())
+              }
+              renderFullDayView()
+            } else {
+              singleBlockView.style.display = 'block'
+              fullDayView.style.display = 'none'
+              updateBlockTimelineLabels()
+            }
+          }
+
+          timelineViewSelect.addEventListener('change', applyTimelineView)
+
+          if (macroTimeInput) {
+            macroTimeInput.addEventListener('input', () => {
+              if (timelineViewSelect.value === 'full') {
+                renderFullDayView()
+              }
+            })
+          }
+
+          document.querySelectorAll('.has-tooltip').forEach((el) => {
+            el.addEventListener('mouseenter', () => {
+              const d = el.dataset
+              const startOffset = toMinutes(d.start) - BASE_REFERENCE_MIN
+              const endOffset = toMinutes(d.end) - BASE_REFERENCE_MIN
+              const dynamicStart = minutesToHHMM(currentBlockStartMin + startOffset)
+              const dynamicEnd = minutesToHHMM(currentBlockStartMin + endOffset)
+
+              tooltip.innerHTML = `
+                <div class="tt-name">${d.name}</div>
+                <div class="tt-row"><span class="tt-label">Debut</span><span>${dynamicStart}</span></div>
+                <div class="tt-row"><span class="tt-label">Fin</span><span>${dynamicEnd}</span></div>
+                <div class="tt-row"><span class="tt-label">Duree</span><span>${d.duration}</span></div>
+                ${d.notes ? `<div class="tt-note">${d.notes}</div>` : ''}
+              `
+              tooltip.style.display = 'block'
+            })
+
+            el.addEventListener('mousemove', (e) => {
+              const x = e.clientX + 14
+              const y = e.clientY - 10
+              const tw = tooltip.offsetWidth
+              const th = tooltip.offsetHeight
+              tooltip.style.left = (x + tw > window.innerWidth ? e.clientX - tw - 14 : x) + 'px'
+              tooltip.style.top = (y + th > window.innerHeight ? e.clientY - th - 10 : y) + 'px'
+            })
+
+            el.addEventListener('mouseleave', () => {
+              tooltip.style.display = 'none'
+            })
+          })
+
+          updateBlockTimelineLabels()
+          applyTimelineView()
         </script>
       </div>
     </div>
