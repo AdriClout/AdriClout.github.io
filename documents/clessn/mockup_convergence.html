@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitrine Démocratique — Mockup Convergence</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #fff; color: #111; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 32px; border-bottom: 1px solid #e0e0e0;
+    font-family: 'Arial', sans-serif; font-size: 13px;
+  }
+  .nav-left { display: flex; align-items: center; gap: 16px; }
+  .logo { font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .beta-tag {
+    background: #e74c3c; color: #fff; font-size: 9px; font-weight: 700;
+    padding: 2px 5px; border-radius: 3px; letter-spacing: 0.05em;
+  }
+  .nav-right { display: flex; align-items: center; gap: 16px; color: #999; font-size: 12px; }
+  .capp { font-size: 11px; color: #666; }
+  /* Boutons info dans la nav */
+  .nav-info-btn {
+    position: relative; display: flex; align-items: center; gap: 5px;
+    font-size: 11px; color: #888; cursor: default;
+    padding: 3px 0; border-bottom: 1px dashed transparent;
+  }
+  .nav-info-btn:hover { color: #111; border-bottom-color: #999; }
+  .nav-info-icon {
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 1px solid #ccc; color: #999;
+    font-size: 9px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .nav-info-btn:hover .nav-info-icon { border-color: #111; color: #111; }
+  .nav-info-tooltip {
+    display: none; position: absolute; top: calc(100% + 10px); right: 0;
+    width: 280px; background: #111; color: #ddd;
+    font-size: 11px; line-height: 1.65; padding: 13px 15px;
+    border-radius: 4px; z-index: 200;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    font-family: 'Arial', sans-serif;
+  }
+  .nav-info-tooltip::before {
+    content: ''; position: absolute; top: -5px; right: 14px;
+    width: 10px; height: 10px; background: #111;
+    transform: rotate(45deg);
+  }
+  .nav-info-btn:hover .nav-info-tooltip { display: block; }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 32px; border-bottom: 1px solid #eee;
+    font-family: 'Arial', sans-serif; font-size: 12px; color: #666;
+  }
+  .btn-toolbar {
+    padding: 4px 12px; border: 1px solid #ddd; border-radius: 4px;
+    background: #fff; font-size: 11px; cursor: pointer; color: #444;
+  }
+
+  /* ── ONGLETS INFO ── */
+  .info-tabs {
+    display: flex; gap: 0; border-bottom: 1px solid #eee;
+    padding: 0 32px; background: #fafafa;
+    font-family: 'Arial', sans-serif;
+  }
+  .info-tab {
+    position: relative; padding: 10px 20px 10px 0; margin-right: 24px;
+    font-size: 12px; color: #555; cursor: default;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .info-tab:hover { color: #111; }
+  .info-tab-icon {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #e8e8e8; color: #666;
+    font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-tab:hover .info-tab-icon { background: #111; color: #fff; }
+  .info-tab-label { font-weight: 500; }
+  /* Tooltip */
+  .info-tooltip {
+    display: none;
+    position: absolute; top: calc(100% + 10px); left: 0;
+    width: 300px; background: #111; color: #eee;
+    font-size: 11.5px; line-height: 1.6; padding: 14px 16px;
+    border-radius: 4px; z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .info-tooltip::before {
+    content: ''; position: absolute; top: -6px; left: 18px;
+    width: 12px; height: 12px; background: #111;
+    transform: rotate(45deg); border-radius: 2px;
+  }
+  .info-tab:hover .info-tooltip { display: block; }
+
+  /* ── BARRE TEMPORELLE ── */
+  .timebar {
+    display: flex; align-items: center; gap: 0;
+    padding: 0 32px; border-bottom: 2px solid #111;
+    font-family: 'Arial', sans-serif; background: #fff;
+  }
+  .time-nav {
+    display: flex; align-items: center; gap: 0;
+    border-right: 1px solid #e8e8e8; padding-right: 16px; margin-right: 4px;
+  }
+  .time-nav-btn {
+    width: 30px; height: 40px; border: none; background: none;
+    cursor: pointer; color: #999; font-size: 14px; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .time-nav-btn:hover { color: #111; }
+  .time-nav-date {
+    font-size: 11px; font-weight: 700; color: #333; white-space: nowrap;
+    padding: 0 8px;
+  }
+  .time-period-tabs { display: flex; gap: 0; }
+  .time-tab {
+    padding: 0 18px; height: 40px; border: none; border-bottom: 3px solid transparent;
+    background: none; font-family: 'Arial', sans-serif; font-size: 12px;
+    color: #999; cursor: pointer; font-weight: 500; margin-bottom: -2px;
+    white-space: nowrap;
+  }
+  .time-tab:hover { color: #333; }
+  .time-tab.active { color: #111; font-weight: 700; border-bottom-color: #111; }
+  /* Prochain bloc */
+  .next-block {
+    margin-left: auto; display: flex; align-items: center; gap: 7px;
+    font-family: 'Arial', sans-serif; font-size: 11px; color: #aaa;
+    padding: 0 4px;
+  }
+  .next-block-label { color: #bbb; }
+  .next-block-name { font-weight: 600; color: #888; }
+  .next-block-time { color: #bbb; }
+  /* Point "live" pulsé */
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #27ae60;
+    flex-shrink: 0; animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid; grid-template-columns: 1fr 420px;
+    min-height: 420px;
+    background: linear-gradient(to bottom, #05080f 0%, #0b1220 40%, #0f1a2e 70%, #111e38 100%);
+    position: relative;
+    transition: background 0.8s ease;
+  }
+  /* Ciel Matin — lever de soleil atmosphérique */
+  .hero.sky-matin {
+    background: linear-gradient(to bottom,
+      #0d1b2a 0%,
+      #1c2a3e 20%,
+      #3b2a4a 38%,
+      #7a3a4a 52%,
+      #b85c3a 65%,
+      #d4845a 78%,
+      #e8b07a 100%
+    );
+  }
+  .hero-left {
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  /* Étoiles — 3 couches de tailles différentes */
+  .hero-left::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 7%,  rgba(255,255,255,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 41% 23%, rgba(255,255,255,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 58% 11%, rgba(255,255,255,0.6)  0%, transparent 100%),
+      radial-gradient(1px 1px at 73% 19%, rgba(255,255,255,0.8)  0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 8%,  rgba(255,255,255,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 6%  34%, rgba(255,255,255,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 19% 42%, rgba(255,255,255,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 38%, rgba(255,255,255,0.8)  0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 29%, rgba(255,255,255,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 44%, rgba(255,255,255,0.6)  0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 36%, rgba(255,255,255,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 27%, rgba(255,255,255,0.55) 0%, transparent 100%),
+      radial-gradient(2px 2px at 22% 14%, rgba(255,255,255,0.9)  0%, transparent 100%),
+      radial-gradient(2px 2px at 47% 6%,  rgba(255,255,255,0.8)  0%, transparent 100%),
+      radial-gradient(2px 2px at 70% 31%, rgba(255,255,255,0.85) 0%, transparent 100%),
+      radial-gradient(2px 2px at 85% 16%, rgba(255,255,255,0.7)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38% 48%, rgba(200,220,255,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 62% 22%, rgba(200,220,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 8%  52%, rgba(255,255,255,0.4)  0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 55%, rgba(255,255,255,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 50%, rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 46%, rgba(255,255,255,0.6)  0%, transparent 100%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  /* Étoiles cachées pour les ciels diurnes */
+  .hero.sky-matin .hero-left::before { opacity: 0; }
+  /* Lueur douce vers le bas (horizon) */
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      transparent 50%,
+      rgba(10,20,50,0.4) 80%,
+      rgba(8,15,35,0.75) 100%
+    );
+  }
+
+  /* Bandeau salutation + filtre */
+  .hero-top {
+    position: relative; z-index: 3;
+    padding: 22px 40px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-block-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 3px 10px; border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .hero-greeting {
+    font-family: 'Georgia', serif; font-size: 22px; font-weight: 700;
+    color: #fff; margin-bottom: 4px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+  .hero-subtitle {
+    font-family: 'Arial', sans-serif; font-size: 12px;
+    color: rgba(255,255,255,0.55); margin-bottom: 16px;
+  }
+  .hero-filter-row {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .hero-filter {
+    display: flex; gap: 0; align-items: center;
+  }
+  .filter-btn {
+    padding: 7px 20px; border: 1px solid rgba(255,255,255,0.35);
+    background: transparent; color: rgba(255,255,255,0.55);
+    font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .filter-btn:first-child { border-radius: 4px 0 0 4px; }
+  .filter-btn:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+  .filter-btn.active {
+    background: rgba(255,255,255,0.18); color: #fff;
+    border-color: rgba(255,255,255,0.6);
+  }
+  .filter-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8);
+  }
+
+  /* Indice convergence interne — sous le header du panneau droit */
+  .intra-conv {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+  .intra-conv-label {
+    font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+  }
+  .intra-dots {
+    display: flex; gap: 3px; align-items: center;
+  }
+  .intra-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+  .intra-dot.filled { background: #f0c040; }
+  .intra-pct {
+    font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 800;
+    color: #f0c040; letter-spacing: -0.02em;
+  }
+  .intra-verdict {
+    font-family: 'Arial', sans-serif; font-size: 9px;
+    color: rgba(255,255,255,0.35); white-space: nowrap;
+  }
+
+  /* Titre Une des Unes centré */
+  .hero-content {
+    position: relative; z-index: 3;
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 28px 48px; text-align: center; color: #fff;
+  }
+  .hero-section-title {
+    font-family: 'Georgia', serif; font-size: 13px; font-weight: 400;
+    font-style: italic; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.35); margin-bottom: 10px;
+  }
+  .hero-section-title strong {
+    font-weight: 700; font-style: normal;
+    color: rgba(255,255,255,0.55);
+  }
+  .hero-issue {
+    font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.5); margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: 30px; font-weight: 700; line-height: 1.25;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .hero-text {
+    font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78);
+    max-width: 580px; margin-bottom: 20px;
+  }
+  .hero-objects-link {
+    font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px; letter-spacing: 0.03em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .hero-objects-link:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.6); }
+
+  /* Right panel */
+  .hero-right {
+    background: rgba(0,0,0,0.28);
+    border-left: 1px solid rgba(255,255,255,0.12);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  /* Onglets du panneau droit */
+  .hero-right-tabs {
+    display: flex; flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-right-tab {
+    flex: 1; padding: 11px 12px 10px;
+    font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35); cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    text-align: center; background: none; border-top: none; border-left: none; border-right: none;
+    transition: color 0.15s;
+  }
+  .hero-right-tab:first-child { border-right: 1px solid rgba(255,255,255,0.1); }
+  .hero-right-tab.active {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.7);
+  }
+  .hero-right-tab:hover:not(.active) { color: rgba(255,255,255,0.6); }
+  /* Panels */
+  .hero-right-panel { display: none; flex-direction: column; flex: 1; overflow: hidden; }
+  .hero-right-panel.active { display: flex; }
+  .hero-right-panel .salient-list { overflow-y: auto; flex: 1; }
+  .hero-right-panel .salient-list::-webkit-scrollbar { width: 3px; }
+  .hero-right-panel .salient-list::-webkit-scrollbar-track { background: transparent; }
+  .hero-right-panel .salient-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+  /* Objets panel */
+  .object-row {
+    display: grid; grid-template-columns: 18px 1fr 80px 52px;
+    align-items: center; gap: 0 10px;
+    padding: 8px 16px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-family: 'Arial', sans-serif;
+  }
+  .object-row:last-child { border-bottom: none; }
+  .object-row-rank { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25); text-align: right; }
+  .object-row-name { font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 600; }
+  .object-row-bar-wrap { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .object-row-bar { height: 100%; border-radius: 2px; background: rgba(255,255,255,0.45); }
+  .object-row-score { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .hero-right .salient-list {
+    display: flex; flex-direction: column; flex: 1; overflow: hidden;
+  }
+  .hero-right .salient-item {
+    display: grid;
+    grid-template-columns: 18px 100px 1fr 56px;
+    align-items: start; gap: 0 10px;
+    padding: 9px 16px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-family: 'Arial', sans-serif;
+  }
+  .hero-right .salient-item:last-child { border-bottom: none; }
+  .hero-right .salient-rank {
+    font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25);
+    text-align: right; padding-top: 1px;
+  }
+  .hero-right .salient-media {
+    font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.5);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding-top: 1px;
+  }
+  .hero-right .salient-link {
+    font-size: 11px; color: rgba(255,255,255,0.88); text-decoration: none;
+    line-height: 1.35;
+  }
+  .hero-right .salient-link:hover { color: #fff; text-decoration: underline; }
+  .hero-right .salient-score {
+    font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3);
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+    text-align: right; padding-top: 1px;
+  }
+  .hero-right .voir-plus {
+    margin: 8px 16px 14px; background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 0; font-size: 10px; font-family: 'Arial', sans-serif;
+    color: rgba(255,255,255,0.4); cursor: pointer; border-radius: 3px; text-align: center;
+    flex-shrink: 0;
+  }
+  .hero-right .voir-plus:hover { border-color: rgba(255,255,255,0.45); color: rgba(255,255,255,0.7); }
+
+  /* ── CONVERGENCE COMPONENT (NEW) ── */
+  .convergence-section {
+    border-top: 3px solid #111;
+    border-bottom: 3px solid #111;
+    padding: 32px 48px;
+    background: #fafafa;
+    position: relative;
+  }
+  .new-badge {
+    position: absolute; top: -1px; left: 48px;
+    background: #e74c3c; color: #fff;
+    font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 800;
+    padding: 5px 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .convergence-header {
+    display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px;
+  }
+  .convergence-title {
+    font-family: 'Georgia', serif; font-size: 22px; font-weight: 700;
+    font-style: italic; color: #222; letter-spacing: -0.01em;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .convergence-title span {
+    font-family: 'Arial', sans-serif; font-style: normal; font-weight: 400;
+    color: #bbb; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .convergence-interval {
+    font-family: 'Arial', sans-serif; font-size: 11px; color: #aaa;
+  }
+  /* 4-column body: [score] | [narrative] | [divergents] | [convergents] */
+  .convergence-body {
+    display: grid;
+    grid-template-columns: 220px 340px 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .convergence-body > * {
+    padding: 0 28px 0 0;
+    border-right: 1px solid #e8e8e8;
+    margin-right: 0;
+  }
+  .convergence-body > *:not(:first-child) { padding-left: 28px; }
+  .convergence-body > *:last-child { border-right: none; padding-right: 0; }
+
+  /* Col 1 — gauge + score */
+  .score-section { display: flex; flex-direction: column; gap: 12px; }
+  .score-label-row {
+    display: flex; justify-content: space-between;
+    font-family: 'Arial', sans-serif; font-size: 9px; color: #bbb;
+    margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.07em;
+  }
+  .gauge-track { height: 5px; background: #e8e8e8; border-radius: 3px; overflow: hidden; }
+  .gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
+    border-radius: 3px; width: 15%;
+  }
+  .score-number {
+    font-family: 'Arial', sans-serif; font-size: 88px; font-weight: 800;
+    line-height: 1; color: #e74c3c; letter-spacing: -4px;
+  }
+  .score-number span { font-size: 32px; font-weight: 400; color: #ccc; letter-spacing: 0; }
+  .score-verdict {
+    font-family: 'Arial', sans-serif; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: #e74c3c;
+    margin-top: -4px;
+  }
+
+  /* Col 2 — narrative */
+  .narrative {
+    font-size: 12.5px; line-height: 1.75; color: #555;
+    font-style: italic;
+  }
+
+  /* Objects block */
+  .objects-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .objects-col-title {
+    font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em; color: #999;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .dot-div { background: #e74c3c; }
+  .dot-conv { background: #27ae60; }
+  .object-list { display: flex; flex-direction: column; gap: 7px; }
+  .object-item {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'Arial', sans-serif; font-size: 11.5px;
+  }
+  .object-name {
+    flex: 1;
+    color: #222; text-transform: capitalize;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .object-bar-wrap { width: 90px; min-width: 90px; height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
+  .object-bar { height: 100%; border-radius: 2px; }
+  .bar-div { background: #e74c3c; }
+  .bar-conv { background: #27ae60; }
+  .jurisdiction-tag {
+    font-size: 8px; padding: 1px 4px; border-radius: 2px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .tag-qc { background: #fff0f0; color: #c0392b; }
+  .tag-can { background: #f0f4ff; color: #2c5aa0; }
+  .tag-both { background: #f5f5f5; color: #999; }
+
+  /* ── REFLET ── */
+  .reflet-section { padding: 40px 48px 32px; }
+  .section-title {
+    font-family: 'Arial', sans-serif; font-size: 28px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 20px;
+  }
+  .filters-row {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+  }
+  .filter-dropdown {
+    border: 1px solid #ddd; border-radius: 4px; padding: 6px 12px;
+    font-size: 12px; font-family: 'Arial', sans-serif; color: #444;
+    display: flex; align-items: center; gap: 8px; min-width: 280px;
+  }
+  .period-tabs { display: flex; gap: 0; }
+  .tab {
+    padding: 5px 14px; border: 1px solid #ddd; font-size: 12px;
+    font-family: 'Arial', sans-serif; cursor: pointer; background: #fff; color: #666;
+  }
+  .tab:first-child { border-radius: 4px 0 0 4px; }
+  .tab:last-child { border-radius: 0 4px 4px 0; }
+  .tab.active { background: #111; color: #fff; border-color: #111; }
+  .cards-row { display: flex; gap: 12px; overflow: hidden; }
+  .card {
+    flex: 0 0 180px; border: 1px solid #eee; border-radius: 4px;
+    padding: 14px; font-family: 'Arial', sans-serif;
+  }
+  .card-tag {
+    font-size: 8px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #e74c3c; margin-bottom: 6px;
+  }
+  .card-meta { font-size: 9px; color: #aaa; margin-bottom: 8px; }
+  .card-letter {
+    font-size: 36px; font-weight: 900; color: #ccc; line-height: 1;
+    float: left; margin-right: 6px; margin-top: 2px;
+  }
+  .card-text { font-size: 11px; line-height: 1.5; color: #444; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="logo">Vitrine <span style="font-weight:300">Démocratique</span></div>
+    <div class="beta-tag">BÊTA</div>
+  </div>
+  <div class="nav-right">
+    <span class="capp">CAPP / Centre d'analyse des politiques publiques</span>
+    <div class="nav-info-btn">
+      <div class="nav-info-icon">?</div>
+      Vitrine démocratique
+      <div class="nav-info-tooltip">
+        La Vitrine démocratique est un outil de recherche du CAPP qui mesure et visualise la couverture médiatique canadienne en temps réel. Elle analyse ce dont parlent les médias du Québec et du Canada pour rendre l'information politique plus accessible à tous.
+      </div>
+    </div>
+    <div class="nav-info-btn">
+      <div class="nav-info-icon">?</div>
+      Saillance
+      <div class="nav-info-tooltip">
+        La saillance mesure l'importance accordée à un sujet dans les médias. Plus un article reste longtemps en première page et apparaît dans plusieurs médias, plus sa saillance est élevée. Ce n'est pas un jugement de valeur — c'est une mesure objective de visibilité médiatique.
+      </div>
+    </div>
+    <strong style="font-size:13px; color:#111;">Méthodologie</strong>
+  </div>
+</nav>
+
+<!-- BARRE TEMPORELLE -->
+<div class="timebar">
+  <div class="time-nav">
+    <button class="time-nav-btn" id="btn-prev" style="color:#ccc; cursor:default" onclick="switchBlock('prev')">←</button>
+    <span class="time-nav-date" id="timebar-date">🦉 Nuit · Lun 16 mars · 00h00–04h00</span>
+    <button class="time-nav-btn" id="btn-next" onclick="switchBlock('next')">→</button>
+  </div>
+  <div class="time-period-tabs">
+    <button class="time-tab active">4 dernières heures</button>
+    <button class="time-tab">Journée complète</button>
+    <button class="time-tab">Cette semaine</button>
+    <button class="time-tab">Ce mois-ci</button>
+    <button class="time-tab">Cette année</button>
+  </div>
+  <div class="next-block">
+    <div class="live-dot"></div>
+    <span class="next-block-label">Prochaine mise à jour</span>
+    <span class="next-block-name">🌅 Matin</span>
+    <span class="next-block-time">· 04h00</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+
+  <!-- Gauche: salutation + filtre + titre -->
+  <div class="hero-left">
+    <div class="hero-overlay"></div>
+
+    <!-- Bandeau haut: salutation + filtre QC/CAN -->
+    <div class="hero-top">
+      <div class="hero-block-badge">🦉 Nuit · 00h00–04h00</div>
+      <div class="hero-greeting">Vous êtes encore debout?</div>
+      <div class="hero-subtitle">Actualité saillante · lundi 16 mars 2026</div>
+      <div class="hero-filter-row">
+        <div class="hero-filter">
+          <button class="filter-btn active" onclick="switchCountry(this,'qc')">Québec</button>
+          <button class="filter-btn" onclick="switchCountry(this,'can')">Canada (hors Québec)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Une des Unes centrée -->
+    <div class="hero-content">
+      <div class="hero-section-title">La <strong>Une des Unes</strong></div>
+      <div class="hero-issue" id="hero-issue">Culture et nationalisme</div>
+      <div class="hero-title" id="hero-title">Le Québec triomphe aux Oscars avec « La jeune fille qui pleurait des perles »</div>
+      <div class="hero-text" id="hero-text">
+        Le Québec a brillé aux Oscars avec le court métrage d'animation « La jeune fille qui pleurait des perles », réalisé par Chris Lavis et Maciek Szczerbowski, qui a remporté l'Oscar du meilleur court métrage d'animation. Ce film, produit par l'ONF, met en scène des marionnettes dans le Montréal du début du XXe siècle.
+      </div>
+      <a class="hero-objects-link" href="#">Voir tous les articles saillants →</a>
+    </div>
+  </div>
+
+  <!-- Droite: onglets textes / objets -->
+  <div class="hero-right">
+
+    <!-- Onglets -->
+    <div class="hero-right-tabs">
+      <button class="hero-right-tab active" id="tab-textes" onclick="switchTab('textes')">Textes · Nuit</button>
+      <button class="hero-right-tab" id="tab-objets" onclick="switchTab('objets')">Objets · Nuit</button>
+    </div>
+
+    <!-- Badge convergence interne QC -->
+    <div class="intra-conv" id="intra-qc">
+      <span class="intra-conv-label">Conv. interne QC</span>
+      <div class="intra-dots">
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot"></div>
+      </div>
+      <span class="intra-pct">67%</span>
+      <span class="intra-verdict">— Bonne convergence</span>
+    </div>
+
+    <!-- Badge convergence interne CAN -->
+    <div class="intra-conv" id="intra-can" style="display:none">
+      <span class="intra-conv-label">Conv. interne CAN</span>
+      <div class="intra-dots">
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot filled"></div>
+        <div class="intra-dot"></div>
+        <div class="intra-dot"></div>
+      </div>
+      <span class="intra-pct">48%</span>
+      <span class="intra-verdict">— Convergence modérée</span>
+    </div>
+
+    <!-- Panel QC: Textes saillants -->
+    <div class="hero-right-panel active" id="panel-nuit-qc-textes">
+      <div class="salient-list">
+        <div class="salient-item">
+          <span class="salient-rank">1</span>
+          <span class="salient-media">La Presse</span>
+          <a class="salient-link" href="#">Le Québec triomphe aux Oscars avec « La jeune fille qui pleurait des perles »</a>
+          <span class="salient-score">1 421 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">2</span>
+          <span class="salient-media">Radio-Canada</span>
+          <a class="salient-link" href="#">Chris Lavis et Maciek Szczerbowski remportent l'Oscar du meilleur court métrage</a>
+          <span class="salient-score">1 380 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">3</span>
+          <span class="salient-media">Jnl de Montréal</span>
+          <a class="salient-link" href="#">Oscars 2026 : le Québec célèbre une victoire historique à Hollywood</a>
+          <span class="salient-score">1 023 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">4</span>
+          <span class="salient-media">Le Devoir</span>
+          <a class="salient-link" href="#">L'ONF rayonne à Hollywood : une victoire qui appartient à tout le Québec</a>
+          <span class="salient-score">887 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">5</span>
+          <span class="salient-media">TVA Nouvelles</span>
+          <a class="salient-link" href="#">François Legault félicite les cinéastes montréalais pour leur Oscar</a>
+          <span class="salient-score">742 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">6</span>
+          <span class="salient-media">La Presse</span>
+          <a class="salient-link" href="#">La fin du PEQ fustigée aux quatre coins du Québec</a>
+          <span class="salient-score">534 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">7</span>
+          <span class="salient-media">Jnl de Montréal</span>
+          <a class="salient-link" href="#">« J'y vais pour les palmiers » : des Québécois s'envolent vers Cuba malgré les pénuries</a>
+          <span class="salient-score">412 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">8</span>
+          <span class="salient-media">Radio-Canada</span>
+          <a class="salient-link" href="#">Lacombe défend la culture francophone face aux géants du numérique</a>
+          <span class="salient-score">389 pts</span>
+        </div>
+      </div>
+      <button class="voir-plus">Voir tous les articles saillants →</button>
+    </div>
+
+    <!-- Panel QC: Objets saillants -->
+    <div class="hero-right-panel" id="panel-nuit-qc-objets">
+      <div class="salient-list">
+        <div class="object-row">
+          <span class="object-row-rank">1</span>
+          <span class="object-row-name">ONF</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:100%"></div></div>
+          <span class="object-row-score">2 841 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">2</span>
+          <span class="object-row-name">Oscars</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:88%"></div></div>
+          <span class="object-row-score">1 923 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">3</span>
+          <span class="object-row-name">Hollywood</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:76%"></div></div>
+          <span class="object-row-score">1 654 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">4</span>
+          <span class="object-row-name">Montréal</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:65%"></div></div>
+          <span class="object-row-score">1 432 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">5</span>
+          <span class="object-row-name">Chris Lavis</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:54%"></div></div>
+          <span class="object-row-score">987 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">6</span>
+          <span class="object-row-name">Patrick Watson</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:46%"></div></div>
+          <span class="object-row-score">876 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">7</span>
+          <span class="object-row-name">François Legault</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:38%"></div></div>
+          <span class="object-row-score">723 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">8</span>
+          <span class="object-row-name">Cuba</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:28%"></div></div>
+          <span class="object-row-score">534 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">9</span>
+          <span class="object-row-name">Maciek Szczerbowski</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:24%"></div></div>
+          <span class="object-row-score">487 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">10</span>
+          <span class="object-row-name">CAQ</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:21%"></div></div>
+          <span class="object-row-score">421 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">11</span>
+          <span class="object-row-name">Québec</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:18%"></div></div>
+          <span class="object-row-score">378 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">12</span>
+          <span class="object-row-name">Radio-Canada</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:16%"></div></div>
+          <span class="object-row-score">342 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">13</span>
+          <span class="object-row-name">Programme expérience</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:13%"></div></div>
+          <span class="object-row-score">298 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">14</span>
+          <span class="object-row-name">États-Unis</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:11%"></div></div>
+          <span class="object-row-score">251 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">15</span>
+          <span class="object-row-name">Havane</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:8%"></div></div>
+          <span class="object-row-score">198 pts</span>
+        </div>
+      </div>
+      <button class="voir-plus">Voir tous les objets saillants →</button>
+    </div>
+
+    <!-- Panel CAN: Textes saillants -->
+    <div class="hero-right-panel" id="panel-nuit-can-textes">
+      <div class="salient-list">
+        <div class="salient-item">
+          <span class="salient-rank">1</span>
+          <span class="salient-media">CBC</span>
+          <a class="salient-link" href="#">Iran threatens to close Strait of Hormuz as US sanctions tighten</a>
+          <span class="salient-score">1 834 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">2</span>
+          <span class="salient-media">Globe & Mail</span>
+          <a class="salient-link" href="#">Alberta crude prices surge amid Middle East tensions</a>
+          <span class="salient-score">1 654 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">3</span>
+          <span class="salient-media">CTV News</span>
+          <a class="salient-link" href="#">Carney calls for emergency NATO summit on Iran crisis</a>
+          <span class="salient-score">1 423 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">4</span>
+          <span class="salient-media">National Post</span>
+          <a class="salient-link" href="#">Canada's oilsands brace for shock as Hormuz closure looms</a>
+          <span class="salient-score">1 102 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">5</span>
+          <span class="salient-media">CBC</span>
+          <a class="salient-link" href="#">Trump threatens secondary sanctions against Iranian oil buyers</a>
+          <span class="salient-score">987 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">6</span>
+          <span class="salient-media">Global News</span>
+          <a class="salient-link" href="#">Federal NDP demands emergency debate on Canada's Iran policy</a>
+          <span class="salient-score">743 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">7</span>
+          <span class="salient-media">Globe & Mail</span>
+          <a class="salient-link" href="#">Bank of Canada holds rate as oil price shock rattles markets</a>
+          <span class="salient-score">612 pts</span>
+        </div>
+        <div class="salient-item">
+          <span class="salient-rank">8</span>
+          <span class="salient-media">CTV News</span>
+          <a class="salient-link" href="#">Canadian Armed Forces on standby as Persian Gulf tensions escalate</a>
+          <span class="salient-score">489 pts</span>
+        </div>
+      </div>
+      <button class="voir-plus">Voir tous les articles saillants →</button>
+    </div>
+
+    <!-- Panel CAN: Objets saillants -->
+    <div class="hero-right-panel" id="panel-nuit-can-objets">
+      <div class="salient-list">
+        <div class="object-row">
+          <span class="object-row-rank">1</span>
+          <span class="object-row-name">Iran</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:100%"></div></div>
+          <span class="object-row-score">3 241 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">2</span>
+          <span class="object-row-name">Strait of Hormuz</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:89%"></div></div>
+          <span class="object-row-score">2 876 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">3</span>
+          <span class="object-row-name">Alberta</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:75%"></div></div>
+          <span class="object-row-score">2 431 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">4</span>
+          <span class="object-row-name">Mark Carney</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:61%"></div></div>
+          <span class="object-row-score">1 987 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">5</span>
+          <span class="object-row-name">Donald Trump</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:51%"></div></div>
+          <span class="object-row-score">1 654 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">6</span>
+          <span class="object-row-name">NATO</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:44%"></div></div>
+          <span class="object-row-score">1 432 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">7</span>
+          <span class="object-row-name">Bank of Canada</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:37%"></div></div>
+          <span class="object-row-score">1 187 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">8</span>
+          <span class="object-row-name">United States</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:30%"></div></div>
+          <span class="object-row-score">987 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">9</span>
+          <span class="object-row-name">Persian Gulf</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:27%"></div></div>
+          <span class="object-row-score">876 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">10</span>
+          <span class="object-row-name">NDP</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:23%"></div></div>
+          <span class="object-row-score">743 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">11</span>
+          <span class="object-row-name">Ottawa</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:20%"></div></div>
+          <span class="object-row-score">654 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">12</span>
+          <span class="object-row-name">Oilsands</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:17%"></div></div>
+          <span class="object-row-score">543 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">13</span>
+          <span class="object-row-name">Saudi Arabia</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:13%"></div></div>
+          <span class="object-row-score">432 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">14</span>
+          <span class="object-row-name">OPEC</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:12%"></div></div>
+          <span class="object-row-score">387 pts</span>
+        </div>
+        <div class="object-row">
+          <span class="object-row-rank">15</span>
+          <span class="object-row-name">Calgary</span>
+          <div class="object-row-bar-wrap"><div class="object-row-bar" style="width:9%"></div></div>
+          <span class="object-row-score">298 pts</span>
+        </div>
+      </div>
+      <button class="voir-plus">Voir tous les objets saillants →</button>
+    </div>
+
+    <!-- ══ MATIN — Panel QC: Textes saillants ══ -->
+    <div class="hero-right-panel" id="panel-matin-qc-textes">
+      <div class="salient-list">
+        <div class="salient-item"><span class="salient-rank">1</span><span class="salient-media">La Presse</span><a class="salient-link" href="#">Hydro-Québec gèle ses tarifs pour un an : un soulagement pour 3 millions de ménages</a><span class="salient-score">1 654 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">2</span><span class="salient-media">Radio-Canada</span><a class="salient-link" href="#">Legault annonce 340 M$ pour absorber le coût du gel tarifaire d'Hydro</a><span class="salient-score">1 432 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">3</span><span class="salient-media">Le Devoir</span><a class="salient-link" href="#">Les oppositions saluent le gel mais réclament plus pour les locataires</a><span class="salient-score">1 187 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">4</span><span class="salient-media">TVA Nouvelles</span><a class="salient-link" href="#">Hydro-Québec : «une décision historique», dit le PDG Michael Sabia</a><span class="salient-score">876 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">5</span><span class="salient-media">Jnl de Montréal</span><a class="salient-link" href="#">Le gel d'Hydro : qui en profite vraiment?</a><span class="salient-score">743 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">6</span><span class="salient-media">Radio-Canada</span><a class="salient-link" href="#">La CSN appuie le gel mais exige une révision tarifaire permanente</a><span class="salient-score">612 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">7</span><span class="salient-media">La Presse</span><a class="salient-link" href="#">Le conflit de travail chez Desjardins s'intensifie après une nuit de négociation</a><span class="salient-score">487 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">8</span><span class="salient-media">Le Devoir</span><a class="salient-link" href="#">Fermeture de l'usine Bridgestone à Joliette : 450 emplois perdus</a><span class="salient-score">389 pts</span></div>
+      </div>
+      <button class="voir-plus">Voir tous les articles saillants →</button>
+    </div>
+
+    <!-- ══ MATIN — Panel QC: Objets saillants ══ -->
+    <div class="hero-right-panel" id="panel-matin-qc-objets">
+      <div class="salient-list">
+        <div class="object-row"><span class="object-row-rank">1</span><span class="object-row-name">Hydro-Québec</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:100%"></div></div><span class="object-row-score">3 241 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">2</span><span class="object-row-name">François Legault</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:89%"></div></div><span class="object-row-score">2 876 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">3</span><span class="object-row-name">CAQ</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:61%"></div></div><span class="object-row-score">1 987 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">4</span><span class="object-row-name">Michael Sabia</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:44%"></div></div><span class="object-row-score">1 432 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">5</span><span class="object-row-name">CSN</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:37%"></div></div><span class="object-row-score">1 187 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">6</span><span class="object-row-name">Desjardins</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:30%"></div></div><span class="object-row-score">987 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">7</span><span class="object-row-name">Bridgestone</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:23%"></div></div><span class="object-row-score">743 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">8</span><span class="object-row-name">Joliette</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:20%"></div></div><span class="object-row-score">654 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">9</span><span class="object-row-name">Tarifs électricité</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:17%"></div></div><span class="object-row-score">543 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">10</span><span class="object-row-name">Ottawa</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:13%"></div></div><span class="object-row-score">432 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">11</span><span class="object-row-name">Syndicats</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:12%"></div></div><span class="object-row-score">387 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">12</span><span class="object-row-name">Locataires</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:11%"></div></div><span class="object-row-score">342 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">13</span><span class="object-row-name">Inflation</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:9%"></div></div><span class="object-row-score">298 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">14</span><span class="object-row-name">Budget</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:8%"></div></div><span class="object-row-score">251 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">15</span><span class="object-row-name">Québec</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:6%"></div></div><span class="object-row-score">198 pts</span></div>
+      </div>
+      <button class="voir-plus">Voir tous les objets saillants →</button>
+    </div>
+
+    <!-- ══ MATIN — Panel CAN: Textes saillants ══ -->
+    <div class="hero-right-panel" id="panel-matin-can-textes">
+      <div class="salient-list">
+        <div class="salient-item"><span class="salient-rank">1</span><span class="salient-media">CBC</span><a class="salient-link" href="#">L'OTAN approuve le déploiement de frégates canadiennes dans le golfe Persique</a><span class="salient-score">1 923 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">2</span><span class="salient-media">Globe & Mail</span><a class="salient-link" href="#">Carney salue la décision de l'OTAN comme «un acte d'unité» face à l'Iran</a><span class="salient-score">1 654 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">3</span><span class="salient-media">CTV News</span><a class="salient-link" href="#">La première ministre Smith réclame des compensations pour le secteur énergétique albertain</a><span class="salient-score">1 243 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">4</span><span class="salient-media">National Post</span><a class="salient-link" href="#">La Banque du Canada publie une déclaration d'urgence alors que le pétrole atteint 120$/baril</a><span class="salient-score">987 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">5</span><span class="salient-media">CBC</span><a class="salient-link" href="#">Deux marins canadiens morts lors d'un exercice dans le golfe Persique</a><span class="salient-score">876 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">6</span><span class="salient-media">Global News</span><a class="salient-link" href="#">Le NPD exige un vote parlementaire avant tout déploiement militaire</a><span class="salient-score">743 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">7</span><span class="salient-media">Globe & Mail</span><a class="salient-link" href="#">L'OPEP+ tient une réunion d'urgence tandis que le trafic de pétroliers stagne</a><span class="salient-score">612 pts</span></div>
+        <div class="salient-item"><span class="salient-rank">8</span><span class="salient-media">CTV News</span><a class="salient-link" href="#">Washington et Ottawa coordonnent leur réponse aux menaces iraniennes</a><span class="salient-score">489 pts</span></div>
+      </div>
+      <button class="voir-plus">Voir tous les articles saillants →</button>
+    </div>
+
+    <!-- ══ MATIN — Panel CAN: Objets saillants ══ -->
+    <div class="hero-right-panel" id="panel-matin-can-objets">
+      <div class="salient-list">
+        <div class="object-row"><span class="object-row-rank">1</span><span class="object-row-name">OTAN</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:100%"></div></div><span class="object-row-score">3 456 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">2</span><span class="object-row-name">Iran</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:86%"></div></div><span class="object-row-score">2 987 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">3</span><span class="object-row-name">Mark Carney</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:74%"></div></div><span class="object-row-score">2 543 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">4</span><span class="object-row-name">Golfe Persique</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:57%"></div></div><span class="object-row-score">1 987 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">5</span><span class="object-row-name">Alberta</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:48%"></div></div><span class="object-row-score">1 654 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">6</span><span class="object-row-name">Danielle Smith</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:41%"></div></div><span class="object-row-score">1 432 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">7</span><span class="object-row-name">Banque du Canada</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:34%"></div></div><span class="object-row-score">1 187 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">8</span><span class="object-row-name">NPD</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:29%"></div></div><span class="object-row-score">987 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">9</span><span class="object-row-name">OPEP</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:25%"></div></div><span class="object-row-score">876 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">10</span><span class="object-row-name">Pétrole</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:21%"></div></div><span class="object-row-score">743 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">11</span><span class="object-row-name">Marines canadiens</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:19%"></div></div><span class="object-row-score">654 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">12</span><span class="object-row-name">États-Unis</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:16%"></div></div><span class="object-row-score">543 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">13</span><span class="object-row-name">Frégate</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:12%"></div></div><span class="object-row-score">432 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">14</span><span class="object-row-name">Ottawa</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:9%"></div></div><span class="object-row-score">298 pts</span></div>
+        <div class="object-row"><span class="object-row-rank">15</span><span class="object-row-name">Calgary</span><div class="object-row-bar-wrap"><div class="object-row-bar" style="width:7%"></div></div><span class="object-row-score">251 pts</span></div>
+      </div>
+      <button class="voir-plus">Voir tous les objets saillants →</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CONVERGENCE COMPONENT — NOUVEAU COMPOSANT   -->
+<!-- ════════════════════════════════════════════ -->
+<div class="convergence-section">
+  <div class="new-badge">✦ Nouveau</div>
+
+  <div class="convergence-header">
+    <div class="convergence-title">Deux solitudes?<span>Québec · Canada</span></div>
+    <div class="convergence-interval" id="conv-interval">Édition Nuit · lundi 16 mars · 00h00–04h00</div>
+  </div>
+
+  <!-- 4 colonnes -->
+  <div class="convergence-body">
+
+    <!-- Col 1: gauge + gros % -->
+    <div class="score-section">
+      <div>
+        <div class="score-label-row">
+          <span>Div.</span>
+          <span>Conv.</span>
+        </div>
+        <div class="gauge-track"><div class="gauge-fill" id="conv-gauge"></div></div>
+      </div>
+      <div class="score-number" id="conv-score">15<span>%</span></div>
+      <div class="score-verdict" id="conv-verdict">↔ Forte divergence</div>
+    </div>
+
+    <!-- Col 2: narrative -->
+    <div class="narrative" id="conv-narrative">
+      « Convergence ou divergence? Divergence. Le Québec se concentre sur les cinéastes montréalais aux Oscars, tandis que le Canada anglais met l'accent sur la situation en Iran et la production de pétrole albertain. Les objets "Montréal" et "Iran" illustrent cette divergence. »
+    </div>
+
+    <!-- Col 3: divergents -->
+    <div>
+      <div class="objects-col-title">
+        <span class="dot dot-div"></span> Top objets divergents
+      </div>
+      <div class="object-list">
+        <div class="object-item"><span class="object-name">Iran</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:100%"></div></div><span class="jurisdiction-tag tag-can">CAN</span></div>
+        <div class="object-item"><span class="object-name">Montréal</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:100%"></div></div><span class="jurisdiction-tag tag-qc">QC</span></div>
+        <div class="object-item"><span class="object-name">United States</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:100%"></div></div><span class="jurisdiction-tag tag-can">CAN</span></div>
+        <div class="object-item"><span class="object-name">Strait of Hormuz</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:100%"></div></div><span class="jurisdiction-tag tag-can">CAN</span></div>
+        <div class="object-item"><span class="object-name">Oscars</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:94%"></div></div><span class="jurisdiction-tag tag-qc">QC</span></div>
+        <div class="object-item"><span class="object-name">Alberta</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:100%"></div></div><span class="jurisdiction-tag tag-can">CAN</span></div>
+        <div class="object-item"><span class="object-name">Québec</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:84%"></div></div><span class="jurisdiction-tag tag-qc">QC</span></div>
+        <div class="object-item"><span class="object-name">Canada</span><div class="object-bar-wrap"><div class="object-bar bar-div" style="width:67%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+      </div>
+    </div>
+
+    <!-- Col 4: convergents -->
+    <div>
+      <div class="objects-col-title">
+        <span class="dot dot-conv"></span> Top objets convergents
+      </div>
+      <div class="object-list">
+        <div class="object-item"><span class="object-name">Jessie Buckley</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:90%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+        <div class="object-item"><span class="object-name">P.T. Anderson</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:83%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+        <div class="object-item"><span class="object-name">Ryan Coogler</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:65%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+        <div class="object-item"><span class="object-name">Conan O'Brien</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:65%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+        <div class="object-item"><span class="object-name">Kpop Demon Hunters</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:65%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+        <div class="object-item"><span class="object-name">Chris Lavis</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:20%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+        <div class="object-item"><span class="object-name">Canada</span><div class="object-bar-wrap"><div class="object-bar bar-conv" style="width:33%"></div></div><span class="jurisdiction-tag tag-both">les deux</span></div>
+      </div>
+    </div>
+
+  </div><!-- end convergence-body -->
+</div>
+<!-- ══════════════════════════════════════════ -->
+
+<!-- REFLET -->
+<div class="reflet-section">
+  <div class="section-title">Le Reflet par moment</div>
+  <div class="filters-row">
+    <div class="filter-dropdown">
+      Tous les enjeux &nbsp;●●●●●●●●●●●● &nbsp; ▾
+    </div>
+    <div class="period-tabs">
+      <div class="tab active">Jour</div>
+      <div class="tab">Semaine</div>
+      <div class="tab">Mois</div>
+    </div>
+  </div>
+  <div style="font-size:11px; color:#aaa; font-family:Arial; margin-bottom:14px; text-transform:uppercase; letter-spacing:0.08em;">Tous les enjeux</div>
+  <div class="cards-row">
+    <div class="card">
+      <div class="card-tag">Culture et nationalisme</div>
+      <div class="card-meta">Dimanche 15 mars 2026 · 0noon</div>
+      <div><span class="card-letter">L</span><div class="card-text">ACOMBE A REMPORTÉ une victoire à l'UNESCO pour protéger la souveraineté culturelle des États contre la mondialisation numérique.</div></div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gouvernements et gouvernance</div>
+      <div class="card-meta">Dimanche 15 mars 2026 · 0noon</div>
+      <div><span class="card-letter">A</span><div class="card-text">U QUÉBEC, LE MINISTRE de la Culture, Mathieu Lacombe, défend la protection de la culture francophone face aux géants du numérique.</div></div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Gouvernements et gouvernance</div>
+      <div class="card-meta">Dimanche 15 mars 2026 · 0noon</div>
+      <div><span class="card-letter">L</span><div class="card-text">E PREMIER MINISTRE canadien Mark Carney a participé à un sommet avec les pays nordiques, soulignant l'importance de la coopération internationale.</div></div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Culture et nationalisme</div>
+      <div class="card-meta">Dimanche 15 mars 2026 · 0noon</div>
+      <div><span class="card-letter">A</span><div class="card-text">U QUÉBEC, LE MINISTRE de la Culture, Mathieu Lacombe, dénonce l'influence des géants du numérique sur la culture francophone.</div></div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Environnement et énergie</div>
+      <div class="card-meta">Dimanche 16 mars 2026 · 0pm</div>
+      <div><span class="card-letter">E</span><div class="card-text">N RÉPONSE AUX tensions croissantes entre l'Iran et les États-Unis, le détroit d'Ormuz est pratiquement bloqué par Téhéran.</div></div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Culture et nationalisme</div>
+      <div class="card-meta">Dimanche 16 mars 2026 · 0pm</div>
+      <div><span class="card-letter">U</span><div class="card-text">NE LÉGISLATION québécoise oblige les géants numériques à promouvoir les cultures locales, soutenue par l'UNESCO.</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var currentBlock = 'nuit';
+var currentCountry = 'qc';
+var currentTab = 'textes';
+
+var blocks = {
+  nuit: {
+    name: 'Nuit', emoji: '🦉', time: '00h00–04h00', sky: 'sky-nuit',
+    greeting: 'Vous êtes encore debout?',
+    subtitle: 'Actualité saillante · lundi 16 mars 2026',
+    prev: null,
+    next: 'matin',
+    nextLabel: '🌅 Matin', nextTime: '04h00',
+    convergence: {
+      score: '15', fill: '15%', color: '#e74c3c',
+      verdict: '↔ Forte divergence',
+      narrative: '« Convergence ou divergence? Divergence. Le Québec se concentre sur les cinéastes montréalais aux Oscars, tandis que le Canada anglais met l\'accent sur la situation en Iran et la production de pétrole albertain. Les objets "Montréal" et "Iran" illustrent cette divergence. »'
+    },
+    intraQC: { score: '67%', dots: 4, verdict: '— Bonne convergence' },
+    intraCAN: { score: '48%', dots: 2, verdict: '— Convergence modérée' },
+    hero: {
+      qc: { issue: 'Culture et nationalisme', title: 'Le Québec triomphe aux Oscars avec « La jeune fille qui pleurait des perles »', text: 'Le Québec a brillé aux Oscars avec le court métrage d\'animation « La jeune fille qui pleurait des perles », réalisé par Chris Lavis et Maciek Szczerbowski, qui a remporté l\'Oscar du meilleur court métrage d\'animation. Ce film, produit par l\'ONF, met en scène des marionnettes dans le Montréal du début du XXe siècle.' },
+      can: { issue: 'Affaires internationales et défense', title: 'L\'Iran menace de fermer le détroit d\'Ormuz alors que les sanctions américaines s\'intensifient', text: 'Les tensions dans le golfe Persique s\'exacerbent alors que l\'Iran brandit la menace de fermer le détroit d\'Ormuz en représailles aux nouvelles sanctions américaines. Les marchés énergétiques canadiens s\'affolent, les prix du pétrole albertain bondissent et le premier ministre Carney réclame un sommet d\'urgence de l\'OTAN.' }
+    }
+  },
+  matin: {
+    name: 'Matin', emoji: '🌅', time: '04h00–08h00', sky: 'sky-matin',
+    greeting: 'Réveil en douceur',
+    subtitle: 'Actualité saillante · lundi 16 mars 2026',
+    prev: 'nuit',
+    next: null,
+    nextLabel: '☀️ Midi', nextTime: '12h00',
+    convergence: {
+      score: '22', fill: '22%', color: '#e74c3c',
+      verdict: '↔ Divergence marquée',
+      narrative: '« Convergence ou divergence? Divergence persistante. Le Québec débat du gel des tarifs d\'Hydro-Québec et des enjeux économiques locaux, tandis que le Canada anglais suit de près le déploiement de l\'OTAN dans le golfe Persique. "Hydro-Québec" et "OTAN" symbolisent deux univers médiatiques encore bien distincts. »'
+    },
+    intraQC: { score: '74%', dots: 4, verdict: '— Bonne convergence' },
+    intraCAN: { score: '61%', dots: 3, verdict: '— Convergence modérée' },
+    hero: {
+      qc: { issue: 'Économie et travail', title: 'Hydro-Québec gèle ses tarifs pour un an : un soulagement pour 3 millions de ménages', text: 'Face à la hausse du coût de la vie, le premier ministre Legault a annoncé ce matin un gel d\'un an des tarifs d\'Hydro-Québec pour les ménages, une mesure qui coûtera 340 millions de dollars aux coffres de l\'État et dont bénéficieront trois millions de foyers québécois.' },
+      can: { issue: 'Affaires internationales et défense', title: 'L\'OTAN approuve le déploiement de frégates canadiennes dans le golfe Persique', text: 'Suite au sommet d\'urgence convoqué par le premier ministre Carney, les alliés de l\'OTAN ont approuvé le déploiement de deux frégates canadiennes dans le golfe Persique pour sécuriser le passage des pétroliers, tandis que la Banque du Canada publie une déclaration d\'urgence face à la flambée du pétrole à 120$/baril.' }
+    }
+  }
+};
+
+function updateIntraDots(id, dots) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var dotEls = el.querySelectorAll('.intra-dot');
+  dotEls.forEach(function(d, i) {
+    d.classList.toggle('filled', i < dots);
+  });
+}
+
+function switchBlock(dir) {
+  var b = blocks[currentBlock];
+  var target = dir === 'next' ? b.next : b.prev;
+  if (!target) return;
+  currentBlock = target;
+  applyBlock();
+}
+
+function applyBlock() {
+  var b = blocks[currentBlock];
+  var c = b.hero[currentCountry];
+
+  // Ciel
+  var hero = document.querySelector('.hero');
+  hero.classList.remove('sky-nuit', 'sky-matin');
+  hero.classList.add(b.sky);
+
+  // Hero top
+  document.querySelector('.hero-block-badge').textContent = b.emoji + ' ' + b.name + ' · ' + b.time;
+  document.querySelector('.hero-greeting').textContent = b.greeting;
+  document.querySelector('.hero-subtitle').textContent = b.subtitle;
+
+  // Hero content
+  document.getElementById('hero-issue').textContent = c.issue;
+  document.getElementById('hero-title').textContent = c.title;
+  document.getElementById('hero-text').textContent = c.text;
+
+  // Timebar
+  document.getElementById('timebar-date').textContent = b.emoji + ' ' + b.name + ' · Lun 16 mars · ' + b.time;
+  document.getElementById('btn-prev').style.color = b.prev ? '' : '#ccc';
+  document.getElementById('btn-prev').style.cursor = b.prev ? '' : 'default';
+  document.getElementById('btn-next').style.color = b.next ? '' : '#ccc';
+  document.getElementById('btn-next').style.cursor = b.next ? '' : 'default';
+  document.querySelector('.next-block-name').textContent = b.nextLabel;
+  document.querySelector('.next-block-time').textContent = '· ' + b.nextTime;
+
+  // Onglets panneau droit
+  document.getElementById('tab-textes').textContent = 'Textes · ' + b.name;
+  document.getElementById('tab-objets').textContent = 'Objets · ' + b.name;
+
+  // Intra-conv badges
+  var qc = b.intraQC;
+  var can = b.intraCAN;
+  document.querySelector('#intra-qc .intra-pct').textContent = qc.score;
+  document.querySelector('#intra-qc .intra-verdict').textContent = qc.verdict;
+  updateIntraDots('intra-qc', qc.dots);
+  document.querySelector('#intra-can .intra-pct').textContent = can.score;
+  document.querySelector('#intra-can .intra-verdict').textContent = can.verdict;
+  updateIntraDots('intra-can', can.dots);
+
+  // Convergence section
+  var cv = b.convergence;
+  document.getElementById('conv-gauge').style.width = cv.fill;
+  document.getElementById('conv-gauge').style.background = 'linear-gradient(90deg, ' + cv.color + ' 0%, #f39c12 50%, #27ae60 100%)';
+  document.getElementById('conv-score').innerHTML = cv.score + '<span>%</span>';
+  document.getElementById('conv-score').style.color = cv.color;
+  document.getElementById('conv-verdict').textContent = cv.verdict;
+  document.getElementById('conv-verdict').style.color = cv.color;
+  document.getElementById('conv-narrative').textContent = cv.narrative;
+  document.getElementById('conv-interval').textContent = 'Édition ' + b.name + ' · lundi 16 mars · ' + b.time;
+
+  showPanel();
+}
+
+function switchCountry(btn, country) {
+  currentCountry = country;
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('intra-qc').style.display = country === 'qc' ? 'flex' : 'none';
+  document.getElementById('intra-can').style.display = country === 'can' ? 'flex' : 'none';
+  var b = blocks[currentBlock];
+  var c = b.hero[country];
+  document.getElementById('hero-issue').textContent = c.issue;
+  document.getElementById('hero-title').textContent = c.title;
+  document.getElementById('hero-text').textContent = c.text;
+  showPanel();
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tab-textes').classList.toggle('active', tab === 'textes');
+  document.getElementById('tab-objets').classList.toggle('active', tab === 'objets');
+  showPanel();
+}
+
+function showPanel() {
+  document.querySelectorAll('.hero-right-panel').forEach(function(p) { p.classList.remove('active'); });
+  var id = 'panel-' + currentBlock + '-' + currentCountry + '-' + currentTab;
+  var el = document.getElementById(id);
+  if (el) el.classList.add('active');
+}
+</script>
+</body>
+</html>
