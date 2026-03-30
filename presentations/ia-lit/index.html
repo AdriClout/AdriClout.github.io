@@ -186,6 +186,7 @@
       bottom: 0;
       width: 3px;
       transform: translateX(-50%);
+      z-index: 0;
     }
 
     .pipeline-line-bg {
@@ -210,6 +211,7 @@
     .phase {
       position: relative;
       margin-bottom: 5rem;
+      z-index: 1;
     }
 
     .phase-header {
@@ -249,6 +251,7 @@
       font-weight: 700;
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
+      text-shadow: -4px 0 6px var(--bg-primary), 4px 0 6px var(--bg-primary), 0 -4px 6px var(--bg-primary), 0 4px 6px var(--bg-primary), 0 0 12px var(--bg-primary);
     }
 
     .phase-desc {
@@ -256,6 +259,7 @@
       font-size: 0.95rem;
       max-width: 600px;
       margin: 0 auto;
+      text-shadow: -3px 0 5px var(--bg-primary), 3px 0 5px var(--bg-primary), 0 0 8px var(--bg-primary);
     }
 
     /* Ethics callout */
@@ -264,7 +268,7 @@
       margin: -1rem auto 2.5rem;
       padding: 1rem 1.4rem;
       border-left: 3px solid var(--accent-orange);
-      background: rgba(245, 158, 11, 0.05);
+      background: color-mix(in srgb, var(--accent-orange) 5%, var(--bg-primary));
       border-radius: 0 10px 10px 0;
       font-size: 0.88rem;
       color: var(--text-secondary);
@@ -432,31 +436,31 @@
 
     /* Phase-specific colors */
     .phase-0 { --phase-color: var(--accent-red); }
-    .phase-0 .phase-number { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+    .phase-0 .phase-number { background: color-mix(in srgb, var(--accent-red) 15%, var(--bg-primary)); color: var(--accent-red); }
     .phase-0 .tool-card { --card-accent: var(--accent-red); --card-glow: rgba(239, 68, 68, 0.4); }
 
     .phase-1 { --phase-color: var(--accent-blue); }
-    .phase-1 .phase-number { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+    .phase-1 .phase-number { background: color-mix(in srgb, var(--accent-blue) 15%, var(--bg-primary)); color: var(--accent-blue); }
     .phase-1 .tool-card { --card-accent: var(--accent-blue); --card-glow: var(--glow-blue); }
 
     .phase-2 { --phase-color: var(--accent-cyan); }
-    .phase-2 .phase-number { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+    .phase-2 .phase-number { background: color-mix(in srgb, var(--accent-cyan) 15%, var(--bg-primary)); color: var(--accent-cyan); }
     .phase-2 .tool-card { --card-accent: var(--accent-cyan); --card-glow: var(--glow-cyan); }
 
     .phase-3 { --phase-color: var(--accent-purple); }
-    .phase-3 .phase-number { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+    .phase-3 .phase-number { background: color-mix(in srgb, var(--accent-purple) 15%, var(--bg-primary)); color: var(--accent-purple); }
     .phase-3 .tool-card { --card-accent: var(--accent-purple); --card-glow: var(--glow-purple); }
 
     .phase-4 { --phase-color: var(--accent-green); }
-    .phase-4 .phase-number { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+    .phase-4 .phase-number { background: color-mix(in srgb, var(--accent-green) 15%, var(--bg-primary)); color: var(--accent-green); }
     .phase-4 .tool-card { --card-accent: var(--accent-green); --card-glow: rgba(16, 185, 129, 0.4); }
 
     .phase-5 { --phase-color: var(--accent-orange); }
-    .phase-5 .phase-number { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); }
+    .phase-5 .phase-number { background: color-mix(in srgb, var(--accent-orange) 15%, var(--bg-primary)); color: var(--accent-orange); }
     .phase-5 .tool-card { --card-accent: var(--accent-orange); --card-glow: rgba(245, 158, 11, 0.4); }
 
     .phase-6 { --phase-color: var(--accent-pink); }
-    .phase-6 .phase-number { background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); }
+    .phase-6 .phase-number { background: color-mix(in srgb, var(--accent-pink) 15%, var(--bg-primary)); color: var(--accent-pink); }
     .phase-6 .tool-card { --card-accent: var(--accent-pink); --card-glow: rgba(236, 72, 153, 0.4); }
 
     /* Footer */
@@ -578,7 +582,7 @@
       De la question de recherche à la visualisation de la littérature : les meilleurs outils d'intelligence artificielle pour votre revue de littérature scientifique.
     </p>
     <div class="hero-meta">
-      <span>&#128197; 11 février 2026</span>
+      <span>&#128197; 30 mars 2026</span>
       <span>&#127891; Adrien Cloutier</span>
       <span>&#127963; Université Laval</span>
     </div>
@@ -608,7 +612,7 @@
   <div class="disclaimer-banner">
     <p><strong>&#9888; Avertissement :</strong> Le domaine de l'intelligence artificielle évolue très rapidement. Les outils présentés sur cette page, leurs fonctionnalités et leurs conditions d'accès peuvent changer à tout moment. Cette page pourrait ne plus être à jour.</p>
     <p><strong>&#129504; Rappel :</strong> Tous les outils d'IA font des erreurs (hallucinations, omissions, biais). Le jugement critique du chercheur demeure central à chaque étape du processus scientifique.</p>
-    <span class="disclaimer-date">Dernière mise à jour : février 2026</span>
+    <span class="disclaimer-date">Dernière mise à jour : mars 2026</span>
   </div>
 
   <!-- Pipeline -->
@@ -714,7 +718,7 @@
   <footer class="page-footer">
     <a href="../../index.html" class="back-link">&#8592; Retour au site principal</a>
     <p>Adrien Cloutier &middot; Doctorant en science politique &middot; Universit&eacute; Laval</p>
-    <p style="margin-top: 0.5rem;">Conf&eacute;rence &mdash; Outils IA pour les revues de litt&eacute;rature scientifique &mdash; F&eacute;vrier 2026</p>
+    <p style="margin-top: 0.5rem;">Conf&eacute;rence &mdash; Outils IA pour les revues de litt&eacute;rature scientifique &mdash; Mars 2026</p>
   </footer>
 
   <script>
