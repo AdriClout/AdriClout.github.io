@@ -1,0 +1,113 @@
+<style>
+.eq-container {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  /* height set dynamically by JS to match section top */
+  bottom: auto;
+  display: flex;
+  align-items: flex-end; /* barres ancrées en bas du container = au niveau de la ligne */
+  padding: 0 12px;
+  gap: 3px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  animation: eq-fade-in 1.8s ease 0.6s forwards;
+}
+
+@keyframes eq-fade-in {
+  to { opacity: 1; }
+}
+
+.eq-bar {
+  flex: 1;
+  min-height: 3px;
+  border-radius: 3px 3px 0 0;
+  animation: eq-pulse var(--dur) var(--delay) ease-in-out infinite alternate;
+}
+
+@keyframes eq-pulse {
+  0%   { height: 3px; }
+  100% { height: var(--h); }
+}
+</style>
+
+<script>
+(function () {
+  var palette = [
+    ['#38bdf8','#818cf8'],
+    ['#a78bfa','#f472b6'],
+    ['#34d399','#38bdf8'],
+    ['#7dd3fc','#a78bfa'],
+    ['#6ee7b7','#34d399'],
+    ['#c4b5fd','#818cf8'],
+    ['#38bdf8','#34d399'],
+    ['#fb923c','#facc15'],
+  ];
+
+  function buildEqualizer() {
+    var bg = document.querySelector(
+      '.backgrounds .slide-background:first-child .slide-background-content'
+    );
+    if (!bg) { setTimeout(buildEqualizer, 60); return; }
+
+    var container = document.createElement('div');
+    container.className = 'eq-container';
+
+    var n = 70;
+    for (var i = 0; i < n; i++) {
+      var bar   = document.createElement('div');
+      bar.className = 'eq-bar';
+
+      var h     = Math.floor(6  + Math.random() * 82) + '%';
+      var dur   = (0.22 + Math.random() * 0.68).toFixed(2) + 's';
+      var delay = (-Math.random() * 2).toFixed(2) + 's';
+      var pair  = palette[i % palette.length];
+
+      bar.style.cssText =
+        '--h:'     + h    + ';' +
+        '--dur:'   + dur  + ';' +
+        '--delay:' + delay + ';' +
+        'opacity: 0.14;' +
+        'background: linear-gradient(to top, ' + pair[0] + ', ' + pair[1] + ');';
+
+      container.appendChild(bar);
+    }
+
+    bg.appendChild(container);
+
+    /* Align container bottom exactly with the ::before line on the first section.
+       The ::before is at top:0 of the section. The section is vertically centered
+       within the .reveal element (1280x720 coordinate space). We unscale the
+       getBoundingClientRect() values by the reveal scale to get coords in the
+       same space as the background element. */
+    function alignToLine() {
+      var reveal  = document.querySelector('.reveal');
+      var section = document.querySelector('.reveal .slides section');
+      if (!reveal || !section) return;
+
+      var revealRect  = reveal.getBoundingClientRect();
+      var sectionRect = section.getBoundingClientRect();
+
+      /* scale factor: revealjs scales .reveal to fit the window */
+      var scale = revealRect.width / (reveal.offsetWidth || 1280);
+
+      /* section top in .reveal coordinate space (same as bg coordinate space) */
+      var sectionTopInReveal = (sectionRect.top - revealRect.top) / scale;
+
+      if (sectionTopInReveal > 10) {
+        container.style.height = sectionTopInReveal + 'px';
+      }
+    }
+
+    /* Run after revealjs has finished layout */
+    setTimeout(alignToLine, 200);
+    window.addEventListener('resize', alignToLine);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildEqualizer);
+  } else {
+    buildEqualizer();
+  }
+})();
+</script>

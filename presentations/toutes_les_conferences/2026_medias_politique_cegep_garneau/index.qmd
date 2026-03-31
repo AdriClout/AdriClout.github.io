@@ -1,0 +1,423 @@
+---
+title: "Médias et politique"
+subtitle: "La saillance médiatique à l'ère du numérique"
+author: "Adrien Cloutier | Université Laval"
+date: "31 mars 2026"
+lang: fr
+format:
+  revealjs:
+    theme: night
+    slide-number: c/t
+    footer: "Médias et politique · Cégep Garneau · 31 mars 2026"
+    width: 1280
+    height: 720
+    transition: slide
+    background-transition: fade
+    self-contained: true
+    css: custom.css
+    logo: images/logo_clessn_blanc.png
+    include-after-body: equalizer.html
+execute:
+  echo: false
+  eval: false
+---
+
+## Plan {.center}
+
+1. Qui suis-je?
+2. La grande question de ma thèse
+3. Les théories : gatekeeping et agenda-setting
+4. Pourquoi c'est compliqué aujourd'hui
+5. La science politique en 2026
+
+::: {.fragment}
+**Questions : aucune mauvaise question. Aucune.**
+:::
+
+---
+
+# Acte 1 : Qui suis-je? {background-color="#1e1b4b"}
+
+## Moi, en 2012 {.center}
+
+::: {.r-fit-text}
+Cégep de Jonquière.
+
+Journalisme.
+:::
+
+::: {.fragment}
+Je voulais écrire des nouvelles, pas les étudier.
+:::
+
+## Le chemin {.smaller}
+
+::: {.incremental}
+- **2012-2015** : Cégep de Jonquière, *technique Art et technologie des médias, profil journalisme*
+- **2015-2018** : Baccalauréat en science politique, Université Laval
+- **2018-2020** : Maîtrise en science politique, UL
+- **2019** : University of Michigan, méthodes quantitatives
+- **2023-2026** : Doctorat en science politique, UL
+- **2027** : Postdoctorat à **UCLA**, Los Angeles
+:::
+
+## Mes projets de recherche {.smaller}
+
+::: {.incremental}
+- 📡 **Radar+** : collecte automatique de ~20 médias toutes les 10 minutes depuis 2019, analysés par un modèle d'IA
+- 🎮 **Datagotchi** : un quiz politique façon Tamagotchi — quel parti te ressemble?
+- 🧭 **La Boussole électorale** : se positionner sur l'échiquier politique en répondant à des questions
+- 📊 **Projet Quorum** : rendre les données parlementaires accessibles à tous les citoyens
+- 🎓 **EIOM** : une école d'été interdisciplinaire que j'ai co-créée ([eiom.ca](https://eiom.ca/))
+:::
+
+## Mon approche {.center}
+
+::: {.r-fit-text}
+Empirique. Quantitative.
+:::
+
+::: {.fragment}
+::: {.r-fit-text}
+**Ludique.**
+:::
+:::
+
+::: {.fragment}
+La science politique n'a pas à être ennuyante.
+:::
+
+---
+
+# Acte 2 : La grande question {background-color="#0c2d47"}
+
+## {.center .question-slide}
+
+::: {.question-label}
+À vous!
+:::
+
+::: {.r-fit-text}
+Hier, comment avez-vous
+
+suivi l'actualité?
+:::
+
+::: {.fragment}
+[TikTok]{.pill} [Instagram / Snap]{.pill} [YouTube]{.pill} [Nouvelles en ligne]{.pill} [Bulletin TV]{.pill} [Pas du tout]{.pill}
+:::
+
+## Walter Lippmann, 1922
+
+> « Le monde extérieur et les images dans nos têtes. »
+
+::: {.fragment}
+Le monde est trop vaste pour être directement perçu par chacun d'entre nous.
+
+On le comprend à travers un **pseudo-environnement** : une image indirecte, imparfaite, construite principalement grâce aux médias.
+:::
+
+## Une question simple {.center}
+
+::: {.r-fit-text}
+Qui décide quelles images
+
+vont dans nos têtes?
+:::
+
+## L'hypothèse de l'agenda-setting
+
+McCombs & Shaw, **1972**
+
+> Les médias ne disent pas aux gens *quoi* penser, mais ***à quoi*** penser.
+
+::: {.fragment}
+À Chapel Hill (Caroline du Nord), ils mesurent la couverture médiatique de la campagne présidentielle de 1968 et ce que les électeurs considèrent comme prioritaire.
+
+**Résultat : corrélation très forte.** L'ordre médiatique = l'ordre d'importance pour les citoyens.
+:::
+
+## Iyengar & Kinder, 1987 {.smaller}
+
+*News That Matters*, 14 expériences en laboratoire
+
+::: {.incremental}
+- Ils manipulent ce que des participants regardent aux nouvelles
+- Résultat : la quantité et la **position** d'une nouvelle dans un bulletin influence directement ce que les gens considèrent comme important
+- « Les nouvelles qui apparaissent en premier tendent à compter davantage »
+:::
+
+::: {.fragment}
+En 1987, à l'ère de la **télévision de masse**, ce résultat est solide.
+:::
+
+## Le modèle RAS {.smaller}
+
+Zaller, *The Nature and Origins of Mass Opinion*, **1992**
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.9em;margin-top:0.3em">
+
+<div style="background:rgba(15,30,50,0.6);border-radius:8px;padding:0.7em 0.9em;border-left:3px solid #38bdf8">
+<div style="font-size:1.7em;font-weight:900;color:#38bdf8;line-height:1">R</div>
+<div style="font-size:0.62em;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f1f5f9;margin:0.3em 0 0.4em">Recevoir</div>
+<div style="font-size:0.72em;line-height:1.45;color:#cbd5e1">On est exposé à des messages politiques, proportionnellement à son attention à l'actualité</div>
+</div>
+
+<div style="background:rgba(15,30,50,0.6);border-radius:8px;padding:0.7em 0.9em;border-left:3px solid #a78bfa">
+<div style="font-size:1.7em;font-weight:900;color:#a78bfa;line-height:1">A</div>
+<div style="font-size:0.62em;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f1f5f9;margin:0.3em 0 0.4em">Accepter</div>
+<div style="font-size:0.72em;line-height:1.45;color:#cbd5e1">On garde ou rejette ces messages selon ses valeurs et prédispositions préexistantes</div>
+</div>
+
+<div style="background:rgba(15,30,50,0.6);border-radius:8px;padding:0.7em 0.9em;border-left:3px solid #34d399">
+<div style="font-size:1.7em;font-weight:900;color:#34d399;line-height:1">S</div>
+<div style="font-size:0.62em;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f1f5f9;margin:0.3em 0 0.4em">Sonder</div>
+<div style="font-size:0.72em;line-height:1.45;color:#cbd5e1">Quand on demande notre opinion, on répond avec ce qui est <em>récemment accessible</em> en mémoire</div>
+</div>
+
+</div>
+
+::: {.fragment}
+> Si les médias rendent un enjeu saillant, il devient *accessible* : il influence votre opinion sans que vous le réalisiez.
+:::
+
+## La vraie question de ma thèse {.center}
+
+::: {.r-fit-text}
+À l'ère du numérique,
+
+est-ce que ça tient encore?
+:::
+
+::: {.fragment}
+*Variable indépendante* : **saillance médiatique**
+
+*Variable dépendante* : **perception d'importance par le public**
+:::
+
+---
+
+# Acte 3 : Les théories {background-color="#2d0e5c"}
+
+## La saillance médiatique {.smaller}
+
+Chyi & McCombs, 2004 :
+
+> L'importance relative d'un objet (un enjeu public, une personne, un événement) par rapport aux autres objets présentés dans les médias.
+
+::: {.fragment}
+Ce n'est pas juste « combien de fois on en parle ».
+
+C'est : à la Une ou en page 17? En 2e position ou en 8e? Suivi d'opinion ou mention rapide? Notification mobile ou simple tweet?
+:::
+
+## Le gatekeeping (théorie 1) {.smaller}
+
+White, **1950** ; Shoemaker & Vos, 2009
+
+::: {.fragment}
+Chaque jour, des milliers d'événements se produisent dans le monde.
+
+Les médias en couvrent une **infime fraction**.
+
+Quelqu'un décide. C'est le ***gatekeeper***, le portier de l'information.
+:::
+
+::: {.fragment}
+Pendant des décennies : le rédacteur en chef du journal.
+:::
+
+## {.center .question-slide}
+
+::: {.question-label}
+À vous!
+:::
+
+::: {.r-fit-text}
+Qui décide ce qui apparaît
+
+en premier sur votre TikTok?
+:::
+
+## Le gatekeeping numérique {.smaller}
+
+À l'ère numérique, **qui sont les gatekeepers?**
+
+::: {.incremental}
+- Les médias traditionnels (toujours présents)
+- Les **algorithmes** de Facebook, X, TikTok, Google News
+- Les **individus** : chacun peut partager une actualité et lui donner de la visibilité
+- Les **agrégateurs** de nouvelles
+:::
+
+::: {.fragment}
+La sélection est passée d'une *logique de pertinence* à une *logique de popularité* : ce qui génère des clics, pas nécessairement ce qui est important *(Heinderyckx & Vos, 2016)*.
+:::
+
+## Pourquoi certaines nouvelles font la Une? {.smaller}
+
+Les *news factors* (Galtung & Ruge, 1965 ; Harcup & O'Neill, 2017)
+
+::: {.incremental}
+- **Conflit** : disputes, guerres, controverses
+- **Surprise** : l'inattendu, le contraste
+- **Mauvaises nouvelles** : la mort, la défaite, les crises
+- **Célébrité** : les puissants et les connus
+- **Viralité** : le potentiel de partage sur les réseaux sociaux *← nouveau depuis 2017*
+- **L'agenda du média** : ce qui sert les intérêts du propriétaire
+:::
+
+## L'agenda-setting (théorie 2) {.center}
+
+::: {.r-fit-text}
+**Gatekeeping** : les médias *sélectionnent*
+
+**Agenda-setting** : cette sélection *influence le public*
+:::
+
+---
+
+# Acte 4 : Pourquoi c'est compliqué {background-color="#3d0e0e"}
+
+## {.center .question-slide}
+
+::: {.question-label}
+À vous!
+:::
+
+::: {.r-fit-text}
+À quelle fréquence regardez-vous
+
+un bulletin de nouvelles à la télé?
+:::
+
+::: {.fragment}
+[Jamais]{.pill} [Rarement]{.pill} [Parfois]{.pill} [Souvent]{.pill}
+:::
+
+## La fragmentation de l'écosystème {.smaller}
+
+::: {.incremental}
+- **1960s–1990s** : 3-4 chaînes de télé, tout le monde regarde la même chose. Agenda *commun*.
+- **2000s** : internet fragmente les audiences
+- **2010s** : les réseaux sociaux deviennent la source principale pour beaucoup
+- **2020s** : TikTok, Substack, podcasts. Chacun son propre univers informationnel.
+:::
+
+::: {.fragment}
+En 2021 : **52 % des Canadiens** consultent leurs nouvelles principalement en ligne. Pour la première fois, le numérique dépasse la télévision. *(Reuters Institute, 2021)*
+:::
+
+## Les réseaux sociaux comme source d'info {.smaller}
+
+Au Québec (CEFRIO, 2018) :
+
+- **79 %** des Québécois ont suivi des nouvelles sur les réseaux sociaux
+- **41 %** l'ont fait « souvent »
+
+::: {.fragment}
+Problème : les réseaux sociaux ont leur propre logique algorithmique.
+
+Ce qui vous est montré n'est *pas* ce qui est collectivement important : c'est ce qui **vous engage** *vous*.
+:::
+
+## Chambres d'écho et bulles de filtres {.smaller}
+
+**Bulle de filtre** (Pariser, 2011 ; Dufresne & Philippette, 2019) : l'algorithme vous montre ce que vous vouliez déjà voir.
+
+::: {.incremental}
+- Vos fils d'actualité sont personnalisés selon vos comportements passés
+- Résultat : deux personnes peuvent avoir des perceptions très différentes de la *même* réalité politique
+- La capacité du public à débattre d'enjeux **collectifs** est compromise
+:::
+
+## {.center .question-slide}
+
+::: {.question-label}
+À vous!
+:::
+
+::: {.r-fit-text}
+Avez-vous déjà partagé une info
+
+sans vérifier si elle était vraie?
+:::
+
+## Fausses nouvelles et bots {.smaller}
+
+Lazer et al., 2018 (*Science*) ; Vosoughi, Roy & Aral, 2018
+
+::: {.incremental}
+- Les fausses nouvelles se propagent **6x plus vite** que les vraies
+- En 2018 : **60 millions** de faux comptes sur Facebook, 9 à 15 % des comptes Twitter
+- Les *bots* manipulent les algorithmes pour amplifier certains contenus
+:::
+
+::: {.fragment}
+> Cela complique le discernement des réels débats sociétaux et propulse à l'avant-plan le sentiment de colère.
+:::
+
+## La crise du modèle économique {.smaller}
+
+::: {.incremental}
+- Les revenus publicitaires ont migré vers **Google et Meta**
+- Les journaux réduisent leurs salles de nouvelles, ferment
+- Au Québec et au Canada : vagues de fermetures de journaux *locaux* depuis 2010
+- Les médias qui survivent adoptent la personnalisation algorithmique pour fidéliser, ce qui aggrave les bulles
+:::
+
+::: {.fragment}
+Un journal qui ferme = un conseil municipal **moins surveillé**. La recherche le confirme.
+:::
+
+## La grande tension {.center}
+
+::: {.r-fit-text}
+Si chacun consulte
+
+une information différente,
+
+peut-on encore former
+
+une opinion *collective*?
+:::
+
+---
+
+# Acte 5 : La science en 2026 {background-color="#2d1e00"}
+
+## Ce que ma thèse illustre {.smaller}
+
+La science politique en 2026 :
+
+::: {.incremental}
+- **Collecter** des données massives automatiquement (Radar+ scrape ~20 médias toutes les 10 min depuis 2019)
+- **Analyser** des millions de textes avec des modèles de langage (LLM)
+- **Tester** des hypothèses classiques avec des méthodes nouvelles (expérience en labo)
+- **Rendre accessible** : La Vitrine démocratique traduit ces données pour le grand public
+:::
+
+
+## Ce que j'aurais aimé qu'on me dise au cégep {.center}
+
+::: {.r-fit-text}
+Vous n'avez pas à savoir
+ce que vous voulez faire.
+
+Vous avez juste à rester
+**curieux**.
+:::
+
+---
+
+## Questions {.center background-color="#002b33"}
+
+::: {.r-fit-text}
+Aucune mauvaise question.
+:::
+
+::: {.fragment}
+**Adrien Cloutier**
+adrien.cloutier.1@ulaval.ca
+[adriencloutier.com](https://adriencloutier.com)
+:::
