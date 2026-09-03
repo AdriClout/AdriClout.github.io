@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="cours1_2026_files/libs/revealjs/dist/theme/quarto.css?v=4849af3a1c">
+  <link rel="stylesheet" href="cours1_2026_files/libs/revealjs/dist/theme/quarto.css?v=819260e3f0">
   <link href="cours1_2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="cours1_2026_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="cours1_2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -1447,7 +1447,7 @@ IA
 </section>
 <section class="slide level2">
 <h2>Livre obligatoire (Par nous, pour vous)</h2>
-<p><img data-src="images/livre_html.jpg"></p>
+<p><img data-src="images/livre_couverture.png" class="livre"></p>
 </section>
 <section class="slide level2">
 <h2>Pull requests sur Github (5%)</h2>
@@ -1940,8 +1940,8 @@ IA
         {n:11, d:"12 nov.",  t:"Langages de balisage",             s:2, e:"Quiz 2 · 15 %"},
         {n:12, d:"19 nov.",  t:"Rencontres individuelles",         s:2, r:true},
         {n:13, d:"26 nov.",  t:"Intelligence artificielle",        s:3},
-        {n:14, d:"3 déc.",   t:"Séance en ligne",                  s:3, e:"Analyse d'outil · 20 %"},
-        {n:15, d:"10 déc.",  t:"Trucs et techniques avancées",     s:3, e:"Remise finale · 25 %"}
+        {n:14, d:"3 déc.",   t:"Séance en ligne",                  s:3, e:"Analyse d'outil · 20 %", ligne:true},
+        {n:15, d:"10 déc.",  t:"Trucs et techniques",              s:3, e:"Remise finale · 25 %"}
       ];
       const SECTIONS = [
         {n:1, nom:"Fondations", de:1,  a:6},
@@ -1959,7 +1959,9 @@ IA
           else if (v.n < cur) cls.push("est-fait");
           if (v.off) cls.push("est-relache");
           if (v.e)   cls.push("est-eval");
-          if (v.r)   cls.push("est-rencontre");
+          if (v.r)     cls.push("est-rencontre");
+          if (v.ligne) cls.push("est-enligne");
+          if (v.e && i > 0 && SEANCES[i-1].e) cls.push("mention-bas");
           return `<div class="${cls.join(' ')}" style="left:${pos(i)}%">
                     <span class="fh-lab"><span class="fh-t">${v.t}</span></span>
                     <span class="fh-pt"></span>
@@ -1973,7 +1975,13 @@ IA
           return `<div class="fh-band${actif}" style="left:${g}%;width:${dte - g}%">
                     <span class="fh-bn">${s.n}</span>${s.nom}</div>`;
         }).join("");
-        el.innerHTML = `<div class="fh-bandes">${bandes}</div>
+        const legende = `<div class="fh-legende">
+            <span><i class="l-cours"></i>Cours</span>
+            <span><i class="l-eval"></i>Évaluation</span>
+            <span><i class="l-renc"></i>Rencontres individuelles</span>
+            <span><i class="l-ligne"></i>En ligne</span>
+            <span><i class="l-off"></i>Relâche</span></div>`;
+        el.innerHTML = legende + `<div class="fh-bandes">${bandes}</div>
                         <div class="fh-piste"><div class="fh-rail"></div>
                         <div class="fh-fait" style="width:${cur > 0 ? pos(Math.min(cur, N) - 1) : 0}%"></div>
                         ${jalons}</div>`;
