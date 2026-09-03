@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="cours1_2026_files/libs/revealjs/dist/theme/quarto.css?v=819260e3f0">
+  <link rel="stylesheet" href="cours1_2026_files/libs/revealjs/dist/theme/quarto.css?v=6c17b68d93">
   <link href="cours1_2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="cours1_2026_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="cours1_2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -1566,7 +1566,7 @@ IA
 </section>
 <section class="slide level2">
 <h2>Logiciel libre et code source ouvert</h2>
-<p><img data-src="images/chapitre1.jpg"></p>
+<p><img data-src="images/livre_chapitre1.png" class="livre"></p>
 </section>
 <section class="slide level2">
 <h2>Les lunettes == Le logiciel libre et le code source ouvert</h2>
@@ -1962,7 +1962,7 @@ IA
           if (v.r)     cls.push("est-rencontre");
           if (v.ligne) cls.push("est-enligne");
           if (v.e && i > 0 && SEANCES[i-1].e) cls.push("mention-bas");
-          return `<div class="${cls.join(' ')}" style="left:${pos(i)}%">
+          return `<div class="${cls.join(' ')}" style="left:${pos(i)}%;--i:${i}">
                     <span class="fh-lab"><span class="fh-t">${v.t}</span></span>
                     <span class="fh-pt"></span>
                     <span class="fh-bas"><span class="fh-n">${v.n}</span><span class="fh-d">${v.d}</span>
@@ -1986,6 +1986,20 @@ IA
                         <div class="fh-fait" style="width:${cur > 0 ? pos(Math.min(cur, N) - 1) : 0}%"></div>
                         ${jalons}</div>`;
       }
+      function animer(sec) {
+        if (!sec) return;
+        const el = sec.querySelector(".frise-h");
+        if (!el) return;
+        el.classList.remove("anime");
+        void el.offsetWidth;                       // force le navigateur a repartir de zero
+        el.classList.add("anime");
+      }
+      function brancherAnim() {
+        if (typeof Reveal === "undefined") return setTimeout(brancherAnim, 200);
+        Reveal.on("slidechanged", e => animer(e.currentSlide));
+        Reveal.on("ready", e => animer(e.currentSlide));
+      }
+      brancherAnim();
       const go = () => document.querySelectorAll(".frise-h").forEach(construire);
       document.addEventListener("DOMContentLoaded", go);
       if (document.readyState !== "loading") go();
