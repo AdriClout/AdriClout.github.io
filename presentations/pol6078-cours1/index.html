@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="cours1_2026_files/libs/revealjs/dist/theme/quarto.css?v=f1ef10bc10">
+  <link rel="stylesheet" href="cours1_2026_files/libs/revealjs/dist/theme/quarto.css?v=4849af3a1c">
   <link href="cours1_2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="cours1_2026_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="cours1_2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -419,67 +419,8 @@ Adrien Cloutier
 </section>
 <section class="slide level2">
 <h2>La session en un coup d’œil</h2>
-<div class="frise">
-<div class="bloc">
-<div class="bloc-titre">
-<span class="bn">1</span>Fondations
-</div>
-<div class="sem now">
-<span class="n">1</span><span class="corps"><span class="sujet">Introduction au monde du libre</span><span class="meta">3 sept.</span></span>
-</div>
-<div class="sem">
-<span class="n">2</span><span class="corps"><span class="sujet">Langages de programmation</span><span class="meta">10 sept.</span></span>
-</div>
-<div class="sem">
-<span class="n">3</span><span class="corps"><span class="sujet">R comme outil de recherche</span><span class="meta">17 sept.</span></span>
-</div>
-<div class="sem">
-<span class="n">4</span><span class="corps"><span class="sujet">Outils de gestion de projets</span><span class="meta">24 sept.</span></span>
-</div>
-<div class="sem ev">
-<span class="n">5</span><span class="corps"><span class="sujet">Outils de gestion de données</span><span class="meta">1<sup>er</sup> oct. · <span class="ev-badge">Quiz 1 · 15 %</span></span></span>
-</div>
-<div class="sem">
-<span class="n">6</span><span class="corps"><span class="sujet">Rencontres individuelles</span><span class="meta">8 oct. · <span class="ev-badge">1<sup>re</sup> rétrospective</span></span></span>
-</div>
-</div>
-<div class="bloc">
-<div class="bloc-titre">
-<span class="bn">2</span>Structure
-</div>
-<div class="sem">
-<span class="n">7</span><span class="corps"><span class="sujet">Littérature et références</span><span class="meta">15 oct.</span></span>
-</div>
-<div class="sem ev">
-<span class="n">8</span><span class="corps"><span class="sujet">Outils de collecte de données</span><span class="meta">22 oct. · <span class="ev-badge">Site Web 1 · 15 %</span></span></span>
-</div>
-<div class="sem off">
-<span class="n">9</span><span class="corps"><span class="sujet">Semaine de lecture</span><span class="meta">29 oct. · <span class="ev-badge">aucun cours</span></span></span>
-</div>
-<div class="sem">
-<span class="n">10</span><span class="corps"><span class="sujet">Visualisation de données</span><span class="meta">5 nov.</span></span>
-</div>
-<div class="sem ev">
-<span class="n">11</span><span class="corps"><span class="sujet">Langages de balisage</span><span class="meta">12 nov. · <span class="ev-badge">Quiz 2 · 15 %</span></span></span>
-</div>
-<div class="sem">
-<span class="n">12</span><span class="corps"><span class="sujet">Rencontres individuelles</span><span class="meta">19 nov. · <span class="ev-badge">2<sup>e</sup> rétrospective</span></span></span>
-</div>
-</div>
-<div class="bloc">
-<div class="bloc-titre">
-<span class="bn">3</span>Finitions
-</div>
-<div class="sem">
-<span class="n">13</span><span class="corps"><span class="sujet">Outils d’intelligence artificielle</span><span class="meta">26 nov.</span></span>
-</div>
-<div class="sem ev">
-<span class="n">14</span><span class="corps"><span class="sujet">Séance en ligne</span><span class="meta">3 déc. · <span class="ev-badge">Analyse d’outil · 20 %</span></span></span>
-</div>
-<div class="sem ev">
-<span class="n">15</span><span class="corps"><span class="sujet">Trucs, astuces et techniques</span><span class="meta">10 déc. · <span class="ev-badge">Remise finale · 25 %</span></span></span>
-</div>
-</div>
+<div class="frise-h" data-semaine="1">
+
 </div>
 </section>
 <section class="slide level2">
@@ -1979,6 +1920,113 @@ IA
           RevealZoom
         ]
       });
+    </script>
+    <script>
+    // Frise horizontale de la session POL-6078 (A26).
+    // Usage dans n'importe quel deck :  <div class="frise-h" data-semaine="3"></div>
+    // La séance indiquée est mise en évidence ; les précédentes sont marquées faites.
+    (function () {
+      const SEANCES = [
+        {n:1,  d:"3 sept.",  t:"Introduction au monde du libre",   s:1},
+        {n:2,  d:"10 sept.", t:"Langages de programmation",        s:1},
+        {n:3,  d:"17 sept.", t:"R comme outil de recherche",       s:1},
+        {n:4,  d:"24 sept.", t:"Outils de gestion de projets",     s:1},
+        {n:5,  d:"1<sup>er</sup> oct.", t:"Gestion de données",    s:1, e:"Quiz 1 · 15 %"},
+        {n:6,  d:"8 oct.",   t:"Rencontres individuelles",         s:1, r:true},
+        {n:7,  d:"15 oct.",  t:"Littérature et références",        s:2},
+        {n:8,  d:"22 oct.",  t:"Collecte de données",              s:2, e:"Site Web 1 · 15 %"},
+        {n:9,  d:"29 oct.",  t:"Semaine de lecture",               s:2, off:true},
+        {n:10, d:"5 nov.",   t:"Visualisation de données",         s:2},
+        {n:11, d:"12 nov.",  t:"Langages de balisage",             s:2, e:"Quiz 2 · 15 %"},
+        {n:12, d:"19 nov.",  t:"Rencontres individuelles",         s:2, r:true},
+        {n:13, d:"26 nov.",  t:"Intelligence artificielle",        s:3},
+        {n:14, d:"3 déc.",   t:"Séance en ligne",                  s:3, e:"Analyse d'outil · 20 %"},
+        {n:15, d:"10 déc.",  t:"Trucs et techniques avancées",     s:3, e:"Remise finale · 25 %"}
+      ];
+      const SECTIONS = [
+        {n:1, nom:"Fondations", de:1,  a:6},
+        {n:2, nom:"Structure",  de:7,  a:12},
+        {n:3, nom:"Finitions",  de:13, a:15}
+      ];
+      const N = SEANCES.length;
+      const pos = i => (i + 0.5) / N * 100;          // centre de la colonne, en %
+
+      function construire(el) {
+        const cur = parseInt(el.dataset.semaine || "0", 10);
+        const jalons = SEANCES.map((v, i) => {
+          const cls = ["fh-sem"];
+          if (v.n === cur) cls.push("est-ici");
+          else if (v.n < cur) cls.push("est-fait");
+          if (v.off) cls.push("est-relache");
+          if (v.e)   cls.push("est-eval");
+          if (v.r)   cls.push("est-rencontre");
+          return `<div class="${cls.join(' ')}" style="left:${pos(i)}%">
+                    <span class="fh-lab"><span class="fh-t">${v.t}</span></span>
+                    <span class="fh-pt"></span>
+                    <span class="fh-bas"><span class="fh-n">${v.n}</span><span class="fh-d">${v.d}</span>
+                    ${v.e ? `<span class="fh-e">${v.e}</span>` : ""}</span>
+                  </div>`;
+        }).join("");
+        const bandes = SECTIONS.map(s => {
+          const g = (s.de - 1) / N * 100, dte = s.a / N * 100;
+          const actif = cur >= s.de && cur <= s.a ? " est-ici" : "";
+          return `<div class="fh-band${actif}" style="left:${g}%;width:${dte - g}%">
+                    <span class="fh-bn">${s.n}</span>${s.nom}</div>`;
+        }).join("");
+        el.innerHTML = `<div class="fh-bandes">${bandes}</div>
+                        <div class="fh-piste"><div class="fh-rail"></div>
+                        <div class="fh-fait" style="width:${cur > 0 ? pos(Math.min(cur, N) - 1) : 0}%"></div>
+                        ${jalons}</div>`;
+      }
+      const go = () => document.querySelectorAll(".frise-h").forEach(construire);
+      document.addEventListener("DOMContentLoaded", go);
+      if (document.readyState !== "loading") go();
+    })();
+    </script>
+    <script>
+    // Quand le coffre est plein (les huit outils acquis), la planche s'allume en
+    // cascade : chaque outil passe au jaune l'un après l'autre, puis l'ensemble pulse.
+    (function () {
+      const PAS = 105;   // ms entre deux outils
+      function eteindre(sec) {
+        sec.querySelectorAll(".planche").forEach(p => {
+          p.classList.remove("pleine");
+          p.querySelectorAll(".slot").forEach(s => {
+            s.classList.remove("allume");
+            const i = s.querySelector("img");
+            if (i && i.src.includes("-yellow") && s.classList.contains("x"))
+              i.src = i.src.replace("-yellow", "-white");
+          });
+        });
+        sec.querySelectorAll(".coffre.x img").forEach(i => {
+          if (i.src.includes("-yellow")) i.src = i.src.replace("-yellow", "-white");
+        });
+      }
+      function allumer(sec) {
+        if (!sec) return;
+        const pl = sec.querySelector(".planche");
+        if (!pl) return;
+        const slots = [...pl.querySelectorAll(".slot")];
+        if (!slots.length || !slots.every(s => s.classList.contains("x"))) return;
+        const coffre = sec.querySelector(".coffre.x img");
+        if (coffre) setTimeout(() => {
+          if (coffre.src.includes("-white")) coffre.src = coffre.src.replace("-white", "-yellow");
+        }, 120);
+        slots.forEach((s, i) => setTimeout(() => {
+          const img = s.querySelector("img");
+          if (img && img.src.includes("-white")) img.src = img.src.replace("-white", "-yellow");
+          s.classList.add("allume");
+        }, 260 + i * PAS));
+        setTimeout(() => pl.classList.add("pleine"), 260 + slots.length * PAS + 120);
+      }
+      function brancher() {
+        if (typeof Reveal === "undefined") return setTimeout(brancher, 200);
+        Reveal.on("slidechanged", e => { if (e.previousSlide) eteindre(e.previousSlide); allumer(e.currentSlide); });
+        Reveal.on("ready", e => allumer(e.currentSlide));
+        if (Reveal.isReady && Reveal.isReady()) allumer(Reveal.getCurrentSlide());
+      }
+      brancher();
+    })();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
